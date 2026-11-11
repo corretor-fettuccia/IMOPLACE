@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Anuncie seu imóvel</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#16302a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600&display=swap" rel="stylesheet">
+<style>
+  /* ============ TOKENS — cores da marca ============ */
+  :root{
+    --bg:#f3f5f4; --card:#fff; --ink:#152420; --muted:#6c7975; --line:#e3e8e6; --soft:#f7f9f8;
+    --brand:#16302a; --brand-2:#2c6a5a; --brand-3:#e6f0ec; --accent:#e9a23b;
+    --err:#c0392b; --err-bg:#fdecea; --ok:#1e8a5a;
+    --g:6px;          /* espaço base único: tudo é múltiplo dele */
+    --p:12px;         /* respiro interno dos cartões */
+    --r:10px; --h:44px;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{ --bg:#0e1614; --card:#16211e; --ink:#e8efec; --muted:#9aaaa5; --line:#2a3834; --soft:#1b2825;
+           --brand:#0b1a17; --brand-2:#5fb39b; --brand-3:#1f3530; --err:#ff7b6b; --err-bg:#3a1d1a; }
+  }
+  @media (min-width:600px){ :root{ --p:14px } }
+
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{margin:0;overflow-x:hidden}
+  body{background:var(--bg);color:var(--ink);font:14px/1.4 Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+  button,input,textarea{font:inherit;color:inherit}
+  [hidden]{display:none!important}
+
+  /* ============ TOPO ============ */
+  .topo{background:var(--brand);color:#fff;text-align:center;padding:12px var(--p) 13px}
+  .marca{font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;opacity:.6}
+  .topo h1{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:clamp(21px,5vw,26px);line-height:1.15;margin:2px 0 1px}
+  .topo p{margin:0;font-size:12.5px;opacity:.75}
+
+  /* ============ LAYOUT — 2 colunas iguais no desktop ============ */
+  .conteudo{max-width:900px;margin:0 auto;padding:var(--g) var(--g) calc(64px + env(safe-area-inset-bottom))}
+  .layout{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--g)}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);min-width:0;display:flex;flex-direction:column}
+  @media (min-width:600px){ .conteudo{padding:12px 12px calc(66px + env(safe-area-inset-bottom))} }
+  @media (min-width:860px){
+    .conteudo{padding:16px}
+    .layout{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;align-items:stretch}
+  }
+
+  section{padding:var(--p)}
+  section + section{border-top:1px solid var(--line)}
+  .cresce{flex:1;display:flex;flex-direction:column}
+  h2{margin:0 0 var(--g);font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between}
+  h2 small{font-weight:500;letter-spacing:0;text-transform:none}
+
+  .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--g)}
+  .full{grid-column:1/-1}
+  .campo{min-width:0}
+  @media (max-width:599px){ .m-full{grid-column:1/-1} }
+
+  /* ============ RÓTULO FLUTUANTE ============ */
+  .fl{position:relative}
+  .fl input,.fl textarea{
+    width:100%;font-size:16px;/* evita zoom no iOS */
+    height:var(--h);padding:17px 11px 4px;border:1px solid var(--line);border-radius:8px;background:var(--soft);
+    transition:border-color .15s,box-shadow .15s,background .15s;appearance:none}
+  .fl textarea{height:auto;min-height:96px;padding-top:20px;resize:vertical;line-height:1.4;display:block}
+  .fl label{position:absolute;left:12px;top:13px;font-size:14px;color:var(--muted);pointer-events:none;transition:top .15s,font-size .15s,color .15s;white-space:nowrap;max-width:calc(100% - 24px);overflow:hidden;text-overflow:ellipsis}
+  .fl label small{opacity:.7}
+  .fl input:focus + label,.fl input:not(:placeholder-shown) + label,
+  .fl textarea:focus + label,.fl textarea:not(:placeholder-shown) + label{top:5px;font-size:10.5px;font-weight:600}
+  .fl input:focus + label,.fl textarea:focus + label{color:var(--brand-2)}
+  .fl input:focus,.fl textarea:focus{outline:none;background:var(--card);border-color:var(--brand-2);box-shadow:0 0 0 3px var(--brand-3)}
+  .campo.invalido input,.campo.invalido textarea{border-color:var(--err);background:var(--card)}
+  .campo.invalido label{color:var(--err)}
+  .msg{display:none;font-size:11px;color:var(--err);margin-top:2px}
+  .campo.invalido .msg{display:block}
+  .contador{position:absolute;right:10px;bottom:6px;font-size:10.5px;color:var(--muted);pointer-events:none}
+  .desc{flex:1;display:flex;flex-direction:column}
+  .desc .fl{flex:1;display:flex}
+  .desc textarea{flex:1}
+  @media (min-width:860px){
+    .fl textarea{min-height:64px}                         /* cresce até alinhar com a coluna 1 */
+    .card .thumbs{grid-template-columns:repeat(7,minmax(0,1fr))}
+  }
+
+  /* ============ FINALIDADE + TIPO (grades simétricas) ============ */
+  .seg,.tipos{display:grid;gap:3px;padding:3px;background:var(--soft);border:1px solid var(--line);border-radius:8px}
+  .seg{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .tipos{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .seg label,.tipos label{position:relative;min-width:0}
+  .seg input,.tipos input{position:absolute;opacity:0;pointer-events:none}
+  .seg span,.tipos span{display:flex;align-items:center;justify-content:center;height:32px;padding:0 4px;border-radius:6px;font-size:13px;
+       font-weight:500;color:var(--muted);cursor:pointer;user-select:none;transition:.15s;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .seg span:hover,.tipos span:hover{color:var(--ink)}
+  .seg input:checked + span{background:var(--card);color:var(--brand-2);font-weight:700;box-shadow:0 1px 2px rgba(0,0,0,.1)}
+  .tipos input:checked + span{background:var(--brand-2);color:#fff;font-weight:600}
+  .seg input:focus-visible + span,.tipos input:focus-visible + span{outline:2px solid var(--brand-2);outline-offset:-2px}
+  @media (max-width:359px){ .seg span,.tipos span{font-size:12px} }
+
+  /* ============ FOTOS ============ */
+  .drop{display:flex;align-items:center;justify-content:center;gap:8px;height:var(--h);border:1px dashed #c6d1cd;border-radius:8px;
+       cursor:pointer;background:var(--soft);transition:.15s;font-size:13px;color:var(--muted)}
+  .drop:hover,.drop.over{border-color:var(--brand-2);background:var(--brand-3);color:var(--brand-2)}
+  .drop svg{width:17px;height:17px;color:var(--brand-2)}
+  .drop b{color:var(--ink);font-weight:600}
+  .drop .so-desk{display:none}
+  @media (hover:hover) and (pointer:fine){ .drop .so-mob{display:none} .drop .so-desk{display:inline} }
+  #fotos{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+
+  .thumbs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px;margin-top:var(--g)}
+  .thumbs:empty{display:none}
+  .thumb{position:relative;aspect-ratio:1;border-radius:6px;overflow:hidden;background:var(--soft);animation:entra .18s ease}
+  .thumb img{width:100%;height:100%;object-fit:cover;display:block}
+  .thumb .acoes{position:absolute;inset:auto 0 0 0;display:flex;justify-content:space-between;padding:3px}
+  .thumb button{width:22px;height:22px;border:0;border-radius:50%;background:rgba(0,0,0,.55);color:#fff;cursor:pointer;display:grid;place-items:center;padding:0}
+  .thumb button svg{width:11px;height:11px}
+  .thumb .capa{position:absolute;left:3px;top:3px;background:var(--accent);color:#1b1205;font-size:8.5px;font-weight:700;padding:1px 4px;border-radius:3px;letter-spacing:.05em}
+  .thumb.eh-capa .estrela{visibility:hidden}
+  .info-fotos{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-top:4px}
+  .info-fotos button{border:0;background:none;color:var(--err);cursor:pointer;padding:0;font-size:11px}
+  @keyframes entra{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:none}}
+
+  /* ============ ENVIO ============ */
+  .check{display:flex;gap:8px;align-items:flex-start;font-size:11.5px;color:var(--muted);cursor:pointer;line-height:1.4}
+  .check input{flex:none;width:16px;height:16px;margin:0;accent-color:var(--brand-2)}
+  .check.invalido span{color:var(--err)}
+  .hp{position:absolute;left:-9999px;width:1px;height:1px}
+  .erro{background:var(--err-bg);color:var(--err);border-radius:8px;padding:7px 10px;margin-top:var(--g);font-size:12px}
+
+  .barra-envio{position:fixed;left:0;right:0;bottom:0;z-index:10;padding:var(--g) var(--g) calc(var(--g) + env(safe-area-inset-bottom));background:var(--card);border-top:1px solid var(--line)}
+  @supports (backdrop-filter:blur(1px)){ .barra-envio{background:color-mix(in srgb,var(--card) 90%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)} }
+  .btn{width:100%;max-width:520px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:8px;
+       height:var(--h);font-weight:600;font-size:14.5px;background:var(--brand-2);color:#fff;cursor:pointer;transition:.15s}
+  .btn:hover{filter:brightness(1.07)} .btn:active{transform:scale(.99)} .btn:disabled{opacity:.6;cursor:wait}
+  .btn svg{width:16px;height:16px}
+  @media (min-width:860px){ .barra-envio{position:static;padding:0;margin-top:var(--g);background:none;border:0;backdrop-filter:none} .btn{max-width:none} }
+
+  /* ============ PROGRESSO ============ */
+  .overlay{position:fixed;inset:0;z-index:20;display:grid;place-items:center;padding:20px;background:rgba(10,22,19,.5);backdrop-filter:blur(3px)}
+  .modal{width:100%;max-width:260px;background:var(--card);border-radius:12px;padding:18px;text-align:center;box-shadow:0 20px 50px rgba(0,0,0,.25)}
+  .anel{width:48px;height:48px;margin:0 auto 8px;position:relative}
+  .anel svg{width:48px;height:48px;transform:rotate(-90deg)}
+  .anel circle{fill:none;stroke-width:6}
+  .anel .fundo{stroke:var(--line)}
+  .anel .frente{stroke:var(--brand-2);stroke-linecap:round;stroke-dasharray:176;stroke-dashoffset:176;transition:stroke-dashoffset .3s}
+  .anel b{position:absolute;inset:0;display:grid;place-items:center;font-size:11px}
+  .modal h3{margin:0;font-size:14px}
+  .modal p{margin:2px 0 0;color:var(--muted);font-size:11.5px}
+
+  /* ============ CONFIRMAÇÃO ============ */
+  .sucesso{max-width:400px;margin:var(--g) auto 0;padding:22px var(--p);text-align:center;align-items:center}
+  .sucesso .ic{width:42px;height:42px;border-radius:50%;background:var(--brand-3);color:var(--ok);display:grid;place-items:center;margin-bottom:8px}
+  .sucesso .ic svg{width:22px;height:22px}
+  .sucesso h2{all:unset;display:block;font-family:Fraunces,Georgia,serif;font-weight:600;font-size:20px}
+  .sucesso p{color:var(--muted);margin:2px auto 0;font-size:13px;max-width:32ch}
+  .proto{margin-top:10px;background:var(--soft);border:1px dashed var(--line);padding:5px 10px;border-radius:6px;font-weight:700;font-size:12.5px;overflow-wrap:anywhere}
+  .detalhes{list-style:none;margin:12px 0 0;padding:0;width:100%;text-align:left;border-top:1px solid var(--line)}
+  .detalhes li{display:flex;align-items:center;gap:8px;padding:7px 2px;border-bottom:1px solid var(--line);font-size:12.5px;color:var(--ink)}
+  .detalhes svg{flex:none;width:15px;height:15px;color:var(--brand-2)}
+  .acoes-sucesso{display:flex;flex-wrap:wrap;gap:var(--g);justify-content:center;margin-top:12px}
+  .btn-sec{display:inline-flex;align-items:center;justify-content:center;height:36px;padding:0 14px;border-radius:8px;border:1px solid var(--line);
+       background:var(--card);color:var(--ink);font-weight:600;cursor:pointer;text-decoration:none;font-size:13px}
+  .btn-sec.primario{background:var(--brand-2);border-color:var(--brand-2);color:#fff}
+  .redir{font-size:11.5px;color:var(--muted);margin-top:8px}
+
+  @media (prefers-reduced-motion:reduce){ *{animation:none!important;transition:none!important} }
+</style>
+</head>
+<body>
+
+<header class="topo">
+  <div class="marca" data-empresa></div>
+  <h1>Anuncie seu imóvel</h1>
+  <p>Envie os dados e as fotos. Retornamos rapidamente.</p>
+</header>
+
+<main class="conteudo">
+  <form class="layout" id="form" action="javascript:void(0)" onsubmit="return false" novalidate autocomplete="on">
+
+    <!-- COLUNA 1 -->
+    <div class="card">
+      <section>
+        <h2>Seus dados</h2>
+        <div class="grid">
+          <div class="campo full">
+            <div class="fl">
+              <input type="text" id="nome" name="nome" placeholder=" " autocomplete="name" maxlength="120" enterkeyhint="next">
+              <label for="nome">Nome completo</label>
+            </div>
+            <div class="msg">Informe nome e sobrenome, só com letras.</div>
+          </div>
+          <div class="campo m-full">
+            <div class="fl">
+              <input type="tel" id="telefone" name="telefone" placeholder=" " inputmode="tel" autocomplete="tel-national" maxlength="15" enterkeyhint="next">
+              <label for="telefone">Telefone / WhatsApp</label>
+            </div>
+            <div class="msg">Informe o telefone com DDD.</div>
+          </div>
+          <div class="campo m-full">
+            <div class="fl">
+              <input type="email" id="email" name="email" placeholder=" " inputmode="email" autocomplete="email" autocapitalize="off" spellcheck="false" maxlength="120" enterkeyhint="next">
+              <label for="email">E-mail</label>
+            </div>
+            <div class="msg">Informe um e-mail válido.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="cresce">
+        <h2>Imóvel</h2>
+        <div class="grid">
+          <div class="seg full" role="radiogroup" aria-label="Finalidade">
+            <label><input type="radio" name="finalidade" value="Venda" checked><span>Venda</span></label>
+            <label><input type="radio" name="finalidade" value="Locação"><span>Locação</span></label>
+            <label><input type="radio" name="finalidade" value="Venda ou locação"><span>Ambos</span></label>
+          </div>
+          <div class="tipos full" role="radiogroup" aria-label="Tipo de imóvel">
+            <label><input type="radio" name="tipo" value="Casa" checked><span>Casa</span></label>
+            <label><input type="radio" name="tipo" value="Apartamento"><span title="Apartamento">Apto.</span></label>
+            <label><input type="radio" name="tipo" value="Cobertura"><span>Cobertura</span></label>
+            <label><input type="radio" name="tipo" value="Terreno"><span>Terreno</span></label>
+            <label><input type="radio" name="tipo" value="Sala / Loja comercial"><span>Comercial</span></label>
+            <label><input type="radio" name="tipo" value="Pavilhão / Galpão"><span>Galpão</span></label>
+            <label><input type="radio" name="tipo" value="Sítio / Chácara"><span title="Sítio / Chácara">Sítio</span></label>
+            <label><input type="radio" name="tipo" value="Outro"><span>Outro</span></label>
+          </div>
+          <div class="campo">
+            <div class="fl">
+              <input type="text" id="cidade" name="cidade" placeholder=" " autocomplete="address-level2" maxlength="80" enterkeyhint="next">
+              <label for="cidade">Cidade</label>
+            </div>
+          </div>
+          <div class="campo">
+            <div class="fl">
+              <input type="text" id="bairro" name="bairro" placeholder=" " maxlength="80" enterkeyhint="next">
+              <label for="bairro">Bairro</label>
+            </div>
+          </div>
+          <div class="campo full">
+            <div class="fl">
+              <input type="text" id="valor" name="valor" placeholder=" " inputmode="numeric" maxlength="25" enterkeyhint="next">
+              <label for="valor">Valor pretendido <small>(opcional)</small></label>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- COLUNA 2 -->
+    <div class="card">
+      <section class="cresce">
+        <h2>Descrição</h2>
+        <div class="campo desc">
+          <div class="fl">
+            <textarea id="descricao" name="descricao" placeholder=" " maxlength="5000" rows="2"></textarea>
+            <label for="descricao">Quartos, vagas, área, diferenciais…</label>
+            <span class="contador" id="contador">0 / 5000</span>
+          </div>
+          <div class="msg">Descreva o imóvel com um pouco mais de detalhe.</div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Fotos <small>até <span id="maxFotosTxt">20</span> · 1ª é a capa</small></h2>
+        <label class="drop" id="drop" for="fotos">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M4 7h3l2-3h6l2 3h3a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1z"/><circle cx="12" cy="13" r="3.5"/>
+          </svg>
+          <span class="so-mob"><b>Adicionar fotos</b></span>
+          <span class="so-desk"><b>Arraste as fotos</b> ou clique</span>
+        </label>
+        <input id="fotos" type="file" accept="image/jpeg,image/png,image/webp,image/heic,image/heif,.jpg,.jpeg,.png,.webp,.heic" multiple>
+        <div class="thumbs" id="thumbs"></div>
+        <div class="info-fotos" id="infoFotos" hidden>
+          <span id="count"></span>
+          <button type="button" id="limpar">Remover todas</button>
+        </div>
+      </section>
+
+      <section>
+        <input class="hp" name="website" id="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <input type="hidden" name="origem" id="origem" value="">
+        <label class="check" id="checkWrap">
+          <input type="checkbox" id="consentimento">
+          <span>Autorizo o contato da <span data-empresa></span> e o uso destas informações para avaliação e divulgação do imóvel.</span>
+        </label>
+        <div class="erro" id="erro" role="alert" hidden></div>
+        <div class="barra-envio">
+          <button class="btn" id="enviar" type="button">
+            Enviar meu imóvel
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+        </div>
+      </section>
+    </div>
+  </form>
+
+  <div class="card sucesso" id="sucesso" hidden tabindex="-1">
+    <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+    <!-- Textos padrão: substituídos pelo feedback que o backend devolve -->
+    <h2 id="sucTitulo">Imóvel recebido!</h2>
+    <p id="sucMsg">Obrigado. Em breve um de nossos corretores entrará em contato.</p>
+    <div class="proto" id="proto"></div>
+    <ul class="detalhes" id="sucDetalhes" hidden></ul>
+    <div class="redir" id="redir" hidden></div>
+    <div class="acoes-sucesso">
+      <button class="btn-sec primario" type="button" id="novo">Cadastrar outro imóvel</button>
+      <a class="btn-sec" id="voltarSite" href="#" hidden>Voltar ao site</a>
+    </div>
+  </div>
+</main>
+
+<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-live="polite" hidden>
+  <div class="modal">
+    <div class="anel">
+      <svg viewBox="0 0 64 64"><circle class="fundo" cx="32" cy="32" r="28"/><circle class="frente" id="anel" cx="32" cy="32" r="28"/></svg>
+      <b id="pct">0%</b>
+    </div>
+    <h3 id="status">Enviando...</h3>
+    <p>Não feche esta página.</p>
+  </div>
+</div>
+
+<script>
+  /* ================= CONFIGURAÇÃO DO FORMULÁRIO =================
+     O instalador (subir.sh) preenche API_URL e EMPRESA automaticamente.
+     Para editar à mão: API_URL é o link do App da Web terminado em /exec. */
+  const CONFIG_FORM = {
+    API_URL: 'https://script.google.com/macros/s/AKfycbx41PlVDLvxqikf6pXnOuBX_A_-ogsV0VWDEY-ArZOt4ePkKXLElRmaba2028ZhJUq8/exec',
+    EMPRESA: 'imoplace',
+    URL_APOS_ENVIO: '',   // opcional: página para onde ir 4 s depois do sucesso (ex.: '/obrigado')
+    URL_SITE: '/'         // botão "Voltar ao site" na tela de sucesso ('' esconde)
+  };
+  /* ============================================================== */
+
+  // Nenhum erro passa em silêncio: qualquer falha inesperada aparece na tela.
+  function erroNaTela(msg) {
+    const el = document.getElementById('erro');
+    const ov = document.getElementById('overlay');
+    if (ov) ov.hidden = true;
+    if (el) { el.textContent = msg; el.hidden = false; el.scrollIntoView({ block: 'center' }); }
+    else alert(msg);
+  }
+  window.addEventListener('error', e => erroNaTela('Erro inesperado na página: ' + (e.message || 'desconhecido') + '. Recarregue e tente novamente.'));
+  window.addEventListener('unhandledrejection', e => erroNaTela('Erro inesperado: ' + String((e.reason && e.reason.message) || e.reason || 'desconhecido') + '.'));
+
+  const API_URL = String(CONFIG_FORM.API_URL || '').trim();
+  const API_OK = /^https:\/\/script\.google(usercontent)?\.com\/.+\/exec$/.test(API_URL);
+  const URL_APOS_ENVIO = CONFIG_FORM.URL_APOS_ENVIO || '';
+  const URL_SITE = CONFIG_FORM.URL_SITE || '';
+  let MAX_FOTOS = 20, LIMITE_ZIP_MB = 17, DIFICULDADE = 17; // atualizados pela API ao abrir
+
+  document.querySelectorAll('[data-empresa]').forEach(el => el.textContent = CONFIG_FORM.EMPRESA);
+  document.title = 'Anuncie seu imóvel · ' + CONFIG_FORM.EMPRESA;
+  // Origem do visitante: ?origem=instagram (ou utm_source) no link de divulgação
+  { const q = new URLSearchParams(location.search);
+    document.getElementById('origem').value = (q.get('origem') || q.get('utm_source') || '').replace(/[^\w .-]/g, '').slice(0, 40); }
+  const MAX_LADO = 1920, QUALIDADE = 0.82;
+  let fotos = [];       // [{id, file, url}]
+  let enviando = false;
+
+  const $ = id => document.getElementById(id);
+  const form = $('form'), drop = $('drop'), input = $('fotos'), thumbs = $('thumbs');
+  const ICON_X = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>';
+  const ICON_STAR = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9 6.8 19.6l1-5.8-4.3-4.1 5.9-.9z"/></svg>';
+
+  /* ---------- Trava total de navegação ---------- */
+  form.addEventListener('submit', e => { e.preventDefault(); e.stopPropagation(); return false; });
+  // Enter em um campo avança para o próximo, em vez de "enviar" a página
+  const ordem = ['nome', 'telefone', 'email', 'cidade', 'bairro', 'valor', 'descricao'];
+  ordem.forEach((id, i) => $(id).addEventListener('keydown', e => {
+    if (e.key === 'Enter' && e.target.tagName !== 'TEXTAREA') {
+      e.preventDefault();
+      const prox = $(ordem[i + 1]); if (prox) prox.focus();
+    }
+  }));
+
+  /* ---------- Fotos: arrastar, escolher, colar ---------- */
+  ['dragenter', 'dragover'].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.add('over'); }));
+  ['dragleave', 'drop'].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.remove('over'); }));
+  drop.addEventListener('drop', e => adicionar(e.dataTransfer.files));
+  input.addEventListener('change', () => { adicionar(input.files); input.value = ''; });
+  window.addEventListener('dragover', e => e.preventDefault());
+  window.addEventListener('drop', e => e.preventDefault()); // soltar fora da área não abre a imagem no navegador
+  window.addEventListener('paste', e => { if (e.clipboardData && e.clipboardData.files.length) adicionar(e.clipboardData.files); });
+  $('limpar').onclick = () => { fotos.forEach(f => URL.revokeObjectURL(f.url)); fotos = []; zerarSessao(); render(); };
+
+  function adicionar(lista) {
+    mostrarErro(''); zerarSessao();
+    const imgs = Array.from(lista).filter(f => f.type.startsWith('image/') || /\.(heic|heif)$/i.test(f.name));
+    const vagas = MAX_FOTOS - fotos.length;
+    if (imgs.length > vagas) mostrarErro(`Limite de ${MAX_FOTOS} fotos. ${imgs.length - Math.max(vagas, 0)} foto(s) ficaram de fora.`);
+    imgs.slice(0, Math.max(vagas, 0)).forEach(file =>
+      fotos.push({ id: Math.random().toString(36).slice(2), file, url: URL.createObjectURL(file) }));
+    render();
+  }
+  function remover(id) {
+    const f = fotos.find(x => x.id === id); if (f) URL.revokeObjectURL(f.url);
+    fotos = fotos.filter(x => x.id !== id); zerarSessao(); render();
+  }
+  function tornarCapa(id) {
+    const i = fotos.findIndex(x => x.id === id);
+    if (i > 0) { fotos.unshift(fotos.splice(i, 1)[0]); zerarSessao(); render(); }
+  }
+  function render() {
+    thumbs.innerHTML = '';
+    fotos.forEach((f, i) => {
+      const d = document.createElement('div');
+      d.className = 'thumb' + (i === 0 ? ' eh-capa' : '');
+      d.innerHTML = (i === 0 ? '<span class="capa">CAPA</span>' : '') +
+        `<img alt="Foto ${i + 1}"><div class="acoes">
+           <button type="button" class="estrela" aria-label="Usar como capa" title="Usar como capa">${ICON_STAR}</button>
+           <button type="button" aria-label="Remover foto" title="Remover">${ICON_X}</button></div>`;
+      d.querySelector('img').src = f.url;
+      const [bCapa, bX] = d.querySelectorAll('button');
+      bCapa.onclick = () => tornarCapa(f.id);
+      bX.onclick = () => remover(f.id);
+      thumbs.appendChild(d);
+    });
+    $('infoFotos').hidden = !fotos.length;
+    $('count').textContent = `${fotos.length} de ${MAX_FOTOS} fotos`;
+  }
+
+  /* ---------- Máscaras e contador ---------- */
+  $('telefone').addEventListener('input', e => {
+    let v = e.target.value.replace(/\D/g, '').slice(0, 11);
+    if (v.length > 10) v = v.replace(/^(\d{2})(\d{5})(\d{0,4}).*/, '($1) $2-$3');
+    else if (v.length > 6) v = v.replace(/^(\d{2})(\d{4})(\d{0,4}).*/, '($1) $2-$3');
+    else if (v.length > 2) v = v.replace(/^(\d{2})(\d*)/, '($1) $2');
+    else if (v.length) v = '(' + v;
+    e.target.value = v;
+  });
+  $('valor').addEventListener('input', e => {
+    const n = e.target.value.replace(/\D/g, '').slice(0, 13);
+    e.target.value = n ? 'R$ ' + Number(n).toLocaleString('pt-BR') : '';
+  });
+  const atualizarContador = () => $('contador').textContent = `${$('descricao').value.length} / 5000`;
+  $('descricao').addEventListener('input', atualizarContador);
+
+  /* ---------- Validação inline ---------- */
+  const regras = {
+    nome: v => v.trim().split(/\s+/).length >= 2 && v.trim().length >= 5 && /^[A-Za-zÀ-ÖØ-öø-ÿ' .-]+$/.test(v.trim()) && !/\.\S/.test(v.trim()),
+    telefone: v => { const d = v.replace(/\D/g, ''); return d.length >= 10 && d.length <= 11; },
+    email: v => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()),
+    descricao: v => v.trim().length >= 10
+  };
+  function validarCampo(id) {
+    const ok = regras[id]($(id).value);
+    $(id).closest('.campo').classList.toggle('invalido', !ok);
+    $(id).setAttribute('aria-invalid', String(!ok));
+    return ok;
+  }
+  Object.keys(regras).forEach(id => {
+    $(id).addEventListener('blur', () => { if ($(id).value) validarCampo(id); });
+    $(id).addEventListener('input', () => { if ($(id).closest('.campo').classList.contains('invalido')) validarCampo(id); });
+  });
+  $('consentimento').addEventListener('change', () => { $('checkWrap').classList.remove('invalido'); mostrarErro(''); });
+
+  /* ---------- Conversão para WebP no navegador ----------
+     Toda foto (JPG, JPEG, PNG, WebP, HEIC no iPhone) é reduzida para no máximo 1920 px e convertida em WebP.
+     Chrome, Edge, Firefox e Android convertem nativamente. O Safari não gera WebP: nele, carregamos sob demanda
+     o codificador oficial libwebp (WebAssembly, ~280 KB) da CDN jsDelivr. */
+  const WEBP_WASM = 'https://cdn.jsdelivr.net/npm/@jsquash/webp@1.5.0/codec/enc/webp_enc.js';
+  const carregarImagem = url => new Promise((ok, falha) => { const i = new Image(); i.onload = () => ok(i); i.onerror = falha; i.src = url; });
+  let suportaWebpNativo = null, codificadorWebp = null;
+  function webpNativo() {
+    if (suportaWebpNativo === null) {
+      const c = document.createElement('canvas'); c.width = c.height = 2;
+      suportaWebpNativo = c.toDataURL('image/webp').indexOf('data:image/webp') === 0;
+    }
+    return suportaWebpNativo;
+  }
+  async function codificarWebpWasm(ctx, w, h) {
+    if (!codificadorWebp) {
+      codificadorWebp = import(WEBP_WASM).then(m => m.default({ noInitialRun: true }))
+        .catch(e => { codificadorWebp = null; throw new Error('Não foi possível preparar as fotos neste navegador. Tente pelo Chrome.'); });
+    }
+    const mod = await codificadorWebp;
+    const opcoes = { quality: Math.round(QUALIDADE * 100), target_size: 0, target_PSNR: 0, method: 4, sns_strength: 50,
+      filter_strength: 60, filter_sharpness: 0, filter_type: 1, partitions: 0, segments: 4, pass: 1, show_compressed: 0,
+      preprocessing: 0, autofilter: 0, partition_limit: 0, alpha_compression: 1, alpha_filtering: 1, alpha_quality: 100,
+      lossless: 0, exact: 0, image_hint: 0, emulate_jpeg_size: 0, thread_level: 0, low_memory: 0, near_lossless: 100,
+      use_delta_palette: 0, use_sharp_yuv: 0 };
+    const bytes = mod.encode(ctx.getImageData(0, 0, w, h).data, w, h, opcoes);
+    if (!bytes) throw new Error('Falha ao converter a foto para WebP.');
+    let bin = ''; for (let i = 0; i < bytes.length; i += 0x8000) bin += String.fromCharCode.apply(null, bytes.subarray(i, i + 0x8000));
+    return btoa(bin);
+  }
+  async function preparar(f, i) {
+    const base = String(i + 1).padStart(2, '0') + '-' + f.file.name.replace(/\.[^.]+$/, '').replace(/[^\w\- ]+/g, '_').slice(0, 50);
+    let img;
+    try { img = await carregarImagem(f.url); }
+    catch (e) { throw new Error('Não foi possível ler a foto "' + f.file.name + '". Envie em JPG, PNG ou WebP.'); }
+    const esc = Math.min(1, MAX_LADO / Math.max(img.naturalWidth, img.naturalHeight));
+    const w = Math.max(1, Math.round(img.naturalWidth * esc)), h = Math.max(1, Math.round(img.naturalHeight * esc));
+    const c = document.createElement('canvas'); c.width = w; c.height = h;
+    const ctx = c.getContext('2d');
+    ctx.drawImage(img, 0, 0, w, h);
+    const base64 = webpNativo() ? c.toDataURL('image/webp', QUALIDADE).split(',')[1] : await codificarWebpWasm(ctx, w, h);
+    return { nome: base + '.webp', mime: 'image/webp', base64 };
+  }
+
+  /* ---------- Integração com a API (Apps Script) ----------
+     POST com Content-Type text/plain: o navegador não faz pré-verificação CORS,
+     e o Apps Script responde com Access-Control-Allow-Origin: *. */
+  const esperar = ms => new Promise(r => setTimeout(r, ms));
+  const ERRO_REDE = /Failed to fetch|Load failed|NetworkError|network|HTTP 0|timed? ?out|abort/i;
+  async function api(metodo, corpo, acao) {
+    if (!API_OK) throw new Error('Formulário não configurado: falta o link da API (CONFIG_FORM.API_URL).');
+    const ctl = new AbortController(), t = setTimeout(() => ctl.abort(), 90000);
+    let r;
+    try {
+      r = await fetch(acao ? API_URL + '?acao=' + acao + '&t=' + Date.now() : API_URL, metodo === 'POST'
+        ? { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(corpo), redirect: 'follow', signal: ctl.signal }
+        : { method: 'GET', redirect: 'follow', cache: 'no-store', signal: ctl.signal });
+    } catch (e) {
+      // Para o dono do site (F12 > Console): o navegador esconde o motivo exato de falhas entre domínios
+      console.error('[Captação] Não foi possível acessar a API: ' + API_URL + '\nConfira: 1) o link termina em /exec; 2) a implantação está com acesso "Qualquer pessoa"; 3) setup() foi executado.\nTeste abrindo no navegador: ' + API_URL + '?acao=status');
+      throw new Error('A conexão caiu durante o envio');
+    }
+    finally { clearTimeout(t); }
+    const txt = await r.text();
+    let res;
+    try { res = JSON.parse(txt); }
+    catch (e) {
+      // HTML em vez de JSON: link errado, implantação sem acesso "Qualquer pessoa" ou página de login do Google
+      throw new Error(r.ok ? 'A API não respondeu como esperado (confira o link e se a implantação está como "Qualquer pessoa").' : 'Serviço indisponível (HTTP ' + r.status + '). Tente novamente em instantes.');
+    }
+    if (!res || res.ok !== true) throw new Error((res && res.erro) || 'Não foi possível concluir agora.');
+    return res;
+  }
+  /** Depois de uma falha de rede, pergunta à API o que houve, para nunca mostrar só "a conexão caiu". */
+  async function diagnosticarFalha() {
+    const dono = ' (Dono do site: abra ' + API_URL + '?acao=status para conferir.)';
+    let st;
+    try { st = await (await fetch(API_URL + '?acao=status&t=' + Date.now(), { redirect: 'follow', cache: 'no-store' })).json(); }
+    catch (e) {
+      if (!navigator.onLine) return 'Você está sem internet.';
+      console.error('[Captação] A API não respondeu ao teste de status. Causas comuns: setup() não executado/autorizado no editor, implantação sem "Qualquer pessoa", ou link /exec errado.');
+      return 'Não foi possível acessar o servidor do formulário.' + dono;
+    }
+    if (st && st.ok && !st.setupExecutado) return 'Formulário ainda não configurado: falta rodar setup() no editor do Apps Script.';
+    if (st && st.ok && !st.emailConfigurado) return 'Formulário temporariamente indisponível (e-mail destinatário não configurado).';
+    if (st && st.ok && st.cotaEmails === 0) return 'Limite diário de e-mails atingido. Tente novamente amanhã.';
+    return 'A conexão caiu durante o envio.';
+  }
+  // Mensagens que não adianta repetir (validação, limite, configuração)
+  const ERRO_DEFINITIVO = /continuam no formulário|Remova algumas|limite diário|ler a foto|neste navegador|WebP|inválid|Informe|Descreva|autorizar|Limite|passa de|não é uma imagem|expirada|Muitos envios|validar|Recarregue|apenas letras|vários envios|negado|não configurad|indisponível no momento|temporariamente|não respondeu como esperado/i;
+  /* ---------- Anti-bot: prova de trabalho (calculada em segundo plano ao abrir a página) ---------- */
+  const SHA_K = new Int32Array([
+    0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5, 0x3956c25b, 0x59f111f1, 0x923f82a4, 0xab1c5ed5,
+    0xd807aa98, 0x12835b01, 0x243185be, 0x550c7dc3, 0x72be5d74, 0x80deb1fe, 0x9bdc06a7, 0xc19bf174,
+    0xe49b69c1, 0xefbe4786, 0x0fc19dc6, 0x240ca1cc, 0x2de92c6f, 0x4a7484aa, 0x5cb0a9dc, 0x76f988da,
+    0x983e5152, 0xa831c66d, 0xb00327c8, 0xbf597fc7, 0xc6e00bf3, 0xd5a79147, 0x06ca6351, 0x14292967,
+    0x27b70a85, 0x2e1b2138, 0x4d2c6dfc, 0x53380d13, 0x650a7354, 0x766a0abb, 0x81c2c92e, 0x92722c85,
+    0xa2bfe8a1, 0xa81a664b, 0xc24b8b70, 0xc76c51a3, 0xd192e819, 0xd6990624, 0xf40e3585, 0x106aa070,
+    0x19a4c116, 0x1e376c08, 0x2748774c, 0x34b0bcb5, 0x391c0cb3, 0x4ed8aa4a, 0x5b9cca4f, 0x682e6ff3,
+    0x748f82ee, 0x78a5636f, 0x84c87814, 0x8cc70208, 0x90befffa, 0xa4506ceb, 0xbef9a3f7, 0xc67178f2]);
+  const SHA_W = new Int32Array(64);
+  /** Primeiros 32 bits do SHA-256 de um texto ASCII (é o que basta para contar os bits zero). */
+  function sha256Inicio(txt) {
+    const n = txt.length, blocos = ((n + 8) >> 6) + 1, m = new Int32Array(blocos * 16);
+    for (let i = 0; i < n; i++) m[i >> 2] |= txt.charCodeAt(i) << (24 - (i & 3) * 8);
+    m[n >> 2] |= 0x80 << (24 - (n & 3) * 8);
+    m[blocos * 16 - 1] = n * 8;
+    let h0 = 0x6a09e667, h1 = 0xbb67ae85, h2 = 0x3c6ef372, h3 = 0xa54ff53a, h4 = 0x510e527f, h5 = 0x9b05688c, h6 = 0x1f83d9ab, h7 = 0x5be0cd19;
+    for (let o = 0; o < m.length; o += 16) {
+      const W = SHA_W;
+      for (let t = 0; t < 16; t++) W[t] = m[o + t];
+      for (let t = 16; t < 64; t++) {
+        const x = W[t - 15], y = W[t - 2];
+        W[t] = (((x >>> 7) | (x << 25)) ^ ((x >>> 18) | (x << 14)) ^ (x >>> 3)) + W[t - 7] +
+               (((y >>> 17) | (y << 15)) ^ ((y >>> 19) | (y << 13)) ^ (y >>> 10)) + W[t - 16] | 0;
+      }
+      let a = h0, b = h1, c = h2, d = h3, e = h4, f = h5, g = h6, h = h7;
+      for (let t = 0; t < 64; t++) {
+        const t1 = h + (((e >>> 6) | (e << 26)) ^ ((e >>> 11) | (e << 21)) ^ ((e >>> 25) | (e << 7))) + ((e & f) ^ (~e & g)) + SHA_K[t] + W[t] | 0;
+        const t2 = (((a >>> 2) | (a << 30)) ^ ((a >>> 13) | (a << 19)) ^ ((a >>> 22) | (a << 10))) + ((a & b) ^ (a & c) ^ (b & c)) | 0;
+        h = g; g = f; f = e; e = d + t1 | 0; d = c; c = b; b = a; a = t1 + t2 | 0;
+      }
+      h0 = h0 + a | 0; h1 = h1 + b | 0; h2 = h2 + c | 0; h3 = h3 + d | 0;
+      h4 = h4 + e | 0; h5 = h5 + f | 0; h6 = h6 + g | 0; h7 = h7 + h | 0;
+    }
+    return h0;
+  }
+  /** Procura um número que faça o SHA-256 começar com "bits" zeros. Roda em fatias para não travar a tela. */
+  function resolverDesafio(desafio, bits) {
+    return new Promise(ok => {
+      let nonce = 0;
+      const fatia = () => {
+        const fim = nonce + 4000;
+        for (; nonce < fim; nonce++) {
+          if (Math.clz32(sha256Inicio(desafio + ':' + nonce)) >= bits) return ok({ desafio, nonce });
+        }
+        setTimeout(fatia, 0);
+      };
+      fatia();
+    });
+  }
+
+  // Ao abrir a página: busca um desafio na API e já começa a resolver em segundo plano.
+  // Quando a pessoa clicar em Enviar, a prova já está pronta.
+  let provaPronta = null, desafioEm = 0;
+  async function buscarProva() {
+    let ultimo;
+    for (let i = 1; i <= 3; i++) {
+      try {
+        const r = await api('GET', null, 'desafio');
+        desafioEm = Date.now();
+        MAX_FOTOS = r.maxFotos || MAX_FOTOS; LIMITE_ZIP_MB = r.limiteZipMb || LIMITE_ZIP_MB; DIFICULDADE = r.dificuldade || DIFICULDADE;
+        $('maxFotosTxt').textContent = MAX_FOTOS; render();
+        return await resolverDesafio(r.desafio, DIFICULDADE);
+      } catch (e) {
+        ultimo = e;
+        if (ERRO_DEFINITIVO.test(e.message) || i === 3) break;
+        await esperar(1500 * i);
+      }
+    }
+    throw ultimo;
+  }
+  function novaProva() { provaPronta = buscarProva(); provaPronta.catch(() => {}); return provaPronta; }
+  novaProva();
+  // Avisa já ao abrir se a API não está acessível (em vez de só descobrir no Enviar)
+  provaPronta.catch(e => {
+    if (enviando) return;
+    const m = /conexão caiu/.test(e.message) ? 'Não foi possível conectar ao servidor do formulário. Verifique sua internet e recarregue a página' : e.message;
+    mostrarErro(m + (/[.!]$/.test(m) ? '' : '.'));
+  });
+
+  /** Envia para a API com novas tentativas automáticas (queda de rede, instabilidade do Google). */
+  async function enviarComRetry(pacote, tentativas = 3) {
+    let renovou = false;
+    for (let i = 1; ; i++) {
+      try { return await api('POST', pacote); }
+      catch (err) {
+        const msg = String(err && err.message || err);
+        // Desafio expirado/usado: pega um novo uma única vez e tenta de novo, sem a pessoa perceber
+        if (!renovou && /validar o envio|aberta por muito tempo/.test(msg)) {
+          renovou = true;
+          progresso(72, 'Verificando segurança...');
+          pacote.prova = await novaProva();
+          const falta = 5500 - (Date.now() - desafioEm); if (falta > 0) await esperar(falta);
+          i--; continue;
+        }
+        if (i >= tentativas || ERRO_DEFINITIVO.test(msg)) throw err;
+        await esperar(1000 * i * i); // 1s, 4s
+      }
+    }
+  }
+
+  // Cada envio tem um identificador: se a rede cair e a pessoa tocar em Enviar de novo,
+  // o servidor reconhece o mesmo envio e não manda o e-mail duas vezes.
+  const novoId = () => (crypto.randomUUID ? crypto.randomUUID() : Date.now().toString(36) + Math.random().toString(36).slice(2) + Math.random().toString(36).slice(2));
+  let envioId = novoId();
+  const convertidas = new Map();            // foto.id → WebP já convertido (não reconverte em nova tentativa)
+  function zerarSessao() { /* fotos mudaram: as já convertidas continuam guardadas por id */ }
+  function mostrarErro(msg) { $('erro').textContent = msg; $('erro').hidden = !msg; }
+  function progresso(p, txt) {
+    $('overlay').hidden = false;
+    $('anel').style.strokeDashoffset = 176 - (176 * p / 100);
+    $('pct').textContent = Math.round(p) + '%';
+    $('status').textContent = txt;
+  }
+  function rolarAte(el) { el.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+
+  $('enviar').addEventListener('click', enviar);
+
+  async function enviar() {
+    if (enviando) return;
+    mostrarErro('');
+
+    const invalidos = Object.keys(regras).filter(id => !validarCampo(id));
+    if (invalidos.length) {
+      $(invalidos[0]).focus({ preventScroll: true });
+      rolarAte($(invalidos[0]));
+      return;
+    }
+    if (!$('consentimento').checked) {
+      $('checkWrap').classList.add('invalido');
+      mostrarErro('Marque a autorização de contato para continuar.');
+      rolarAte($('checkWrap'));
+      return;
+    }
+
+    const dados = Object.fromEntries(new FormData(form).entries());
+    dados.consentimento = true;
+    enviando = true;
+    $('enviar').disabled = true;
+
+    try {
+      progresso(3, 'Verificando segurança...');
+      let prova;
+      try { prova = await (provaPronta || novaProva()); }
+      catch (e) { prova = await novaProva(); } // falhou ao abrir (rede): tenta de novo agora
+
+      const lista = [];
+      let total = 0;
+      for (let i = 0; i < fotos.length; i++) {
+        progresso(5 + (i / Math.max(fotos.length, 1)) * 60, `Convertendo foto ${i + 1} de ${fotos.length} para WebP`);
+        if (!convertidas.has(fotos[i].id)) convertidas.set(fotos[i].id, await preparar(fotos[i], 0));
+        const c = convertidas.get(fotos[i].id);
+        const nome = String(i + 1).padStart(2, '0') + c.nome.replace(/^\d+-/, '-'); // numeração = ordem atual (01 = capa)
+        lista.push({ nome, base64: c.base64 });
+        total += c.base64.length * 0.75;
+      }
+      if (total > LIMITE_ZIP_MB * 1048576) {
+        throw new Error(`As fotos somam ${(total / 1048576).toFixed(1).replace('.', ',')} MB depois de convertidas; o limite do e-mail é ${LIMITE_ZIP_MB} MB. Remova algumas fotos.`);
+      }
+
+      progresso(70, fotos.length ? `Enviando ${fotos.length} foto(s) e seus dados...` : 'Enviando seus dados...');
+      const res = await enviarComRetry({ envioId, prova, dados, fotos: lista });
+      progresso(100, 'Pronto!');
+      envioId = novoId();
+      novaProva(); // próximo cadastro já com desafio novo
+      setTimeout(() => mostrarSucesso(res), 350);
+    } catch (err) {
+      $('overlay').hidden = true;
+      let msg = String(err && err.message ? err.message : err).replace(/^Error:\s*/, '');
+      if (ERRO_REDE.test(msg) || /conexão caiu/.test(msg)) msg = await diagnosticarFalha();
+      mostrarErro(msg + (/[.!)]$/.test(msg) ? '' : '.') + (ERRO_DEFINITIVO.test(msg) ? '' : ' Seus dados não foram perdidos: toque em Enviar para continuar.'));
+      rolarAte($('erro'));
+    } finally {
+      enviando = false;
+      $('enviar').disabled = false;
+    }
+  }
+
+  /* ---------- Confirmação (na mesma página) ---------- */
+  const ICONES = {
+    foto: '<path d="M4 7h3l2-3h6l2 3h3a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1z"/><circle cx="12" cy="13" r="3.5"/>',
+    email: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>',
+    usuario: '<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>',
+    relogio: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>'
+  };
+  /** Exibe o feedback de sucesso devolvido pelo backend (título, mensagem, detalhes). */
+  function mostrarSucesso(res) {
+    res = res || {};
+    $('overlay').hidden = true;
+    form.hidden = true;
+    if (res.titulo) $('sucTitulo').textContent = res.titulo;
+    if (res.mensagem) $('sucMsg').textContent = res.mensagem;
+    $('proto').textContent = 'Protocolo ' + (res.protocolo || '');
+    const ul = $('sucDetalhes');
+    ul.innerHTML = '';
+    (res.detalhes || []).forEach(d => {
+      const li = document.createElement('li');
+      li.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">' +
+        (ICONES[d.icone] || ICONES.relogio) + '</svg><span></span>';
+      li.querySelector('span').textContent = d.texto; // texto sempre como texto, nunca HTML
+      ul.appendChild(li);
+    });
+    ul.hidden = !ul.children.length;
+    $('sucesso').hidden = false;
+    window.scrollTo(0, 0);
+    $('sucesso').focus({ preventScroll: true });
+
+    if (URL_SITE) { $('voltarSite').href = URL_SITE; $('voltarSite').hidden = false; }
+    if (URL_APOS_ENVIO) {
+      let s = 4;
+      const tick = () => {
+        $('redir').hidden = false;
+        $('redir').textContent = `Redirecionando em ${s}s...`;
+        if (s-- <= 0) location.href = URL_APOS_ENVIO; else setTimeout(tick, 1000);
+      };
+      tick();
+    }
+  }
+
+  // "Cadastrar outro": limpa tudo sem recarregar a página
+  $('novo').addEventListener('click', () => {
+    form.reset();
+    fotos.forEach(f => URL.revokeObjectURL(f.url)); fotos = []; render();
+    document.querySelectorAll('.campo.invalido').forEach(c => c.classList.remove('invalido'));
+    mostrarErro(''); atualizarContador();
+    $('sucesso').hidden = true;
+    form.hidden = false;
+    window.scrollTo(0, 0);
+    $('nome').focus({ preventScroll: true });
+  });
+</script>
+</body>
+</html>
