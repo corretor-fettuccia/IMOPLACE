@@ -1,4 +1,4 @@
-name: Publicar ImoPlace v2.3.2.6
+name: Publicar ImoPlace v2.3.2.7
 on:
   schedule:
     - cron: '*/15 * * * *'
@@ -44,6 +44,8 @@ jobs:
           python-version: '3.12'
       - name: Verificar nomenclatura e configuracao das APIs
         run: python -u scripts/verificar_configuracao.py --workflow
+      - name: Conferir estrutura Pages (site/ vira raiz pública)
+        run: python -u scripts/verificar_publicacao.py --estrutura
       - name: Testes sem rede
         run: |
           python -m unittest discover -s scripts/tests -t scripts
@@ -76,6 +78,9 @@ jobs:
       - name: '[6/8] Montar artefato público'
         if: steps.fila.outputs.tem == 'true'
         run: python -u scripts/montar_site.py
+      - name: Conferir artefato público e index na raiz
+        if: steps.fila.outputs.tem == 'true'
+        run: python -u scripts/verificar_publicacao.py --artefato
       - name: Verificar reserva de versões antes de publicar
         if: steps.fila.outputs.tem == 'true'
         run: python -u scripts/publicar.py validar-reserva
@@ -94,11 +99,13 @@ jobs:
       - name: Configurar GitHub Pages
         if: steps.fila.outputs.tem == 'true'
         uses: actions/configure-pages@v5
-      - name: Enviar artefato público
+      # O conteúdo de estado/publicacao/ (cópia validada de site/) vira / do domínio.
+      # Não usar main → /(root) nem main → /docs em Settings → Pages.
+      - name: Enviar artefato público (raiz do domínio)
         if: steps.fila.outputs.tem == 'true'
         uses: actions/upload-pages-artifact@v4
         with:
-          path: estado/publicacao
+          path: ./estado/publicacao
       - name: Deploy GitHub Pages
         id: deploy
         if: steps.fila.outputs.tem == 'true'
