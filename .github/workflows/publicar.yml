@@ -1,4 +1,4 @@
-name: Publicar ImoPlace v2.3.2
+name: Publicar ImoPlace v2.3.2.6
 on:
   schedule:
     - cron: '*/15 * * * *'
@@ -30,9 +30,9 @@ jobs:
     environment:
       name: github-pages
     env:
-      INTEGRACAO_URL: ${{ secrets.INTEGRACAO_URL }}
-      INTEGRACAO_SEGREDO: ${{ secrets.INTEGRACAO_SEGREDO }}
-      FEED_URL: ${{ vars.FEED_URL }}
+      API_INTEGRACAO_ACTIONS_URL: ${{ secrets.API_INTEGRACAO_ACTIONS_URL }}
+      SEGREDO_INTEGRACAO: ${{ secrets.SEGREDO_INTEGRACAO }}
+      API_PUBLICA_URL: ${{ vars.API_PUBLICA_URL }}
       FORCAR: ${{ inputs.forcar || 'false' }}
       MOTIVO: ${{ inputs.motivo || github.event_name }}
     steps:
@@ -42,6 +42,8 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Verificar nomenclatura e configuracao das APIs
+        run: python -u scripts/verificar_configuracao.py --workflow
       - name: Testes sem rede
         run: |
           python -m unittest discover -s scripts/tests -t scripts
@@ -104,7 +106,7 @@ jobs:
       - name: '[7/8] Conferir site publicado'
         if: steps.fila.outputs.tem == 'true'
         env:
-          CONFERIR_URL: ${{ vars.CONFERIR_URL || steps.deploy.outputs.page_url }}
+          SITE_URL: ${{ vars.SITE_URL || steps.deploy.outputs.page_url }}
         run: python -u scripts/conferir.py
       - name: '[8/8] Confirmar publicação ao painel'
         if: steps.fila.outputs.tem == 'true'
