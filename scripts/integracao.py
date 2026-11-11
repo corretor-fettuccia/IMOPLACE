@@ -40,13 +40,13 @@ def _tentar(fn, etapa, tentativas=3):
 class Integracao:
     def __init__(self, url=None, segredo=None, fixture=None):
         self.fixture = Path(fixture or os.environ.get('INTEGRACAO_FIXTURE') or '') if (fixture or os.environ.get('INTEGRACAO_FIXTURE')) else None
-        self.url = (url or os.environ.get('INTEGRACAO_URL', '')).strip()
-        self.segredo = (segredo or os.environ.get('INTEGRACAO_SEGREDO', '')).strip()
+        self.url = (url or os.environ.get('API_INTEGRACAO_ACTIONS_URL', '')).strip()
+        self.segredo = (segredo or os.environ.get('SEGREDO_INTEGRACAO', '')).strip()
         if not self.fixture:
             if not self.url.startswith('https://'):
-                raise RuntimeError('Configure o secret INTEGRACAO_URL (URL /exec da API de integração).')
+                raise RuntimeError('Configure o secret API_INTEGRACAO_ACTIONS_URL (URL /exec da API de integração).')
             if len(self.segredo) < 32:
-                raise RuntimeError('Configure o secret INTEGRACAO_SEGREDO (32+ caracteres, igual ao do Apps Script).')
+                raise RuntimeError('Configure o secret SEGREDO_INTEGRACAO (32+ caracteres, igual ao do Apps Script).')
 
     @staticmethod
     def assinar(segredo: str, acao: str, ts: str, job_id: str, payload: str) -> str:
@@ -77,9 +77,9 @@ def ler_feed(url=None) -> dict:
     fixture = os.environ.get('FEED_FIXTURE')
     if fixture:
         return json.loads(Path(fixture).read_text(encoding='utf-8'))
-    url = (url or os.environ.get('FEED_URL', '')).strip()
+    url = (url or os.environ.get('API_PUBLICA_URL', '')).strip()
     if not url.startswith('https://'):
-        raise RuntimeError('Configure FEED_URL (URL /exec da API pública) em Settings > Secrets and variables > Actions > Variables.')
+        raise RuntimeError('Configure API_PUBLICA_URL (URL /exec da API pública) em Settings > Secrets and variables > Actions > Variables.')
     partes = urlsplit(url)
     q = [(k, v) for k, v in parse_qsl(partes.query) if k != 'atual'] + [('atual', str(int(time.time())))]
     final = urlunsplit((partes.scheme, partes.netloc, partes.path, urlencode(q), ''))

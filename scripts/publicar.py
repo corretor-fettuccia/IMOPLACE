@@ -7,7 +7,7 @@
   python scripts/publicar.py confirmar    ACK das versões publicadas (+ falhas isoladas)
   python scripts/publicar.py falha        registra falha geral do job (itens voltam a pendente/erro)
 
-Variáveis: INTEGRACAO_URL, INTEGRACAO_SEGREDO, FEED_URL, GOOGLE_ACCESS_TOKEN, FORCAR, CONFERIR_URL.
+Variáveis: API_INTEGRACAO_ACTIONS_URL, SEGREDO_INTEGRACAO, API_PUBLICA_URL, GOOGLE_ACCESS_TOKEN, FORCAR, SITE_URL.
 """
 import json
 import os
@@ -68,7 +68,7 @@ def _buscar(url, metodo='GET'):
 def cmd_conferir():
     job = _job()
     rel = job.get('relatorio') or {}
-    base = (os.environ.get('CONFERIR_URL') or config()['urlPublica']).rstrip('/')
+    base = (os.environ.get('SITE_URL') or config()['urlPublica']).rstrip('/')
     import hashlib
     alvo = job['jobId']
     hash_local = hashlib.sha256((estado_dir() / 'publicacao' / 'catalogo.json').read_bytes()).hexdigest()

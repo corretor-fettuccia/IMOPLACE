@@ -4,7 +4,7 @@
 
 1. Faça cópia da planilha e dos IDs das implantações; mantenha backup v2.3.1.
 2. Atualize imoplace-API-PainelPrivado via `atualizar.sh`; execute `instalar()` para criar a aba `LIMPEZA` e o gatilho diário.
-3. Em imoplace-API-PainelPrivado configure `SEGREDO_INTEGRACAO` igual ao secret `INTEGRACAO_SEGREDO` do GitHub (mínimo 32 caracteres).
+3. Em imoplace-API-PainelPrivado configure `SEGREDO_INTEGRACAO` igual ao secret `SEGREDO_INTEGRACAO` do GitHub (mínimo 32 caracteres).
 4. No **mesmo projeto B**, crie **duas implantações** Web App: (a) painel restrito ao administrador; (b) endpoint de integração executado como proprietário, acesso **Qualquer pessoa**, exclusivamente para POST HMAC. `doGet` do painel verifica administrador e não deve retornar HTML para anônimos. Verifique essa restrição com um navegador anônimo antes de liberar a URL.
 5. Em imoplace-API-IntegracaoActions configure `CENTRAL_WRITER_URL` para o endpoint B público; atualize C. C não tem acesso de escrita nem requer `PLANILHA_ID` nesta versão. O GitHub continua usando a URL /exec de C e o secret antigo.
 6. Atualize imoplace-API-Publica para incluir `versao` na projeção pública. Configure `PLANILHA_ID` e `SITE_URL`.

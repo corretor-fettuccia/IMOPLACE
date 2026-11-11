@@ -13,10 +13,10 @@ A conta de serviço representada pelo secret `GOOGLE_CREDENTIALS` precisa ter ac
 | Tipo | Nome | Valor |
 |---|---|---|
 | Secret | `GOOGLE_CREDENTIALS` | JSON da conta de serviço com permissão no Drive |
-| Secret | `INTEGRACAO_URL` | URL `/exec` da API de integração |
-| Secret | `INTEGRACAO_SEGREDO` | segredo HMAC, idêntico ao da API de integração |
-| Variable | `FEED_URL` | URL `/exec` da API pública |
-| Variable | `CONFERIR_URL` | URL pública do site, preferencialmente domínio definitivo |
+| Secret | `API_INTEGRACAO_ACTIONS_URL` | URL `/exec` da API de integração |
+| Secret | `SEGREDO_INTEGRACAO` | segredo HMAC, idêntico ao da API de integração |
+| Variable | `API_PUBLICA_URL` | URL `/exec` da API pública |
+| Variable | `SITE_URL` | URL pública do site, preferencialmente domínio definitivo |
 
 Abra Settings → Pages → Build and deployment → **GitHub Actions**. Habilite o workflow e a permissão de escrita do `GITHUB_TOKEN` para commits, conforme a política do repositório. Confirme o DNS e `site/CNAME`; se não houver domínio próprio, remova CNAME e ajuste `imoplace.json` para o endereço base real.
 

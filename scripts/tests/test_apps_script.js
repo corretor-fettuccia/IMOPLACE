@@ -107,7 +107,8 @@ teste('API pública não tem nenhuma função de escrita', () => {
   const feed = fs.readFileSync(path.join(RAIZ, 'imoplace-API-Publica', 'Feed.gs'), 'utf8');
   ['gravarLinha_(', 'anexarLinha_(', 'apagarLinhas_(', 'setValues', 'doPost', 'DriveApp'].forEach(t => assert.ok(!feed.includes(t), t));
   const escopo = JSON.parse(fs.readFileSync(path.join(RAIZ, 'imoplace-API-Publica', 'appsscript.json'), 'utf8')).oauthScopes;
-  assert.deepStrictEqual(escopo, ['https://www.googleapis.com/auth/spreadsheets.readonly']);
+  assert.deepStrictEqual(escopo, ['https://www.googleapis.com/auth/spreadsheets']);
+  assert.ok(feed.includes('VERSAO_PUBLICADA'), 'o feed só deve listar imagens já confirmadas no site');
 });
 
 teste('painel exige administrador em toda função exposta', () => {
