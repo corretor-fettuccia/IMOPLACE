@@ -1,4 +1,4 @@
-# Operação e implantação do ImoPlace 2.3.1
+# Operação e implantação do ImoPlace 2.3.2.7
 
 ## 1. Implantar os três projetos Apps Script
 
@@ -18,11 +18,11 @@ A conta de serviço representada pelo secret `GOOGLE_CREDENTIALS` precisa ter ac
 | Variable | `API_PUBLICA_URL` | URL `/exec` da API pública |
 | Variable | `SITE_URL` | URL pública do site, preferencialmente domínio definitivo |
 
-Abra Settings → Pages → Build and deployment → **GitHub Actions**. Habilite o workflow e a permissão de escrita do `GITHUB_TOKEN` para commits, conforme a política do repositório. Confirme o DNS e `site/CNAME`; se não houver domínio próprio, remova CNAME e ajuste `imoplace.json` para o endereço base real.
+Abra Settings → Pages → Build and deployment → Source → **GitHub Actions**; não escolha Deploy from a branch/main/root ou docs. O workflow publica somente o conteúdo de `site/` na raiz `/` do domínio. Habilite o workflow e a permissão de escrita do `GITHUB_TOKEN` para commits, conforme a política do repositório. Confirme o DNS e `site/CNAME`; se não houver domínio próprio, remova CNAME e ajuste `imoplace.json` para o endereço base real.
 
 ## 3. Publicação
 
-Workflow `publicar.yml`: cron de 15 minutos e execução manual. Quando a API indicar fila vazia, pula as etapas 2-8. Quando houver pendências, lê feed completo, gera catálogo e páginas, verifica SHA-256 de WebP, gera sitemap/robots/feeds, valida, cria pacote público, faz deploy, verifica publicação, faz commit da árvore pública e confirma versões. Se qualquer etapa falhar, não confirma os imóveis como publicados; a fila é liberada para nova tentativa.
+Workflow `publicar.yml`: cron de 15 minutos e execução manual. Quando a API indicar fila vazia, pula as etapas 2-8. Quando houver pendências, lê feed completo, gera catálogo e páginas, verifica SHA-256 de WebP, gera sitemap/robots/feeds, valida, cria pacote público, faz commit da árvore pública, faz deploy, verifica publicação e confirma versões. Se qualquer etapa falhar, não confirma os imóveis como publicados; a fila é liberada para nova tentativa.
 
 > Atenção: o GitHub Actions não fornece garantia transacional entre publicação no Pages e resposta ao Apps Script. Em falhas de rede após deploy, o estado da API fica pendente e uma próxima execução reconcilia a versão. Alterações simultâneas devem ser protegidas pelo controle de versão na API.
 

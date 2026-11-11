@@ -1,7 +1,7 @@
 # Árvore de projeto e motor 2.3
 
 ```text
-imoplace-v2.3.1/
+imoplace-v2.3.2.7/
 ├── GIT-PAGE/                   ← conteúdo desta pasta vira a raiz do repositório
 │   ├── .github/workflows/publicar.yml
 │   ├── site/                   ← pasta pública (deploy de conteúdo desta pasta)
@@ -38,4 +38,6 @@ A pasta `site/` é copiada para o artefato de deploy e se torna a raiz do **site
 | 7 | `conferir.py` | site publicado | valida online todas as páginas e fotos alteradas |
 | 8 | `confirmar.py` | relatório e job | confirmação HMAC no Apps Script |
 
-A etapa 7 ocorre após `actions/deploy-pages`. A confirmação só acontece após a publicação e a conferência. O workflow faz commit da pasta pública após publicação e antes do ACK.
+A etapa 7 ocorre após `actions/deploy-pages`. A confirmação só acontece após a publicação e a conferência. O workflow faz commit da pasta pública **antes do deploy** e só depois do deploy/conferência envia o ACK.
+
+**Fonte obrigatória em Settings → Pages:** GitHub Actions, não `main → /(root)` nem `main → /docs`. O conteúdo do artefato `estado/publicacao/` é a raiz `/` do domínio.

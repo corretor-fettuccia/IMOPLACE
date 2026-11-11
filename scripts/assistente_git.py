@@ -41,7 +41,7 @@ def save(name, content):
 
 save('configuracao.json', json.dumps(values, ensure_ascii=False, indent=2) + '\n')
 save('GITHUB_CONFIGURACAO.txt', (
-    '# IMOPLACE 2.3.2.6 — GITHUB ACTIONS\n'
+    '# IMOPLACE 2.3.2.7 — GITHUB ACTIONS\n'
     '# Repositório: ' + (values['GITHUB_REPO'] or '<PREENCHER>') + '\n'
     '# Branch: ' + values['GITHUB_BRANCH'] + '\n'
     '# Settings > Secrets and variables > Actions\n\n'
@@ -68,3 +68,9 @@ save('CHECKLIST.txt', '''[ ] imoplace-API-Publica possui /exec
 ''')
 print('Configuração preparada em .instalacao-local/GITHUB_CONFIGURACAO.txt')
 print('Nenhum projeto Google Apps Script foi modificado.')
+
+print('\nCONFIGURAÇÃO OBRIGATÓRIA NO GITHUB PAGES:')
+print('  Settings > Pages > Build and deployment > Source: GitHub Actions')
+print('  NÃO escolha main → /(root) nem main → /docs.')
+print('  main contém o código; site/ é publicado pelo workflow como / do domínio.')
+print('  Exemplo: site/catalogo.json -> https://imoplace.com.br/catalogo.json')
