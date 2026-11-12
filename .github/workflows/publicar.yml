@@ -1,4 +1,4 @@
-name: Publicar ImoPlace v2.3.2.9
+name: Publicar ImoPlace v2.3.2.21
 on:
   schedule:
     - cron: '*/15 * * * *'
@@ -30,9 +30,9 @@ jobs:
     environment:
       name: github-pages
     env:
-      # As duas URLs sao Variables (nao Secrets); so a chave HMAC e credenciais sao Secrets.
+      # Repositório público: Variables aparecem nos logs. A URL da ponte é aceita como Secret (mascarada) — recomendado.
       API_PUBLICA_URL: ${{ vars.API_PUBLICA_URL }}
-      API_INTEGRACAO_ACTIONS_URL: ${{ vars.API_INTEGRACAO_ACTIONS_URL }}
+      API_INTEGRACAO_ACTIONS_URL: ${{ secrets.API_INTEGRACAO_ACTIONS_URL || vars.API_INTEGRACAO_ACTIONS_URL }}
       SEGREDO_INTEGRACAO: ${{ secrets.SEGREDO_INTEGRACAO }}
       SITE_URL: ${{ vars.SITE_URL }}
       FORCAR: ${{ inputs.forcar || 'false' }}
@@ -53,6 +53,12 @@ jobs:
       - name: Testes sem rede
         run: |
           python -m unittest discover -s scripts/tests -t scripts
+      - name: Homologar acesso anônimo (ponte e escritor central)
+        # Vigilância contínua: chamada sem assinatura tem de ser recusada e o painel não pode aparecer a anônimos.
+        # Implantação desprotegida derruba a execução; falha de rede só gera aviso.
+        env:
+          ESCRITOR_URL: ${{ secrets.ESCRITOR_URL || vars.ESCRITOR_URL }}
+        run: python -u scripts/homologar_acesso.py --ci --exigir-ambos --falha-rede-bloqueia --ponte "$API_INTEGRACAO_ACTIONS_URL" --escritor "$ESCRITOR_URL"
       - name: '[1/8] Sincronizar fila Apps Script'
         id: fila
         run: python -u scripts/sincronizar.py
@@ -97,7 +103,7 @@ jobs:
           if git diff --cached --quiet; then
             echo 'Sem alterações em site/'
           else
-            git commit -m "ImoPlace v2.3.2.9: publicação ${{ github.run_id }}"
+            git commit -m "ImoPlace v2.3.2.21: publicação ${{ github.run_id }}"
             git push
           fi
       - name: Configurar GitHub Pages
@@ -125,5 +131,5 @@ jobs:
       - name: Reportar erro e liberar fila
         if: failure() && steps.fila.outputs.tem == 'true'
         env:
-          MOTIVO_FALHA: 'Erro na publicação v2.3.2.9; consulte GitHub Actions.'
+          MOTIVO_FALHA: 'Erro na publicação v2.3.2.21; consulte GitHub Actions.'
         run: python -u scripts/publicar.py falha
