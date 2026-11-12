@@ -1,10 +1,7 @@
-
-name: Publicar ImoPlace v2.3.2.7
-
+name: Publicar ImoPlace v2.3.2.8
 on:
   schedule:
     - cron: '*/15 * * * *'
-
   workflow_dispatch:
     inputs:
       motivo:
@@ -20,57 +17,44 @@ on:
 concurrency:
   group: imoplace-publicar
   cancel-in-progress: false
-
 permissions:
   contents: read
-
 jobs:
   publicar:
     runs-on: ubuntu-24.04
     timeout-minutes: 30
-
     permissions:
       contents: write
       pages: write
       id-token: write
-
     environment:
       name: github-pages
-
     env:
-      # Nomes cadastrados no GitHub → nomes esperados pelo Python
-      API_PUBLICA_URL: ${{ vars.FEED_URL }}
-      API_INTEGRACAO_ACTIONS_URL: ${{ vars.INTEGRACAO_URL }}
+      # As duas URLs sao Variables (nao Secrets); so a chave HMAC e credenciais sao Secrets.
+      API_PUBLICA_URL: ${{ vars.API_PUBLICA_URL }}
+      API_INTEGRACAO_ACTIONS_URL: ${{ vars.API_INTEGRACAO_ACTIONS_URL }}
       SEGREDO_INTEGRACAO: ${{ secrets.SEGREDO_INTEGRACAO }}
-
       SITE_URL: ${{ vars.SITE_URL }}
       FORCAR: ${{ inputs.forcar || 'false' }}
       MOTIVO: ${{ inputs.motivo || github.event_name }}
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
       - name: Python 3.12
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-
-      - name: Verificar configuração das APIs
+      - name: Verificar nomenclatura e configuracao das APIs
         run: python -u scripts/verificar_configuracao.py --workflow
-
-      - name: Conferir estrutura GitHub Pages
+      - name: Conferir estrutura Pages (site/ vira raiz pública)
         run: python -u scripts/verificar_publicacao.py --estrutura
-
-      - name: Executar testes locais
+      - name: Testes sem rede
         run: |
           python -m unittest discover -s scripts/tests -t scripts
-
       - name: '[1/8] Sincronizar fila Apps Script'
         id: fila
         run: python -u scripts/sincronizar.py
-
-      - name: Autenticação Google Drive
+      - name: Autenticação Drive somente leitura
         id: google
         if: steps.fila.outputs.tem == 'true'
         uses: google-github-actions/auth@v2
@@ -79,81 +63,65 @@ jobs:
           token_format: access_token
           access_token_scopes: https://www.googleapis.com/auth/drive.readonly
           create_credentials_file: false
-
-      - name: '[2/8] Montar catálogo'
+      - name: '[2/8] Montar catálogo candidato'
         if: steps.fila.outputs.tem == 'true'
         run: python -u scripts/montar_catalogo.py
-
-      - name: '[3/8] Montar imóveis e sincronizar WebP'
+      - name: '[3/8] Montar imóveis e baixar WebP incrementais'
         if: steps.fila.outputs.tem == 'true'
         env:
           GOOGLE_ACCESS_TOKEN: ${{ steps.google.outputs.access_token }}
         run: python -u scripts/montar_imoveis.py
-
-      - name: '[4/8] Gerar sitemap, robots e feeds'
+      - name: '[4/8] Montar sitemap, robots e feeds'
         if: steps.fila.outputs.tem == 'true'
         run: python -u scripts/montar_extras.py
-
       - name: '[5/8] Validar publicação'
         if: steps.fila.outputs.tem == 'true'
         run: python -u scripts/validar.py
-
-      - name: '[6/8] Montar site público'
+      - name: '[6/8] Montar artefato público'
         if: steps.fila.outputs.tem == 'true'
         run: python -u scripts/montar_site.py
-
-      - name: Verificar artefato público
+      - name: Conferir artefato público e index na raiz
         if: steps.fila.outputs.tem == 'true'
         run: python -u scripts/verificar_publicacao.py --artefato
-
-      - name: Verificar reserva de versões
+      - name: Verificar reserva de versões antes de publicar
         if: steps.fila.outputs.tem == 'true'
         run: python -u scripts/publicar.py validar-reserva
-
-      - name: Commit das alterações
+      - name: Commit de imagens e páginas (apenas mudanças)
         if: steps.fila.outputs.tem == 'true'
         run: |
           git config user.name 'imoplace-bot'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-
           git add -A site
-
           if git diff --cached --quiet; then
             echo 'Sem alterações em site/'
           else
-            git commit -m "ImoPlace v2.3.2.7: publicação ${{ github.run_id }}"
+            git commit -m "ImoPlace v2.3.2.8: publicação ${{ github.run_id }}"
             git push
           fi
-
       - name: Configurar GitHub Pages
         if: steps.fila.outputs.tem == 'true'
         uses: actions/configure-pages@v5
-
-      # Publica apenas o conteúdo de estado/publicacao/
-      # diretamente na raiz do domínio.
-      - name: Enviar artefato público
+      # O conteúdo de estado/publicacao/ (cópia validada de site/) vira / do domínio.
+      # Não usar main → /(root) nem main → /docs em Settings → Pages.
+      - name: Enviar artefato público (raiz do domínio)
         if: steps.fila.outputs.tem == 'true'
         uses: actions/upload-pages-artifact@v4
         with:
           path: ./estado/publicacao
-
       - name: Deploy GitHub Pages
         id: deploy
         if: steps.fila.outputs.tem == 'true'
         uses: actions/deploy-pages@v4
-
       - name: '[7/8] Conferir site publicado'
         if: steps.fila.outputs.tem == 'true'
         env:
           SITE_URL: ${{ vars.SITE_URL || steps.deploy.outputs.page_url }}
         run: python -u scripts/conferir.py
-
       - name: '[8/8] Confirmar publicação ao painel'
         if: steps.fila.outputs.tem == 'true'
         run: python -u scripts/confirmar.py
-
       - name: Reportar erro e liberar fila
         if: failure() && steps.fila.outputs.tem == 'true'
         env:
-          MOTIVO_FALHA: 'Erro na publicação v2.3.2.7; consulte GitHub Actions.'
+          MOTIVO_FALHA: 'Erro na publicação v2.3.2.8; consulte GitHub Actions.'
         run: python -u scripts/publicar.py falha
