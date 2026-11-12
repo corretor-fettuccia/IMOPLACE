@@ -1,4 +1,4 @@
-name: Publicar ImoPlace v2.3.2.8 - corrigido
+name: Publicar ImoPlace v2.3.2.9
 on:
   schedule:
     - cron: '*/15 * * * *'
@@ -44,11 +44,9 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      # O verificador checa a presenca, mas nunca imprime a credencial.
-      # Este secret também é passado diretamente à ação Google no passo de autenticação.
       - name: Verificar nomenclatura e configuracao das APIs
         env:
-          GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+          GOOGLE_CREDENTIALS_DISPONIVEL: ${{ secrets.GOOGLE_CREDENTIALS != '' }}
         run: python -u scripts/verificar_configuracao.py --workflow
       - name: Conferir estrutura Pages (site/ vira raiz pública)
         run: python -u scripts/verificar_publicacao.py --estrutura
@@ -99,7 +97,7 @@ jobs:
           if git diff --cached --quiet; then
             echo 'Sem alterações em site/'
           else
-            git commit -m "ImoPlace v2.3.2.8: publicação ${{ github.run_id }}"
+            git commit -m "ImoPlace v2.3.2.9: publicação ${{ github.run_id }}"
             git push
           fi
       - name: Configurar GitHub Pages
@@ -127,5 +125,5 @@ jobs:
       - name: Reportar erro e liberar fila
         if: failure() && steps.fila.outputs.tem == 'true'
         env:
-          MOTIVO_FALHA: 'Erro na publicação v2.3.2.8; consulte GitHub Actions.'
+          MOTIVO_FALHA: 'Erro na publicação v2.3.2.9; consulte GitHub Actions.'
         run: python -u scripts/publicar.py falha
