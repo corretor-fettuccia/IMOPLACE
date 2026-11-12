@@ -1,23 +1,23 @@
-# Árvore de projeto e motor 2.3
+# Árvore do projeto e etapas do motor
 
 ```text
-imoplace-v2.3.2.8/
-├── GIT-PAGE/                   ← conteúdo desta pasta vira a raiz do repositório
+imoplace-v<versão>/
+├── LEIA-ME.md, VERSAO
+├── GIT-PAGE/                   ← o CONTEÚDO desta pasta vira a raiz do repositório GitHub
 │   ├── .github/workflows/publicar.yml
-│   ├── site/                   ← pasta pública (deploy de conteúdo desta pasta)
-│   │   ├── index.html
-│   │   ├── assets/
-│   │   ├── anunciar/
-│   │   ├── catalogo.json
-│   │   └── imoveis/{slug}-{id}/
+│   ├── COMECE_AQUI.md, VERSAO, imoplace.json, instalar.sh, verificar.sh, .gitignore
+│   ├── site/                   ← pasta pública (vira a raiz do domínio no deploy)
+│   │   ├── index.html, anunciar/, assets/, CNAME, robots.txt, .nojekyll
+│   │   ├── catalogo.json       ← estado publicado: nunca substituir ao atualizar
+│   │   └── imoveis/{slug}-{id}/   ← estado publicado: nunca substituir ao atualizar
 │   │       ├── index.html
 │   │       └── imagens/*.webp
-│   ├── scripts/                ← 8 etapas Python, helpers e testes
-│   ├── docs/
-│   ├── imoplace.json
-│   └── .gitignore
-└── GOOGLE.APPSCRIPT/
-    ├── COMUM/
+│   ├── scripts/                ← etapas Python, homologador, helpers e testes
+│   └── docs/                   ← MANUAL_INSTALACAO.md, OPERACAO.md, HOMOLOGACAO_PRODUCAO.md, ... e historico/
+└── GOOGLE.APPSCRIPT/           ← fica só no seu computador
+    ├── instalar.sh, continuar_configuracao.sh, configurar_integracao.sh, atualizar.sh, verificar.sh
+    ├── scripts/                ← configurar_integracao.py, homologar_acesso.py (atalho), copiar_comum.py
+    ├── COMUM/                  ← Esquema.gs e Planilha.gs (copiados para os três projetos)
     ├── imoplace-API-Publica/
     ├── imoplace-API-PainelPrivado/
     └── imoplace-API-IntegracaoActions/
@@ -29,6 +29,7 @@ A pasta `site/` é copiada para o artefato de deploy e se torna a raiz do **site
 
 | Etapa | Script | Entrada | Saída |
 |---|---|---|---|
+| 0 | `homologar_acesso.py` | URLs da ponte e do escritor | para tudo se o acesso anônimo não estiver bloqueado |
 | 1 | `sincronizar.py` | API HMAC | `estado/job.json` |
 | 2 | `montar_catalogo.py` | feed público | `estado/catalogo-candidato.json`, `estado/feed-snapshot.json` |
 | 3 | `montar_imoveis.py` | snapshot, fila, Drive | `site/catalogo.json`, `site/imoveis/`, relatório |

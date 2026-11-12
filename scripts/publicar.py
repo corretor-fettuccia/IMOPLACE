@@ -44,9 +44,12 @@ def cmd_pendencias():
     job_id = _job_id()
     resp = Integracao().chamar('pendencias', job_id, {'forcar': forcar, 'motivo': os.environ.get('MOTIVO', '')[:60]})
     pend = contrato.validar_pendencias(resp)
-    gravar_json(estado_dir() / JOB, {'jobId': job_id, 'forcar': forcar, 'pendencias': pend, 'inicio': time.time()})
-    log('fila', f'job {job_id}: {len(pend)} imóvel(is) na fila {[p["imovelId"] for p in pend]}' + (' (reconstrução forçada)' if forcar else ''))
-    saida_github('tem', 'true' if (pend or forcar) else 'false')
+    aguardando = [str(x) for x in resp.get('aguardando') or []]
+    gravar_json(estado_dir() / JOB, {'jobId': job_id, 'forcar': forcar, 'pendencias': pend, 'aguardando': aguardando, 'inicio': time.time()})
+    log('fila', f'job {job_id}: {len(pend)} imóvel(is) reservados {[p["imovelId"] for p in pend]}; {len(aguardando)} aguardam as próximas execuções'
+        + (' (reconstrução forçada)' if forcar else ''))
+    # Reconstrução forçada só enfileira; sem reserva neste job não há o que publicar agora.
+    saida_github('tem', 'true' if pend else 'false')
 
 
 def cmd_gerar():
@@ -54,7 +57,7 @@ def cmd_gerar():
     conf = config()
     itens = contrato.validar_feed(ler_feed())
     log('feed', f'{len(itens)} imóvel(is) publicados no feed')
-    relatorio = gerador.montar(itens, job['pendencias'], site_dir(), conf)
+    relatorio = gerador.montar(itens, job['pendencias'], site_dir(), conf, set(job.get('aguardando') or []))
     job['relatorio'] = relatorio
     gravar_json(estado_dir() / JOB, job)
 

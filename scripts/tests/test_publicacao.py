@@ -8,12 +8,14 @@ import subprocess
 import sys
 import tempfile
 import unittest
+from unittest import mock
 from pathlib import Path
 
 AQUI = Path(__file__).resolve().parent
 sys.path.insert(0, str(AQUI.parent))
 
 import contrato  # noqa: E402
+import drive  # noqa: E402
 import gerador  # noqa: E402
 import validar  # noqa: E402
 from comum import RAIZ, RE_ARQUIVO  # noqa: E402
@@ -100,6 +102,13 @@ class TestContrato(unittest.TestCase):
             with self.assertRaises(contrato.ContratoInvalido):
                 contrato.validar_feed(f)
 
+    def test_tentativas_no_mesmo_segundo_tem_assinaturas_diferentes(self):
+        cli = Integracao(url='https://script.google.com/macros/s/x/exec', segredo='s' * 40)
+        with mock.patch('integracao.time.time', return_value=1762800000.2), mock.patch('integracao.time.sleep') as dorme:
+            a, b = cli._novo_ts(), cli._novo_ts()
+        self.assertEqual(int(b), int(a) + 1)
+        self.assertTrue(dorme.called, 'espera o próximo segundo em vez de repetir o carimbo')
+
     def test_assinatura_hmac_estavel(self):
         a = Integracao.assinar('s' * 40, 'pendencias', '1762800000', 'gh-1-1', '{"forcar":false}')
         self.assertEqual(len(a), 64)
@@ -178,6 +187,140 @@ class TestPublicacao(Base):
         e = self.catalogo()['imoveis'][0]
         self.assertEqual(e['titulo'], 'Apto Centro', 'versão anterior continua no ar')
         self.assertEqual(validar.validar(self.site, CONF), [])
+
+    def test_alteracao_fora_da_fila_nao_vai_ao_ar_sem_confirmacao(self):
+        foto = webp('fachada')
+        it = item_feed('1003', 'Casa Lago', [{'id': 'i00000000dd', 'arquivo': 'fachada-i00000000dd.v1.webp', 'versao': 1}],
+                       versao=4, versaoPublicada=4)
+        (self.site / it['imagens'][0]['arquivo']).parent.mkdir(parents=True)
+        (self.site / it['imagens'][0]['arquivo']).write_bytes(foto)
+        gerador.montar([it], [], self.site, CONF)  # v4 confirmada e no ar
+        # Operador muda o preço (v5) depois que a fila deste job foi lida: não reservado, não confirmado.
+        rel = gerador.montar([dict(it, versao=5, preco=1)], [], self.site, CONF)
+        self.assertEqual(self.catalogo()['imoveis'][0]['preco'], 550000, 'site mantém a versão confirmada')
+        self.assertEqual(rel['confirmar']['imoveis'], [])
+        # Imóvel publicado agora, nunca confirmado e fora deste job: ainda não entra (sem fotos no site).
+        novo = item_feed('1004', 'Sala Nova', [], versao=1, versaoPublicada=0)
+        gerador.montar([dict(it, versao=5, preco=1), novo], [], self.site, CONF)
+        self.assertEqual([e['id'] for e in self.catalogo()['imoveis']], ['1003'])
+        self.assertEqual(validar.validar(self.site, CONF), [])
+        # Feed antigo (API pública sem versaoPublicada) mantém o comportamento anterior.
+        sem_campo = dict(it, versao=5, preco=1)
+        sem_campo.pop('versaoPublicada')
+        gerador.montar([sem_campo], [], self.site, CONF)
+        self.assertEqual(self.catalogo()['imoveis'][0]['preco'], 1)
+
+    def test_reconstrucao_em_lotes_nao_trava_por_imovel_que_aguarda(self):
+        # Repositório perdido: fotos do 1006 não existem e ele só será reservado num próximo lote.
+        it = item_feed('1006', 'Casa Rio', [{'id': 'i00000000ee', 'arquivo': 'fachada-i00000000ee.v1.webp', 'versao': 1}],
+                       versao=2, versaoPublicada=2)
+        with self.assertRaises(drive.FalhaDownload):
+            gerador.montar([it], [], self.site, CONF)  # sem aviso de fila: continua bloqueando (anúncio incompleto)
+        rel = gerador.montar([it], [], self.site, CONF, {'1006'})
+        self.assertEqual(self.catalogo()['imoveis'], [])
+        self.assertEqual(rel['falhas'], [])
+        self.assertEqual(validar.validar(self.site, CONF), [])
+
+    def _no_ar(self, iid, titulo, versao=2):
+        foto = webp('pub-' + iid)
+        it = item_feed(iid, titulo, [{'id': 'i00000000' + iid[-2:], 'arquivo': f'f-i00000000{iid[-2:]}.v1.webp', 'versao': 1}],
+                       versao=versao, versaoPublicada=versao)
+        alvo = self.site / it['imagens'][0]['arquivo']
+        alvo.parent.mkdir(parents=True, exist_ok=True)
+        alvo.write_bytes(foto)
+        return it, alvo
+
+    def test_preserva_imovel_que_some_do_feed_sem_pedido(self):
+        it, alvo = self._no_ar('1031', 'Casa Preservada')
+        gerador.montar([it], [], self.site, CONF)
+        # Título apagado direto na planilha: o feed descarta o imóvel. Ninguém pediu para baixar.
+        gerador.montar([], [], self.site, CONF)
+        self.assertEqual([e['id'] for e in self.catalogo()['imoveis']], ['1031'])
+        self.assertTrue(alvo.is_file(), 'fotos publicadas não podem ser apagadas')
+        self.assertEqual(validar.validar(self.site, CONF), [])
+        # Pedido explícito (baixar) retira do site.
+        pend = [{'imovelId': '1031', 'versao': 3, 'status': 'baixado', 'imagens': []}]
+        gerador.montar([], pend, self.site, CONF)
+        self.assertEqual(self.catalogo()['imoveis'], [])
+
+    def test_bloqueia_perda_se_sai_do_feed_e_foto_anterior_sumiu(self):
+        it, alvo = self._no_ar('1051', 'Casa Segura')
+        gerador.montar([it], [], self.site, CONF)
+        antes = (self.site / 'catalogo.json').read_bytes()
+        pagina = self.site / 'imoveis' / it['codigo'] / 'index.html'
+        self.assertTrue(pagina.is_file())
+        alvo.unlink()  # perda local de uma foto antes de receber o feed
+        with self.assertRaisesRegex(RuntimeError, 'PUBLICACAO BLOQUEADA'):
+            gerador.montar([], [], self.site, CONF)
+        self.assertEqual((self.site / 'catalogo.json').read_bytes(), antes)
+        self.assertTrue(pagina.is_file())
+
+    def test_sem_aviso_de_fila_foto_perdida_bloqueia(self):
+        it, alvo = self._no_ar('1052', 'Casa Reconstrucao')
+        gerador.montar([it], [], self.site, CONF)
+        alvo.unlink()
+        with self.assertRaises(drive.FalhaDownload):
+            gerador.montar([it], [], self.site, CONF)  # ninguém pediu reconstrução: não publica anúncio incompleto
+
+    def test_reconstrucao_recupera_fotos_perdidas_lote_a_lote_com_catalogo_intacto(self):
+        # Regressão da 2.3.2.20: a trava no ramo "aguardando" impedia a reconstrução de avançar.
+        lote, espera = {}, {}
+        for iid, alvo_d in (('1054', lote), ('1055', espera)):
+            dados = webp('rec-' + iid)
+            it = item_feed(iid, 'Casa ' + iid, [{'id': 'i000000' + iid, 'arquivo': f'f-i000000{iid}.v1.webp', 'versao': 1}],
+                           versao=2, versaoPublicada=2)
+            a = self.site / it['imagens'][0]['arquivo']
+            a.parent.mkdir(parents=True)
+            a.write_bytes(dados)
+            alvo_d.update(it=it, alvo=a, dados=dados)
+        gerador.montar([lote['it'], espera['it']], [], self.site, CONF)
+        lote['alvo'].unlink(); espera['alvo'].unlink()  # fotos perdidas, catálogo intacto
+        p = img_pend('i0000001054', 'f', 1, lote['dados'], operacao='', publicada=1)
+        self.no_drive(p, lote['dados'])
+        pend = [{'imovelId': '1054', 'versao': 2, 'status': 'publicado', 'capaId': '', 'caminho': lote['it']['caminho'], 'imagens': [p]}]
+        rel = gerador.montar([lote['it'], espera['it']], pend, self.site, CONF, aguardando={'1055'})
+        self.assertEqual([i['imovelId'] for i in rel['confirmar']['imoveis']], ['1054'])
+        self.assertTrue(lote['alvo'].is_file(), 'foto do lote voltou do Drive')
+        self.assertEqual([e['id'] for e in self.catalogo()['imoveis']], ['1054'], '1055 volta na vez dele')
+        self.assertEqual(validar.validar(self.site, CONF), [])
+
+    def test_baixa_explicita_permitida_com_foto_anterior_ausente(self):
+        it, alvo = self._no_ar('1053', 'Casa Baixada')
+        gerador.montar([it], [], self.site, CONF)
+        alvo.unlink()
+        pend = [{'imovelId': '1053', 'versao': 3, 'status': 'baixado', 'imagens': []}]
+        rel = gerador.montar([], pend, self.site, CONF)
+        self.assertEqual(self.catalogo()['imoveis'], [])
+        self.assertEqual(len(rel['confirmar']['imoveis']), 1)
+
+    def test_catalogo_perdido_e_download_falho_nao_apagam_versao_no_ar(self):
+        it, alvo = self._no_ar('1032', 'Casa Falha')
+        (self.site / 'catalogo.json').write_text('{"schemaVersao":2,"contrato":"imoplace-v1","total":0,"imoveis":[]}')
+        ruim = img_pend('i0000000032', 'f', 2, webp('nova'), operacao='atualizar', publicada=1)
+        self.no_drive(ruim, webp('ADULTERADA'))
+        pend = [{'imovelId': '1032', 'versao': 3, 'status': 'publicado', 'capaId': '', 'caminho': it['caminho'], 'imagens': [ruim]}]
+        rel = gerador.montar([it], pend, self.site, CONF)
+        self.assertEqual([f['imovelId'] for f in rel['falhas']], ['1032'])
+        self.assertEqual([e['id'] for e in self.catalogo()['imoveis']], ['1032'])
+        self.assertTrue(alvo.is_file())
+
+    def test_catalogo_perdido_e_alteracao_pendente_mantem_no_ar(self):
+        it, alvo = self._no_ar('1033', 'Casa Pendente')
+        (self.site / 'catalogo.json').write_text('{"schemaVersao":2,"contrato":"imoplace-v1","total":0,"imoveis":[]}')
+        gerador.montar([dict(it, versao=3)], [], self.site, CONF)  # v3 na fila de outro job, v2 publicada
+        self.assertEqual([e['id'] for e in self.catalogo()['imoveis']], ['1033'])
+        self.assertTrue(alvo.is_file())
+        self.assertEqual(validar.validar(self.site, CONF), [])
+
+    def test_tamanho_do_site_avisa_e_bloqueia_perto_do_limite_do_pages(self):
+        it, _ = self._no_ar('1041', 'Casa Grande')
+        gerador.montar([it], [], self.site, CONF)
+        total = sum(f.stat().st_size for f in self.site.rglob('*') if f.is_file())
+        with mock.patch.object(validar, 'AVISO_BYTES', total - 1), mock.patch.object(validar, 'aviso') as av:
+            self.assertEqual(validar.validar(self.site, CONF), [])
+            self.assertIn('perto do limite', av.call_args[0][0])
+        with mock.patch.object(validar, 'LIMITE_BYTES', total - 1):
+            self.assertTrue(any('limite de 1 GB' in p for p in validar.validar(self.site, CONF)))
 
     def test_despublicar_remove_e_troca_de_slug_redireciona(self):
         foto = webp('x')

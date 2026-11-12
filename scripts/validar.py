@@ -8,7 +8,11 @@ import json
 import re
 import sys
 
-from comum import CATEGORIAS, CONTRATO, PROIBIDOS, RE_ARQUIVO, RE_CODIGO, config, dentro, eh_webp, erro, log, site_dir
+from comum import CATEGORIAS, CONTRATO, PROIBIDOS, RE_ARQUIVO, RE_CODIGO, aviso, config, dentro, eh_webp, erro, log, site_dir
+
+# GitHub Pages: site publicado de no máximo 1 GB. Aviso antes, para dar tempo de planejar.
+AVISO_BYTES = 800 * 1024 ** 2
+LIMITE_BYTES = 1024 ** 3
 
 
 def _chaves(obj, saida):
@@ -77,6 +81,15 @@ def validar(site=None, conf=None) -> list:
                 problemas.append(f'sitemap aponta para página inexistente: {url}')
     if not conf['permitirIndexacao'] and sm.exists():
         problemas.append('sitemap.xml existe com indexação desligada')
+    total = sum(f.stat().st_size for f in site.rglob('*') if f.is_file())
+    mb = f'{total / 1024 ** 2:.0f} MB'
+    if total > LIMITE_BYTES:
+        problemas.append(f'site com {mb}: passa do limite de 1 GB do GitHub Pages; o deploy seria recusado. '
+                         'Reduza fotos ou leve as imagens para outro armazenamento (docs/OPERACAO.md).')
+    elif total > AVISO_BYTES:
+        aviso(f'Site com {mb}, perto do limite de 1 GB do GitHub Pages. Planeje reduzir fotos ou mudar o armazenamento.')
+    else:
+        log('validar', f'tamanho do site: {mb} de 1024 MB')
     return problemas
 
 

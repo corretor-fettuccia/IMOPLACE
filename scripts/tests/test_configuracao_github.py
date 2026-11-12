@@ -1,6 +1,7 @@
 """Regressão: variáveis do GitHub, scripts e validador usam um contrato só."""
 import os
 import sys
+import tempfile
 import unittest
 from pathlib import Path
 from unittest.mock import patch
@@ -27,10 +28,21 @@ class TestConfiguracaoGitHub(unittest.TestCase):
     def test_ausentes_indicam_aba_correta(self):
         with patch.dict(os.environ, {}, clear=True):
             errors = cfg.conferir_ambiente()
-        self.assertTrue(any('Actions Variables' in e and 'API_PUBLICA_URL' in e for e in errors))
-        self.assertTrue(any('Actions Variables' in e and 'API_INTEGRACAO_ACTIONS_URL' in e for e in errors))
+        self.assertTrue(any('> Variables' in e and 'API_PUBLICA_URL' in e for e in errors))
+        self.assertTrue(any('Secrets (recomendado)' in e and 'API_INTEGRACAO_ACTIONS_URL' in e for e in errors))
         self.assertTrue(any('Actions Secrets' in e and 'SEGREDO_INTEGRACAO' in e for e in errors))
         self.assertTrue(any('Actions Secrets' in e and 'GOOGLE_CREDENTIALS' in e for e in errors))
+
+    def test_urls_privadas_aceitam_secret_mascarado(self):
+        # Repositório público: Variables aparecem nos logs; ponte e escritor podem vir de Secrets.
+        wf = cfg.WORKFLOW.read_text('utf-8')
+        self.assertIn('${{ secrets.API_INTEGRACAO_ACTIONS_URL || vars.API_INTEGRACAO_ACTIONS_URL }}', wf)
+        self.assertIn('${{ secrets.ESCRITOR_URL || vars.ESCRITOR_URL }}', wf)
+        with tempfile.TemporaryDirectory() as d:
+            so_variable = Path(d) / 'publicar.yml'
+            so_variable.write_text(wf.replace('secrets.API_INTEGRACAO_ACTIONS_URL || ', ''), 'utf-8')
+            with patch.object(cfg, 'WORKFLOW', so_variable):
+                self.assertTrue(any('secrets.API_INTEGRACAO_ACTIONS_URL' in e for e in cfg.conferir_contrato()))
 
     def test_variaveis_antigas_nao_substituem_as_novas(self):
         with patch.dict(os.environ, {'FEED_URL':VALID['API_PUBLICA_URL'], 'INTEGRACAO_URL':VALID['API_INTEGRACAO_ACTIONS_URL']}, clear=True):

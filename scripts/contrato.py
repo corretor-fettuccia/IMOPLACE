@@ -45,6 +45,7 @@ def validar_pendencias(resp: dict) -> list:
     _exigir(isinstance(resp, dict) and resp.get('ok') is True, f'Integração recusou: {str(resp.get("erro", ""))[:160] if isinstance(resp, dict) else "formato"}')
     pend = resp.get('pendencias')
     _exigir(isinstance(pend, list), 'Pendências fora do formato.')
+    _exigir(all(RE_ID.match(str(x)) for x in resp.get('aguardando') or []), 'Lista aguardando fora do formato.')
     for p in pend:
         iid = str(p.get('imovelId', ''))
         _exigir(RE_ID.match(iid), f'Pendência com ID inválido: {iid!r}')

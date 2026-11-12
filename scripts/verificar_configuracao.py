@@ -16,6 +16,7 @@ ROOT = Path(__file__).resolve().parent.parent
 WORKFLOW = ROOT / '.github' / 'workflows' / 'publicar.yml'
 INTEGRACAO = ROOT / 'scripts' / 'integracao.py'
 VARIABLES = ('API_PUBLICA_URL', 'API_INTEGRACAO_ACTIONS_URL', 'SITE_URL')
+SECRET_OU_VARIABLE = ('API_INTEGRACAO_ACTIONS_URL',)  # aceita Secret (mascarado nos logs públicos) com Variable de reserva
 SECRETS = ('SEGREDO_INTEGRACAO', 'GOOGLE_CREDENTIALS')
 LEGACY = ('FEED_URL', 'INTEGRACAO_URL', 'INTEGRACAO_SEGREDO', 'CONFERIR_URL')
 
@@ -25,8 +26,10 @@ def conferir_contrato():
     workflow = WORKFLOW.read_text('utf-8')
     integracao = INTEGRACAO.read_text('utf-8')
     for chave in VARIABLES:
-        if not re.search(r'^\s*' + chave + r':\s*\$\{\{\s*vars\.' + chave + r'\s*\}\}', workflow, re.M):
-            erros.append(f'Workflow: {chave} deve vir de vars.{chave} (aba Variables)')
+        origem = (r'secrets\.' + chave + r'\s*\|\|\s*vars\.' + chave) if chave in SECRET_OU_VARIABLE else (r'vars\.' + chave)
+        if not re.search(r'^\s*' + chave + r':\s*\$\{\{\s*' + origem + r'\s*\}\}', workflow, re.M):
+            onde = f'secrets.{chave} || vars.{chave}' if chave in SECRET_OU_VARIABLE else f'vars.{chave} (aba Variables)'
+            erros.append(f'Workflow: {chave} deve vir de {onde}')
     if not re.search(r'^\s*SEGREDO_INTEGRACAO:\s*\$\{\{\s*secrets\.SEGREDO_INTEGRACAO\s*\}\}', workflow, re.M):
         erros.append('Workflow: SEGREDO_INTEGRACAO deve vir de secrets.SEGREDO_INTEGRACAO (aba Secrets)')
     if not re.search(r'credentials_json:\s*\$\{\{\s*secrets\.GOOGLE_CREDENTIALS\s*\}\}', workflow):
@@ -39,7 +42,7 @@ def conferir_contrato():
     # Proibir referências obsoletas no código executável; documentação pode mencionar migração.
     for chave in LEGACY:
         if re.search(r'\b' + chave + r'\b', workflow + '\n' + integracao):
-            erros.append(f'Nome antigo no código: {chave}. Migre no GitHub para os nomes v2.3.2.8.')
+            erros.append(f'Nome antigo no código: {chave}. Migre no GitHub para os nomes do manual (docs/MANUAL_INSTALACAO.md, parte C).')
     return erros
 
 
@@ -48,9 +51,10 @@ def conferir_ambiente():
     for chave in VARIABLES[:2]:
         valor = os.getenv(chave, '').strip()
         if not valor:
-            erros.append(f'Actions Variables: falta {chave} (Settings > Secrets and variables > Actions > Variables)')
+            aba = 'Secrets (recomendado) ou Variables' if chave in SECRET_OU_VARIABLE else 'Variables'
+            erros.append(f'Actions: falta {chave} (Settings > Secrets and variables > Actions > {aba})')
         elif not re.fullmatch(r'https://script\.google\.com/macros/s/[^/\s?#]+/exec/?', valor):
-            erros.append(f'Actions Variables: {chave} precisa ser URL /exec do Apps Script')
+            erros.append(f'Actions: {chave} precisa ser URL /exec do Apps Script')
     url = os.getenv('SITE_URL', '').strip()
     if not url:
         erros.append('Actions Variables: falta SITE_URL (ex.: https://imoplace.com.br)')

@@ -77,12 +77,39 @@ def baixar_fotos(fotos, site, stats):
         stats['bytes'] += len(dados)
 
 
-def montar(feed_itens, pendencias, site, conf):
-    """Gera catalogo.json, páginas, limpeza, sitemap, robots e feeds. Devolve o relatório do job."""
+def montar(feed_itens, pendencias, site, conf, aguardando=frozenset()):
+    """Gera catalogo.json, páginas, limpeza, sitemap, robots e feeds. Devolve o relatório do job.
+
+    aguardando: IDs que seguem na fila para as próximas execuções (ex.: reconstrução em lotes).
+    Se faltarem fotos de um deles, ele fica fora do site até a sua vez, sem bloquear os demais.
+    """
     anterior = {i.get('id'): i for i in (ler_json(site / 'catalogo.json', {}) or {}).get('imoveis', []) if isinstance(i, dict)}
     pend = {p['imovelId']: p for p in pendencias}
     stats = {'transferidas': 0, 'bytes': 0}
     falhas, ok_ids, entradas = {}, set(), []
+
+    def impedir_perda_publicacao(iid, motivo):
+        # Falha fechada: uma entrada anterior só pode sair mediante baixa explícita na fila.
+        # Nunca publicar um catálogo reduzido por ausência temporária do feed/fotos.
+        if iid in anterior:
+            raise RuntimeError(
+                f'PUBLICACAO BLOQUEADA: imóvel {iid} já publicado ficaria fora do catálogo; {motivo}. '
+                'Nenhuma baixa explícita foi confirmada. Restaure as fotografias ou corrija o feed.')
+
+
+    def fotos_do_feed(item):
+        return [{'arquivo': f['arquivo'], 'legenda': f.get('legenda') or '', 'alt': f.get('alt') or ''} for f in item.get('imagens') or []]
+
+    def completa(e):
+        return bool(e and e.get('imagens')) and all((site / f['arquivo']).is_file() for f in e['imagens'])
+
+    def no_ar(iid, item=None):
+        """Versão que pode continuar no site sem pedido novo: a do catálogo anterior ou, se ele se perdeu,
+        a montada do feed (fotos = versão publicada). Só vale se todas as fotos estão no repositório."""
+        for e in (anterior.get(iid), _entrada(item, fotos_do_feed(item)) if item else None):
+            if completa(e):
+                return e
+        return None
 
     for item in feed_itens:
         iid = item['id']
@@ -97,14 +124,33 @@ def montar(feed_itens, pendencias, site, conf):
             except drive.FalhaDownload as e:
                 falhas[iid] = str(e)
                 aviso(f'Imóvel {iid}: {e}')
-                if iid in anterior and all((site / f['arquivo']).is_file() for f in anterior[iid].get('imagens', [])):
-                    entradas.append(anterior[iid])
-                    log('site', f'imóvel {iid}: mantida a versão anterior no site')
+                manter = no_ar(iid, item)
+                if manter:
+                    entradas.append(manter)
+                    log('site', f'imóvel {iid}: mantida a versão que já estava no site')
+                else:
+                    impedir_perda_publicacao(iid, 'falha ao recuperar as fotografias da versão anterior')
+        elif 'versaoPublicada' in item and item.get('versao') != item['versaoPublicada']:
+            # Alteração ainda não confirmada e fora da reserva deste job: o site mantém a última versão no ar.
+            manter = no_ar(iid, item)
+            if manter:
+                entradas.append(manter)
+                log('site', f'imóvel {iid}: alteração v{item.get("versao")} aguarda a fila; mantida a versão no ar')
+            else:
+                impedir_perda_publicacao(iid, 'alteração pendente sem versão anterior íntegra')
+                log('site', f'imóvel {iid}: ainda sem versão completa no site; entra quando a fila processar')
         else:
-            fotos = [{'arquivo': f['arquivo'], 'legenda': f.get('legenda') or '', 'alt': f.get('alt') or ''} for f in item.get('imagens') or []]
+            fotos = fotos_do_feed(item)
             faltando = [f['arquivo'] for f in fotos if not (site / f['arquivo']).is_file()]
+            if faltando and iid in aguardando:
+                # Exceção proposital à falha fechada: o imóvel está na fila ou na campanha de reconstrução (pedido
+                # explícito). Sai do site só até a vez dele, quando as fotos voltam do Drive. Travar aqui impediria
+                # a reconstrução de recuperar um repositório que perdeu fotos.
+                log('site', f'imóvel {iid}: fotos ausentes, volta ao site quando a fila processar')
+                continue
             if faltando:
-                raise drive.FalhaDownload(f'Imóvel {iid}: {len(faltando)} foto(s) publicada(s) ausente(s): {faltando[:3]}. Interrompido para evitar anúncio incompleto.')
+                raise drive.FalhaDownload(f'Imóvel {iid}: {len(faltando)} foto(s) publicada(s) ausente(s): {faltando[:3]}. '
+                                          'Interrompido para evitar anúncio incompleto. Se o repositório perdeu as fotos, rode a reconstrução.')
             entradas.append(_entrada(item, fotos))
 
     # Pendências que não estão no feed: saíram do site (baixado, rascunho, arquivado ou apagado).
@@ -113,8 +159,25 @@ def montar(feed_itens, pendencias, site, conf):
         if iid not in no_feed:
             if p.get('status') == 'publicado':
                 falhas[iid] = 'imóvel publicado não apareceu no feed (dados mínimos ausentes?)'
+                manter = no_ar(iid)
+                if manter:
+                    entradas.append(manter)
+                    log('site', f'imóvel {iid}: fora do feed por dados incompletos; mantida a versão no ar')
+                else:
+                    impedir_perda_publicacao(iid, 'fora do feed e sem fotografias recuperáveis')
             else:
                 ok_ids.add(iid)
+
+    # Preservação: imóvel só sai do site por pedido explícito na fila (baixar, arquivar, excluir).
+    # Sumiu do feed sem pedido (ex.: título apagado direto na planilha) → continua no ar, com aviso.
+    for iid, e in anterior.items():
+        if iid not in no_feed and iid not in pend:
+            if completa(e):
+                entradas.append(e)
+                aviso(f'Imóvel {iid} sumiu do feed sem pedido na fila: mantido no site. Para retirar, use "Baixar" no painel; '
+                      'se foi engano, corrija os dados (título, categoria) na planilha.')
+            else:
+                impedir_perda_publicacao(iid, 'desapareceu do feed e faltam fotografias da publicação anterior')
 
     entradas.sort(key=lambda e: (-int(bool(e['destaque'])), e.get('ordem') or 0, -int(e['id'])))
     # Publicação deve identificar uma execução nova, inclusive quando somente os arquivos do site mudarem.

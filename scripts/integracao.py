@@ -44,9 +44,20 @@ class Integracao:
         self.segredo = (segredo or os.environ.get('SEGREDO_INTEGRACAO', '')).strip()
         if not self.fixture:
             if not self.url.startswith('https://'):
-                raise RuntimeError('Configure o secret API_INTEGRACAO_ACTIONS_URL (URL /exec da API de integração).')
+                raise RuntimeError('Configure API_INTEGRACAO_ACTIONS_URL (URL /exec da API de integração) em Settings > Secrets and variables > Actions > Secrets (recomendado: não aparece nos logs) ou Variables.')
             if len(self.segredo) < 32:
                 raise RuntimeError('Configure o secret SEGREDO_INTEGRACAO (32+ caracteres, igual ao do Apps Script).')
+
+    _ultimo_ts = 0
+
+    def _novo_ts(self) -> str:
+        """Segundo sempre maior que o da chamada anterior: duas tentativas nunca geram a mesma assinatura."""
+        ts = int(time.time())
+        if ts <= Integracao._ultimo_ts:
+            time.sleep(max(0.0, Integracao._ultimo_ts + 1 - time.time()))
+            ts = Integracao._ultimo_ts + 1
+        Integracao._ultimo_ts = ts
+        return str(ts)
 
     @staticmethod
     def assinar(segredo: str, acao: str, ts: str, job_id: str, payload: str) -> str:
@@ -62,7 +73,7 @@ class Integracao:
         payload = json.dumps(dados, ensure_ascii=False, separators=(',', ':'))
 
         def enviar():
-            ts = str(int(time.time()))  # nova assinatura a cada tentativa (o servidor recusa repetição)
+            ts = self._novo_ts()  # nova assinatura a cada tentativa (o servidor recusa repetição)
             corpo = json.dumps({'acao': acao, 'ts': ts, 'jobId': job_id, 'payload': payload,
                                 'assinatura': self.assinar(self.segredo, acao, ts, job_id, payload)}).encode('utf-8')
             req = Request(self.url, data=corpo, method='POST', headers={'Content-Type': 'application/json', 'User-Agent': UA})

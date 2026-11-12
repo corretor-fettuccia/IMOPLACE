@@ -57,7 +57,7 @@ def montar_imoveis():
     snapshot = ler_json(estado_dir() / j['feedSnapshot'])
     if not snapshot:
         raise RuntimeError('Snapshot da etapa 2 ausente')
-    rel = gerador.montar(snapshot['imoveis'], j['pendencias'], site_dir(), config())
+    rel = gerador.montar(snapshot['imoveis'], j['pendencias'], site_dir(), config(), set(j.get('aguardando') or []))
     if rel['falhas']:
         raise RuntimeError(f'Falha de sincronização em {len(rel["falhas"])} imóvel(is); publicação bloqueada integralmente: {rel["falhas"]}')
     import migrar_legado

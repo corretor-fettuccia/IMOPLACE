@@ -17,6 +17,13 @@ class TestGitHubPages(unittest.TestCase):
         self.assertIn('path: ./estado/publicacao', txt)
         self.assertNotIn('path: ./site\n', txt)  # publica cópia validada, não diretório intermediário
 
+    def test_commit_antes_do_deploy_e_ack_so_depois_da_conferencia(self):
+        # Ordem proposital: o repositório pode ficar À FRENTE do site (deploy falhou, a próxima execução republica),
+        # nunca ATRÁS (o motor exigiria fotos que não estão no repositório). O ACK só depois de conferir o site no ar.
+        txt = pages.WORKFLOW.read_text('utf-8')
+        ordem = [txt.index(m) for m in ('homologar_acesso.py --ci', 'scripts/sincronizar.py', 'validar-reserva', 'git push', 'actions/deploy-pages', 'scripts/conferir.py', 'scripts/confirmar.py')]
+        self.assertEqual(ordem, sorted(ordem))
+
     def test_artefato_tem_index_na_raiz_e_marcador_valido(self):
         with tempfile.TemporaryDirectory() as d:
             art = Path(d)
