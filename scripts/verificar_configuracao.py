@@ -31,6 +31,8 @@ def conferir_contrato():
         erros.append('Workflow: SEGREDO_INTEGRACAO deve vir de secrets.SEGREDO_INTEGRACAO (aba Secrets)')
     if not re.search(r'credentials_json:\s*\$\{\{\s*secrets\.GOOGLE_CREDENTIALS\s*\}\}', workflow):
         erros.append('Workflow: GOOGLE_CREDENTIALS deve vir da aba Secrets')
+    if not re.search(r'GOOGLE_CREDENTIALS_DISPONIVEL:\s*\$\{\{\s*secrets\.GOOGLE_CREDENTIALS\s*!=\s*\'\'\s*\}\}', workflow):
+        erros.append('Workflow: verificador deve receber flag segura de presença de GOOGLE_CREDENTIALS')
     for chave in ('API_PUBLICA_URL', 'API_INTEGRACAO_ACTIONS_URL', 'SEGREDO_INTEGRACAO'):
         if not re.search(r'\b' + chave + r'\b', integracao):
             erros.append('Cliente Python não utiliza: ' + chave)
@@ -60,7 +62,7 @@ def conferir_ambiente():
     elif len(segredo) < 32:
         erros.append('SEGREDO_INTEGRACAO precisa de 32+ caracteres')
     # As credenciais Drive sao necessárias para o download de imagens; não validar conteúdo para não exibir segredo.
-    if not os.getenv('GOOGLE_CREDENTIALS', '').strip():
+    if os.getenv('GOOGLE_CREDENTIALS_DISPONIVEL', '').strip().lower() != 'true':
         erros.append('Actions Secrets: falta GOOGLE_CREDENTIALS (JSON da conta de serviço)')
     return erros
 

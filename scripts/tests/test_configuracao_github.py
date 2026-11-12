@@ -13,7 +13,7 @@ VALID = {
     'API_INTEGRACAO_ACTIONS_URL':'https://script.google.com/macros/s/AKfycb5678/exec',
     'SITE_URL':'https://imoplace.com.br',
     'SEGREDO_INTEGRACAO':'a'*64,
-    'GOOGLE_CREDENTIALS':'{"type":"service_account"}',
+    'GOOGLE_CREDENTIALS_DISPONIVEL':'true',
 }
 
 class TestConfiguracaoGitHub(unittest.TestCase):

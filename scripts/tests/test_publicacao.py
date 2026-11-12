@@ -20,7 +20,9 @@ from comum import RAIZ, RE_ARQUIVO  # noqa: E402
 from integracao import Integracao  # noqa: E402
 
 CONF = {'nome': 'Imoplace', 'urlPublica': 'https://imoplace.com.br', 'permitirIndexacao': True, 'ano': '2026'}
-NODE = shutil.which('node')
+# Testes cruzados exigem Node E o código-fonte Apps Script, ausente no repositório GIT-PAGE.
+CAMINHO_ESQUEMA = RAIZ.parent / 'GOOGLE.APPSCRIPT' / 'COMUM' / 'Esquema.gs'
+NODE = shutil.which('node') if CAMINHO_ESQUEMA.is_file() else None
 
 
 def webp(semente: str) -> bytes:
