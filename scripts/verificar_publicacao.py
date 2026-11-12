@@ -33,6 +33,17 @@ def verificar_estrutura():
         erros.append('Workflow sem permissão pages: write')
     if not re.search(r'(?m)^\s*id-token:\s*write\s*$', texto):
         erros.append('Workflow sem permissão id-token: write')
+    # Configuração operacional obrigatória na raiz, não em site/.
+    config = ROOT / 'imoplace.json'
+    if not config.is_file():
+        erros.append('imoplace.json ausente na raiz do repositório; enviar GIT-PAGE/imoplace.json para main')
+    else:
+        try:
+            dados = json.loads(config.read_text(encoding='utf-8'))
+            if not isinstance(dados, dict) or not str(dados.get('urlPublica', '')).startswith('https://'):
+                erros.append('imoplace.json inválido: urlPublica precisa ser HTTPS')
+        except (OSError, ValueError):
+            erros.append('imoplace.json inválido ou ilegível')
     for nome in ('index.html', 'catalogo.json', '.nojekyll'):
         if not (PUBLICO / nome).is_file():
             erros.append('Arquivo ausente na raiz de site/: ' + nome)

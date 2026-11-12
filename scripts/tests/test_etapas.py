@@ -21,12 +21,16 @@ class TestEtapas(unittest.TestCase):
         shutil.copytree(RAIZ/'site', self.site)
         self.estado = self.tmp/'estado'
         self.estado.mkdir()
+        # Configuração isolada: testes não dependem do arquivo de produção.
+        self.conf = self.tmp/'imoplace-teste.json'
+        self.conf.write_text(json.dumps({'nome':'ImoPlace Testes', 'urlPublica':'https://imoplace.com.br', 'permitirIndexacao':False, 'ano':'2026'}), encoding='utf-8')
         self.drive = self.tmp/'drive'
         self.drive.mkdir()
         for k, v in {'SITE_DIR':str(self.site),'ESTADO_DIR':str(self.estado),'DRIVE_FIXTURE':str(self.drive),
-                     'INTEGRACAO_FIXTURE':str(self.tmp),'FEED_FIXTURE':str(self.tmp/'feed.json')}.items():
+                     'INTEGRACAO_FIXTURE':str(self.tmp),'FEED_FIXTURE':str(self.tmp/'feed.json'),
+                     'IMOPLACE_CONFIG':str(self.conf)}.items():
             os.environ[k] = v
-        self.setenv = ['SITE_DIR','ESTADO_DIR','DRIVE_FIXTURE','INTEGRACAO_FIXTURE','FEED_FIXTURE']
+        self.setenv = ['SITE_DIR','ESTADO_DIR','DRIVE_FIXTURE','INTEGRACAO_FIXTURE','FEED_FIXTURE','IMOPLACE_CONFIG']
 
     def tearDown(self):
         for k in self.setenv: os.environ.pop(k,None)
