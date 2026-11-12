@@ -1,4 +1,4 @@
-# Operação e implantação do ImoPlace 2.3.2.7
+# Operação e implantação do ImoPlace 2.3.2.8
 
 ## 1. Implantar os três projetos Apps Script
 
@@ -13,7 +13,7 @@ A conta de serviço representada pelo secret `GOOGLE_CREDENTIALS` precisa ter ac
 | Tipo | Nome | Valor |
 |---|---|---|
 | Secret | `GOOGLE_CREDENTIALS` | JSON da conta de serviço com permissão no Drive |
-| Secret | `API_INTEGRACAO_ACTIONS_URL` | URL `/exec` da API de integração |
+| Variable | `API_INTEGRACAO_ACTIONS_URL` | URL `/exec` da API de integração |
 | Secret | `SEGREDO_INTEGRACAO` | segredo HMAC, idêntico ao da API de integração |
 | Variable | `API_PUBLICA_URL` | URL `/exec` da API pública |
 | Variable | `SITE_URL` | URL pública do site, preferencialmente domínio definitivo |

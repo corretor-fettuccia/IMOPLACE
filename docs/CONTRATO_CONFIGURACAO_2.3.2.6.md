@@ -1,3 +1,3 @@
-# Contrato de nomenclatura — v2.3.2.6
+# Contrato histórico da versão 2.3.2.6 (substituído)
 
-Use apenas os nomes exatos de `GUIA_INTEGRACAO.md`. O workflow valida `API_PUBLICA_URL`, `API_INTEGRACAO_ACTIONS_URL` e `SEGREDO_INTEGRACAO` antes de consultar as APIs. `SITE_URL` é comum ao Apps Script e GitHub, e `SEGREDO_INTEGRACAO` compartilha nome e valor entre os dois ambientes. Os nomes de URLs de Web Apps são usados no GitHub por representarem endereços externos ao script.
+**Não utilizar para configurar a versão atual.** Consulte `CONTRATO_CONFIGURACAO_2.3.2.8.md` ou `../GUIA_INSTALACAO_GITHUB.md`.

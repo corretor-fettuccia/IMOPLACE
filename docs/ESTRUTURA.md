@@ -1,7 +1,7 @@
 # Árvore de projeto e motor 2.3
 
 ```text
-imoplace-v2.3.2.7/
+imoplace-v2.3.2.8/
 ├── GIT-PAGE/                   ← conteúdo desta pasta vira a raiz do repositório
 │   ├── .github/workflows/publicar.yml
 │   ├── site/                   ← pasta pública (deploy de conteúdo desta pasta)

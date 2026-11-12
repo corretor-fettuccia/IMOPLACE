@@ -41,15 +41,15 @@ def save(name, content):
 
 save('configuracao.json', json.dumps(values, ensure_ascii=False, indent=2) + '\n')
 save('GITHUB_CONFIGURACAO.txt', (
-    '# IMOPLACE 2.3.2.7 — GITHUB ACTIONS\n'
+    '# IMOPLACE 2.3.2.8 — GITHUB ACTIONS\n'
     '# Repositório: ' + (values['GITHUB_REPO'] or '<PREENCHER>') + '\n'
     '# Branch: ' + values['GITHUB_BRANCH'] + '\n'
     '# Settings > Secrets and variables > Actions\n\n'
     '# VARIABLES\n'
     'API_PUBLICA_URL=' + (values['API_PUBLICA_URL'] or '<URL_EXEC_API_PUBLICA>') + '\n'
+    'API_INTEGRACAO_ACTIONS_URL=' + (values['API_INTEGRACAO_ACTIONS_URL'] or '<URL_EXEC_API_INTEGRACAO_ACTIONS>') + '\n'
     'SITE_URL=' + values['SITE_URL'] + '\n\n'
     '# SECRETS: insira os valores diretamente no GitHub\n'
-    'API_INTEGRACAO_ACTIONS_URL=' + (values['API_INTEGRACAO_ACTIONS_URL'] or '<URL_EXEC_API_INTEGRACAO_ACTIONS>') + '\n'
     'SEGREDO_INTEGRACAO=<MESMO_SEGREDO_INTEGRACAO_DO_APPS_SCRIPT_PRIVADO>\n'
     'GOOGLE_CREDENTIALS=<JSON_CONTA_SERVICO_DRIVE>\n\n'
     '# No Apps Script imoplace-API-IntegracaoActions:\n'
@@ -58,9 +58,8 @@ save('GITHUB_CONFIGURACAO.txt', (
 ))
 save('CHECKLIST.txt', '''[ ] imoplace-API-Publica possui /exec
 [ ] imoplace-API-IntegracaoActions possui /exec
-[ ] API_PUBLICA_URL configurada em Actions Variables
+[ ] API_PUBLICA_URL e API_INTEGRACAO_ACTIONS_URL em Actions Variables
 [ ] SITE_URL igual no GitHub e no Apps Script
-[ ] API_INTEGRACAO_ACTIONS_URL configurada em Actions Secrets
 [ ] SEGREDO_INTEGRACAO igual no painel e no Actions Secrets
 [ ] GOOGLE_CREDENTIALS possui leitura no Google Drive
 [ ] GitHub Pages publicado via Actions
