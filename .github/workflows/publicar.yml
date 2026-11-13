@@ -1,15 +1,15 @@
-name: Publicar ImoPlace v2.3.2.21.1
+name: Publicar ImoPlace — CORE
 on:
   schedule:
     - cron: '*/15 * * * *'
   workflow_dispatch:
     inputs:
       motivo:
-        description: Origem do disparo
+        description: Origem da solicitação
         required: false
         default: manual
       forcar:
-        description: Reconstrução de todos os imóveis (requer confirmação na API)
+        description: Reprocessar imóveis com erro (não faz reconstrução completa)
         type: boolean
         required: false
         default: false
@@ -30,11 +30,8 @@ jobs:
     environment:
       name: github-pages
     env:
-      # Repositório público: Variables aparecem nos logs. A URL da ponte é aceita como Secret (mascarada) — recomendado.
-      API_PUBLICA_URL: ${{ vars.API_PUBLICA_URL }}
-      API_INTEGRACAO_ACTIONS_URL: ${{ secrets.API_INTEGRACAO_ACTIONS_URL || vars.API_INTEGRACAO_ACTIONS_URL }}
-      SEGREDO_INTEGRACAO: ${{ secrets.SEGREDO_INTEGRACAO }}
-      SITE_URL: ${{ vars.SITE_URL }}
+      CORE_GOOGLE: '1'
+      PLANILHA_ID: ${{ secrets.PLANILHA_ID || vars.PLANILHA_ID }}
       FORCAR: ${{ inputs.forcar || 'false' }}
       MOTIVO: ${{ inputs.motivo || github.event_name }}
     steps:
@@ -44,92 +41,85 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Verificar nomenclatura e configuracao das APIs
-        env:
-          GOOGLE_CREDENTIALS_DISPONIVEL: ${{ secrets.GOOGLE_CREDENTIALS != '' }}
-        run: python -u scripts/verificar_configuracao.py --workflow
-      - name: Conferir estrutura Pages (site/ vira raiz pública)
-        run: python -u scripts/verificar_publicacao.py --estrutura
-      - name: Testes sem rede
-        run: |
-          python -m unittest discover -s scripts/tests -t scripts
-      - name: Homologar acesso anônimo (ponte e escritor central)
-        # Vigilância contínua: chamada sem assinatura tem de ser recusada e o painel não pode aparecer a anônimos.
-        # Implantação desprotegida derruba a execução; falha de rede só gera aviso.
-        env:
-          ESCRITOR_URL: ${{ secrets.ESCRITOR_URL || vars.ESCRITOR_URL }}
-        run: python -u scripts/homologar_acesso.py --ci --exigir-ambos --falha-rede-bloqueia --ponte "$API_INTEGRACAO_ACTIONS_URL" --escritor "$ESCRITOR_URL"
-      - name: '[1/8] Sincronizar fila Apps Script'
-        id: fila
-        run: python -u scripts/sincronizar.py
-      - name: Autenticação Drive somente leitura
+      - name: Autenticar Google (Sheets leitura/escrita, Drive somente leitura)
         id: google
-        if: steps.fila.outputs.tem == 'true'
         uses: google-github-actions/auth@v2
         with:
           credentials_json: ${{ secrets.GOOGLE_CREDENTIALS }}
           token_format: access_token
-          access_token_scopes: https://www.googleapis.com/auth/drive.readonly
+          access_token_scopes: https://www.googleapis.com/auth/spreadsheets,https://www.googleapis.com/auth/drive.readonly
           create_credentials_file: false
-      - name: '[2/8] Montar catálogo candidato'
+      - name: Carregar configurações operacionais do CORE
+        env:
+          GOOGLE_ACCESS_TOKEN: ${{ steps.google.outputs.access_token }}
+        run: python -u scripts/core_configurar.py
+      - name: Testes do CORE sem rede
+        run: |
+          python -m unittest discover -s scripts/tests -t scripts
+      - name: '[1/8] Consultar FILA na planilha'
+        id: fila
+        env:
+          GOOGLE_ACCESS_TOKEN: ${{ steps.google.outputs.access_token }}
+        run: python -u scripts/sincronizar.py
+      - name: '[2/8] Construir catálogo candidato'
         if: steps.fila.outputs.tem == 'true'
+        env:
+          GOOGLE_ACCESS_TOKEN: ${{ steps.google.outputs.access_token }}
         run: python -u scripts/montar_catalogo.py
-      - name: '[3/8] Montar imóveis e baixar WebP incrementais'
+      - name: '[3/8] Construir páginas e obter fotos'
         if: steps.fila.outputs.tem == 'true'
         env:
           GOOGLE_ACCESS_TOKEN: ${{ steps.google.outputs.access_token }}
         run: python -u scripts/montar_imoveis.py
-      - name: '[4/8] Montar sitemap, robots e feeds'
+      - name: '[4/8] Gerar sitemap e feeds'
         if: steps.fila.outputs.tem == 'true'
         run: python -u scripts/montar_extras.py
-      - name: '[5/8] Validar publicação'
+      - name: '[5/8] Validar conteúdo'
         if: steps.fila.outputs.tem == 'true'
         run: python -u scripts/validar.py
-      - name: '[6/8] Montar artefato público'
+      - name: '[6/8] Montar artefato'
         if: steps.fila.outputs.tem == 'true'
         run: python -u scripts/montar_site.py
-      - name: Conferir artefato público e index na raiz
+      - name: Verificar estrutura pública
         if: steps.fila.outputs.tem == 'true'
         run: python -u scripts/verificar_publicacao.py --artefato
-      - name: Verificar reserva de versões antes de publicar
+      - name: Validar versões antes de publicar
         if: steps.fila.outputs.tem == 'true'
+        env:
+          GOOGLE_ACCESS_TOKEN: ${{ steps.google.outputs.access_token }}
         run: python -u scripts/publicar.py validar-reserva
-      - name: Commit de imagens e páginas (apenas mudanças)
+      - name: Commit das páginas e fotos
         if: steps.fila.outputs.tem == 'true'
         run: |
           git config user.name 'imoplace-bot'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add -A site
-          if git diff --cached --quiet; then
-            echo 'Sem alterações em site/'
-          else
-            git commit -m "ImoPlace v2.3.2.21: publicação ${{ github.run_id }}"
+          if ! git diff --cached --quiet; then
+            git commit -m "ImoPlace CORE: publicação ${{ github.run_id }}"
             git push
           fi
       - name: Configurar GitHub Pages
         if: steps.fila.outputs.tem == 'true'
         uses: actions/configure-pages@v5
-      # O conteúdo de estado/publicacao/ (cópia validada de site/) vira / do domínio.
-      # Não usar main → /(root) nem main → /docs em Settings → Pages.
-      - name: Enviar artefato público (raiz do domínio)
+      - name: Enviar artefato
         if: steps.fila.outputs.tem == 'true'
         uses: actions/upload-pages-artifact@v4
         with:
           path: ./estado/publicacao
-      - name: Deploy GitHub Pages
-        id: deploy
+      - name: Publicar GitHub Pages
         if: steps.fila.outputs.tem == 'true'
         uses: actions/deploy-pages@v4
-      - name: '[7/8] Conferir site publicado'
+      - name: '[7/8] Conferir publicação real'
+        if: steps.fila.outputs.tem == 'true'
+        run: python -u scripts/conferir.py
+      - name: '[8/8] Feedback individual no Sheets'
         if: steps.fila.outputs.tem == 'true'
         env:
-          SITE_URL: ${{ vars.SITE_URL || steps.deploy.outputs.page_url }}
-        run: python -u scripts/conferir.py
-      - name: '[8/8] Confirmar publicação ao painel'
-        if: steps.fila.outputs.tem == 'true'
+          GOOGLE_ACCESS_TOKEN: ${{ steps.google.outputs.access_token }}
         run: python -u scripts/confirmar.py
-      - name: Reportar erro e liberar fila
+      - name: Registrar erro por imóvel
         if: failure() && steps.fila.outputs.tem == 'true'
         env:
-          MOTIVO_FALHA: 'Erro na publicação v2.3.2.21; consulte GitHub Actions.'
+          GOOGLE_ACCESS_TOKEN: ${{ steps.google.outputs.access_token }}
+          MOTIVO_FALHA: 'GitHub Actions interrompido; consultar log do workflow.'
         run: python -u scripts/publicar.py falha
