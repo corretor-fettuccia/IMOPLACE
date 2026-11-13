@@ -1,7 +1,7 @@
 {
   "schemaVersao": 2,
   "contrato": "imoplace-v1",
-  "geradoEm": "2026-11-13T12:35:35.290055+00:00",
+  "geradoEm": "2026-11-13T12:41:17.406268+00:00",
   "total": 2,
   "imoveis": [
     {
@@ -13,7 +13,7 @@
       "destaque": false,
       "tag": "NA PLANTA 100% FINANCIADO",
       "ordem": 0,
-      "atualizadoEm": "2026-11-13T12:35:13.341Z",
+      "atualizadoEm": "2026-11-13T12:40:59.495Z",
       "tipo": "Apartamento",
       "condicao": "Na planta",
       "titulo": "ORA Lottici - 2 e 3 Dormitórios",
@@ -42,7 +42,16 @@
       "vagas": 1.0,
       "areaTotal": 60.0,
       "areaUtil": 60.0,
-      "comodidades": [],
+      "comodidades": [
+        "Piscina",
+        "Churrasqueira",
+        "Academia",
+        "Elevador",
+        "Aceita pets",
+        "Playground",
+        "Quintal",
+        "Perto do metrô"
+      ],
       "caracteristicasImovel": [
         "Sacada com churrasqueira",
         "Espera para água quente",
@@ -132,7 +141,7 @@
       "destaque": false,
       "tag": "",
       "ordem": 0,
-      "atualizadoEm": "2026-11-13T10:20:03.720Z",
+      "atualizadoEm": "2026-11-13T12:35:44.830Z",
       "tipo": "Apartamento",
       "condicao": "Usado",
       "titulo": "MY HOUSE - OLARIA 2 DORMITÓRIOS",
@@ -176,7 +185,7 @@
       "anunciante": {
         "nome": "Roberto",
         "creci": "83599-F",
-        "whatsapp": "51998111078"
+        "whatsapp": "5551998111078"
       },
       "feeds": {
         "google": false,
