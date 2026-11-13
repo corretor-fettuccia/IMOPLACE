@@ -1,8 +1,8 @@
 {
   "schemaVersao": 2,
   "contrato": "imoplace-v1",
-  "geradoEm": "2026-11-13T16:26:02.236990+00:00",
-  "total": 4,
+  "geradoEm": "2026-11-13T17:11:13.582410+00:00",
+  "total": 5,
   "imoveis": [
     {
       "id": "1004",
@@ -129,6 +129,180 @@
           "arquivo": "imoveis/novo-imovel-1004/imagens/897646634-1740785047024059-4849810265283-ib4cc98ba19.v1.webp",
           "legenda": "Sala",
           "alt": "CASA 4 DORMITÓRIOS COM SUÍTE E TERRENO DE 360m² — foto 12"
+        }
+      ]
+    },
+    {
+      "id": "1006",
+      "codigo": "laspalmas-baliza-1006",
+      "categoria": "lancamento",
+      "status": "publicado",
+      "url": "https://imoplace.com.br/imoveis/laspalmas-baliza-1006/",
+      "destaque": false,
+      "tag": "a partir R$719/Mês",
+      "ordem": 0,
+      "atualizadoEm": "2026-11-13T17:10:42.322Z",
+      "tipo": "Apartamento",
+      "condicao": "Na planta",
+      "titulo": "𝗥𝗘𝗦𝗜𝗗𝗘𝗡𝗖𝗜𝗔𝗟 𝗟𝗔𝗦 𝗣𝗔𝗟𝗠𝗔𝗦 𝗖𝗔𝗡𝗢𝗔𝗦 | Mato Grande | Canoas | Baliza",
+      "descricao": "Residencial Las Palmas | Mato Grande – Canoas/RS Seu apartamento novo, com lazer completo e condições facilitadas pelo Minha Casa Minha Vida.  - Renda familiar: a partir de R$ 2.450\n\nImoplace Vende: Chegou a oportunidade de conquistar seu apartamento novo no bairro Mato Grande, em Canoas, com condições facilitadas pelo programa Minha Casa Minha Vida.\n\nParcelas a partir de R$ 719/mês! - Entrada parcelada até 80x\nCom renda familiar a partir de R$ 2.450, você pode dar o primeiro passo para sair do aluguel e conquistar seu imóvel próprio.\n\n232 apartamentos com 1 e 2 dormitórios;\n232 vagas de estacionamento descobertas;\nTamanhos que variam : 31,43m², 40,87m,² e 42,19m² todos sem sacada.\n\nConheça o Residencial Las Palmas:\n✔Apartamentos de 1 e 2 dormitórios\n✔Plantas de 31,43 m² a 42,19 m²\n✔Vaga de estacionamento escriturada\n✔Piscinas adulto e infantil\n✔Salão de festas com churrasqueira\n✔Quiosques com churrasqueira\n✔Playground e espaços pet\n✔Condomínio fechado com portaria\n✔Elevadores nas torres (02 por torre)\n\nCondições facilitadas para sua conquista:\n✔ Parcelas anunciadas a partir de R$ 719/mês\n✔ Entrada parcelável em até 80 vezes\n✔ Financiamento pelo Minha Casa Minha Vida\n✔ Possibilidade de subsídio conforme enquadramento\n✔ Simulação de financiamento personalizada\n\nRegistro de incorporação: R.8-97.375\n\nLocalização: Rua Afonso Pena, 30 — Bairro Mato Grande, Canoas/RS.\nNão deixe o sonho da casa própria para depois!\n\nEntre em contato, informe sua renda familiar e descubra as condições disponíveis para conquistar seu apartamento no Las Palmas.\n\nImoplace | Seu próximo imóvel começa aqui.\n\nCondições sujeitas à disponibilidade de unidades, enquadramento no programa, análise e aprovação de crédito. A parcela anunciada é uma condição de referência e não garante o mesmo valor para todos os compradores. Entrada e demais condições devem ser confirmadas na simulação.",
+      "seo": {
+        "titulo": "Las Palmas Canoas | Apartamentos a partir de R$ 719/mês MCMV",
+        "descricao": "Las Palmas Canoas: apartamentos de 1 e 2 dormitórios no Mato Grande, com parcelas a partir de R$ 719/mês no MCMV, entrada facilitada e lazer completo."
+      },
+      "localizacao": {
+        "bairro": "Mato grande",
+        "cidade": "Canoas",
+        "uf": "RS",
+        "endereco": "Rua Afonso Pena, 30 - Bairro Mato Grande, Canoas/RS.",
+        "lat": null,
+        "lng": null
+      },
+      "preco": 194057.85,
+      "condominio": null,
+      "iptuAnual": null,
+      "financiamento": true,
+      "permuta": false,
+      "documentacaoEmDia": false,
+      "dormitorios": 2.0,
+      "suites": null,
+      "banheiros": 1.0,
+      "vagas": 1.0,
+      "areaTotal": 42.0,
+      "areaUtil": 42.0,
+      "comodidades": [],
+      "caracteristicasImovel": [],
+      "caracteristicasCondominio": [
+        "02 elevadores por torre",
+        "Vaga escriturada",
+        "Salão de festas com churrasqueira",
+        "Playground",
+        "Piscinas adulto e infantil",
+        "Espaço Pet e PetCare",
+        "Bicicletário",
+        "Quiosques com churrasqueira",
+        "Car Wash"
+      ],
+      "anunciante": {
+        "nome": "Roberto",
+        "creci": "83599-F",
+        "whatsapp": "5551998111978"
+      },
+      "feeds": {
+        "google": false,
+        "meta": false,
+        "disponibilidade": "in_stock"
+      },
+      "imagens": [
+        {
+          "arquivo": "imoveis/laspalmas-baliza-1006/imagens/ap-ponta-quarto-02-1laspalmas-mcmv-rs-co-ia41b1e4e67.v1.webp",
+          "legenda": "Foto 1",
+          "alt": "𝗥𝗘𝗦𝗜𝗗𝗘𝗡𝗖𝗜𝗔𝗟 𝗟𝗔𝗦 𝗣𝗔𝗟𝗠𝗔𝗦 𝗖𝗔𝗡𝗢𝗔𝗦 | Mato Grande | Canoas | Baliza — foto 1"
+        },
+        {
+          "arquivo": "imoveis/laspalmas-baliza-1006/imagens/ap-ponta-salalaspalmas-mcmv-rs-com-i6a69e44b05.v1.webp",
+          "legenda": "Foto 2",
+          "alt": "𝗥𝗘𝗦𝗜𝗗𝗘𝗡𝗖𝗜𝗔𝗟 𝗟𝗔𝗦 𝗣𝗔𝗟𝗠𝗔𝗦 𝗖𝗔𝗡𝗢𝗔𝗦 | Mato Grande | Canoas | Baliza — foto 2"
+        },
+        {
+          "arquivo": "imoveis/laspalmas-baliza-1006/imagens/canto2d-plantalaspalmas-mcmv-rs-com-i3b9a2fed15.v1.webp",
+          "legenda": "Foto 3",
+          "alt": "𝗥𝗘𝗦𝗜𝗗𝗘𝗡𝗖𝗜𝗔𝗟 𝗟𝗔𝗦 𝗣𝗔𝗟𝗠𝗔𝗦 𝗖𝗔𝗡𝗢𝗔𝗦 | Mato Grande | Canoas | Baliza — foto 3"
+        },
+        {
+          "arquivo": "imoveis/laspalmas-baliza-1006/imagens/entorno1laspalmas-mcmv-rs-com-ic33fc86557.v1.webp",
+          "legenda": "Foto 4",
+          "alt": "𝗥𝗘𝗦𝗜𝗗𝗘𝗡𝗖𝗜𝗔𝗟 𝗟𝗔𝗦 𝗣𝗔𝗟𝗠𝗔𝗦 𝗖𝗔𝗡𝗢𝗔𝗦 | Mato Grande | Canoas | Baliza — foto 4"
+        },
+        {
+          "arquivo": "imoveis/laspalmas-baliza-1006/imagens/entorno2laspalmas-mcmv-rs-com-i9a86565d4c.v1.webp",
+          "legenda": "Foto 5",
+          "alt": "𝗥𝗘𝗦𝗜𝗗𝗘𝗡𝗖𝗜𝗔𝗟 𝗟𝗔𝗦 𝗣𝗔𝗟𝗠𝗔𝗦 𝗖𝗔𝗡𝗢𝗔𝗦 | Mato Grande | Canoas | Baliza — foto 5"
+        },
+        {
+          "arquivo": "imoveis/laspalmas-baliza-1006/imagens/fachada2laspalmas-mcmv-rs-com-i261e8ed451.v1.webp",
+          "legenda": "Foto 6",
+          "alt": "𝗥𝗘𝗦𝗜𝗗𝗘𝗡𝗖𝗜𝗔𝗟 𝗟𝗔𝗦 𝗣𝗔𝗟𝗠𝗔𝗦 𝗖𝗔𝗡𝗢𝗔𝗦 | Mato Grande | Canoas | Baliza — foto 6"
+        },
+        {
+          "arquivo": "imoveis/laspalmas-baliza-1006/imagens/fachadalaspalmas-mcmv-rs-com-i803274d18b.v1.webp",
+          "legenda": "Foto 7",
+          "alt": "𝗥𝗘𝗦𝗜𝗗𝗘𝗡𝗖𝗜𝗔𝗟 𝗟𝗔𝗦 𝗣𝗔𝗟𝗠𝗔𝗦 𝗖𝗔𝗡𝗢𝗔𝗦 | Mato Grande | Canoas | Baliza — foto 7"
+        },
+        {
+          "arquivo": "imoveis/laspalmas-baliza-1006/imagens/fundo-area2laspalmas-mcmv-rs-com-i4c97828dd6.v1.webp",
+          "legenda": "Foto 8",
+          "alt": "𝗥𝗘𝗦𝗜𝗗𝗘𝗡𝗖𝗜𝗔𝗟 𝗟𝗔𝗦 𝗣𝗔𝗟𝗠𝗔𝗦 𝗖𝗔𝗡𝗢𝗔𝗦 | Mato Grande | Canoas | Baliza — foto 8"
+        },
+        {
+          "arquivo": "imoveis/laspalmas-baliza-1006/imagens/fundo-arealaspalmas-mcmv-rs-com-i91dd4f0575.v1.webp",
+          "legenda": "Foto 9",
+          "alt": "𝗥𝗘𝗦𝗜𝗗𝗘𝗡𝗖𝗜𝗔𝗟 𝗟𝗔𝗦 𝗣𝗔𝗟𝗠𝗔𝗦 𝗖𝗔𝗡𝗢𝗔𝗦 | Mato Grande | Canoas | Baliza — foto 9"
+        },
+        {
+          "arquivo": "imoveis/laspalmas-baliza-1006/imagens/infra-petplacelaspalmas-mcmv-rs-com-i2d4e203a78.v1.webp",
+          "legenda": "Foto 10",
+          "alt": "𝗥𝗘𝗦𝗜𝗗𝗘𝗡𝗖𝗜𝗔𝗟 𝗟𝗔𝗦 𝗣𝗔𝗟𝗠𝗔𝗦 𝗖𝗔𝗡𝗢𝗔𝗦 | Mato Grande | Canoas | Baliza — foto 10"
+        },
+        {
+          "arquivo": "imoveis/laspalmas-baliza-1006/imagens/infra-piscinalaspalmas-mcmv-rs-com-i3dcd0319d3.v1.webp",
+          "legenda": "Foto 11",
+          "alt": "𝗥𝗘𝗦𝗜𝗗𝗘𝗡𝗖𝗜𝗔𝗟 𝗟𝗔𝗦 𝗣𝗔𝗟𝗠𝗔𝗦 𝗖𝗔𝗡𝗢𝗔𝗦 | Mato Grande | Canoas | Baliza — foto 11"
+        },
+        {
+          "arquivo": "imoveis/laspalmas-baliza-1006/imagens/infra-playground2laspalmas-mcmv-rs-com-i976f94dbc5.v1.webp",
+          "legenda": "Foto 12",
+          "alt": "𝗥𝗘𝗦𝗜𝗗𝗘𝗡𝗖𝗜𝗔𝗟 𝗟𝗔𝗦 𝗣𝗔𝗟𝗠𝗔𝗦 𝗖𝗔𝗡𝗢𝗔𝗦 | Mato Grande | Canoas | Baliza — foto 12"
+        },
+        {
+          "arquivo": "imoveis/laspalmas-baliza-1006/imagens/infra-salaofestaslaspalmas-mcmv-rs-com-id5886e7029.v1.webp",
+          "legenda": "Foto 13",
+          "alt": "𝗥𝗘𝗦𝗜𝗗𝗘𝗡𝗖𝗜𝗔𝗟 𝗟𝗔𝗦 𝗣𝗔𝗟𝗠𝗔𝗦 𝗖𝗔𝗡𝗢𝗔𝗦 | Mato Grande | Canoas | Baliza — foto 13"
+        },
+        {
+          "arquivo": "imoveis/laspalmas-baliza-1006/imagens/meio1d-plantalaspalmas-mcmv-rs-com-i87288050d9.v1.webp",
+          "legenda": "Foto 14",
+          "alt": "𝗥𝗘𝗦𝗜𝗗𝗘𝗡𝗖𝗜𝗔𝗟 𝗟𝗔𝗦 𝗣𝗔𝗟𝗠𝗔𝗦 𝗖𝗔𝗡𝗢𝗔𝗦 | Mato Grande | Canoas | Baliza — foto 14"
+        },
+        {
+          "arquivo": "imoveis/laspalmas-baliza-1006/imagens/meio1d-salalaspalmas-mcmv-rs-com-i6544cec77d.v1.webp",
+          "legenda": "Foto 15",
+          "alt": "𝗥𝗘𝗦𝗜𝗗𝗘𝗡𝗖𝗜𝗔𝗟 𝗟𝗔𝗦 𝗣𝗔𝗟𝗠𝗔𝗦 𝗖𝗔𝗡𝗢𝗔𝗦 | Mato Grande | Canoas | Baliza — foto 15"
+        },
+        {
+          "arquivo": "imoveis/laspalmas-baliza-1006/imagens/meio2d-1laspalmas-mcmv-rs-com-i6be0054ce4.v1.webp",
+          "legenda": "Foto 16",
+          "alt": "𝗥𝗘𝗦𝗜𝗗𝗘𝗡𝗖𝗜𝗔𝗟 𝗟𝗔𝗦 𝗣𝗔𝗟𝗠𝗔𝗦 𝗖𝗔𝗡𝗢𝗔𝗦 | Mato Grande | Canoas | Baliza — foto 16"
+        },
+        {
+          "arquivo": "imoveis/laspalmas-baliza-1006/imagens/meio2d-plantalaspalmas-mcmv-rs-com-i0459cc6dc7.v1.webp",
+          "legenda": "Foto 17",
+          "alt": "𝗥𝗘𝗦𝗜𝗗𝗘𝗡𝗖𝗜𝗔𝗟 𝗟𝗔𝗦 𝗣𝗔𝗟𝗠𝗔𝗦 𝗖𝗔𝗡𝗢𝗔𝗦 | Mato Grande | Canoas | Baliza — foto 17"
+        },
+        {
+          "arquivo": "imoveis/laspalmas-baliza-1006/imagens/pdi-gerallaspalmas-mcmv-rs-com-i5e15226c89.v1.webp",
+          "legenda": "Foto 18",
+          "alt": "𝗥𝗘𝗦𝗜𝗗𝗘𝗡𝗖𝗜𝗔𝗟 𝗟𝗔𝗦 𝗣𝗔𝗟𝗠𝗔𝗦 𝗖𝗔𝗡𝗢𝗔𝗦 | Mato Grande | Canoas | Baliza — foto 18"
+        },
+        {
+          "arquivo": "imoveis/laspalmas-baliza-1006/imagens/plantas-torrelaspalmas-mcmv-rs-com-iacf1a48529.v1.webp",
+          "legenda": "Foto 19",
+          "alt": "𝗥𝗘𝗦𝗜𝗗𝗘𝗡𝗖𝗜𝗔𝗟 𝗟𝗔𝗦 𝗣𝗔𝗟𝗠𝗔𝗦 𝗖𝗔𝗡𝗢𝗔𝗦 | Mato Grande | Canoas | Baliza — foto 19"
+        },
+        {
+          "arquivo": "imoveis/laspalmas-baliza-1006/imagens/plantas-torrelaspalmas3143-mcmv-rs-com-ic90efb73b6.v1.webp",
+          "legenda": "Foto 20",
+          "alt": "𝗥𝗘𝗦𝗜𝗗𝗘𝗡𝗖𝗜𝗔𝗟 𝗟𝗔𝗦 𝗣𝗔𝗟𝗠𝗔𝗦 𝗖𝗔𝗡𝗢𝗔𝗦 | Mato Grande | Canoas | Baliza — foto 20"
+        },
+        {
+          "arquivo": "imoveis/laspalmas-baliza-1006/imagens/plantas-torrelaspalmas4087-mcmv-rs-com-i0760b4423c.v1.webp",
+          "legenda": "Foto 21",
+          "alt": "𝗥𝗘𝗦𝗜𝗗𝗘𝗡𝗖𝗜𝗔𝗟 𝗟𝗔𝗦 𝗣𝗔𝗟𝗠𝗔𝗦 𝗖𝗔𝗡𝗢𝗔𝗦 | Mato Grande | Canoas | Baliza — foto 21"
+        },
+        {
+          "arquivo": "imoveis/laspalmas-baliza-1006/imagens/plantas-torrelaspalmas4219-mcmv-rs-com-i096531ef52.v1.webp",
+          "legenda": "Foto 22",
+          "alt": "𝗥𝗘𝗦𝗜𝗗𝗘𝗡𝗖𝗜𝗔𝗟 𝗟𝗔𝗦 𝗣𝗔𝗟𝗠𝗔𝗦 𝗖𝗔𝗡𝗢𝗔𝗦 | Mato Grande | Canoas | Baliza — foto 22"
         }
       ]
     },
