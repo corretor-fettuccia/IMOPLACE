@@ -3,7 +3,7 @@
 const form=$('.search'), grid=$('#grid'), resultCount=$('.list-head span');
 const advanced=$('#rf'), toggle=$('#tg'), counter=$('#cnt'), sorter=$('#sort-order');
 const perPage=$('#page-size'), pagination=$('#pagination'), pageButtons=$('#page-buttons'), pageSummary=$('#page-summary');
-const tabs=$('.tabs button');
+const tabs=$$('.tabs button');
 let entries=[], filtered=[], page=1, tab='comprar';
 const selected = group => $('.chip[aria-pressed="true"]',group)?.textContent.trim() || null;
 const selectedMany = group => $$('.chip[aria-pressed="true"]',group).map(c=>c.textContent.trim());
