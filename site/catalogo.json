@@ -1,7 +1,7 @@
 {
   "schemaVersao": 2,
   "contrato": "imoplace-v1",
-  "geradoEm": "2026-11-13T14:40:45.604929+00:00",
+  "geradoEm": "2026-11-13T14:42:15.282901+00:00",
   "total": 4,
   "imoveis": [
     {
@@ -139,9 +139,9 @@
       "status": "publicado",
       "url": "https://imoplace.com.br/imoveis/avenida-santos-ferreira-4200-bairro-estancia-velha-canoas-rs-1005/",
       "destaque": false,
-      "tag": "",
+      "tag": "a partir 2mil/mês",
       "ordem": 0,
-      "atualizadoEm": "2026-11-13T14:40:18.485Z",
+      "atualizadoEm": "2026-11-13T14:41:56.773Z",
       "tipo": "Apartamento",
       "condicao": "Na planta",
       "titulo": "Napoles - Apartamento com 2 Dormitórios, Sacada e Churrasqueira em Canoas | Parcelas a partir de R$ 2.000/mês",
