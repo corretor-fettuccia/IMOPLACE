@@ -1,7 +1,7 @@
 {
   "schemaVersao": 2,
   "contrato": "imoplace-v1",
-  "geradoEm": "2026-11-13T14:47:43.597932+00:00",
+  "geradoEm": "2026-11-13T14:50:04.191067+00:00",
   "total": 4,
   "imoveis": [
     {
@@ -141,7 +141,7 @@
       "destaque": false,
       "tag": "a partir 2mil/mês",
       "ordem": 0,
-      "atualizadoEm": "2026-11-13T14:47:22.773Z",
+      "atualizadoEm": "2026-11-13T14:49:47.195Z",
       "tipo": "Apartamento",
       "condicao": "Na planta",
       "titulo": "Napoles - Apartamento com 2 Dormitórios, Sacada e Churrasqueira em Canoas | Parcelas a partir de R$ 2.000/mês",
@@ -158,7 +158,7 @@
         "lat": null,
         "lng": null
       },
-      "preco": 2000.0,
+      "preco": 250000.0,
       "condominio": null,
       "iptuAnual": null,
       "financiamento": true,
