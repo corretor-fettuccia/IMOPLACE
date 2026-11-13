@@ -5,35 +5,35 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Anuncie seu imóvel</title>
 <meta name="robots" content="noindex">
-<meta name="theme-color" content="#16302a">
+<meta name="theme-color" content="#0a3a7a">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   /* ============ TOKENS — cores da marca ============ */
   :root{
-    --bg:#f3f5f4; --card:#fff; --ink:#152420; --muted:#6c7975; --line:#e3e8e6; --soft:#f7f9f8;
-    --brand:#16302a; --brand-2:#2c6a5a; --brand-3:#e6f0ec; --accent:#e9a23b;
+    --bg:#f4f7fb; --card:#fff; --ink:#0f1d2e; --muted:#5b6b80; --line:#dde4ee; --soft:#f4f7fb;
+    --brand:#0a3a7a; --brand-2:#0a3a7a; --brand-3:#e7f0fb; --accent:#ff8a00;
     --err:#c0392b; --err-bg:#fdecea; --ok:#1e8a5a;
     --g:6px;          /* espaço base único: tudo é múltiplo dele */
     --p:12px;         /* respiro interno dos cartões */
     --r:10px; --h:44px;
   }
   @media (prefers-color-scheme:dark){
-    :root{ --bg:#0e1614; --card:#16211e; --ink:#e8efec; --muted:#9aaaa5; --line:#2a3834; --soft:#1b2825;
-           --brand:#0b1a17; --brand-2:#5fb39b; --brand-3:#1f3530; --err:#ff7b6b; --err-bg:#3a1d1a; }
+    :root{ --bg:#0b1522; --card:#112033; --ink:#eaf1fb; --muted:#9fb2cc; --line:#22364f; --soft:#152840;
+           --brand:#0a3a7a; --brand-2:#1d6bc4; --brand-3:#17365d; --err:#ff7b6b; --err-bg:#3a1d1a; }
   }
   @media (min-width:600px){ :root{ --p:14px } }
 
   *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
   html,body{margin:0;overflow-x:hidden}
-  body{background:var(--bg);color:var(--ink);font:14px/1.4 Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+  body{background:var(--bg);color:var(--ink);font:14px/1.4 "Public Sans",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;-webkit-font-smoothing:antialiased}
   button,input,textarea{font:inherit;color:inherit}
   [hidden]{display:none!important}
 
   /* ============ TOPO ============ */
   .topo{background:var(--brand);color:#fff;text-align:center;padding:12px var(--p) 13px}
   .marca{font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;opacity:.6}
-  .topo h1{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:clamp(21px,5vw,26px);line-height:1.15;margin:2px 0 1px}
+  .topo h1{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-weight:600;font-size:clamp(21px,5vw,26px);line-height:1.15;margin:2px 0 1px}
   .topo p{margin:0;font-size:12.5px;opacity:.75}
 
   /* ============ LAYOUT — 2 colunas iguais no desktop ============ */
@@ -98,7 +98,7 @@
   @media (max-width:359px){ .seg span,.tipos span{font-size:12px} }
 
   /* ============ FOTOS ============ */
-  .drop{display:flex;align-items:center;justify-content:center;gap:8px;height:var(--h);border:1px dashed #c6d1cd;border-radius:8px;
+  .drop{display:flex;align-items:center;justify-content:center;gap:8px;height:var(--h);border:1px dashed var(--line);border-radius:8px;
        cursor:pointer;background:var(--soft);transition:.15s;font-size:13px;color:var(--muted)}
   .drop:hover,.drop.over{border-color:var(--brand-2);background:var(--brand-3);color:var(--brand-2)}
   .drop svg{width:17px;height:17px;color:var(--brand-2)}
@@ -114,7 +114,7 @@
   .thumb .acoes{position:absolute;inset:auto 0 0 0;display:flex;justify-content:space-between;padding:3px}
   .thumb button{width:22px;height:22px;border:0;border-radius:50%;background:rgba(0,0,0,.55);color:#fff;cursor:pointer;display:grid;place-items:center;padding:0}
   .thumb button svg{width:11px;height:11px}
-  .thumb .capa{position:absolute;left:3px;top:3px;background:var(--accent);color:#1b1205;font-size:8.5px;font-weight:700;padding:1px 4px;border-radius:3px;letter-spacing:.05em}
+  .thumb .capa{position:absolute;left:3px;top:3px;background:var(--accent);color:#2a1200;font-size:8.5px;font-weight:700;padding:1px 4px;border-radius:3px;letter-spacing:.05em}
   .thumb.eh-capa .estrela{visibility:hidden}
   .info-fotos{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-top:4px}
   .info-fotos button{border:0;background:none;color:var(--err);cursor:pointer;padding:0;font-size:11px}
@@ -136,7 +136,7 @@
   @media (min-width:860px){ .barra-envio{position:static;padding:0;margin-top:var(--g);background:none;border:0;backdrop-filter:none} .btn{max-width:none} }
 
   /* ============ PROGRESSO ============ */
-  .overlay{position:fixed;inset:0;z-index:20;display:grid;place-items:center;padding:20px;background:rgba(10,22,19,.5);backdrop-filter:blur(3px)}
+  .overlay{position:fixed;inset:0;z-index:20;display:grid;place-items:center;padding:20px;background:rgba(6,19,39,.5);backdrop-filter:blur(3px)}
   .modal{width:100%;max-width:260px;background:var(--card);border-radius:12px;padding:18px;text-align:center;box-shadow:0 20px 50px rgba(0,0,0,.25)}
   .anel{width:48px;height:48px;margin:0 auto 8px;position:relative}
   .anel svg{width:48px;height:48px;transform:rotate(-90deg)}
@@ -151,7 +151,7 @@
   .sucesso{max-width:400px;margin:var(--g) auto 0;padding:22px var(--p);text-align:center;align-items:center}
   .sucesso .ic{width:42px;height:42px;border-radius:50%;background:var(--brand-3);color:var(--ok);display:grid;place-items:center;margin-bottom:8px}
   .sucesso .ic svg{width:22px;height:22px}
-  .sucesso h2{all:unset;display:block;font-family:Fraunces,Georgia,serif;font-weight:600;font-size:20px}
+  .sucesso h2{all:unset;display:block;font-family:"Bricolage Grotesque",system-ui,sans-serif;font-weight:600;font-size:20px}
   .sucesso p{color:var(--muted);margin:2px auto 0;font-size:13px;max-width:32ch}
   .proto{margin-top:10px;background:var(--soft);border:1px dashed var(--line);padding:5px 10px;border-radius:6px;font-weight:700;font-size:12.5px;overflow-wrap:anywhere}
   .detalhes{list-style:none;margin:12px 0 0;padding:0;width:100%;text-align:left;border-top:1px solid var(--line)}
