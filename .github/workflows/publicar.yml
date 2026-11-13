@@ -98,16 +98,49 @@ jobs:
             git commit -m "ImoPlace CORE: publicação ${{ github.run_id }}"
             git push
           fi
+      # Publicação manual de ajustes visuais, quando nenhum imóvel precisa sincronizar.
+      # Não reserva nem confirma versões de imóveis; mantém intacto o catálogo já publicado.
+      - name: Validar site estático sem fila
+        if: steps.fila.outputs.tem != 'true' && github.event_name == 'workflow_dispatch'
+        run: python -u scripts/validar.py
+      - name: Preparar artefato do site sem fila
+        if: steps.fila.outputs.tem != 'true' && github.event_name == 'workflow_dispatch'
+        run: |
+          python - <<'PY'
+          import hashlib
+          import json
+          import os
+          import shutil
+          from pathlib import Path
+
+          origem = Path('site')
+          destino = Path('estado/publicacao')
+          if destino.exists():
+              shutil.rmtree(destino)
+          shutil.copytree(origem, destino)
+          dados = (destino / 'catalogo.json').read_bytes()
+          marcador = {
+              'jobId': 'visual-' + os.environ['GITHUB_RUN_ID'] + '-' + os.environ['GITHUB_RUN_ATTEMPT'],
+              'catalogoSha256': hashlib.sha256(dados).hexdigest(),
+          }
+          (destino / 'publicacao.json').write_text(
+              json.dumps(marcador, ensure_ascii=False) + '\\n', encoding='utf-8'
+          )
+          print('Artefato visual preparado sem modificar imóveis nem planilha.')
+          PY
+      - name: Verificar artefato visual
+        if: steps.fila.outputs.tem != 'true' && github.event_name == 'workflow_dispatch'
+        run: python -u scripts/verificar_publicacao.py --artefato
       - name: Configurar GitHub Pages
-        if: steps.fila.outputs.tem == 'true'
+        if: steps.fila.outputs.tem == 'true' || github.event_name == 'workflow_dispatch'
         uses: actions/configure-pages@v5
       - name: Enviar artefato
-        if: steps.fila.outputs.tem == 'true'
+        if: steps.fila.outputs.tem == 'true' || github.event_name == 'workflow_dispatch'
         uses: actions/upload-pages-artifact@v4
         with:
           path: ./estado/publicacao
       - name: Publicar GitHub Pages
-        if: steps.fila.outputs.tem == 'true'
+        if: steps.fila.outputs.tem == 'true' || github.event_name == 'workflow_dispatch'
         uses: actions/deploy-pages@v4
       - name: '[7/8] Conferir publicação real'
         if: steps.fila.outputs.tem == 'true'
