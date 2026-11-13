@@ -123,6 +123,7 @@ def pagina(item, conf):
 </div></header>
 <main class="wrap" id="det">{detalhe(item)}</main>
 <footer><div class="wrap"><span>© {h(conf.get('ano', '2026'))} Imoplace · imoplace.com.br</span><span>Informações sujeitas a confirmação com o anunciante.</span></div></footer>
+<script src="{RAIZ_REL}assets/js/protecao.js"></script>
 <script src="{RAIZ_REL}assets/js/main.js"></script>
 <script src="{RAIZ_REL}assets/js/imovel.js"></script>
 </body></html>
