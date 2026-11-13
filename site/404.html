@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex,follow">
+<meta name="theme-color" content="#0a3a7a">
+<title>Página não encontrada (404) | ImoPlace</title>
+<meta name="description" content="O endereço solicitado não foi encontrado. Encontre imóveis à venda e lançamentos no ImoPlace.">
+<link rel="icon" type="image/png" href="/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+<style>
+  .erro-404{min-height:calc(100vh - 142px);display:grid;place-items:center;padding:56px 16px 70px}
+  .erro-404__conteudo{width:100%;max-width:650px;text-align:center}
+  .erro-404__simbolo{width:76px;height:76px;display:grid;place-items:center;border-radius:22px;background:var(--surface);border:1px solid var(--line);margin:0 auto 18px;color:var(--brand)}
+  .erro-404__simbolo svg{width:40px;height:40px}
+  .erro-404__codigo{margin:0;color:var(--accent);font:800 clamp(4.5rem,15vw,7.5rem)/1 "Bricolage Grotesque",system-ui,sans-serif;letter-spacing:-.06em}
+  .erro-404 h1{margin:10px 0 12px;font:800 clamp(1.45rem,4vw,2rem)/1.18 "Bricolage Grotesque",system-ui,sans-serif}
+  .erro-404 p{max-width:51ch;margin:0 auto 25px;color:var(--muted);font-size:1rem;line-height:1.6}
+  .erro-404__acoes{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+  .erro-404__acoes a{min-width:180px;text-align:center}
+  .erro-404__acoes .btn-primaria{background:var(--accent);color:var(--accent-ink)}
+  .erro-404__acoes .btn-secundaria{background:var(--surface);color:var(--ink);border:1px solid var(--line)}
+  @media(max-width:480px){.erro-404__acoes{flex-direction:column}.erro-404__acoes a{width:100%}}
+</style>
+</head>
+<body>
+<header class="bar">
+  <div class="wrap">
+    <a href="/" class="logo" aria-label="ImoPlace, página inicial"><img src="/assets/img/logo.png" alt="" width="50" height="44"><span>ImoPlace</span></a>
+    <nav aria-label="Principal"><a href="/#imoveis">Comprar</a><a href="/?categoria=lancamento#imoveis">Lançamentos</a></nav>
+    <div class="actions"><a class="btn btn-accent" href="/anunciar/">Anuncie seu imóvel</a></div>
+  </div>
+</header>
+<main class="erro-404">
+  <div class="erro-404__conteudo">
+    <div class="erro-404__simbolo" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/>
+        <path d="M9 21v-7h6v7M9 10h6M12 7v6"/>
+      </svg>
+    </div>
+    <div class="erro-404__codigo" aria-label="Erro 404">404</div>
+    <h1>Este endereço não foi encontrado.</h1>
+    <p>O imóvel pode ter mudado de endereço ou não estar mais disponível. Você ainda pode encontrar outras oportunidades no ImoPlace.</p>
+    <div class="erro-404__acoes">
+      <a class="btn btn-primaria" href="/#imoveis">Encontrar outros imóveis</a>
+      <a class="btn btn-secundaria" href="/">Voltar à página inicial</a>
+    </div>
+  </div>
+</main>
+<footer><div class="wrap"><span>© 2026 ImoPlace · imoplace.com.br</span><span>Informações sujeitas a confirmação com o anunciante.</span></div></footer>
+</body>
+</html>
