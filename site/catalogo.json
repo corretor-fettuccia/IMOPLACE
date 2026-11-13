@@ -1,7 +1,7 @@
 {
   "schemaVersao": 2,
   "contrato": "imoplace-v1",
-  "geradoEm": "2026-11-13T12:41:17.406268+00:00",
+  "geradoEm": "2026-11-13T12:43:15.970108+00:00",
   "total": 2,
   "imoveis": [
     {
@@ -13,7 +13,7 @@
       "destaque": false,
       "tag": "NA PLANTA 100% FINANCIADO",
       "ordem": 0,
-      "atualizadoEm": "2026-11-13T12:40:59.495Z",
+      "atualizadoEm": "2026-11-13T12:42:53.402Z",
       "tipo": "Apartamento",
       "condicao": "Na planta",
       "titulo": "ORA Lottici - 2 e 3 Dormitórios",
@@ -36,7 +36,7 @@
       "financiamento": true,
       "permuta": false,
       "documentacaoEmDia": false,
-      "dormitorios": 2.0,
+      "dormitorios": 3.0,
       "suites": null,
       "banheiros": 1.0,
       "vagas": 1.0,
