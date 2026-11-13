@@ -97,6 +97,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 .dhead{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;margin-top:12px}
 .dt{font:800 1.35rem/1.1 var(--h);letter-spacing:-.02em;margin:0 0 2px}.big{font-size:1.6rem}.dhead .where{font-size:.9rem}
 .dact{display:flex;gap:6px}.dact .btn{min-height:34px}.dr{text-align:right}
+.dact #share{background:#16803d;color:#fff;border-color:#16803d}
+.dact #save{background:#111;color:#fff;border-color:#111}
 .dgrid{display:grid;grid-template-columns:1fr 310px;gap:16px;align-items:start;margin-top:4px}
 .stats{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-top:12px}
 .stats div{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:8px 10px;display:flex;flex-direction:column}
