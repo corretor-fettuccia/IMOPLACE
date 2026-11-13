@@ -1,8 +1,8 @@
 {
   "schemaVersao": 2,
   "contrato": "imoplace-v1",
-  "geradoEm": "2026-11-13T14:03:40.423569+00:00",
-  "total": 3,
+  "geradoEm": "2026-11-13T14:40:45.604929+00:00",
+  "total": 4,
   "imoveis": [
     {
       "id": "1004",
@@ -129,6 +129,179 @@
           "arquivo": "imoveis/novo-imovel-1004/imagens/897646634-1740785047024059-4849810265283-ib4cc98ba19.v1.webp",
           "legenda": "Sala",
           "alt": "CASA 4 DORMITÓRIOS COM SUÍTE E TERRENO DE 360m² — foto 12"
+        }
+      ]
+    },
+    {
+      "id": "1005",
+      "codigo": "avenida-santos-ferreira-4200-bairro-estancia-velha-canoas-rs-1005",
+      "categoria": "venda",
+      "status": "publicado",
+      "url": "https://imoplace.com.br/imoveis/avenida-santos-ferreira-4200-bairro-estancia-velha-canoas-rs-1005/",
+      "destaque": false,
+      "tag": "",
+      "ordem": 0,
+      "atualizadoEm": "2026-11-13T14:40:18.485Z",
+      "tipo": "Apartamento",
+      "condicao": "Na planta",
+      "titulo": "Napoles - Apartamento com 2 Dormitórios, Sacada e Churrasqueira em Canoas | Parcelas a partir de R$ 2.000/mês",
+      "descricao": "Imoplace Vende - Conquiste seu apartamento no bairro Estância Velha, em Canoas, com conforto, praticidade e uma infraestrutura completa para toda a família.\n\nO Nápoles Clube Residencial reúne apartamentos de 2 dormitórios, plantas funcionais e espaços planejados para transformar sua rotina.\n\nSeu novo apartamento oferece:\n ✔ 2 dormitórios\n ✔ Plantas de 43,7m² a 47,3m²\n ✔ Sacada privativa com churrasqueira\n ✔ 1 vaga de garagem por unidade anunciada\n ✔ 2 elevadores por torre\n ✔ Condomínio com infraestrutura de lazer \n\nLazer e comodidade para toda a família:\n ✔ Piscina\n ✔ Academia fitness\n ✔ Salão de festas\n ✔ Quiosques com churrasqueira\n ✔ Quadra poliesportiva\n ✔ Playground e espaço kids\n ✔ Espaço coworking\n ✔ Pet place\n ✔ Minimercado\n ✔ Lounge externo\n\nLocalização estratégica em Canoas:\nLocalizado na Avenida Santos Ferreira, 4200 — Bairro Estância Velha, o Nápoles oferece praticidade para sua rotina, com acesso a escolas, supermercados, farmácias e serviços.\n\nAproximadamente 7 minutos do ParkShopping Canoas e 11 minutos do Centro de Canoas, conforme referências de deslocamento do empreendimento.\n\nCondições facilitadas para conquistar seu apartamento:\nParcelas a partir de R$ 2.000/mês!\n ✔ Possibilidade de financiamento habitacional\n ✔ Possibilidade de utilização do FGTS\n ✔ Consulte condições de enquadramento no Minha Casa Minha Vida \n ✔ Atendimento personalizado para simulação de crédito\n\nCondições sujeitas à análise de crédito, enquadramento nas regras do financiamento, unidade escolhida e disponibilidade. O valor da prestação é uma referência comercial e não representa aprovação de crédito.\n\nPrevisão de entrega:\n  Torre A: junho de 2028\n  Torre B: dezembro de 2028\n  Torre C: junho de 2029\n\nAgende seu atendimento!\n\nSeu novo apartamento pode estar mais perto do que você imagina.\nEntre em contato com a Imoplace, conheça as plantas disponíveis e descubra as condições de financiamento adequadas ao seu perfil.\n\nImoplace Seu próximo imóvel começa aqui!",
+      "seo": {
+        "titulo": "Apartamento com 2 Dormitórios | Sacada e Churrasqueira",
+        "descricao": "Seu apartamento no Nápoles Clube Residencial, em Canoas! 2 dormitórios, sacada com churrasqueira, piscina e lazer completo. Parcelas a partir de R$ 2.000/mês."
+      },
+      "localizacao": {
+        "bairro": "Estancia velha",
+        "cidade": "Canoas",
+        "uf": "RS",
+        "endereco": "Avenida Santos Ferreira, 4200 - Bairro Estância Velha, Canoas-RS",
+        "lat": null,
+        "lng": null
+      },
+      "preco": 2000.0,
+      "condominio": null,
+      "iptuAnual": null,
+      "financiamento": true,
+      "permuta": false,
+      "documentacaoEmDia": true,
+      "dormitorios": 2.0,
+      "suites": null,
+      "banheiros": 1.0,
+      "vagas": 1.0,
+      "areaTotal": 47.3,
+      "areaUtil": 47.3,
+      "comodidades": [
+        "Piscina",
+        "Churrasqueira",
+        "Academia",
+        "Elevador",
+        "Aceita pets",
+        "Segurança 24h",
+        "Salão de festas",
+        "Playground"
+      ],
+      "caracteristicasImovel": [
+        "Sacada com churrasqueira",
+        "vaga de garagem exclusiva"
+      ],
+      "caracteristicasCondominio": [
+        "02 elevadores por torre",
+        "Piscina",
+        "Academia",
+        "Salão de festas",
+        "Quiosques com churrasqueira",
+        "Quadra de esportes",
+        "Playground e espaço Kids",
+        "Espaço Coworking",
+        "Pet Place",
+        "Mini Mercado",
+        "Lounge externo"
+      ],
+      "anunciante": {
+        "nome": "Roberto",
+        "creci": "83599F",
+        "whatsapp": "5551998111078"
+      },
+      "feeds": {
+        "google": false,
+        "meta": false,
+        "disponibilidade": "in_stock"
+      },
+      "imagens": [
+        {
+          "arquivo": "imoveis/avenida-santos-ferreira-4200-bairro-estancia-velha-canoas-rs-1005/imagens/superior-convertido-if7b56b1455.v1.webp",
+          "legenda": "Napoles Clube residencial",
+          "alt": "infra completa"
+        },
+        {
+          "arquivo": "imoveis/avenida-santos-ferreira-4200-bairro-estancia-velha-canoas-rs-1005/imagens/academia-convertido-i7d481e1c49.v1.webp",
+          "legenda": "Academia",
+          "alt": "Fitness"
+        },
+        {
+          "arquivo": "imoveis/avenida-santos-ferreira-4200-bairro-estancia-velha-canoas-rs-1005/imagens/coworking-convertido-i964704c3e3.v1.webp",
+          "legenda": "Espaço Coworking",
+          "alt": "Trabalhar de casa com escritório"
+        },
+        {
+          "arquivo": "imoveis/avenida-santos-ferreira-4200-bairro-estancia-velha-canoas-rs-1005/imagens/fachada1-convertido-i9120490ce4.v1.webp",
+          "legenda": "Av Santos Ferreira",
+          "alt": "Napoles - Apartamento com 2 Dormitórios, Sacada e Churrasqueira em Canoas | Parcelas a partir de R$ 2.000/mês — foto 4"
+        },
+        {
+          "arquivo": "imoveis/avenida-santos-ferreira-4200-bairro-estancia-velha-canoas-rs-1005/imagens/fachada-convertido-i6f21449381.v1.webp",
+          "legenda": "Na fachada Lojas",
+          "alt": "comodidade"
+        },
+        {
+          "arquivo": "imoveis/avenida-santos-ferreira-4200-bairro-estancia-velha-canoas-rs-1005/imagens/garagem-convertido-i92c41eb62e.v1.webp",
+          "legenda": "Edificio Garagem - Opção vaga coberta.",
+          "alt": "garagem coberta e descoberta individual"
+        },
+        {
+          "arquivo": "imoveis/avenida-santos-ferreira-4200-bairro-estancia-velha-canoas-rs-1005/imagens/hall-convertido-ib3792a2f25.v1.webp",
+          "legenda": "Hall",
+          "alt": "hall de acesso"
+        },
+        {
+          "arquivo": "imoveis/avenida-santos-ferreira-4200-bairro-estancia-velha-canoas-rs-1005/imagens/implantacao-convertido-ibe0bed93e0.v1.webp",
+          "legenda": "Implantação",
+          "alt": "PDI"
+        },
+        {
+          "arquivo": "imoveis/avenida-santos-ferreira-4200-bairro-estancia-velha-canoas-rs-1005/imagens/kids-convertido-ia9c21b583b.v1.webp",
+          "legenda": "Brinquedoteca",
+          "alt": "play kids"
+        },
+        {
+          "arquivo": "imoveis/avenida-santos-ferreira-4200-bairro-estancia-velha-canoas-rs-1005/imagens/lounge-convertido-ifa1911c4d9.v1.webp",
+          "legenda": "Lounge externo",
+          "alt": "cadeiras"
+        },
+        {
+          "arquivo": "imoveis/avenida-santos-ferreira-4200-bairro-estancia-velha-canoas-rs-1005/imagens/market-convertido-iafba44692f.v1.webp",
+          "legenda": "Mini mercado",
+          "alt": "mercadinho interno"
+        },
+        {
+          "arquivo": "imoveis/avenida-santos-ferreira-4200-bairro-estancia-velha-canoas-rs-1005/imagens/pet-convertido-ie5b6c35a0e.v1.webp",
+          "legenda": "Espaço Pet",
+          "alt": "Permite animais"
+        },
+        {
+          "arquivo": "imoveis/avenida-santos-ferreira-4200-bairro-estancia-velha-canoas-rs-1005/imagens/piscina-convertido-id32a2771d5.v1.webp",
+          "legenda": "Piscina",
+          "alt": "Piscina adulto e infantil"
+        },
+        {
+          "arquivo": "imoveis/avenida-santos-ferreira-4200-bairro-estancia-velha-canoas-rs-1005/imagens/play-convertido-i55b43e3156.v1.webp",
+          "legenda": "Playground",
+          "alt": "Parquinho"
+        },
+        {
+          "arquivo": "imoveis/avenida-santos-ferreira-4200-bairro-estancia-velha-canoas-rs-1005/imagens/quaddra-convertido-i2fff51fe27.v1.webp",
+          "legenda": "Quadra de esportes",
+          "alt": "Quadra poliesportiva"
+        },
+        {
+          "arquivo": "imoveis/avenida-santos-ferreira-4200-bairro-estancia-velha-canoas-rs-1005/imagens/quiosque-convertido-ie52d19b9f7.v1.webp",
+          "legenda": "Quiosque com churrasqueira",
+          "alt": "Churrasqueira com quiosque"
+        },
+        {
+          "arquivo": "imoveis/avenida-santos-ferreira-4200-bairro-estancia-velha-canoas-rs-1005/imagens/salaofestas-convertido-i039134ce30.v1.webp",
+          "legenda": "Salão de festas",
+          "alt": "Party"
+        },
+        {
+          "arquivo": "imoveis/avenida-santos-ferreira-4200-bairro-estancia-velha-canoas-rs-1005/imagens/napoles-planta-43-m-convertido-i9e56c2847d.v1.webp",
+          "legenda": "Unidade 43m²",
+          "alt": "2 dormitórios | 43m²"
+        },
+        {
+          "arquivo": "imoveis/avenida-santos-ferreira-4200-bairro-estancia-velha-canoas-rs-1005/imagens/napoles-planta-47-m-convertido-i36972e44e9.v1.webp",
+          "legenda": "Unidade 47m²",
+          "alt": "2 dormitórios | 47m²"
         }
       ]
     },
