@@ -1,9 +1,137 @@
 {
   "schemaVersao": 2,
   "contrato": "imoplace-v1",
-  "geradoEm": "2026-11-13T12:45:57.800644+00:00",
-  "total": 2,
+  "geradoEm": "2026-11-13T14:01:23.774960+00:00",
+  "total": 3,
   "imoveis": [
+    {
+      "id": "1004",
+      "codigo": "novo-imovel-1004",
+      "categoria": "venda",
+      "status": "publicado",
+      "url": "https://imoplace.com.br/imoveis/novo-imovel-1004/",
+      "destaque": true,
+      "tag": "DESTAQUE",
+      "ordem": 0,
+      "atualizadoEm": "2026-11-13T14:00:48.955Z",
+      "tipo": "Casa",
+      "condicao": "Usado",
+      "titulo": "CASA 4 DORMITÓRIOS COM SUÍTE E TERRENO DE 360m²",
+      "descricao": "Imoplace vende: Excelente oportunidade para quem procura espaço, estrutura sólida e potencial de ampliação.\nㅤ\nCasa de alvenaria com laje, aproximadamente 130m² de área construída, em terreno de 12x30 metros (360m²).\nㅤ\nO imóvel possui:\n• 4 dormitórios, sendo 1 suíte  (uma das suítes está inacabada no 2º piso.)\n• Banheiro social\n• Área gourmet com churrasqueira\n• Lavabo na área gourmet\n• Lavanderia\n• Garagem coberta até 2 veículos cobertos + 2 veículos descobertos\n• Caixa d'água\n• Rede elétrica revisada 220v e 110v\n• Ar-condicionado\n• Laje com sótão\n• Cercamento completo de PVC\nㅤ\nDiferencial importante:\n• Estrutura já preparada para construção de segundo piso.\nㅤ\nCondições de negociação:\n• Não aceita financiamento\n• Estuda proposta.\n• Aceita veículo como parte do pagamento mediante avaliação.\n• Não possui matrícula individualizada.\n\nAgende visita e aproveite esta oportunidade!",
+      "seo": {
+        "titulo": "CASA 3 DORMITÓRIOS COM SUÍTE E TERRENO DE 360m²",
+        "descricao": "Casa de alvenaria com 130m², 4 dormitórios, suíte, terreno de 360m², espaço gourmet, garagem e estrutura para segundo piso. oportunidade! Conheça na Imoplace!"
+      },
+      "localizacao": {
+        "bairro": "Mathias Velho",
+        "cidade": "Canoas",
+        "uf": "RS",
+        "endereco": "Rua roseli, 71, Canoas-RS",
+        "lat": null,
+        "lng": null
+      },
+      "preco": 186000.0,
+      "condominio": null,
+      "iptuAnual": null,
+      "financiamento": false,
+      "permuta": false,
+      "documentacaoEmDia": false,
+      "dormitorios": 4.0,
+      "suites": 2.0,
+      "banheiros": 3.0,
+      "vagas": 4.0,
+      "areaTotal": 360.0,
+      "areaUtil": 130.0,
+      "comodidades": [
+        "Aceita pets",
+        "Quintal"
+      ],
+      "caracteristicasImovel": [
+        "4 dormitórios | destes sendo 2 suítes",
+        "Área gourmet com churrasqueira",
+        "Lavanderia",
+        "Lavabo na área gourmet",
+        "Garagem coberta até 2 veículos + 2 veículos descoberto",
+        "Caixa d'água",
+        "Rede elétrica revisada 220v e 110v",
+        "Ar-condicionado",
+        "Laje com sótão",
+        "Cercamento completo de PVC"
+      ],
+      "caracteristicasCondominio": [],
+      "anunciante": {
+        "nome": "Roberto",
+        "creci": "83599-F",
+        "whatsapp": "5551998111078"
+      },
+      "feeds": {
+        "google": false,
+        "meta": false,
+        "disponibilidade": "in_stock"
+      },
+      "imagens": [
+        {
+          "arquivo": "imoveis/novo-imovel-1004/imagens/901435154-1520538423192551-7402252461557-id53f1f08f2.v1.webp",
+          "legenda": "Garagem 2 veículos cobertos",
+          "alt": "CASA 4 DORMITÓRIOS COM SUÍTE E TERRENO DE 360m² — foto 1"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1004/imagens/715453927-1431034225729168-9695433859657-i6017f5f6d5.v1.webp",
+          "legenda": "Suíte",
+          "alt": "CASA 4 DORMITÓRIOS COM SUÍTE E TERRENO DE 360m² — foto 2"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1004/imagens/715485490-1023421143416488-3043183097789-i09d7452c30.v1.webp",
+          "legenda": "Cozinha",
+          "alt": "CASA 4 DORMITÓRIOS COM SUÍTE E TERRENO DE 360m² — foto 3"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1004/imagens/715493826-1518279586400257-1459310769563-iad2617a340.v1.webp",
+          "legenda": "Foto 4",
+          "alt": "CASA 4 DORMITÓRIOS COM SUÍTE E TERRENO DE 360m² — foto 4"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1004/imagens/715449766-982539154646185-36808616624653-iaf78cc6d46.v1.webp",
+          "legenda": "Foto 5",
+          "alt": "CASA 4 DORMITÓRIOS COM SUÍTE E TERRENO DE 360m² — foto 5"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1004/imagens/715453923-1685171449479808-2348459882045-i962120b674.v1.webp",
+          "legenda": "Lavabo",
+          "alt": "CASA 4 DORMITÓRIOS COM SUÍTE E TERRENO DE 360m² — foto 6"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1004/imagens/715453992-2400431347110851-7860741126962-i432ab131ae.v1.webp",
+          "legenda": "Dormitório 3",
+          "alt": "CASA 4 DORMITÓRIOS COM SUÍTE E TERRENO DE 360m² — foto 7"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1004/imagens/716776188-1319442683630017-5465187643419-ib31c9ed3ce.v1.webp",
+          "legenda": "Lavanderia",
+          "alt": "CASA 4 DORMITÓRIOS COM SUÍTE E TERRENO DE 360m² — foto 8"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1004/imagens/715570056-2148242869286382-8566026810133-i1f6fba5584.v1.webp",
+          "legenda": "Suíte",
+          "alt": "CASA 4 DORMITÓRIOS COM SUÍTE E TERRENO DE 360m² — foto 9"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1004/imagens/716590038-1030575956147722-3069796443589-idb4b5af5c8.v1.webp",
+          "legenda": "Foto 10",
+          "alt": "CASA 4 DORMITÓRIOS COM SUÍTE E TERRENO DE 360m² — foto 10"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1004/imagens/891325863-1420300726846893-7821150709285-i61221880ea.v1.webp",
+          "legenda": "Fachada",
+          "alt": "CASA 4 DORMITÓRIOS COM SUÍTE E TERRENO DE 360m² — foto 11"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1004/imagens/897646634-1740785047024059-4849810265283-ib4cc98ba19.v1.webp",
+          "legenda": "Sala",
+          "alt": "CASA 4 DORMITÓRIOS COM SUÍTE E TERRENO DE 360m² — foto 12"
+        }
+      ]
+    },
     {
       "id": "1003",
       "codigo": "ora-lottici-1003",
