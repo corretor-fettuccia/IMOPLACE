@@ -73,6 +73,16 @@ class Base(unittest.TestCase):
         self.tmp = Path(tempfile.mkdtemp())
         self.site = self.tmp / 'site'
         shutil.copytree(RAIZ / 'site', self.site)
+        # Os testes devem herdar apenas a estrutura estática (HTML/CSS/JS),
+        # jamais imóveis, fotos, catálogo ou feeds reais do repositório.
+        shutil.rmtree(self.site / 'imoveis', ignore_errors=True)
+        (self.site / 'imoveis').mkdir()
+        for gerado in ('sitemap.xml', 'merchant-produtos.xml', 'meta-produtos.xml'):
+            (self.site / gerado).unlink(missing_ok=True)
+        (self.site / 'catalogo.json').write_text(
+            json.dumps({'schemaVersao': 2, 'contrato': 'imoplace-v1', 'total': 0, 'imoveis': []}),
+            encoding='utf-8',
+        )
         self.drive = self.tmp / 'drive'
         self.drive.mkdir()
         os.environ['DRIVE_FIXTURE'] = str(self.drive)
@@ -104,6 +114,14 @@ class TestContrato(unittest.TestCase):
 
 
 class TestPublicacao(Base):
+    def test_ambiente_isolado_do_site_publicado(self):
+        # O site real pode conter qualquer número de imóveis; os testes começam vazios.
+        self.assertEqual(self.catalogo()['imoveis'], [])
+        self.assertEqual(self.catalogo()['total'], 0)
+        self.assertEqual(list((self.site / 'imoveis').iterdir()), [])
+        for gerado in ('sitemap.xml', 'merchant-produtos.xml', 'meta-produtos.xml'):
+            self.assertFalse((self.site / gerado).exists(), gerado)
+
     def test_ponta_a_ponta_incremental(self):
         sala, cozinha = webp('sala-v1'), webp('cozinha-v1')
         p_sala = img_pend('i000000000a', 'sala', 1, sala, 1)
