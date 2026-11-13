@@ -1,7 +1,7 @@
 {
   "schemaVersao": 2,
   "contrato": "imoplace-v1",
-  "geradoEm": "2026-11-13T01:06:44.588585+00:00",
+  "geradoEm": "2026-11-13T01:31:27.690258+00:00",
   "total": 1,
   "imoveis": [
     {
@@ -13,7 +13,7 @@
       "destaque": false,
       "tag": "",
       "ordem": 0,
-      "atualizadoEm": "2026-11-13T00:48:44.444Z",
+      "atualizadoEm": "2026-11-13T01:18:56.893Z",
       "tipo": "Apartamento",
       "condicao": "Usado",
       "titulo": "MY HOUSE - OLARIA 2 DORMITÓRIOS",
@@ -35,25 +35,25 @@
       "iptuAnual": 35.0,
       "financiamento": true,
       "permuta": false,
-      "documentacaoEmDia": false,
+      "documentacaoEmDia": true,
       "dormitorios": 2.0,
       "suites": null,
       "banheiros": 1.0,
       "vagas": 1.0,
       "areaTotal": 54.0,
-      "areaUtil": null,
-      "comodidades": [
-        "Churrasqueira",
-        "Elevador",
+      "areaUtil": 54.0,
+      "comodidades": [],
+      "caracteristicasImovel": [
+        "Sacada com churrasqueira",
+        "Vaga de garagem"
+      ],
+      "caracteristicasCondominio": [
+        "portaria 24hs",
+        "Acesso por Tag",
         "Salão de festas",
+        "Elevador",
         "Playground"
       ],
-      "caracteristicasImovel": [
-        "Sacada",
-        "portaria 24hs",
-        "Acesso por Tag"
-      ],
-      "caracteristicasCondominio": [],
       "anunciante": {
         "nome": "Roberto",
         "creci": "83599-F",
