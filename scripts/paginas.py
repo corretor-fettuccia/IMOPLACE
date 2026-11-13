@@ -56,6 +56,13 @@ def detalhe(item):
         nota = 'Contato não informado para este anúncio.'
     creci = f'<span class="where">CRECI {h(anunc["creci"])}</span>' if anunc.get('creci') else ''
     endereco = (item.get('localizacao') or {}).get('endereco') or local(item)
+    consulta_mapa = str(endereco or '').strip()
+    mapa = (
+        '<div class="map"><iframe title="Mapa da localização do imóvel" '
+        'src="https://www.google.com/maps?q=' + h(quote(consulta_mapa + ', Brasil', safe='')) + '&amp;output=embed" '
+        'loading="lazy" referrerpolicy="no-referrer-when-downgrade" '
+        'allowfullscreen></iframe></div>'
+    ) if consulta_mapa else ''
     m2preco = ''
     if isinstance(item.get('preco'), (int, float)) and item.get('areaTotal'):
         m2preco = f'<dt>Preço por m²</dt><dd>{brl(item["preco"] / item["areaTotal"])}</dd>'
@@ -67,7 +74,7 @@ def detalhe(item):
 <div class="box"><h3>Sobre o imóvel</h3><p style="white-space:pre-line">{h(item.get('descricao') or 'Descrição não cadastrada.')}</p></div>
 <div class="box"><h3>Características</h3><div class="cols"><div><h4>No imóvel</h4><ul class="feat">{lista(item.get('caracteristicasImovel'))}</ul></div><div><h4>No condomínio</h4><ul class="feat">{lista(item.get('caracteristicasCondominio'))}</ul></div></div></div>
 <div class="box"><h3>Valores</h3><dl class="vals"><dt>Preço</dt><dd>{brl(item.get('preco'))}</dd>{m2preco}<dt>Condomínio</dt><dd>{brl(item.get('condominio'))}</dd><dt>IPTU anual</dt><dd>{brl(item.get('iptuAnual'))}</dd></dl></div>
-<div class="box"><h3>Localização</h3><div class="map" aria-hidden="true"><i></i></div><div class="where">{h(endereco)}</div></div></div>
+<div class="box"><h3>Localização</h3>{mapa}<div class="where">{h(endereco)}</div></div></div>
 <aside class="aside box"><div class="adv"><div class="av">I</div><div><b>{h(anunc.get('nome') or 'Imoplace')}</b>{creci}</div></div><p class="small-note">{h(nota)}</p>{contato}<div class="ref">Código do imóvel: {h(item['id'])}</div></aside></div>'''
 
 
