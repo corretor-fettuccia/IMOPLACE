@@ -1,7 +1,7 @@
 {
   "schemaVersao": 2,
   "contrato": "imoplace-v1",
-  "geradoEm": "2026-11-13T14:50:04.191067+00:00",
+  "geradoEm": "2026-11-13T14:52:55.814875+00:00",
   "total": 4,
   "imoveis": [
     {
@@ -141,7 +141,7 @@
       "destaque": false,
       "tag": "a partir 2mil/mês",
       "ordem": 0,
-      "atualizadoEm": "2026-11-13T14:49:47.195Z",
+      "atualizadoEm": "2026-11-13T14:51:11.078Z",
       "tipo": "Apartamento",
       "condicao": "Na planta",
       "titulo": "Napoles - Apartamento com 2 Dormitórios, Sacada e Churrasqueira em Canoas | Parcelas a partir de R$ 2.000/mês",
@@ -314,7 +314,7 @@
       "destaque": false,
       "tag": "NA PLANTA 100% FINANCIADO",
       "ordem": 0,
-      "atualizadoEm": "2026-11-13T12:45:36.456Z",
+      "atualizadoEm": "2026-11-13T14:52:38.910Z",
       "tipo": "Apartamento",
       "condicao": "Na planta",
       "titulo": "ORA Lottici - 2 e 3 Dormitórios",
@@ -331,7 +331,7 @@
         "lat": null,
         "lng": null
       },
-      "preco": 1890.0,
+      "preco": 270000.0,
       "condominio": null,
       "iptuAnual": null,
       "financiamento": true,
