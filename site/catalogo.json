@@ -1,8 +1,8 @@
 {
   "schemaVersao": 2,
   "contrato": "imoplace-v1",
-  "geradoEm": "2026-11-13T17:11:13.582410+00:00",
-  "total": 5,
+  "geradoEm": "2026-11-13T18:03:51.165715+00:00",
+  "total": 6,
   "imoveis": [
     {
       "id": "1004",
@@ -129,6 +129,156 @@
           "arquivo": "imoveis/novo-imovel-1004/imagens/897646634-1740785047024059-4849810265283-ib4cc98ba19.v1.webp",
           "legenda": "Sala",
           "alt": "CASA 4 DORMITÓRIOS COM SUÍTE E TERRENO DE 360m² — foto 12"
+        }
+      ]
+    },
+    {
+      "id": "1007",
+      "codigo": "novo-imovel-1007",
+      "categoria": "venda",
+      "status": "publicado",
+      "url": "https://imoplace.com.br/imoveis/novo-imovel-1007/",
+      "destaque": false,
+      "tag": "",
+      "ordem": 0,
+      "atualizadoEm": "2026-11-13T18:03:28.318Z",
+      "tipo": "Apartamento",
+      "condicao": "Novo",
+      "titulo": "Varandas Trend Living",
+      "descricao": "More com conforto e sofisticação em Canoas por parcelas a partir de R$ 3.900/mês!\n\nImoplace Vende | Apartamentos de 2 e 3 dormitórios no Varandas Trend Living, no bairro Nossa Senhora das Graças, em Canoas.\nSeu novo apartamento com suíte, churrasqueira e lazer completo, com parcelas a partir de R$ 3.900/mês!\n\nConheça um empreendimento que combina localização privilegiada, plantas inteligentes e infraestrutura diferenciada para quem deseja elevar seu padrão de moradia.\n\nDiferenciais dos apartamentos:\n- 2 e 3 dormitórios com suíte\n- Plantas de 55,70 m² a 78,14 m²\n- Sacada com churrasqueira, conforme a planta\n- Opções com living estendido\n- Vagas de garagem simples ou duplas\n- Opções de apartamentos Garden\n\nInfraestrutura completa para sua família:\n✔ Piscina com vista panorâmica no rooftop\n✔ Spa e academia\n✔ Espaços gourmet e Wine Garden\n✔ Salão de festas e coworking\n✔ Cinema, brinquedoteca e playground\n✔ Pet Place e mini market\n✔ Portaria 24 horas\n\nCondições especiais de aquisição:\n- Parcelas a partir de R$ 3.900/mês\n- Possibilidade de financiamento de até 90% SBPE\n- Entrada facilitada, conforme condições comerciais\n- Previsão de entrega: dezembro de 2026\n\nLocalização: Rua Monte Castelo, 235 - Nossa Senhora das Graças, Canoas/RS.\nPróximo à BR-116, ParkShopping Canoas, supermercados, escolas e universidades.\nAgende sua visita e conheça o apartamento decorado!\n\nDescubra como morar no Varandas Trend Living com uma proposta de financiamento personalizada.\nImoplace | Seu próximo imóvel começa aqui.\n\nValores de parcelas sujeitos à unidade escolhida, condições comerciais, entrada, prazo e aprovação de crédito. Consulte a disponibilidade.\n\n<a href=\"https://varandas-canoas.com.br\" target=\"_blank\" rel=\"noopener noreferrer\"> Conheça o Varandas Trend Living</a>",
+      "seo": {
+        "titulo": "Varandas Trend Living Canoas |a partir de R$ 3.900/mês",
+        "descricao": "Varandas Trend Living em Canoas: apartamentos de 2 e 3 dormitórios e suíte, sacada, churrasqueira, lazer no rooftop + piscina mensais a partir de R$ 3.900/mês."
+      },
+      "localizacao": {
+        "bairro": "Nossa Senhora das Graças",
+        "cidade": "Canoas",
+        "uf": "RS",
+        "endereco": "Rua Monte Castelo, 235 - Nossa Senhora das Graças, Canoas/RS.",
+        "lat": null,
+        "lng": null
+      },
+      "preco": 503000.0,
+      "condominio": 1000.0,
+      "iptuAnual": null,
+      "financiamento": false,
+      "permuta": true,
+      "documentacaoEmDia": true,
+      "dormitorios": 3.0,
+      "suites": 1.0,
+      "banheiros": 2.0,
+      "vagas": 2.0,
+      "areaTotal": 78.14,
+      "areaUtil": 78.14,
+      "comodidades": [
+        "Piscina",
+        "Churrasqueira",
+        "Academia",
+        "Elevador",
+        "Varanda",
+        "Aceita pets",
+        "Segurança 24h",
+        "Salão de festas",
+        "Playground",
+        "Quintal",
+        "Perto do metrô"
+      ],
+      "caracteristicasImovel": [
+        "Espera água quente",
+        "Gás Encanado",
+        "Rebaixo em Gesso todo apartamento",
+        "Sacada com churrasqueira",
+        "Suíte",
+        "2 e 3 dormitórios",
+        "Vista Leste/Norte",
+        "Living estendido (unidades exceto 55m² )",
+        "Opções de Garden + Espera para piscina"
+      ],
+      "caracteristicasCondominio": [
+        "02 elevadores por torre",
+        "Piscina no rooftop",
+        "Garagem com espera para ponto eletrico",
+        "Spa",
+        "Área gourmet com Parrila e forno de pizza",
+        "Wine place",
+        "Fire place",
+        "Academia",
+        "Playground",
+        "Brinquedoteca",
+        "Sala de Jogos",
+        "Salão de festas",
+        "Pet Place",
+        "Hall de entrada",
+        "Coworking",
+        "Portaria 24hs",
+        "Portão eletrônico",
+        "Biometria facial"
+      ],
+      "anunciante": {
+        "nome": "Roberto",
+        "creci": "83599F",
+        "whatsapp": "5551998111078"
+      },
+      "feeds": {
+        "google": false,
+        "meta": false,
+        "disponibilidade": "in_stock"
+      },
+      "imagens": [
+        {
+          "arquivo": "imoveis/novo-imovel-1007/imagens/decorado-7-i2af8461fa8.v1.webp",
+          "legenda": "Foto 1",
+          "alt": "Varandas Trend Living — foto 1"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1007/imagens/decorado-9-i1d0ce0483f.v1.webp",
+          "legenda": "Foto 2",
+          "alt": "Varandas Trend Living — foto 2"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1007/imagens/decorado-11-ic2f376aefb.v1.webp",
+          "legenda": "Foto 3",
+          "alt": "Varandas Trend Living — foto 3"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1007/imagens/decorado-13-i4ff3102172.v1.webp",
+          "legenda": "Foto 4",
+          "alt": "Varandas Trend Living — foto 4"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1007/imagens/decorado-18-ia8fba9eff8.v1.webp",
+          "legenda": "Foto 5",
+          "alt": "Varandas Trend Living — foto 5"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1007/imagens/decorado-20-i0ec3605042.v1.webp",
+          "legenda": "Foto 6",
+          "alt": "Varandas Trend Living — foto 6"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1007/imagens/decorado-24-i8a0850da07.v1.webp",
+          "legenda": "Foto 7",
+          "alt": "Varandas Trend Living — foto 7"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1007/imagens/decorado-22-i8496743e6b.v1.webp",
+          "legenda": "Foto 8",
+          "alt": "Varandas Trend Living — foto 8"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1007/imagens/decorado-29-i37ff8ebc0c.v1.webp",
+          "legenda": "Foto 9",
+          "alt": "Varandas Trend Living — foto 9"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1007/imagens/decorado-31-ib14e15247f.v1.webp",
+          "legenda": "Foto 10",
+          "alt": "Varandas Trend Living — foto 10"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1007/imagens/decorado-34-iefcfebe885.v1.webp",
+          "legenda": "Foto 11",
+          "alt": "Varandas Trend Living — foto 11"
         }
       ]
     },
