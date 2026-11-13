@@ -26,6 +26,8 @@ function detailsHTML(item) {
   ];
   const whats=String(item.anunciante?.whatsapp||'').replace(/\D/g,'');
   const ref=esc(item.id||item.codigo);
+  const enderecoPublico=String(item.localizacao?.endereco||local(item)||'').trim();
+  const mapa=enderecoPublico?'<div class="map"><iframe title="Mapa da localização do imóvel" src="https://www.google.com/maps?q='+encodeURIComponent(enderecoPublico+', Brasil')+'&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>':'';
   return `<a class="back" href="${esc(SITE_ROOT)}index.html#imoveis">← Voltar aos resultados</a>
   ${galleryHTML(item,selectedIndex)}
   <div class="dhead"><div><h1 class="dt">${esc(item.titulo)}</h1><div class="where">${esc(item.tipo)} · ${esc(local(item))}</div></div>
@@ -37,7 +39,7 @@ function detailsHTML(item) {
      <div><h4>No imóvel</h4><ul class="feat">${list(item.caracteristicasImovel)}</ul></div>
      <div><h4>No condomínio</h4><ul class="feat">${list(item.caracteristicasCondominio)}</ul></div></div></div>
    <div class="box"><h3>Valores</h3><dl class="vals"><dt>Preço</dt><dd>${brl(item.preco)}</dd><dt>Condomínio</dt><dd>${brl(item.condominio)}</dd><dt>IPTU anual</dt><dd>${brl(item.iptuAnual)}</dd></dl></div>
-   <div class="box"><h3>Localização</h3><div class="map" aria-hidden="true"><i></i></div><div class="where">${esc(item.localizacao?.endereco||local(item))}</div></div>
+   <div class="box"><h3>Localização</h3>${mapa}<div class="where">${esc(enderecoPublico)}</div></div>
   </div>
   <aside class="aside box"><div class="adv"><div class="av">I</div><div><b>${esc(item.anunciante?.nome||'Imoplace')}</b>${item.anunciante?.creci?`<span class="where">CRECI ${esc(item.anunciante.creci)}</span>`:''}</div></div>
    <div class="contact-note">${whats?'Solicite mais informações diretamente ao anunciante.':'Contato não informado para este anúncio.'}</div>
