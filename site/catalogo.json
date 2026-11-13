@@ -1,7 +1,7 @@
 {
   "schemaVersao": 2,
   "contrato": "imoplace-v1",
-  "geradoEm": "2026-11-13T01:31:27.690258+00:00",
+  "geradoEm": "2026-11-13T01:45:45.653096+00:00",
   "total": 1,
   "imoveis": [
     {
@@ -13,14 +13,14 @@
       "destaque": false,
       "tag": "",
       "ordem": 0,
-      "atualizadoEm": "2026-11-13T01:18:56.893Z",
+      "atualizadoEm": "2026-11-13T01:45:25.406Z",
       "tipo": "Apartamento",
       "condicao": "Usado",
       "titulo": "MY HOUSE - OLARIA 2 DORMITÓRIOS",
       "descricao": "Imoplace Vende: Busca a praticidade de se mudar imediatamente para um novo lar sem enfrentar o estresse de mobiliar, este apartamento no MyHouse é a escolha ideal para o seu momento de vida.\n\nÁrea privativa 54 m²\n2 dormitórios\n4º andar\nElevador\nSacada com Churrasqueira\nEspera para ar-condicionado na sala\n\nEstrutura do condomínio:\n- Playground para as crianças\n- Salão de festas\n\nCustos mensais:\n- Condomínio: R$ 290\n- IPTU: R$ 35",
       "seo": {
-        "titulo": "MyHouse | 2 dormitórios, sacada, vaga de garagem - Canoas",
-        "descricao": "Elevador e sacada com churrasqueira, vaga de garagem são os pontos do MyHouse, apartamento da Viezzer engenharia, com qualidade de nos seus produtos."
+        "titulo": "Apartamento 2 Dormitórios no Olaria, Canoas | MyHouse",
+        "descricao": "Apartamento MyHouse à venda no bairro Olaria, em Canoas. 54 m², 2 dormitórios, vaga de garagem, sacada com churrasqueira e elevador. Conheça!"
       },
       "localizacao": {
         "bairro": "Olaria",
