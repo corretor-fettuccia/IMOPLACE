@@ -1,7 +1,7 @@
 {
   "schemaVersao": 2,
   "contrato": "imoplace-v1",
-  "geradoEm": "2026-11-13T01:45:45.653096+00:00",
+  "geradoEm": "2026-11-13T01:51:08.320706+00:00",
   "total": 1,
   "imoveis": [
     {
@@ -13,7 +13,7 @@
       "destaque": false,
       "tag": "",
       "ordem": 0,
-      "atualizadoEm": "2026-11-13T01:45:25.406Z",
+      "atualizadoEm": "2026-11-13T01:50:50.878Z",
       "tipo": "Apartamento",
       "condicao": "Usado",
       "titulo": "MY HOUSE - OLARIA 2 DORMITÓRIOS",
@@ -66,28 +66,28 @@
       },
       "imagens": [
         {
+          "arquivo": "imoveis/av-walter-spiess-2000-bairro-olaria-canoas-rs-1001/imagens/whatsapp-image-2026-11-06-at-15-25-04-2-ie2c782e592.v1.webp",
+          "legenda": "dormitório principal",
+          "alt": "MY HOUSE - OLARIA 2 DORMITÓRIOS — foto 1"
+        },
+        {
           "arquivo": "imoveis/av-walter-spiess-2000-bairro-olaria-canoas-rs-1001/imagens/a1c71a4c-dc21-4454-a82c-1948023ada29-ic2f7711e15.v1.webp",
           "legenda": "Fachada do bloco",
-          "alt": "MY HOUSE - OLARIA 2 DORMITÓRIOS — foto 1"
+          "alt": "MY HOUSE - OLARIA 2 DORMITÓRIOS — foto 2"
         },
         {
           "arquivo": "imoveis/av-walter-spiess-2000-bairro-olaria-canoas-rs-1001/imagens/50b8c79f-6307-45ea-878b-97af268b32f1-iab04d45d79.v1.webp",
           "legenda": "Sacada com churrasqueira",
-          "alt": "MY HOUSE - OLARIA 2 DORMITÓRIOS — foto 2"
+          "alt": "MY HOUSE - OLARIA 2 DORMITÓRIOS — foto 3"
         },
         {
           "arquivo": "imoveis/av-walter-spiess-2000-bairro-olaria-canoas-rs-1001/imagens/whatsapp-image-2026-11-06-at-15-25-30-1-iadaf00846d.v1.webp",
           "legenda": "dormitorio2",
-          "alt": "MY HOUSE - OLARIA 2 DORMITÓRIOS — foto 3"
+          "alt": "MY HOUSE - OLARIA 2 DORMITÓRIOS — foto 4"
         },
         {
           "arquivo": "imoveis/av-walter-spiess-2000-bairro-olaria-canoas-rs-1001/imagens/whatsapp-image-2026-11-06-at-15-25-i4f53b637f8.v1.webp",
           "legenda": "banheiro",
-          "alt": "MY HOUSE - OLARIA 2 DORMITÓRIOS — foto 4"
-        },
-        {
-          "arquivo": "imoveis/av-walter-spiess-2000-bairro-olaria-canoas-rs-1001/imagens/whatsapp-image-2026-11-06-at-15-25-04-2-ie2c782e592.v1.webp",
-          "legenda": "dormitório principal",
           "alt": "MY HOUSE - OLARIA 2 DORMITÓRIOS — foto 5"
         },
         {
