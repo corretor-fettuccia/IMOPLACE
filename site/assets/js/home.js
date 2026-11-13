@@ -1,10 +1,10 @@
 /* Lista e filtros sobre catalogo.json. Executa no navegador e funciona com servidor HTTP local. */
 'use strict';
-const form=$('.search'), grid=$('#grid'), resultCount=$('.list-head span'), more=$('.more button');
-const advanced=$('#rf'), toggle=$('#tg'), counter=$('#cnt'), sorter=$('.list-head select');
-const tabs=$$('.tabs button');
-const PAGE_SIZE=6;
-let entries=[], filtered=[], shown=PAGE_SIZE, tab='comprar';
+const form=$('.search'), grid=$('#grid'), resultCount=$('.list-head span');
+const advanced=$('#rf'), toggle=$('#tg'), counter=$('#cnt'), sorter=$('#sort-order');
+const perPage=$('#page-size'), pagination=$('#pagination'), pageButtons=$('#page-buttons'), pageSummary=$('#page-summary');
+const tabs=$('.tabs button');
+let entries=[], filtered=[], page=1, tab='comprar';
 const selected = group => $('.chip[aria-pressed="true"]',group)?.textContent.trim() || null;
 const selectedMany = group => $$('.chip[aria-pressed="true"]',group).map(c=>c.textContent.trim());
 const groupByTitle = title => $$('.grp',advanced).find(g=>clean($('h3',g)?.textContent)===clean(title));
@@ -60,17 +60,45 @@ function order(items) {
   return items;
 }
 function render() {
-  grid.innerHTML=filtered.length ? filtered.slice(0,shown).map(cardHTML).join('') : '<p class="empty-state">Nenhum imóvel corresponde aos filtros. Experimente reduzir os critérios.</p>';
+  const tamanho=Number(perPage.value)||10;
+  const total=filtered.length;
+  const totalPaginas=Math.max(1,Math.ceil(total/tamanho));
+  page=Math.min(Math.max(page,1),totalPaginas);
+  const inicio=(page-1)*tamanho;
+  const fim=Math.min(inicio+tamanho,total);
+  grid.innerHTML=total ? filtered.slice(inicio,fim).map(cardHTML).join('') : '<p class="empty-state">Nenhum imóvel corresponde aos filtros. Experimente reduzir os critérios.</p>';
   bindCards(grid);
-  resultCount.textContent=`${filtered.length} ${filtered.length===1?'encontrado':'encontrados'}`;
-  $('.more').hidden=shown>=filtered.length;
+  resultCount.textContent=`${total} ${total===1?'encontrado':'encontrados'}`;
+  pagination.hidden=!total;
+  if (!total) {pageButtons.innerHTML='';pageSummary.textContent='Nenhum imóvel encontrado';return;}
+  pageSummary.textContent=`Exibindo ${inicio+1} a ${fim} de ${total} imóveis — página ${page} de ${totalPaginas}`;
+  const numeros=new Set([1,totalPaginas,page-1,page,page+1].filter(n=>n>=1&&n<=totalPaginas));
+  const ordenados=[...numeros].sort((a,b)=>a-b);
+  const controles=[`<button type="button" class="btn btn-line" data-page="${page-1}" ${page===1?'disabled':''}>Anterior</button>`];
+  let ultimo=0;
+  for (const numero of ordenados) {
+    if (numero-ultimo>1) controles.push('<span class="page-ellipsis" aria-hidden="true">…</span>');
+    controles.push(`<button type="button" class="btn btn-line page-number" data-page="${numero}" ${numero===page?'aria-current="page"':''} aria-label="Página ${numero}">${numero}</button>`);
+    ultimo=numero;
+  }
+  controles.push(`<button type="button" class="btn btn-line" data-page="${page+1}" ${page===totalPaginas?'disabled':''}>Próximo</button>`);
+  pageButtons.innerHTML=controles.join('');
 }
-function apply() {filtered=order(entries.filter(matches));shown=PAGE_SIZE;render();updateCount();}
+function apply() {filtered=order(entries.filter(matches));page=1;render();updateCount();}
 form.addEventListener('submit',e=>{e.preventDefault();apply();$('#imoveis').scrollIntoView({behavior:'smooth',block:'start'});});
 $('#q').addEventListener('input',apply);
 ['t','p','a'].forEach(id=>$('#'+id).addEventListener('change',apply));
 sorter.addEventListener('change',apply);
-more.addEventListener('click',()=>{shown+=PAGE_SIZE;render();});
+perPage.addEventListener('change',()=>{page=1;render();});
+pageButtons.addEventListener('click',e=>{
+  const button=e.target.closest('button[data-page]');
+  if (!button || button.disabled)return;
+  const destino=Number(button.dataset.page);
+  if (!Number.isInteger(destino)||destino<1||destino>Math.ceil(filtered.length/(Number(perPage.value)||10)))return;
+  page=destino;
+  render();
+  $('#imoveis').scrollIntoView({behavior:'smooth',block:'start'});
+});
 toggle.addEventListener('click',()=>{const on=advanced.classList.toggle('open');toggle.setAttribute('aria-expanded',String(on));});
 advanced.addEventListener('click',e=>{
   const chip=e.target.closest('.chip');if(!chip) return;
@@ -90,5 +118,5 @@ getCatalog().then(items=>{entries=items;apply();}).catch(error=>{
   console.error('Falha no catálogo',error);
   grid.innerHTML='<p class="empty-state">Não foi possível carregar o catálogo. Abra o projeto pelo servidor HTTP local, não diretamente pelo arquivo.</p>';
   resultCount.textContent='Catálogo indisponível';
-  $('.more').hidden=true;
+  pagination.hidden=true;
 });
