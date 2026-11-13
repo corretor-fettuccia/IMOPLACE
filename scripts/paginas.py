@@ -92,6 +92,7 @@ def pagina(item, conf):
 <html lang="pt-BR" data-root="{RAIZ_REL}" data-codigo="{h(item['codigo'])}">
 <head>
 <meta charset="utf-8">
+<link rel="icon" type="image/png" href="{RAIZ_REL}icon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>{h(titulo)}</title>
 <meta name="description" content="{h(descricao)}">
