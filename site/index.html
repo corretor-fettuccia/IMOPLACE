@@ -62,10 +62,22 @@
 
   <div class="list-head" id="imoveis">
     <div><h2>Imóveis em destaque</h2><span>Carregando...</span></div>
-    <select aria-label="Ordenar"><option>Mais relevantes</option><option>Menor preço</option><option>Maior preço</option><option>Mais recentes</option></select>
+    <div class="list-controls">
+      <label for="page-size">Exibir</label>
+      <select id="page-size" aria-label="Imóveis por página">
+        <option value="10" selected>10 imóveis</option>
+        <option value="20">20 imóveis</option>
+        <option value="50">50 imóveis</option>
+        <option value="100">100 imóveis</option>
+      </select>
+      <select id="sort-order" aria-label="Ordenar"><option>Mais relevantes</option><option>Menor preço</option><option>Maior preço</option><option>Mais recentes</option></select>
+    </div>
   </div>
   <div class="grid" id="grid"></div>
-  <div class="more"><button class="btn btn-line">Ver mais imóveis</button></div>
+  <nav class="pagination" id="pagination" aria-label="Paginação de imóveis" hidden>
+    <div class="pagination-pages" id="page-buttons"></div>
+    <p class="pagination-summary" id="page-summary" aria-live="polite"></p>
+  </nav>
 
   <section class="sell" id="anuncie">
     <div><h2>Tem um imóvel para vender?</h2><p>Cadastre em minutos e receba contatos de interessados.</p></div>
