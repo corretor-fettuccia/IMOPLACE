@@ -12,16 +12,13 @@
 <style>
   /* ============ TOKENS — cores da marca ============ */
   :root{
+    color-scheme:light;
     --bg:#f4f7fb; --card:#fff; --ink:#0f1d2e; --muted:#5b6b80; --line:#dde4ee; --soft:#f4f7fb;
     --brand:#0a3a7a; --brand-2:#0a3a7a; --brand-3:#e7f0fb; --accent:#ff8a00;
     --err:#c0392b; --err-bg:#fdecea; --ok:#1e8a5a;
     --g:6px;          /* espaço base único: tudo é múltiplo dele */
     --p:12px;         /* respiro interno dos cartões */
     --r:10px; --h:44px;
-  }
-  @media (prefers-color-scheme:dark){
-    :root{ --bg:#0b1522; --card:#112033; --ink:#eaf1fb; --muted:#9fb2cc; --line:#22364f; --soft:#152840;
-           --brand:#0a3a7a; --brand-2:#1d6bc4; --brand-3:#17365d; --err:#ff7b6b; --err-bg:#3a1d1a; }
   }
   @media (min-width:600px){ :root{ --p:14px } }
 
