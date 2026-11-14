@@ -1,8 +1,7 @@
 /* Imoplace – estilos. Cores e fontes em :root (variáveis). */
-:root{--bg:#f4f7fb;--surface:#fff;--ink:#0f1d2e;--muted:#5b6b80;--line:#dde4ee;--brand:#0a3a7a;--accent:#ff8a00;--accent-ink:#2a1200;
+:root{color-scheme:light;--bg:#f4f7fb;--surface:#fff;--ink:#0f1d2e;--muted:#5b6b80;--line:#dde4ee;--brand:#0a3a7a;--accent:#ff8a00;--accent-ink:#2a1200;
 --h:'Bricolage Grotesque',system-ui,sans-serif;--b:'Public Sans',system-ui,sans-serif;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b1522;--surface:#112033;--ink:#eaf1fb;--muted:#9fb2cc;--line:#22364f}}
 :root[data-theme="dark"]{--bg:#0b1522;--surface:#112033;--ink:#eaf1fb;--muted:#9fb2cc;--line:#22364f}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 *{box-sizing:border-box}
@@ -14,7 +13,6 @@ a{color:inherit;text-decoration:none}
 .bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--surface);color:var(--ink);border-bottom:1px solid var(--line)}
 .bar .wrap{display:flex;align-items:center;gap:22px;height:58px}
 .logo img{height:40px;width:auto;display:block}.logo span{color:var(--brand)}
-@media (prefers-color-scheme:dark){.logo span{color:var(--ink)}.logo img{background:#fff;border-radius:8px;padding:2px 4px}}
 .logo{font:800 1.2rem var(--h);letter-spacing:-.02em;display:flex;align-items:center;gap:7px}
 .logo i{width:18px;height:18px;background:var(--accent);clip-path:polygon(50% 0,100% 45%,100% 100%,0 100%,0 45%)}
 .bar nav{display:flex;gap:18px;font-weight:500;flex:1}
