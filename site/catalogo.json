@@ -1,8 +1,8 @@
 {
   "schemaVersao": 2,
   "contrato": "imoplace-v1",
-  "geradoEm": "2026-11-13T18:03:51.165715+00:00",
-  "total": 6,
+  "geradoEm": "2026-11-15T22:14:31.358961+00:00",
+  "total": 7,
   "imoveis": [
     {
       "id": "1004",
@@ -133,6 +133,181 @@
       ]
     },
     {
+      "id": "1008",
+      "codigo": "novo-imovel-1008",
+      "categoria": "venda",
+      "status": "publicado",
+      "url": "https://imoplace.com.br/imoveis/novo-imovel-1008/",
+      "destaque": false,
+      "tag": "",
+      "ordem": 0,
+      "atualizadoEm": "2026-11-15T22:14:09.844Z",
+      "tipo": "Apartamento",
+      "condicao": "Na planta",
+      "titulo": "MRV - Apartamento | Sacada + churrasqueira | Alto Petropolis | POA",
+      "descricao": "Imoplace Vende | MRV - Porto Atacama - Seu novo apartamento na Avenida Protásio Alves, com lazer completo, localização estratégica e opções com sacada e churrasqueira!\n\nConheça o Porto Atacama, um empreendimento da MRV pensado para quem deseja conquistar o primeiro imóvel, sair do aluguel e viver com mais conforto, praticidade e qualidade de vida em Porto Alegre.\n\nLocalizado na Av. Protásio Alves, 7738, no Alto Petrópolis, o empreendimento oferece apartamentos de 2 dormitórios, plantas funcionais e uma infraestrutura de lazer planejada para toda a família.\n\nSeu apartamento, do seu jeito!\n\nEscolha a planta que combina com seu estilo de vida:\n✔ Apartamentos de 2 dormitórios\n✔ Plantas de referência com 39,71 m² e 43,29 m²\n✔ Sala de estar e jantar com ambientes integrados\n✔ Cozinha funcional e área de serviço\n✔ Banheiro social\n✔ Opções com sacada e churrasqueira privativa\n✔ Unidades selecionadas com área externa privativa\n✔ Opções com vaga de estacionamento, conforme disponibilidade\n\nMais praticidade para sua rotina e liberdade para transformar cada ambiente no seu novo lar.\n\n🌴 Lazer completo para aproveitar todos os dias!\n\nNo Porto Atacama, seus momentos de descanso e diversão ganham novos espaços.\n✔ Piscina adulto e infantil\n✔ Salão de festas\n✔ Espaço gourmet com churrasqueira\n✔ Playground para as crianças\n✔ Pet Place\n✔ Espaço Zen\n✔ Espaço Fogo\n✔ Gazebo\n✔ Praça das Flores\n✔ Espaço Piquenique\n✔ Áreas de convivência ao ar livre\n\nTudo isso dentro de um condomínio com 3 torres residenciais, 2 elevadores por torre e estrutura planejada para facilitar o dia a dia.\n\n 📍 Localização estratégica em Porto Alegre\n\nMorar no Alto Petrópolis é estar conectado a importantes pontos da cidade.\n\nO Porto Atacama está na Avenida Protásio Alves, com acesso facilitado às avenidas Antônio de Carvalho e Ipiranga, além de comércio, supermercados, serviços, universidades e conveniências da região.\n\nReferências de localização:\n📍 Cestto Atacadista – região da Protásio Alves\n📍 Morro Santana – vizinhança\n📍 PUCRS – acesso pela região da Protásio Alves\n📍 UFRGS Campus do Vale – acesso pela Antônio de Carvalho\n📍 Shopping Iguatemi – importante centro de compras da região\n\nUma localização que conecta sua casa ao trabalho, aos estudos e às facilidades do cotidiano.\n Facilidades para conquistar seu apartamento!\n\nSeu novo imóvel pode estar mais próximo do que você imagina.\n✔ Possibilidade de financiamento pelo Minha Casa, Minha Vida\n✔ Financiamento habitacional pela Caixa\n✔ Possibilidade de utilização do FGTS\n✔ Prazo de financiamento de até 420 meses, conforme condições aplicáveis\n✔ Consulte possibilidades de parcelamento da entrada durante a obra\n✔ Atendimento para simulação e composição de renda\n\nDescubra as condições disponíveis para seu perfil e conheça as possibilidades de conquistar seu apartamento MRV!\n 📲 Quero conhecer o Porto Atacama!\n\nFale com nossos consultores e receba informações sobre plantas, unidades disponíveis, condições comerciais e simulação de financiamento.\n\nImoplace | Atendimento imobiliário – CRECI 083599-F\n\nInformações e imagens ilustrativas conforme materiais comerciais do empreendimento. Metragens, vagas, sacadas, características, disponibilidade e condições de financiamento variam conforme a unidade e documentação contratual. Benefícios do Minha Casa, Minha Vida, uso do FGTS e aprovação de crédito dependem do enquadramento e das regras vigentes. Consulte as condições atualizadas.",
+      "seo": {
+        "titulo": "MRV - Apart | Sacada + churrasqueira | Alto Petropolis | POA",
+        "descricao": "Opções com 2 quartos, com sacada e churrasqueira, piscinas e lazer completo. A partir de R$ 1.750/mês Minha Casa Minha Vida, Alto Petrópolis Porto Alegre-RS"
+      },
+      "localizacao": {
+        "bairro": "Petropolis",
+        "cidade": "Porto Alegre",
+        "uf": "RS",
+        "endereco": "Av. Protásio Alves, 7738, no Alto Petrópolis",
+        "lat": null,
+        "lng": null
+      },
+      "preco": 299000.0,
+      "condominio": null,
+      "iptuAnual": null,
+      "financiamento": true,
+      "permuta": false,
+      "documentacaoEmDia": true,
+      "dormitorios": 2.0,
+      "suites": null,
+      "banheiros": 1.0,
+      "vagas": 1.0,
+      "areaTotal": 43.29,
+      "areaUtil": 43.29,
+      "comodidades": [
+        "Piscina",
+        "Churrasqueira",
+        "Varanda",
+        "Aceita pets",
+        "Salão de festas",
+        "Playground"
+      ],
+      "caracteristicasImovel": [
+        "2 dormitórios",
+        "Sala de estar e jantar",
+        "Cozinha integrada à área social",
+        "Área de serviço",
+        "Banheiro social",
+        "Janelas de vidro com duas folhas de correr",
+        "Portas internas de madeira",
+        "Paredes e tetos com pintura lisa",
+        "Pontos elétricos e de iluminação",
+        "Ponto de comunicação na sala e no dormitório principal",
+        "Infraestrutura para ar-condicionado de 9.000 BTU no dormitório principal (sem ap",
+        "Piso cerâmico na cozinha e área de serviço",
+        "Revestimento cerâmico na parede hidráulica até 1.50 m",
+        "Sala e dormitórios entregues sem revestimento de piso",
+        "Sacada privativa (unidades selecionadas)",
+        "Churrasqueira na sacada (unidades selecionadas)",
+        "Piso cerâmico na sacada (unidades selecionadas)",
+        "Guarda-corpo (unidades selecionadas)",
+        "Ponto de iluminação e tomada na sacada (unidades selecionadas)",
+        "Área externa privativa (unidades selecionadas)",
+        "Vaga de estacionamento vinculada à unidade (conforme disponibilidade)."
+      ],
+      "caracteristicasCondominio": [
+        "Piscina adulto",
+        "Piscina infantil",
+        "Salão de festas",
+        "Espaço gourmet com churrasqueira",
+        "Playground",
+        "Pet Place",
+        "Espaço Zen",
+        "Espaço Fogo",
+        "Gazebo",
+        "Praça das Flores",
+        "Espaço Piquenique",
+        "Ducha",
+        "Vestiário",
+        "Áreas de convivência ao ar livre",
+        "Guarita de acesso",
+        "Portões elétricos para veículos e pedestres",
+        "Infraestrutura para comunicação remota",
+        "2 elevadores por torre",
+        "Estacionamento com piso intertravado permeável",
+        "Iluminação LED nas áreas comuns",
+        "Sensores de presença nos halls e circulações",
+        "Dispositivos economizadores de água",
+        "Preparação para medição individualizada de água",
+        "Áreas verdes e paisagismo",
+        "Área administrativa",
+        "Depósito de lixo."
+      ],
+      "anunciante": {
+        "nome": "Roberto",
+        "creci": "83599F",
+        "whatsapp": "5551998111078"
+      },
+      "feeds": {
+        "google": false,
+        "meta": false,
+        "disponibilidade": "in_stock"
+      },
+      "imagens": [
+        {
+          "arquivo": "imoveis/novo-imovel-1008/imagens/apto-vista-sacadacomchurrasqueira-mrv-po-i12293c95bd.v1.webp",
+          "legenda": "Sacada com churrasqueira",
+          "alt": "MRV - Apartamento | Sacada + churrasqueira | Alto Petropolis | POA — foto 1"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1008/imagens/infra-vistatorres-mrv-portoatacama-poa-ic02f2c748b.v1.webp",
+          "legenda": "Vista Torres",
+          "alt": "Vista Torres"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1008/imagens/infra-quiosque-churrasqueira-mrv-portoat-i2ed7d6aa4e.v1.webp",
+          "legenda": "Área Gourmet",
+          "alt": "Quiosque com churrasqueira"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1008/imagens/infra-playground-mrv-portoatacama-poa-i9fb3606150.v1.webp",
+          "legenda": "Playground",
+          "alt": "MRV - Apartamento | Sacada + churrasqueira | Alto Petropolis | POA — foto 4"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1008/imagens/infra-piscina-mrv-portoatacama-poa-i193b5ec286.v1.webp",
+          "legenda": "Piscina adulto e infantil",
+          "alt": "MRV - Apartamento | Sacada + churrasqueira | Alto Petropolis | POA — foto 5"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1008/imagens/infra-piquiniquee-mrv-portoatacama-poa-idd4408e892.v1.webp",
+          "legenda": "Espaço pique nique",
+          "alt": "MRV - Apartamento | Sacada + churrasqueira | Alto Petropolis | POA — foto 6"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1008/imagens/infra-pet-place-mrv-portoatacama-poa-i2fa1cf3e93.v1.webp",
+          "legenda": "Espaço Pet",
+          "alt": "MRV - Apartamento | Sacada + churrasqueira | Alto Petropolis | POA — foto 7"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1008/imagens/infra-gazebo-mrv-portoatacama-poa-i627f0844a8.v1.webp",
+          "legenda": "Gazebo",
+          "alt": "MRV - Apartamento | Sacada + churrasqueira | Alto Petropolis | POA — foto 8"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1008/imagens/infra-espacoaconchego-mrv-portoatacama-p-id4e36a1477.v1.webp",
+          "legenda": "Espaço para leitura",
+          "alt": "MRV - Apartamento | Sacada + churrasqueira | Alto Petropolis | POA — foto 9"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1008/imagens/infra-espaco-fogo-mrv-portoatacama-poa-i2344246a14.v1.webp",
+          "legenda": "Espaço fogo",
+          "alt": "MRV - Apartamento | Sacada + churrasqueira | Alto Petropolis | POA — foto 10"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1008/imagens/apto-vista-sala-mrv-portoatacama-poa-ifdb76993a0.v1.webp",
+          "legenda": "Sala integrada",
+          "alt": "MRV - Apartamento | Sacada + churrasqueira | Alto Petropolis | POA — foto 11"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1008/imagens/apto-vista-dormitorioprincipal-mrv-porto-id216c127e1.v1.webp",
+          "legenda": "Dormitório Casal",
+          "alt": "MRV - Apartamento | Sacada + churrasqueira | Alto Petropolis | POA — foto 12"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1008/imagens/apto-vista-dormitorio2-mrv-portoatacama--if49b59524a.v1.webp",
+          "legenda": "Dormitório vira também escritório",
+          "alt": "MRV - Apartamento | Sacada + churrasqueira | Alto Petropolis | POA — foto 13"
+        }
+      ]
+    },
+    {
       "id": "1007",
       "codigo": "novo-imovel-1007",
       "categoria": "venda",
@@ -145,7 +320,7 @@
       "tipo": "Apartamento",
       "condicao": "Novo",
       "titulo": "Varandas Trend Living",
-      "descricao": "More com conforto e sofisticação em Canoas por parcelas a partir de R$ 3.900/mês!\n\nImoplace Vende | Apartamentos de 2 e 3 dormitórios no Varandas Trend Living, no bairro Nossa Senhora das Graças, em Canoas.\nSeu novo apartamento com suíte, churrasqueira e lazer completo, com parcelas a partir de R$ 3.900/mês!\n\nConheça um empreendimento que combina localização privilegiada, plantas inteligentes e infraestrutura diferenciada para quem deseja elevar seu padrão de moradia.\n\nDiferenciais dos apartamentos:\n- 2 e 3 dormitórios com suíte\n- Plantas de 55,70 m² a 78,14 m²\n- Sacada com churrasqueira, conforme a planta\n- Opções com living estendido\n- Vagas de garagem simples ou duplas\n- Opções de apartamentos Garden\n\nInfraestrutura completa para sua família:\n✔ Piscina com vista panorâmica no rooftop\n✔ Spa e academia\n✔ Espaços gourmet e Wine Garden\n✔ Salão de festas e coworking\n✔ Cinema, brinquedoteca e playground\n✔ Pet Place e mini market\n✔ Portaria 24 horas\n\nCondições especiais de aquisição:\n- Parcelas a partir de R$ 3.900/mês\n- Possibilidade de financiamento de até 90% SBPE\n- Entrada facilitada, conforme condições comerciais\n- Previsão de entrega: dezembro de 2026\n\nLocalização: Rua Monte Castelo, 235 - Nossa Senhora das Graças, Canoas/RS.\nPróximo à BR-116, ParkShopping Canoas, supermercados, escolas e universidades.\nAgende sua visita e conheça o apartamento decorado!\n\nDescubra como morar no Varandas Trend Living com uma proposta de financiamento personalizada.\nImoplace | Seu próximo imóvel começa aqui.\n\nValores de parcelas sujeitos à unidade escolhida, condições comerciais, entrada, prazo e aprovação de crédito. Consulte a disponibilidade.\n\n<a href=\"https://varandas-canoas.com.br\" target=\"_blank\" rel=\"noopener noreferrer\"> Conheça o Varandas Trend Living</a>",
+      "descricao": "More com conforto e sofisticação em Canoas por parcelas a partir de R$ 3.900/mês!\n\nImoplace Vende | Apartamentos de 2 e 3 dormitórios no Varandas Trend Living, no bairro Nossa Senhora das Graças, em Canoas.\nSeu novo apartamento com suíte, churrasqueira e lazer completo, com parcelas a partir de R$ 3.900/mês!\n\nConheça um empreendimento que combina localização privilegiada, plantas inteligentes e infraestrutura diferenciada para quem deseja elevar seu padrão de moradia.\n\nDiferenciais dos apartamentos:\n- 2 e 3 dormitórios com suíte\n- Plantas de 55,70 m² a 78,14 m²\n- Sacada com churrasqueira, conforme a planta\n- Opções com living estendido\n- Vagas de garagem simples ou duplas\n- Opções de apartamentos Garden\n\nInfraestrutura completa para sua família:\n✔ Piscina com vista panorâmica no rooftop\n✔ Spa e academia\n✔ Espaços gourmet e Wine Garden\n✔ Salão de festas e coworking\n✔ Cinema, brinquedoteca e playground\n✔ Pet Place e mini market\n✔ Portaria 24 horas\n\nCondições especiais de aquisição:\n- Parcelas a partir de R$ 3.900/mês\n- Possibilidade de financiamento de até 90% SBPE\n- Entrada facilitada, conforme condições comerciais\n- Previsão de entrega: dezembro de 2026\n\nLocalização: Rua Monte Castelo, 235 - Nossa Senhora das Graças, Canoas/RS.\nPróximo à BR-116, ParkShopping Canoas, supermercados, escolas e universidades.\nAgende sua visita e conheça o apartamento decorado!\n\nDescubra como morar no Varandas Trend Living com uma proposta de financiamento personalizada.\nImoplace | Seu próximo imóvel começa aqui.\n\nValores de parcelas sujeitos à unidade escolhida, condições comerciais, entrada, prazo e aprovação de crédito. Consulte a disponibilidade.\n\nmaores informações em. https://varandas-canoas.com.br",
       "seo": {
         "titulo": "Varandas Trend Living Canoas |a partir de R$ 3.900/mês",
         "descricao": "Varandas Trend Living em Canoas: apartamentos de 2 e 3 dormitórios e suíte, sacada, churrasqueira, lazer no rooftop + piscina mensais a partir de R$ 3.900/mês."
