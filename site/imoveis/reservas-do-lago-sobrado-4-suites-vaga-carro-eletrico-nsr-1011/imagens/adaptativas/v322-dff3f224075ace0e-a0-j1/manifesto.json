@@ -1,0 +1,105 @@
+{
+  "largura": 1448,
+  "altura": 1086,
+  "formatos": {
+    "jxl": [
+      {
+        "arquivo": "imoveis/reservas-do-lago-sobrado-4-suites-vaga-carro-eletrico-nsr-1011/imagens/adaptativas/v322-dff3f224075ace0e-a0-j1/480.jxl",
+        "largura": 480,
+        "altura": 360,
+        "bytes": 116047,
+        "mime": "image/jxl"
+      },
+      {
+        "arquivo": "imoveis/reservas-do-lago-sobrado-4-suites-vaga-carro-eletrico-nsr-1011/imagens/adaptativas/v322-dff3f224075ace0e-a0-j1/768.jxl",
+        "largura": 768,
+        "altura": 576,
+        "bytes": 243899,
+        "mime": "image/jxl"
+      },
+      {
+        "arquivo": "imoveis/reservas-do-lago-sobrado-4-suites-vaga-carro-eletrico-nsr-1011/imagens/adaptativas/v322-dff3f224075ace0e-a0-j1/1200.jxl",
+        "largura": 1200,
+        "altura": 900,
+        "bytes": 468504,
+        "mime": "image/jxl"
+      },
+      {
+        "arquivo": "imoveis/reservas-do-lago-sobrado-4-suites-vaga-carro-eletrico-nsr-1011/imagens/adaptativas/v322-dff3f224075ace0e-a0-j1/1448.jxl",
+        "largura": 1448,
+        "altura": 1086,
+        "bytes": 578071,
+        "mime": "image/jxl"
+      }
+    ],
+    "jpg": [
+      {
+        "arquivo": "imoveis/reservas-do-lago-sobrado-4-suites-vaga-carro-eletrico-nsr-1011/imagens/adaptativas/v322-dff3f224075ace0e-a0-j1/480.jpg",
+        "largura": 480,
+        "altura": 360,
+        "bytes": 21124,
+        "mime": "image/jpeg"
+      },
+      {
+        "arquivo": "imoveis/reservas-do-lago-sobrado-4-suites-vaga-carro-eletrico-nsr-1011/imagens/adaptativas/v322-dff3f224075ace0e-a0-j1/768.jpg",
+        "largura": 768,
+        "altura": 576,
+        "bytes": 45845,
+        "mime": "image/jpeg"
+      },
+      {
+        "arquivo": "imoveis/reservas-do-lago-sobrado-4-suites-vaga-carro-eletrico-nsr-1011/imagens/adaptativas/v322-dff3f224075ace0e-a0-j1/1200.jpg",
+        "largura": 1200,
+        "altura": 900,
+        "bytes": 96430,
+        "mime": "image/jpeg"
+      },
+      {
+        "arquivo": "imoveis/reservas-do-lago-sobrado-4-suites-vaga-carro-eletrico-nsr-1011/imagens/adaptativas/v322-dff3f224075ace0e-a0-j1/1448.jpg",
+        "largura": 1448,
+        "altura": 1086,
+        "bytes": 127598,
+        "mime": "image/jpeg"
+      }
+    ],
+    "webp": [
+      {
+        "arquivo": "imoveis/reservas-do-lago-sobrado-4-suites-vaga-carro-eletrico-nsr-1011/imagens/adaptativas/v322-dff3f224075ace0e-a0-j1/480.webp",
+        "largura": 480,
+        "altura": 360,
+        "bytes": 10188,
+        "mime": "image/webp"
+      },
+      {
+        "arquivo": "imoveis/reservas-do-lago-sobrado-4-suites-vaga-carro-eletrico-nsr-1011/imagens/adaptativas/v322-dff3f224075ace0e-a0-j1/768.webp",
+        "largura": 768,
+        "altura": 576,
+        "bytes": 20838,
+        "mime": "image/webp"
+      },
+      {
+        "arquivo": "imoveis/reservas-do-lago-sobrado-4-suites-vaga-carro-eletrico-nsr-1011/imagens/adaptativas/v322-dff3f224075ace0e-a0-j1/1200.webp",
+        "largura": 1200,
+        "altura": 900,
+        "bytes": 41454,
+        "mime": "image/webp"
+      },
+      {
+        "arquivo": "imoveis/reservas-do-lago-sobrado-4-suites-vaga-carro-eletrico-nsr-1011/imagens/adaptativas/v322-dff3f224075ace0e-a0-j1/1448.webp",
+        "largura": 1448,
+        "altura": 1086,
+        "bytes": 55148,
+        "mime": "image/webp"
+      }
+    ]
+  },
+  "versaoConteudo": "v322-dff3f224075ace0e-a0-j1",
+  "origem": "jxl-lossless",
+  "social": {
+    "arquivo": "imoveis/reservas-do-lago-sobrado-4-suites-vaga-carro-eletrico-nsr-1011/imagens/adaptativas/v322-dff3f224075ace0e-a0-j1/social.jpg",
+    "largura": 1200,
+    "altura": 630,
+    "bytes": 69199,
+    "mime": "image/jpeg"
+  }
+}
