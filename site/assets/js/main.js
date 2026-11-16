@@ -33,7 +33,7 @@ function getCatalog() {
 function cardHTML(item) {
   const pics = (item.imagens || []).slice(0,5);
   const first = pics.length ? pics : [{arquivo:'',alt:'Imagem indisponível',legenda:'Sem imagem'}];
-  const slides = first.map((img,j) => `<div class="sl${j===0?' on':''}"><img src="${esc(assetURL(img.arquivo))}" alt="${esc(img.alt || item.titulo)}" loading="lazy" width="640" height="400"></div>`).join('');
+  const slides = first.map((img,j) => `<div class="sl${j===0?' on':''}">${typeof ImoplaceMidias!=='undefined'?ImoplaceMidias.picture(img,item,1):`<img src="${esc(assetURL(img.arquivo))}" alt="${esc(img.alt||item.titulo)}" loading="lazy" width="640" height="400">`}</div>`).join('');
   return `<article class="card" data-codigo="${esc(item.codigo)}">
   <div class="thumb">
     ${item.tag?`<span class="tag">${esc(item.tag)}</span>`:''}

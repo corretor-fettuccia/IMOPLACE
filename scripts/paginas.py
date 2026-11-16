@@ -1,4 +1,5 @@
 """ImoPlace — HTML das páginas dos imóveis (layout do ImoPlace v2.1, sem dados de demonstração)."""
+from midias import colecao, embed
 import html
 import json
 from urllib.parse import quote
@@ -31,7 +32,7 @@ def _galeria(item):
         extra = f'<em>+{len(fotos) - 5} fotos</em>' if k == 4 and len(fotos) > 5 else ''
         botoes.append(
             f'<button class="ph{" main" if k == 0 else ""}" type="button" data-k="{k}" aria-label="{h(f.get("legenda") or "Foto")}">'
-            f'<img loading="{"eager" if k == 0 else "lazy"}" decoding="async" width="960" height="600" src="{RAIZ_REL}{h(f["arquivo"])}" alt="{h(f.get("alt") or item["titulo"])}">'
+            f'{picture(f, item, k)}'
             f'<span>{h(f.get("legenda") or "Foto")}</span>{extra}</button>')
     return f'<div class="gal{" single" if len(fotos) == 1 else ""}" id="gal">{"".join(botoes)}</div>'
 
@@ -68,6 +69,7 @@ def detalhe(item):
         m2preco = f'<dt>Preço por m²</dt><dd>{brl(item["preco"] / item["areaTotal"])}</dd>'
     return f'''<a class="back" href="{RAIZ_REL}index.html#imoveis">← Voltar aos resultados</a>
 {_galeria(item)}
+{multimidia(item)}
 <div class="dhead"><div><h1 class="dt">{h(item['titulo'])}</h1><div class="where">{h(item.get('tipo'))} · {h(local(item))}</div></div><div class="dr"><div class="price big">{brl(item.get('preco'))}</div></div></div>
 <div class="dgrid"><div>
 <div class="stats">{stats}</div>
@@ -125,6 +127,7 @@ def pagina(item, conf):
 <footer><div class="wrap"><span>© {h(conf.get('ano', '2026'))} Imoplace · imoplace.com.br</span><span>Informações sujeitas a confirmação com o anunciante.</span></div></footer>
 <script src="{RAIZ_REL}assets/js/protecao.js"></script>
 <script src="{RAIZ_REL}assets/js/main.js"></script>
+<script src="{RAIZ_REL}assets/js/midias.js"></script>
 <script src="{RAIZ_REL}assets/js/imovel.js"></script>
 </body></html>
 '''
@@ -139,3 +142,26 @@ def redirecionamento(destino_rel: str, conf) -> str:
 <meta http-equiv="refresh" content="0; url={h(url)}"></head>
 <body><p>Este imóvel mudou de endereço: <a href="{h(url)}">{h(url)}</a></p></body></html>
 '''
+
+
+def picture(f,item,k):
+    data=f.get('adaptativas') or {};fmts=data.get('formatos') or {}
+    fallback=fmts.get('jpg') or fmts.get('png') or []
+    src=RAIZ_REL+(fallback[-1]['arquivo'] if fallback else f['arquivo'])
+    sources=''.join('<source type="'+rows[0]['mime']+'" srcset="'+h(', '.join(RAIZ_REL+x['arquivo']+' '+str(x['largura'])+'w' for x in rows))+'" sizes="(max-width: 768px) 100vw, 60vw">' for ext,rows in fmts.items() if ext in ('jxl','avif','webp') and rows)
+    srcset=' srcset="'+h(', '.join(RAIZ_REL+x['arquivo']+' '+str(x['largura'])+'w' for x in fallback))+'" sizes="(max-width: 768px) 100vw, 60vw"' if fallback else ''
+    return '<picture>'+sources+'<img src="'+h(src)+'"'+srcset+' width="'+str(data.get('largura',960))+'" height="'+str(data.get('altura',600))+'" alt="'+h(f.get('alt') or item['titulo'])+'" loading="'+('eager' if k==0 else 'lazy')+'" '+('fetchpriority="high" ' if k==0 else '')+'decoding="async"></picture>'
+
+
+def multimidia(item):
+    medias=colecao(item.get('midias')); links=colecao(item.get('links_externos'),links=True)
+    cards=[]
+    for x in medias:
+        target=embed(x['url']);action=''
+        if target: action='<button type="button" class="btn btn-line" data-embed="'+h(target)+'">Carregar player</button>'
+        elif x['tipo']=='panorama_360': action='<button type="button" class="btn btn-line" data-panorama="'+h(x['url'])+'">Explorar em 360°</button>'
+        cards.append('<article class="midia-card"><h3>'+h(x['titulo'])+'</h3><p>'+h(x['descricao'])+'</p>'+action+' <a href="'+h(x['url'])+'" target="_blank" rel="noopener noreferrer">Abrir em nova aba ↗</a><div data-player></div></article>')
+    result='<section class="box" aria-label="Vídeos e tours"><h2>Vídeos e tours</h2>'+''.join(cards)+'</section>' if cards else ''
+    if links:
+        result+='<button class="btn btn-line" type="button" data-open-links>Mais links ↗</button><dialog id="external-links" aria-labelledby="links-title"><h2 id="links-title">Acessos externos</h2><button type="button" class="btn btn-line" data-close-links>Fechar ✕</button>'+''.join('<p><a href="'+h(x['url'])+'" target="_blank" rel="noopener noreferrer">'+h(x['titulo'])+' ↗</a><br>'+h(x['descricao'])+'</p>' for x in links)+'</dialog>'
+    return '<div id="multimidia">'+result+'</div>'

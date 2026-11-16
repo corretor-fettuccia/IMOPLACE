@@ -54,7 +54,8 @@ def _entrada(item, fotos):
         'caracteristicasCondominio': item.get('caracteristicasCondominio') or [],
         'anunciante': {k: (item.get('anunciante') or {}).get(k) or '' for k in ('nome', 'creci', 'whatsapp')},
         'feeds': item.get('feeds') or {},
-        'imagens': [{'arquivo': f['arquivo'], 'legenda': f['legenda'], 'alt': f['alt']} for f in fotos],
+        'midias': item.get('midias') or [], 'links_externos': item.get('links_externos') or [],
+        'imagens': [{'arquivo': f['arquivo'], 'legenda': f['legenda'], 'alt': f['alt'], **({'adaptativas': f['adaptativas']} if f.get('adaptativas') else {})} for f in fotos],
     }
 
 
@@ -179,6 +180,8 @@ def montar(feed_itens, pendencias, site, conf, aguardando=frozenset()):
             else:
                 impedir_perda_publicacao(iid, 'desapareceu do feed e faltam fotografias da publicação anterior')
 
+    from imagens_adaptativas import enriquecer
+    enriquecer(entradas, site)
     entradas.sort(key=lambda e: (-int(bool(e['destaque'])), e.get('ordem') or 0, -int(e['id'])))
     # Publicação deve identificar uma execução nova, inclusive quando somente os arquivos do site mudarem.
     # O conteúdo permanece estável se a lista não mudou: evita commits desnecessários.

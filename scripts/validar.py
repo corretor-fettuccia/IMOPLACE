@@ -67,6 +67,14 @@ def validar(site=None, conf=None) -> list:
                 problemas.append(f'foto ausente: {arq}')
             elif not eh_webp(alvo.read_bytes()[:16]):
                 problemas.append(f'foto não é WebP: {arq}')
+            for rows in (f.get('adaptativas') or {}).get('formatos', {}).values():
+                for variante in rows:
+                    caminho = str(variante.get('arquivo', ''))
+                    arquivo = site / caminho
+                    if not caminho.startswith(rel + 'imagens/adaptativas/') or not dentro(site, arquivo):
+                        problemas.append('caminho de variante inválido: ' + caminho)
+                    elif not arquivo.is_file():
+                        problemas.append('variante ausente: ' + caminho)
     base = site / 'imoveis'
     if base.is_dir():
         for pagina in base.glob('*/index.html'):

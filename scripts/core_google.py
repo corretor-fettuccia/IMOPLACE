@@ -3,6 +3,7 @@
 CORE é o único Apps Script, privado. O Actions usa token OAuth da conta de serviço
 para LER FILA/IMOVEIS/IMAGENS e ACRESCENTAR RESULTADOS. Nunca escreve em IMOVEIS/FILA.
 """
+from midias import colecao
 import json
 import os
 import re
@@ -51,7 +52,7 @@ def ler_tabelas():
     """
     sid = _sheet_id()
     specs = [
-        ('IMOVEIS', 'A1:AO'), ('IMOVEIS', 'AT1:AT'), ('IMOVEIS', 'AV1:BA'),
+        ('IMOVEIS', 'A1:AO'), ('IMOVEIS', 'AT1:AT'), ('IMOVEIS', 'AV1:BA'), ('IMOVEIS', 'BE1:BF'),
         ('IMAGENS', 'A1:K'), ('IMAGENS', 'M1:Q'),
         ('FILA', 'A1:I'), ('RESULTADOS', 'A1:L'),
     ]
@@ -63,6 +64,8 @@ def ler_tabelas():
     parts = {}
     for (nome, faixa), retorno in zip(specs, vr):
         linhas = retorno.get('values') or []
+        if not linhas and faixa == 'BE1:BF':
+            continue  # planilha anterior à evolução: coleção vazia
         if not linhas:
             raise RuntimeError(f'Aba {nome} vazia ou sem cabeçalho: execute a preparação do CORE.')
         cabecalho = [str(c).strip().upper() for c in linhas[0]]
@@ -158,6 +161,7 @@ def _publico(im, imagens, site):
     item = dict(id=iid, versao=_n(im.get('VERSAO')), versaoPublicada=_n(im.get('VERSAO_PUBLICADA')),
         codigo=codigo,categoria=str(im.get('CATEGORIA','')),status='publicado',tipo=txt('TIPO',40),condicao=txt('CONDICAO',20),
         destaque=_flag(im.get('DESTAQUE')),tag=txt('TAG',30),ordem=_n(im.get('ORDEM')),titulo=titulo,
+        midias=colecao(im.get('MIDIAS_JSON')),links_externos=colecao(im.get('LINKS_EXTERNOS_JSON'), links=True),
         descricao=txt('DESCRICAO',8000),seo={'titulo':txt('TITULO_SEO',70) or titulo,'descricao':txt('DESCRICAO_SEO',170) or txt('DESCRICAO',160)},
         preco=_numero(im.get('PRECO')),condominio=_numero(im.get('CONDOMINIO')),iptuAnual=_numero(im.get('IPTU_ANUAL')),
         financiamento=_flag(im.get('FINANCIAMENTO')),permuta=_flag(im.get('PERMUTA')),

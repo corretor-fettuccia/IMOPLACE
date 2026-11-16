@@ -8,7 +8,7 @@ const list = items => (items||[]).length ? (items||[]).map(x=>`<li>${esc(x)}</li
 const value = n => n===null || n===undefined || n==='' ? 'Não informado' : esc(n);
 function imgTag(item,index,cls='') {
   const image=item.imagens?.[index];
-  return `<img class="${cls}" src="${esc(assetURL(image?.arquivo||''))}" alt="${esc(image?.alt || item.titulo)}" loading="${index===0?'eager':'lazy'}" width="960" height="600">`;
+  return ImoplaceMidias.picture(image||{},item,index,cls);
 }
 function galleryHTML(item,idx=0) {
   const imgs=item.imagens||[];
@@ -30,6 +30,7 @@ function detailsHTML(item) {
   const mapa=enderecoPublico?'<div class="map"><iframe title="Mapa da localização do imóvel" src="https://www.google.com/maps?q='+encodeURIComponent(enderecoPublico+', Brasil')+'&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>':'';
   return `<a class="back" href="${esc(SITE_ROOT)}index.html#imoveis">← Voltar aos resultados</a>
   ${galleryHTML(item,selectedIndex)}
+  ${ImoplaceMidias.html(item)}
   <div class="dhead"><div><h1 class="dt">${esc(item.titulo)}</h1><div class="where">${esc(item.tipo)} · ${esc(local(item))}</div></div>
    <div class="dr"><div class="price big">${brl(item.preco)}</div><div class="dact"><button type="button" class="btn btn-line" id="share">Compartilhar</button><button type="button" class="btn btn-line" id="save">Salvar</button></div></div></div>
   <div class="dgrid"><div>
