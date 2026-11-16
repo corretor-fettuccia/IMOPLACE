@@ -1,0 +1,105 @@
+{
+  "largura": 1536,
+  "altura": 1920,
+  "formatos": {
+    "jxl": [
+      {
+        "arquivo": "imoveis/rua-camboatas-465-igara-canoas-rs-1009/imagens/adaptativas/v322-dfc5e16893c67612-a0-j1/480.jxl",
+        "largura": 480,
+        "altura": 600,
+        "bytes": 228207,
+        "mime": "image/jxl"
+      },
+      {
+        "arquivo": "imoveis/rua-camboatas-465-igara-canoas-rs-1009/imagens/adaptativas/v322-dfc5e16893c67612-a0-j1/768.jxl",
+        "largura": 768,
+        "altura": 960,
+        "bytes": 480781,
+        "mime": "image/jxl"
+      },
+      {
+        "arquivo": "imoveis/rua-camboatas-465-igara-canoas-rs-1009/imagens/adaptativas/v322-dfc5e16893c67612-a0-j1/1200.jxl",
+        "largura": 1200,
+        "altura": 1500,
+        "bytes": 908620,
+        "mime": "image/jxl"
+      },
+      {
+        "arquivo": "imoveis/rua-camboatas-465-igara-canoas-rs-1009/imagens/adaptativas/v322-dfc5e16893c67612-a0-j1/1536.jxl",
+        "largura": 1536,
+        "altura": 1920,
+        "bytes": 1255984,
+        "mime": "image/jxl"
+      }
+    ],
+    "jpg": [
+      {
+        "arquivo": "imoveis/rua-camboatas-465-igara-canoas-rs-1009/imagens/adaptativas/v322-dfc5e16893c67612-a0-j1/480.jpg",
+        "largura": 480,
+        "altura": 600,
+        "bytes": 42025,
+        "mime": "image/jpeg"
+      },
+      {
+        "arquivo": "imoveis/rua-camboatas-465-igara-canoas-rs-1009/imagens/adaptativas/v322-dfc5e16893c67612-a0-j1/768.jpg",
+        "largura": 768,
+        "altura": 960,
+        "bytes": 87948,
+        "mime": "image/jpeg"
+      },
+      {
+        "arquivo": "imoveis/rua-camboatas-465-igara-canoas-rs-1009/imagens/adaptativas/v322-dfc5e16893c67612-a0-j1/1200.jpg",
+        "largura": 1200,
+        "altura": 1500,
+        "bytes": 175079,
+        "mime": "image/jpeg"
+      },
+      {
+        "arquivo": "imoveis/rua-camboatas-465-igara-canoas-rs-1009/imagens/adaptativas/v322-dfc5e16893c67612-a0-j1/1536.jpg",
+        "largura": 1536,
+        "altura": 1920,
+        "bytes": 247536,
+        "mime": "image/jpeg"
+      }
+    ],
+    "webp": [
+      {
+        "arquivo": "imoveis/rua-camboatas-465-igara-canoas-rs-1009/imagens/adaptativas/v322-dfc5e16893c67612-a0-j1/480.webp",
+        "largura": 480,
+        "altura": 600,
+        "bytes": 19422,
+        "mime": "image/webp"
+      },
+      {
+        "arquivo": "imoveis/rua-camboatas-465-igara-canoas-rs-1009/imagens/adaptativas/v322-dfc5e16893c67612-a0-j1/768.webp",
+        "largura": 768,
+        "altura": 960,
+        "bytes": 37002,
+        "mime": "image/webp"
+      },
+      {
+        "arquivo": "imoveis/rua-camboatas-465-igara-canoas-rs-1009/imagens/adaptativas/v322-dfc5e16893c67612-a0-j1/1200.webp",
+        "largura": 1200,
+        "altura": 1500,
+        "bytes": 68690,
+        "mime": "image/webp"
+      },
+      {
+        "arquivo": "imoveis/rua-camboatas-465-igara-canoas-rs-1009/imagens/adaptativas/v322-dfc5e16893c67612-a0-j1/1536.webp",
+        "largura": 1536,
+        "altura": 1920,
+        "bytes": 101686,
+        "mime": "image/webp"
+      }
+    ]
+  },
+  "versaoConteudo": "v322-dfc5e16893c67612-a0-j1",
+  "origem": "webp-legado",
+  "social": {
+    "arquivo": "imoveis/rua-camboatas-465-igara-canoas-rs-1009/imagens/adaptativas/v322-dfc5e16893c67612-a0-j1/social.jpg",
+    "largura": 1200,
+    "altura": 630,
+    "bytes": 63290,
+    "mime": "image/jpeg"
+  }
+}

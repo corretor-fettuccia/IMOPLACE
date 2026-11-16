@@ -1,0 +1,105 @@
+{
+  "largura": 1254,
+  "altura": 1254,
+  "formatos": {
+    "jxl": [
+      {
+        "arquivo": "imoveis/ora-lottici-1003/imagens/adaptativas/v322-5884cd25547a08b6-a0-j1/480.jxl",
+        "largura": 480,
+        "altura": 480,
+        "bytes": 234953,
+        "mime": "image/jxl"
+      },
+      {
+        "arquivo": "imoveis/ora-lottici-1003/imagens/adaptativas/v322-5884cd25547a08b6-a0-j1/768.jxl",
+        "largura": 768,
+        "altura": 768,
+        "bytes": 516061,
+        "mime": "image/jxl"
+      },
+      {
+        "arquivo": "imoveis/ora-lottici-1003/imagens/adaptativas/v322-5884cd25547a08b6-a0-j1/1200.jxl",
+        "largura": 1200,
+        "altura": 1200,
+        "bytes": 1071735,
+        "mime": "image/jxl"
+      },
+      {
+        "arquivo": "imoveis/ora-lottici-1003/imagens/adaptativas/v322-5884cd25547a08b6-a0-j1/1254.jxl",
+        "largura": 1254,
+        "altura": 1254,
+        "bytes": 1107921,
+        "mime": "image/jxl"
+      }
+    ],
+    "jpg": [
+      {
+        "arquivo": "imoveis/ora-lottici-1003/imagens/adaptativas/v322-5884cd25547a08b6-a0-j1/480.jpg",
+        "largura": 480,
+        "altura": 480,
+        "bytes": 58740,
+        "mime": "image/jpeg"
+      },
+      {
+        "arquivo": "imoveis/ora-lottici-1003/imagens/adaptativas/v322-5884cd25547a08b6-a0-j1/768.jpg",
+        "largura": 768,
+        "altura": 768,
+        "bytes": 125812,
+        "mime": "image/jpeg"
+      },
+      {
+        "arquivo": "imoveis/ora-lottici-1003/imagens/adaptativas/v322-5884cd25547a08b6-a0-j1/1200.jpg",
+        "largura": 1200,
+        "altura": 1200,
+        "bytes": 248877,
+        "mime": "image/jpeg"
+      },
+      {
+        "arquivo": "imoveis/ora-lottici-1003/imagens/adaptativas/v322-5884cd25547a08b6-a0-j1/1254.jpg",
+        "largura": 1254,
+        "altura": 1254,
+        "bytes": 265584,
+        "mime": "image/jpeg"
+      }
+    ],
+    "webp": [
+      {
+        "arquivo": "imoveis/ora-lottici-1003/imagens/adaptativas/v322-5884cd25547a08b6-a0-j1/480.webp",
+        "largura": 480,
+        "altura": 480,
+        "bytes": 36938,
+        "mime": "image/webp"
+      },
+      {
+        "arquivo": "imoveis/ora-lottici-1003/imagens/adaptativas/v322-5884cd25547a08b6-a0-j1/768.webp",
+        "largura": 768,
+        "altura": 768,
+        "bytes": 73404,
+        "mime": "image/webp"
+      },
+      {
+        "arquivo": "imoveis/ora-lottici-1003/imagens/adaptativas/v322-5884cd25547a08b6-a0-j1/1200.webp",
+        "largura": 1200,
+        "altura": 1200,
+        "bytes": 133608,
+        "mime": "image/webp"
+      },
+      {
+        "arquivo": "imoveis/ora-lottici-1003/imagens/adaptativas/v322-5884cd25547a08b6-a0-j1/1254.webp",
+        "largura": 1254,
+        "altura": 1254,
+        "bytes": 130256,
+        "mime": "image/webp"
+      }
+    ]
+  },
+  "versaoConteudo": "v322-5884cd25547a08b6-a0-j1",
+  "origem": "webp-legado",
+  "social": {
+    "arquivo": "imoveis/ora-lottici-1003/imagens/adaptativas/v322-5884cd25547a08b6-a0-j1/social.jpg",
+    "largura": 1200,
+    "altura": 630,
+    "bytes": 114142,
+    "mime": "image/jpeg"
+  }
+}

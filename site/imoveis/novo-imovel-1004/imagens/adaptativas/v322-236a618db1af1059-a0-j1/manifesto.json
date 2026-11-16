@@ -1,0 +1,84 @@
+{
+  "largura": 960,
+  "altura": 720,
+  "formatos": {
+    "jxl": [
+      {
+        "arquivo": "imoveis/novo-imovel-1004/imagens/adaptativas/v322-236a618db1af1059-a0-j1/480.jxl",
+        "largura": 480,
+        "altura": 360,
+        "bytes": 182740,
+        "mime": "image/jxl"
+      },
+      {
+        "arquivo": "imoveis/novo-imovel-1004/imagens/adaptativas/v322-236a618db1af1059-a0-j1/768.jxl",
+        "largura": 768,
+        "altura": 576,
+        "bytes": 421802,
+        "mime": "image/jxl"
+      },
+      {
+        "arquivo": "imoveis/novo-imovel-1004/imagens/adaptativas/v322-236a618db1af1059-a0-j1/960.jxl",
+        "largura": 960,
+        "altura": 720,
+        "bytes": 607168,
+        "mime": "image/jxl"
+      }
+    ],
+    "jpg": [
+      {
+        "arquivo": "imoveis/novo-imovel-1004/imagens/adaptativas/v322-236a618db1af1059-a0-j1/480.jpg",
+        "largura": 480,
+        "altura": 360,
+        "bytes": 43911,
+        "mime": "image/jpeg"
+      },
+      {
+        "arquivo": "imoveis/novo-imovel-1004/imagens/adaptativas/v322-236a618db1af1059-a0-j1/768.jpg",
+        "largura": 768,
+        "altura": 576,
+        "bytes": 102075,
+        "mime": "image/jpeg"
+      },
+      {
+        "arquivo": "imoveis/novo-imovel-1004/imagens/adaptativas/v322-236a618db1af1059-a0-j1/960.jpg",
+        "largura": 960,
+        "altura": 720,
+        "bytes": 146344,
+        "mime": "image/jpeg"
+      }
+    ],
+    "webp": [
+      {
+        "arquivo": "imoveis/novo-imovel-1004/imagens/adaptativas/v322-236a618db1af1059-a0-j1/480.webp",
+        "largura": 480,
+        "altura": 360,
+        "bytes": 32650,
+        "mime": "image/webp"
+      },
+      {
+        "arquivo": "imoveis/novo-imovel-1004/imagens/adaptativas/v322-236a618db1af1059-a0-j1/768.webp",
+        "largura": 768,
+        "altura": 576,
+        "bytes": 73246,
+        "mime": "image/webp"
+      },
+      {
+        "arquivo": "imoveis/novo-imovel-1004/imagens/adaptativas/v322-236a618db1af1059-a0-j1/960.webp",
+        "largura": 960,
+        "altura": 720,
+        "bytes": 110456,
+        "mime": "image/webp"
+      }
+    ]
+  },
+  "versaoConteudo": "v322-236a618db1af1059-a0-j1",
+  "origem": "webp-legado",
+  "social": {
+    "arquivo": "imoveis/novo-imovel-1004/imagens/adaptativas/v322-236a618db1af1059-a0-j1/social.jpg",
+    "largura": 1200,
+    "altura": 630,
+    "bytes": 147014,
+    "mime": "image/jpeg"
+  }
+}

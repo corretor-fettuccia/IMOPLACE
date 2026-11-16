@@ -1,0 +1,84 @@
+{
+  "largura": 1086,
+  "altura": 1448,
+  "formatos": {
+    "jxl": [
+      {
+        "arquivo": "imoveis/av-walter-spiess-2000-bairro-olaria-canoas-rs-1001/imagens/adaptativas/v322-af5f23aa2493dcb1-a0-j1/480.jxl",
+        "largura": 480,
+        "altura": 640,
+        "bytes": 230634,
+        "mime": "image/jxl"
+      },
+      {
+        "arquivo": "imoveis/av-walter-spiess-2000-bairro-olaria-canoas-rs-1001/imagens/adaptativas/v322-af5f23aa2493dcb1-a0-j1/768.jxl",
+        "largura": 768,
+        "altura": 1024,
+        "bytes": 507209,
+        "mime": "image/jxl"
+      },
+      {
+        "arquivo": "imoveis/av-walter-spiess-2000-bairro-olaria-canoas-rs-1001/imagens/adaptativas/v322-af5f23aa2493dcb1-a0-j1/1086.jxl",
+        "largura": 1086,
+        "altura": 1448,
+        "bytes": 851756,
+        "mime": "image/jxl"
+      }
+    ],
+    "jpg": [
+      {
+        "arquivo": "imoveis/av-walter-spiess-2000-bairro-olaria-canoas-rs-1001/imagens/adaptativas/v322-af5f23aa2493dcb1-a0-j1/480.jpg",
+        "largura": 480,
+        "altura": 640,
+        "bytes": 45528,
+        "mime": "image/jpeg"
+      },
+      {
+        "arquivo": "imoveis/av-walter-spiess-2000-bairro-olaria-canoas-rs-1001/imagens/adaptativas/v322-af5f23aa2493dcb1-a0-j1/768.jpg",
+        "largura": 768,
+        "altura": 1024,
+        "bytes": 104139,
+        "mime": "image/jpeg"
+      },
+      {
+        "arquivo": "imoveis/av-walter-spiess-2000-bairro-olaria-canoas-rs-1001/imagens/adaptativas/v322-af5f23aa2493dcb1-a0-j1/1086.jpg",
+        "largura": 1086,
+        "altura": 1448,
+        "bytes": 179106,
+        "mime": "image/jpeg"
+      }
+    ],
+    "webp": [
+      {
+        "arquivo": "imoveis/av-walter-spiess-2000-bairro-olaria-canoas-rs-1001/imagens/adaptativas/v322-af5f23aa2493dcb1-a0-j1/480.webp",
+        "largura": 480,
+        "altura": 640,
+        "bytes": 24158,
+        "mime": "image/webp"
+      },
+      {
+        "arquivo": "imoveis/av-walter-spiess-2000-bairro-olaria-canoas-rs-1001/imagens/adaptativas/v322-af5f23aa2493dcb1-a0-j1/768.webp",
+        "largura": 768,
+        "altura": 1024,
+        "bytes": 54852,
+        "mime": "image/webp"
+      },
+      {
+        "arquivo": "imoveis/av-walter-spiess-2000-bairro-olaria-canoas-rs-1001/imagens/adaptativas/v322-af5f23aa2493dcb1-a0-j1/1086.webp",
+        "largura": 1086,
+        "altura": 1448,
+        "bytes": 98686,
+        "mime": "image/webp"
+      }
+    ]
+  },
+  "versaoConteudo": "v322-af5f23aa2493dcb1-a0-j1",
+  "origem": "webp-legado",
+  "social": {
+    "arquivo": "imoveis/av-walter-spiess-2000-bairro-olaria-canoas-rs-1001/imagens/adaptativas/v322-af5f23aa2493dcb1-a0-j1/social.jpg",
+    "largura": 1200,
+    "altura": 630,
+    "bytes": 62373,
+    "mime": "image/jpeg"
+  }
+}

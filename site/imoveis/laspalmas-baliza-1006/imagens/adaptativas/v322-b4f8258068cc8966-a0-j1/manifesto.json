@@ -1,0 +1,105 @@
+{
+  "largura": 1672,
+  "altura": 941,
+  "formatos": {
+    "jxl": [
+      {
+        "arquivo": "imoveis/laspalmas-baliza-1006/imagens/adaptativas/v322-b4f8258068cc8966-a0-j1/480.jxl",
+        "largura": 480,
+        "altura": 270,
+        "bytes": 142066,
+        "mime": "image/jxl"
+      },
+      {
+        "arquivo": "imoveis/laspalmas-baliza-1006/imagens/adaptativas/v322-b4f8258068cc8966-a0-j1/768.jxl",
+        "largura": 768,
+        "altura": 432,
+        "bytes": 312490,
+        "mime": "image/jxl"
+      },
+      {
+        "arquivo": "imoveis/laspalmas-baliza-1006/imagens/adaptativas/v322-b4f8258068cc8966-a0-j1/1200.jxl",
+        "largura": 1200,
+        "altura": 675,
+        "bytes": 646482,
+        "mime": "image/jxl"
+      },
+      {
+        "arquivo": "imoveis/laspalmas-baliza-1006/imagens/adaptativas/v322-b4f8258068cc8966-a0-j1/1600.jxl",
+        "largura": 1600,
+        "altura": 900,
+        "bytes": 1031902,
+        "mime": "image/jxl"
+      }
+    ],
+    "jpg": [
+      {
+        "arquivo": "imoveis/laspalmas-baliza-1006/imagens/adaptativas/v322-b4f8258068cc8966-a0-j1/480.jpg",
+        "largura": 480,
+        "altura": 270,
+        "bytes": 31611,
+        "mime": "image/jpeg"
+      },
+      {
+        "arquivo": "imoveis/laspalmas-baliza-1006/imagens/adaptativas/v322-b4f8258068cc8966-a0-j1/768.jpg",
+        "largura": 768,
+        "altura": 432,
+        "bytes": 67880,
+        "mime": "image/jpeg"
+      },
+      {
+        "arquivo": "imoveis/laspalmas-baliza-1006/imagens/adaptativas/v322-b4f8258068cc8966-a0-j1/1200.jpg",
+        "largura": 1200,
+        "altura": 675,
+        "bytes": 143335,
+        "mime": "image/jpeg"
+      },
+      {
+        "arquivo": "imoveis/laspalmas-baliza-1006/imagens/adaptativas/v322-b4f8258068cc8966-a0-j1/1600.jpg",
+        "largura": 1600,
+        "altura": 900,
+        "bytes": 222229,
+        "mime": "image/jpeg"
+      }
+    ],
+    "webp": [
+      {
+        "arquivo": "imoveis/laspalmas-baliza-1006/imagens/adaptativas/v322-b4f8258068cc8966-a0-j1/480.webp",
+        "largura": 480,
+        "altura": 270,
+        "bytes": 19804,
+        "mime": "image/webp"
+      },
+      {
+        "arquivo": "imoveis/laspalmas-baliza-1006/imagens/adaptativas/v322-b4f8258068cc8966-a0-j1/768.webp",
+        "largura": 768,
+        "altura": 432,
+        "bytes": 41056,
+        "mime": "image/webp"
+      },
+      {
+        "arquivo": "imoveis/laspalmas-baliza-1006/imagens/adaptativas/v322-b4f8258068cc8966-a0-j1/1200.webp",
+        "largura": 1200,
+        "altura": 675,
+        "bytes": 80078,
+        "mime": "image/webp"
+      },
+      {
+        "arquivo": "imoveis/laspalmas-baliza-1006/imagens/adaptativas/v322-b4f8258068cc8966-a0-j1/1600.webp",
+        "largura": 1600,
+        "altura": 900,
+        "bytes": 121814,
+        "mime": "image/webp"
+      }
+    ]
+  },
+  "versaoConteudo": "v322-b4f8258068cc8966-a0-j1",
+  "origem": "webp-legado",
+  "social": {
+    "arquivo": "imoveis/laspalmas-baliza-1006/imagens/adaptativas/v322-b4f8258068cc8966-a0-j1/social.jpg",
+    "largura": 1200,
+    "altura": 630,
+    "bytes": 151983,
+    "mime": "image/jpeg"
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "largura": 1600,
+  "altura": 900,
+  "formatos": {
+    "jxl": [
+      {
+        "arquivo": "imoveis/novo-imovel-1010/imagens/adaptativas/v322-b0fe77fbba82adde-a0-j1/480.jxl",
+        "largura": 480,
+        "altura": 270,
+        "bytes": 161392,
+        "mime": "image/jxl"
+      },
+      {
+        "arquivo": "imoveis/novo-imovel-1010/imagens/adaptativas/v322-b0fe77fbba82adde-a0-j1/768.jxl",
+        "largura": 768,
+        "altura": 432,
+        "bytes": 344732,
+        "mime": "image/jxl"
+      },
+      {
+        "arquivo": "imoveis/novo-imovel-1010/imagens/adaptativas/v322-b0fe77fbba82adde-a0-j1/1200.jxl",
+        "largura": 1200,
+        "altura": 675,
+        "bytes": 707322,
+        "mime": "image/jxl"
+      },
+      {
+        "arquivo": "imoveis/novo-imovel-1010/imagens/adaptativas/v322-b0fe77fbba82adde-a0-j1/1600.jxl",
+        "largura": 1600,
+        "altura": 900,
+        "bytes": 1110205,
+        "mime": "image/jxl"
+      }
+    ],
+    "jpg": [
+      {
+        "arquivo": "imoveis/novo-imovel-1010/imagens/adaptativas/v322-b0fe77fbba82adde-a0-j1/480.jpg",
+        "largura": 480,
+        "altura": 270,
+        "bytes": 31174,
+        "mime": "image/jpeg"
+      },
+      {
+        "arquivo": "imoveis/novo-imovel-1010/imagens/adaptativas/v322-b0fe77fbba82adde-a0-j1/768.jpg",
+        "largura": 768,
+        "altura": 432,
+        "bytes": 67805,
+        "mime": "image/jpeg"
+      },
+      {
+        "arquivo": "imoveis/novo-imovel-1010/imagens/adaptativas/v322-b0fe77fbba82adde-a0-j1/1200.jpg",
+        "largura": 1200,
+        "altura": 675,
+        "bytes": 138386,
+        "mime": "image/jpeg"
+      },
+      {
+        "arquivo": "imoveis/novo-imovel-1010/imagens/adaptativas/v322-b0fe77fbba82adde-a0-j1/1600.jpg",
+        "largura": 1600,
+        "altura": 900,
+        "bytes": 207429,
+        "mime": "image/jpeg"
+      }
+    ],
+    "webp": [
+      {
+        "arquivo": "imoveis/novo-imovel-1010/imagens/adaptativas/v322-b0fe77fbba82adde-a0-j1/480.webp",
+        "largura": 480,
+        "altura": 270,
+        "bytes": 22592,
+        "mime": "image/webp"
+      },
+      {
+        "arquivo": "imoveis/novo-imovel-1010/imagens/adaptativas/v322-b0fe77fbba82adde-a0-j1/768.webp",
+        "largura": 768,
+        "altura": 432,
+        "bytes": 45820,
+        "mime": "image/webp"
+      },
+      {
+        "arquivo": "imoveis/novo-imovel-1010/imagens/adaptativas/v322-b0fe77fbba82adde-a0-j1/1200.webp",
+        "largura": 1200,
+        "altura": 675,
+        "bytes": 84318,
+        "mime": "image/webp"
+      },
+      {
+        "arquivo": "imoveis/novo-imovel-1010/imagens/adaptativas/v322-b0fe77fbba82adde-a0-j1/1600.webp",
+        "largura": 1600,
+        "altura": 900,
+        "bytes": 105384,
+        "mime": "image/webp"
+      }
+    ]
+  },
+  "versaoConteudo": "v322-b0fe77fbba82adde-a0-j1",
+  "origem": "webp-legado",
+  "social": {
+    "arquivo": "imoveis/novo-imovel-1010/imagens/adaptativas/v322-b0fe77fbba82adde-a0-j1/social.jpg",
+    "largura": 1200,
+    "altura": 630,
+    "bytes": 146851,
+    "mime": "image/jpeg"
+  }
+}

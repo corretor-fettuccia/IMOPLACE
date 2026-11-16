@@ -1,0 +1,105 @@
+{
+  "largura": 1671,
+  "altura": 941,
+  "formatos": {
+    "jxl": [
+      {
+        "arquivo": "imoveis/avenida-santos-ferreira-4200-bairro-estancia-velha-canoas-rs-1005/imagens/adaptativas/v322-eacfbcd3484d52cc-a0-j1/480.jxl",
+        "largura": 480,
+        "altura": 270,
+        "bytes": 142653,
+        "mime": "image/jxl"
+      },
+      {
+        "arquivo": "imoveis/avenida-santos-ferreira-4200-bairro-estancia-velha-canoas-rs-1005/imagens/adaptativas/v322-eacfbcd3484d52cc-a0-j1/768.jxl",
+        "largura": 768,
+        "altura": 432,
+        "bytes": 312464,
+        "mime": "image/jxl"
+      },
+      {
+        "arquivo": "imoveis/avenida-santos-ferreira-4200-bairro-estancia-velha-canoas-rs-1005/imagens/adaptativas/v322-eacfbcd3484d52cc-a0-j1/1200.jxl",
+        "largura": 1200,
+        "altura": 676,
+        "bytes": 651301,
+        "mime": "image/jxl"
+      },
+      {
+        "arquivo": "imoveis/avenida-santos-ferreira-4200-bairro-estancia-velha-canoas-rs-1005/imagens/adaptativas/v322-eacfbcd3484d52cc-a0-j1/1600.jxl",
+        "largura": 1600,
+        "altura": 901,
+        "bytes": 1041594,
+        "mime": "image/jxl"
+      }
+    ],
+    "jpg": [
+      {
+        "arquivo": "imoveis/avenida-santos-ferreira-4200-bairro-estancia-velha-canoas-rs-1005/imagens/adaptativas/v322-eacfbcd3484d52cc-a0-j1/480.jpg",
+        "largura": 480,
+        "altura": 270,
+        "bytes": 36189,
+        "mime": "image/jpeg"
+      },
+      {
+        "arquivo": "imoveis/avenida-santos-ferreira-4200-bairro-estancia-velha-canoas-rs-1005/imagens/adaptativas/v322-eacfbcd3484d52cc-a0-j1/768.jpg",
+        "largura": 768,
+        "altura": 432,
+        "bytes": 78626,
+        "mime": "image/jpeg"
+      },
+      {
+        "arquivo": "imoveis/avenida-santos-ferreira-4200-bairro-estancia-velha-canoas-rs-1005/imagens/adaptativas/v322-eacfbcd3484d52cc-a0-j1/1200.jpg",
+        "largura": 1200,
+        "altura": 676,
+        "bytes": 161753,
+        "mime": "image/jpeg"
+      },
+      {
+        "arquivo": "imoveis/avenida-santos-ferreira-4200-bairro-estancia-velha-canoas-rs-1005/imagens/adaptativas/v322-eacfbcd3484d52cc-a0-j1/1600.jpg",
+        "largura": 1600,
+        "altura": 901,
+        "bytes": 248575,
+        "mime": "image/jpeg"
+      }
+    ],
+    "webp": [
+      {
+        "arquivo": "imoveis/avenida-santos-ferreira-4200-bairro-estancia-velha-canoas-rs-1005/imagens/adaptativas/v322-eacfbcd3484d52cc-a0-j1/480.webp",
+        "largura": 480,
+        "altura": 270,
+        "bytes": 25524,
+        "mime": "image/webp"
+      },
+      {
+        "arquivo": "imoveis/avenida-santos-ferreira-4200-bairro-estancia-velha-canoas-rs-1005/imagens/adaptativas/v322-eacfbcd3484d52cc-a0-j1/768.webp",
+        "largura": 768,
+        "altura": 432,
+        "bytes": 52708,
+        "mime": "image/webp"
+      },
+      {
+        "arquivo": "imoveis/avenida-santos-ferreira-4200-bairro-estancia-velha-canoas-rs-1005/imagens/adaptativas/v322-eacfbcd3484d52cc-a0-j1/1200.webp",
+        "largura": 1200,
+        "altura": 676,
+        "bytes": 102588,
+        "mime": "image/webp"
+      },
+      {
+        "arquivo": "imoveis/avenida-santos-ferreira-4200-bairro-estancia-velha-canoas-rs-1005/imagens/adaptativas/v322-eacfbcd3484d52cc-a0-j1/1600.webp",
+        "largura": 1600,
+        "altura": 901,
+        "bytes": 150020,
+        "mime": "image/webp"
+      }
+    ]
+  },
+  "versaoConteudo": "v322-eacfbcd3484d52cc-a0-j1",
+  "origem": "webp-legado",
+  "social": {
+    "arquivo": "imoveis/avenida-santos-ferreira-4200-bairro-estancia-velha-canoas-rs-1005/imagens/adaptativas/v322-eacfbcd3484d52cc-a0-j1/social.jpg",
+    "largura": 1200,
+    "altura": 630,
+    "bytes": 170737,
+    "mime": "image/jpeg"
+  }
+}
