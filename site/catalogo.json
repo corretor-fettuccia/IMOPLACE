@@ -342,7 +342,8 @@
               "altura": 630,
               "bytes": 109178,
               "mime": "image/jpeg"
-            }
+            },
+            "preferido": "webp"
           }
         },
         {
@@ -453,7 +454,8 @@
               "altura": 630,
               "bytes": 128058,
               "mime": "image/jpeg"
-            }
+            },
+            "preferido": "webp"
           }
         },
         {
@@ -564,7 +566,8 @@
               "altura": 630,
               "bytes": 132184,
               "mime": "image/jpeg"
-            }
+            },
+            "preferido": "webp"
           }
         },
         {
@@ -675,7 +678,8 @@
               "altura": 630,
               "bytes": 112158,
               "mime": "image/jpeg"
-            }
+            },
+            "preferido": "webp"
           }
         },
         {
@@ -786,7 +790,8 @@
               "altura": 630,
               "bytes": 107763,
               "mime": "image/jpeg"
-            }
+            },
+            "preferido": "webp"
           }
         },
         {
@@ -897,7 +902,8 @@
               "altura": 630,
               "bytes": 130949,
               "mime": "image/jpeg"
-            }
+            },
+            "preferido": "webp"
           }
         },
         {
@@ -1008,7 +1014,8 @@
               "altura": 630,
               "bytes": 146536,
               "mime": "image/jpeg"
-            }
+            },
+            "preferido": "webp"
           }
         },
         {
@@ -1119,7 +1126,8 @@
               "altura": 630,
               "bytes": 108441,
               "mime": "image/jpeg"
-            }
+            },
+            "preferido": "webp"
           }
         },
         {
@@ -1230,7 +1238,8 @@
               "altura": 630,
               "bytes": 84841,
               "mime": "image/jpeg"
-            }
+            },
+            "preferido": "webp"
           }
         },
         {
@@ -1341,7 +1350,8 @@
               "altura": 630,
               "bytes": 129020,
               "mime": "image/jpeg"
-            }
+            },
+            "preferido": "webp"
           }
         },
         {
@@ -1452,7 +1462,8 @@
               "altura": 630,
               "bytes": 116666,
               "mime": "image/jpeg"
-            }
+            },
+            "preferido": "webp"
           }
         },
         {
@@ -1563,7 +1574,8 @@
               "altura": 630,
               "bytes": 69199,
               "mime": "image/jpeg"
-            }
+            },
+            "preferido": "webp"
           }
         },
         {
@@ -1674,7 +1686,8 @@
               "altura": 630,
               "bytes": 96734,
               "mime": "image/jpeg"
-            }
+            },
+            "preferido": "webp"
           }
         },
         {
@@ -1785,7 +1798,8 @@
               "altura": 630,
               "bytes": 69646,
               "mime": "image/jpeg"
-            }
+            },
+            "preferido": "webp"
           }
         },
         {
@@ -1896,7 +1910,8 @@
               "altura": 630,
               "bytes": 80726,
               "mime": "image/jpeg"
-            }
+            },
+            "preferido": "webp"
           }
         },
         {
@@ -2007,7 +2022,8 @@
               "altura": 630,
               "bytes": 90174,
               "mime": "image/jpeg"
-            }
+            },
+            "preferido": "webp"
           }
         },
         {
@@ -2118,7 +2134,8 @@
               "altura": 630,
               "bytes": 92667,
               "mime": "image/jpeg"
-            }
+            },
+            "preferido": "webp"
           }
         },
         {
@@ -2229,7 +2246,8 @@
               "altura": 630,
               "bytes": 77106,
               "mime": "image/jpeg"
-            }
+            },
+            "preferido": "webp"
           }
         },
         {
@@ -2340,7 +2358,8 @@
               "altura": 630,
               "bytes": 90357,
               "mime": "image/jpeg"
-            }
+            },
+            "preferido": "webp"
           }
         },
         {
@@ -2451,7 +2470,8 @@
               "altura": 630,
               "bytes": 83437,
               "mime": "image/jpeg"
-            }
+            },
+            "preferido": "webp"
           }
         },
         {
@@ -2562,7 +2582,8 @@
               "altura": 630,
               "bytes": 102787,
               "mime": "image/jpeg"
-            }
+            },
+            "preferido": "webp"
           }
         },
         {
@@ -2673,7 +2694,8 @@
               "altura": 630,
               "bytes": 76718,
               "mime": "image/jpeg"
-            }
+            },
+            "preferido": "webp"
           }
         },
         {
@@ -2784,7 +2806,8 @@
               "altura": 630,
               "bytes": 70861,
               "mime": "image/jpeg"
-            }
+            },
+            "preferido": "webp"
           }
         },
         {
@@ -2895,7 +2918,8 @@
               "altura": 630,
               "bytes": 87027,
               "mime": "image/jpeg"
-            }
+            },
+            "preferido": "webp"
           }
         },
         {
@@ -3006,7 +3030,8 @@
               "altura": 630,
               "bytes": 93272,
               "mime": "image/jpeg"
-            }
+            },
+            "preferido": "webp"
           }
         },
         {
@@ -3096,7 +3121,8 @@
               "altura": 630,
               "bytes": 82946,
               "mime": "image/jpeg"
-            }
+            },
+            "preferido": "webp"
           }
         }
       ]
