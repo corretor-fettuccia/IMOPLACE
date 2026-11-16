@@ -13,3 +13,8 @@ assert(context.validarInscricaoPush_({subscription}).endpoint.includes('fcm.goog
 for(const endpoint of ['https://localhost/a','https://fcm.googleapis.com.evil.org/a','https://fcm.googleapis.com@evil.org/a'])assert.throws(()=>context.validarInscricaoPush_({subscription:{...subscription,endpoint}}));
 const denied=context.doPost({parameter:{nonce:'a'.repeat(48),acao:'salvarImovel',dados:'{}'}}).text;
 assert(denied.includes('"ok":false'));assert(!denied.includes('SEGREDO_NAO_PUBLICAR'));console.log('Push CORE: admin protegido, callback seguro e cadastro público limitado.');
+// Notícias publicam mesmo quando não há qualquer fila de imóveis.
+const news={console,Date,exigirAdmin_:()=> 'owner@example.org',comTrava_:fn=>fn(),lerAba_:()=>({linhas:[]}),agoraIso_:()=> '2026-11-16T14:00:00Z',Utilities:{getUuid:()=> '12345678-abcd-1234-abcd-1234567890ab'},texto_:(x,n)=>String(x).slice(0,n),slugify_:x=>String(x).toLowerCase().replace(/ /g,'-'),booleano_:x=>x==='SIM',anexarLinha_:(name,table,row)=>news.inserted=row,registrarLog_:()=>{},propriedade_:()=>'',dispararWorkflow_:motivo=>news.dispatched=motivo};
+vm.createContext(news);vm.runInContext(fs.readFileSync(path.join(dir,'Noticias.gs'),'utf8'),news);
+const saved=news.salvarNoticia('',{TITULO:'Teste de notícia',CORPO:'Corpo',STATUS:'publicado'},0);
+assert(saved.ok);assert.equal(news.dispatched,'publicar-noticias');assert.equal(news.inserted.STATUS,'publicado');
