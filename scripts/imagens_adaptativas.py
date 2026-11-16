@@ -1,4 +1,5 @@
 """Deriva cada formato diretamente dos pixels da matriz. Nunca deriva JXL de JPEG/WebP novo."""
+from formatos_imagens import formato_padrao
 import hashlib
 import io
 import json
@@ -19,18 +20,22 @@ def abrir_matriz(src):
 
 def gerar(foto,site):
     native=bool(foto.get('matriz'));src=site/(foto.get('matriz') or foto['arquivo'])
-    key='v322-'+hashlib.sha256(src.read_bytes()).hexdigest()[:16]+'-a'+str(int(os.environ.get('IMOPLACE_AVIF')=='1'))+'-j'+str(int(os.environ.get('IMOPLACE_JXL')=='1'))
+    key='v331-'+hashlib.sha256(src.read_bytes()).hexdigest()[:16]+'-a'+str(int(os.environ.get('IMOPLACE_AVIF')=='1'))+'-j'+str(int(os.environ.get('IMOPLACE_JXL')=='1'))
+    key+='-p'+formato_padrao()
     folder=src.parent/'adaptativas'/key;manifest=folder/'manifesto.json'
     if manifest.is_file():
         cached=json.loads(manifest.read_text());rows=[x for items in cached.get('formatos',{}).values() for x in items]+[cached.get('social',{})]
-        if rows and all((site/row.get('arquivo','')).is_file() for row in rows):return cached
+        if rows and all((site/row.get('arquivo','')).is_file() for row in rows):
+            cached['preferido']=formato_padrao()
+            return cached
     image=abrir_matriz(src)
     if image.width*image.height>50_000_000:raise ValueError('Imagem acima de 50 megapixels')
     alpha='A' in image.getbands() and image.getchannel('A').getextrema()[0]<255
     formats=[('png','PNG',None),('webp','WEBP',80)] if alpha else [('jpg','JPEG',84),('webp','WEBP',80)]
+    if formato_padrao()=='png' and not alpha:formats.append(('png','PNG',None))
     if os.environ.get('IMOPLACE_AVIF')=='1' and features.check('avif'):formats.append(('avif','AVIF',55))
     widths=sorted(set(min(w,image.width) for w in WIDTHS));folder.mkdir(parents=True,exist_ok=True)
-    result={'largura':image.width,'altura':image.height,'formatos':{},'versaoConteudo':key,'origem':'jxl-lossless' if native else 'webp-legado'}
+    result={'largura':image.width,'altura':image.height,'formatos':{},'versaoConteudo':key,'origem':'jxl-lossless' if src.suffix.lower()=='.jxl' else src.suffix.lower().lstrip('.')+'-matriz' if native else 'webp-legado','preferido':formato_padrao()}
     for ext,fmt,quality in formats:
         variants=[]
         for w in widths:
@@ -39,7 +44,7 @@ def gerar(foto,site):
             im.info={};path=folder/f'{w}.{ext}';im.save(path,fmt,**({'quality':quality} if quality else {}))
             variants.append(dict(arquivo=path.relative_to(site).as_posix(),largura=im.width,altura=im.height,bytes=path.stat().st_size,mime=Image.MIME[fmt]))
         result['formatos'][ext]=variants
-    if native or os.environ.get('IMOPLACE_JXL')=='1':
+    if src.suffix.lower()=='.jxl' or os.environ.get('IMOPLACE_JXL')=='1':
         variants=[]
         for w in widths:
             im=image.resize((w,max(1,round(image.height*w/image.width))),Image.Resampling.LANCZOS)

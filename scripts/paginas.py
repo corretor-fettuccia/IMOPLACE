@@ -1,5 +1,6 @@
 """ImoPlace — HTML das páginas dos imóveis (layout do ImoPlace v2.1, sem dados de demonstração)."""
 from midias import colecao, embed
+from formatos_imagens import ordem_formatos
 import html
 import json
 from urllib.parse import quote
@@ -149,7 +150,7 @@ def picture(f,item,k):
     data=f.get('adaptativas') or {};fmts=data.get('formatos') or {}
     fallback=fmts.get('jpg') or fmts.get('png') or []
     src=RAIZ_REL+(fallback[-1]['arquivo'] if fallback else f['arquivo'])
-    sources=''.join('<source type="'+rows[0]['mime']+'" srcset="'+h(', '.join(RAIZ_REL+x['arquivo']+' '+str(x['largura'])+'w' for x in rows))+'" sizes="(max-width: 768px) 100vw, 60vw">' for ext,rows in fmts.items() if ext in ('jxl','avif','webp') and rows)
+    sources=''.join('<source type="'+rows[0]['mime']+'" srcset="'+h(', '.join(RAIZ_REL+x['arquivo']+' '+str(x['largura'])+'w' for x in rows))+'" sizes="(max-width: 768px) 100vw, 60vw">' for ext in ordem_formatos(fmts,data.get('preferido','webp')) for rows in [fmts[ext]])
     srcset=' srcset="'+h(', '.join(RAIZ_REL+x['arquivo']+' '+str(x['largura'])+'w' for x in fallback))+'" sizes="(max-width: 768px) 100vw, 60vw"' if fallback else ''
     return '<picture>'+sources+'<img src="'+h(src)+'"'+srcset+' width="'+str(data.get('largura',960))+'" height="'+str(data.get('altura',600))+'" alt="'+h(f.get('alt') or item['titulo'])+'" loading="'+('eager' if k==0 else 'lazy')+'" '+('fetchpriority="high" ' if k==0 else '')+'decoding="async"></picture>'
 

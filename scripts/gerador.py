@@ -60,35 +60,29 @@ def _entrada(item, fotos):
 
 
 def baixar_fotos(fotos, site, stats):
-    """Garante cada foto da versão atual no disco. Erro levanta FalhaDownload."""
+    """Preserva a matriz enviada e cria WebP de compatibilidade, sem alterar a matriz."""
+    from formatos_imagens import normalizar_formato, detectar_formato, abrir_pixels
     for f in fotos:
-        img = f['_img']
-        alvo = site / f['arquivo']
-        if not dentro(site, alvo):
-            raise drive.FalhaDownload(f'caminho inseguro: {f["arquivo"]}')
-        formato = img.get('formato') or 'webp'
-        matriz = alvo.with_suffix('.jxl') if formato == 'jxl' else alvo
-        if matriz.is_file() and hashlib.sha256(matriz.read_bytes()).hexdigest() == img['sha256'] and alvo.is_file():
-            if formato == 'jxl': f['matriz'] = matriz.relative_to(site).as_posix()
+        img=f['_img'];alvo=site/f['arquivo']
+        if not dentro(site,alvo):raise drive.FalhaDownload('Caminho de imagem inseguro')
+        formato=normalizar_formato(img.get('formato') or 'webp')
+        matriz=alvo if formato=='webp' else alvo.with_suffix('.'+formato)
+        if matriz.is_file() and hashlib.sha256(matriz.read_bytes()).hexdigest()==img['sha256'] and alvo.is_file():
+            if formato!='webp':f['matriz']=matriz.relative_to(site).as_posix()
             continue
-        dados = drive.baixar(img['driveFileId'])
-        if hashlib.sha256(dados).hexdigest() != img['sha256']:
-            raise drive.FalhaDownload(f'foto {img["imagemId"]}: hash diferente do arquivo enviado')
-        if formato == 'jxl':
-            from jxl_codec import is_jxl, decode
-            if not is_jxl(dados): raise drive.FalhaDownload('Matriz sem assinatura JXL')
-            gravar(matriz, dados)
+        dados=drive.baixar(img['driveFileId'])
+        if hashlib.sha256(dados).hexdigest()!=img['sha256']:raise drive.FalhaDownload('Hash da imagem diferente do arquivo enviado')
+        try:
+            if detectar_formato(dados)!=formato:raise ValueError('Conteúdo diferente do formato informado')
+        except ValueError as exc:raise drive.FalhaDownload('Formato de imagem inválido') from exc
+        gravar(matriz,dados)
+        if formato!='webp':
             try:
-                pixels = decode(matriz)
-                pixels.save(alvo, 'WEBP', quality=82)
-            except Exception as exc:
-                raise drive.FalhaDownload('Não foi possível decodificar a matriz JXL') from exc
-            f['matriz'] = matriz.relative_to(site).as_posix()
-        else:
-            if not eh_webp(dados): raise drive.FalhaDownload('Foto legada não é WebP')
-            gravar(alvo, dados)
-        stats['transferidas'] += 1
-        stats['bytes'] += len(dados)
+                pixels=abrir_pixels(matriz)
+                pixels.save(alvo,'WEBP',quality=82)
+            except Exception as exc:raise drive.FalhaDownload('Não foi possível abrir a matriz de imagem') from exc
+            f['matriz']=matriz.relative_to(site).as_posix()
+        stats['transferidas']+=1;stats['bytes']+=len(dados)
 
 
 def montar(feed_itens, pendencias, site, conf, aguardando=frozenset()):
@@ -112,13 +106,14 @@ def montar(feed_itens, pendencias, site, conf, aguardando=frozenset()):
 
 
     def fotos_do_feed(item):
-        fotos = [{'arquivo': f['arquivo'], 'legenda': f.get('legenda') or '', 'alt': f.get('alt') or ''} for f in item.get('imagens') or []]
+        fotos=[{'arquivo':f['arquivo'],'legenda':f.get('legenda') or '','alt':f.get('alt') or ''} for f in item.get('imagens') or []]
+        anteriores={x['arquivo']:x for x in (anterior.get(item['id']) or {}).get('imagens',[])}
         for f in fotos:
-            matriz=(site/f['arquivo']).with_suffix('.jxl')
-            anteriores={x['arquivo']:x for x in (anterior.get(item['id']) or {}).get('imagens',[])}
-            if (anteriores.get(f['arquivo']) or {}).get('matriz') and not matriz.is_file():
-                raise drive.FalhaDownload('Matriz JXL ausente; solicite reconstrução a partir do Drive.')
-            if matriz.is_file(): f['matriz']=matriz.relative_to(site).as_posix()
+            prev=(anteriores.get(f['arquivo']) or {}).get('matriz')
+            candidates=[site/prev] if prev else [(site/f['arquivo']).with_suffix('.'+ext) for ext in ('jxl','jpeg','png')]
+            found=next((p for p in candidates if dentro(site,p) and p.is_file()),None)
+            if prev and not found:raise drive.FalhaDownload('Matriz ausente; solicite reconstrução a partir do Drive.')
+            if found:f['matriz']=found.relative_to(site).as_posix()
         return fotos
 
     def completa(e):

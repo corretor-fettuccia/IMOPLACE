@@ -23,8 +23,7 @@ def baixar(file_id: str) -> bytes:
         raise FalhaDownload(f'driveFileId inválido: {file_id!r}')
     fixture = os.environ.get('DRIVE_FIXTURE')
     if fixture:
-        alvo = Path(fixture) / f'{file_id}.jxl'
-        if not alvo.is_file(): alvo = Path(fixture) / f'{file_id}.webp'
+        alvo=next((Path(fixture)/f'{file_id}.{ext}' for ext in ('jxl','jpeg','png','webp') if (Path(fixture)/f'{file_id}.{ext}').is_file()),Path(fixture)/f'{file_id}.webp')
         if not alvo.is_file():
             raise FalhaDownload(f'arquivo {file_id} não encontrado no Drive (fixture)')
         return alvo.read_bytes()

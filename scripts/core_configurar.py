@@ -1,4 +1,5 @@
 """Carrega SITE_URL e LOTE_MAXIMO do Sheets, fonte operacional do único CORE."""
+from formatos_imagens import normalizar_formato
 import json
 import os
 import re
@@ -22,19 +23,29 @@ def carregar_configuracao():
     return site,lote
 
 
+def carregar_formato_padrao():
+    url=f'{API}/{_sheet_id()}/values/{quote("CONFIGURACOES!A1:B",safe="")}'
+    rows=_request(url).get('values') or []
+    cfg={str(r[0]):str(r[1]) for r in rows[1:] if len(r)>1}
+    return normalizar_formato(cfg.get('FORMATO_PADRAO_IMAGENS','webp'))
+
 def main():
     site,lote=carregar_configuracao()
+    formato=carregar_formato_padrao()
     raiz=Path(__file__).resolve().parent.parent
     conf=json.loads((raiz/'imoplace.json').read_text('utf-8'))
     conf['urlPublica']=site
+    conf['formatoPadraoImagens']=formato
     alvo=raiz/'estado'/'config-operacional.json'
     alvo.parent.mkdir(exist_ok=True)
     alvo.write_text(json.dumps(conf,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     env=os.environ.get('GITHUB_ENV')
-    valores={'SITE_URL':site,'LOTE_MAXIMO':lote,'IMOPLACE_CONFIG':str(alvo)}
+    valores={'FORMATO_PADRAO_IMAGENS':formato,'SITE_URL':site,'LOTE_MAXIMO':lote,'IMOPLACE_CONFIG':str(alvo)}
     if env:
         with open(env,'a',encoding='utf-8') as f:
             for k,v in valores.items(): f.write(f'{k}={v}\n')
+    from formatos_imagens import aplicar_preferencia_catalogo
+    aplicar_preferencia_catalogo(raiz/'site',conf,formato)
     print('[core] Configuração operacional obtida do Sheets.')
 
 if __name__=='__main__': main()
