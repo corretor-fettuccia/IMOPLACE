@@ -95,7 +95,9 @@ class TestCore(unittest.TestCase):
         self.assertTrue((raiz/'CORE'/'Painel.html').exists())
         self.assertFalse((raiz/'GOOGLE.APPSCRIPT').exists())
         arquivo='\n'.join(x.read_text(encoding='utf8') for x in (raiz/'CORE').glob('*.gs'))
-        self.assertNotIn('function doPost(',arquivo)
+        self.assertIn("p.acao!=='push-inscrever'&&p.acao!=='push-remover'",arquivo)
+        for gs in (raiz/'CORE').glob('*.gs'):
+            if gs.name!='Push.gs':self.assertNotIn('function doPost(',gs.read_text())
 
 
 # Testes isolados do contrato de reserva e da correspondência JOB_ID.

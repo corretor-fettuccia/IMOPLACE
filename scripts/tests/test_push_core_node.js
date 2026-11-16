@@ -1,0 +1,15 @@
+'use strict';
+const fs=require('fs'),vm=require('vm'),assert=require('assert'),crypto=require('crypto'),path=require('path');
+const root=path.resolve(__dirname,'../../..');const dir=path.join(root,'CORE');
+const key=crypto.createECDH('prime256v1');key.generateKeys();const publicKey=key.getPublicKey().toString('base64url');
+const context={console,JSON,CONFIG:{siteUrl:'https://imoplace.com.br',adminEmail:'owner@example.org'},exigirAdmin_:()=>{throw Error('Acesso negado');},lerAba_:()=>({linhas:[{CHAVE:'PRIVATE_JWK',VALOR:'SEGREDO_NAO_PUBLICAR'},{CHAVE:'PUBLIC_KEY',VALOR:publicKey},{CHAVE:'URL_PUBLICA',VALOR:'https://script.google.com/macros/s/TESTE/exec'}]}),ContentService:{MimeType:{JAVASCRIPT:'js'},createTextOutput:text=>({text,setMimeType(){return this;}})},HtmlService:{XFrameOptionsMode:{ALLOWALL:'allow'},createHtmlOutput:text=>({text,setXFrameOptionsMode(){return this;}})}};
+vm.createContext(context);vm.runInContext(fs.readFileSync(path.join(dir,'Push.gs'),'utf8'),context);
+assert.throws(()=>context.configurarPush({url:'https://example.org'}),/Acesso negado/);
+const publicConfig=context.configuracaoPushPublica_({parameter:{callback:'imoplaceConfig'}}).text;
+assert(!publicConfig.includes('SEGREDO_NAO_PUBLICAR'));assert(publicConfig.includes(publicKey));
+assert.throws(()=>context.configuracaoPushPublica_({parameter:{callback:'x);alert(1)//'}}));
+const subscription={endpoint:'https://fcm.googleapis.com/fcm/send/TESTE',keys:{p256dh:publicKey,auth:crypto.randomBytes(16).toString('base64url')}};
+assert(context.validarInscricaoPush_({subscription}).endpoint.includes('fcm.googleapis.com'));
+for(const endpoint of ['https://localhost/a','https://fcm.googleapis.com.evil.org/a','https://fcm.googleapis.com@evil.org/a'])assert.throws(()=>context.validarInscricaoPush_({subscription:{...subscription,endpoint}}));
+const denied=context.doPost({parameter:{nonce:'a'.repeat(48),acao:'salvarImovel',dados:'{}'}}).text;
+assert(denied.includes('"ok":false'));assert(!denied.includes('SEGREDO_NAO_PUBLICAR'));console.log('Push CORE: admin protegido, callback seguro e cadastro público limitado.');

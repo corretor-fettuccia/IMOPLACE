@@ -87,6 +87,16 @@ def validar(site=None, conf=None) -> list:
             rel = str(pagina.parent.relative_to(site)).replace('\\', '/') + '/'
             if rel not in paginas_ok and 'http-equiv="refresh"' not in pagina.read_text(encoding='utf-8'):
                 problemas.append(f'página órfã (fora do catálogo): {rel}')
+    blog_path=site/'noticias/catalogo.json'
+    if blog_path.is_file():
+        try:
+            blog=json.loads(blog_path.read_text())
+            paginas_ok.add('noticias/')
+            for n in blog.get('artigos',[]):
+                rel='noticias/'+n['codigo']+'/'
+                if not (site/rel/'index.html').is_file():problemas.append('matéria sem página: '+rel)
+                paginas_ok.add(rel)
+        except (ValueError,KeyError):problemas.append('catálogo de notícias inválido')
     sm = site / 'sitemap.xml'
     if sm.is_file():
         for url in re.findall(r'<loc>([^<]+)</loc>', sm.read_text(encoding='utf-8')):
@@ -95,6 +105,11 @@ def validar(site=None, conf=None) -> list:
                 problemas.append(f'sitemap aponta para página inexistente: {url}')
     if not conf['permitirIndexacao'] and sm.exists():
         problemas.append('sitemap.xml existe com indexação desligada')
+    for public_json in site.rglob('*.json'):
+        try:
+            forbidden=_chaves(json.loads(public_json.read_text()),set()) & {'private_jwk','d','endpoint','p256dh','auth','escopos','inscricao_id'}
+            if forbidden:problemas.append('dados de inscrição/chave privada no artefato: '+str(public_json.relative_to(site)))
+        except (ValueError,UnicodeError):continue
     total = sum(f.stat().st_size for f in site.rglob('*') if f.is_file())
     mb = f'{total / 1024 ** 2:.0f} MB'
     if total > LIMITE_BYTES:

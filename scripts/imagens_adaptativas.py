@@ -57,6 +57,9 @@ def gerar(foto,site):
 def enriquecer(entradas,site):
     for item in entradas:
         for foto in item.get('imagens',[]):
+            if not foto.get('matriz'):
+                foto.pop('adaptativas',None)
+                continue
             if os.environ.get('IMOPLACE_IMAGENS_ADAPTATIVAS')=='0':foto.pop('adaptativas',None);continue
             try:foto['adaptativas']=gerar(foto,site)
             except Exception as exc:

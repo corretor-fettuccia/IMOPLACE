@@ -288,6 +288,10 @@ def gravar_sitemap(entradas, site, conf):
         urls = [f'{base}/'] + [f'{base}/imoveis/{e["codigo"]}/' for e in entradas]
         corpo = '  <url><loc>'+xml_esc(base+'/')+'</loc></url>\n'
         corpo += '\n'.join('<url><loc>'+xml_esc(base+'/imoveis/'+e['codigo']+'/')+'</loc>'+''.join('<image:image><image:loc>'+xml_esc(base+'/'+paginas.imagem_seo(f))+'</image:loc></image:image>' for f in e['imagens'])+'</url>' for e in entradas)
+        blog=(ler_json(site/'noticias/catalogo.json',{}) or {}).get('artigos',[])
+        if blog and (site/'noticias/index.html').is_file():
+            corpo += '\n<url><loc>'+xml_esc(base+'/noticias/')+'</loc></url>'
+        corpo += ''.join('\n<url><loc>'+xml_esc(base+'/noticias/'+x['codigo']+'/')+'</loc></url>' for x in blog)
         gravar(site / 'sitemap.xml', '<?xml version="1.0" encoding="UTF-8"?>\n'
                '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n' + corpo + '\n</urlset>\n')
         gravar(site / 'robots.txt', f'User-agent: *\nAllow: /\nSitemap: {base}/sitemap.xml\n')

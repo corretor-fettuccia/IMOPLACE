@@ -121,7 +121,7 @@ def pagina(item, conf):
 <body>
 <header class="bar"><div class="wrap">
 <a href="{RAIZ_REL}index.html" class="logo" aria-label="Imoplace, página inicial"><img src="{RAIZ_REL}assets/img/logo.png" alt="" width="50" height="44"><span>Imoplace</span></a>
-<nav aria-label="Principal"><a href="{RAIZ_REL}index.html#imoveis">Comprar</a><a href="{RAIZ_REL}index.html?categoria=lancamento#imoveis">Lançamentos</a></nav>
+<nav aria-label="Principal"><a href="{RAIZ_REL}noticias/">Notícias</a><a href="{RAIZ_REL}index.html#imoveis">Comprar</a><a href="{RAIZ_REL}index.html?categoria=lancamento#imoveis">Lançamentos</a></nav>
 <div class="actions"><a class="btn btn-accent" href="{RAIZ_REL}anunciar/">Anuncie seu imóvel</a></div>
 </div></header>
 <main class="wrap" id="det">{detalhe(item)}</main>

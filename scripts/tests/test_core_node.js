@@ -4,7 +4,8 @@ const root=path.resolve(__dirname,'../../..');
 const dir=path.join(root,'CORE');
 let code=fs.readdirSync(dir).filter(x=>x.endsWith('.gs')).map(x=>fs.readFileSync(path.join(dir,x),'utf8')).join('\n');
 new vm.Script(code); // sintaxe dos arquivos do único projeto
-assert(!code.includes('function doPost('),'não deve haver POST público');
+assert(code.includes("p.acao!=='push-inscrever'&&p.acao!=='push-remover'"),'POST público limitado a inscrição e cancelamento');
+assert(code.includes('function registrarPushPublico_('),'roteador push isolado');
 const result=fs.readFileSync(path.join(dir,'Resultados.gs'),'utf8');
 const im={ID:'1001',VERSAO:6,VERSAO_PUBLICADA:5,NO_SITE:'NAO',ESTADO_SYNC:'pendente'};
 const fil={IMOVEL_ID:'1001',VERSAO:6,ESTADO:'pendente',_linha:2};
