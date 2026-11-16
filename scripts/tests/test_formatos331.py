@@ -47,4 +47,5 @@ class Formatos331(unittest.TestCase):
 
     def test_addon_e_aplicador_reais_em_node(self):
         import subprocess
-        subprocess.run(['node',str(Path(__file__).with_name('test_formatos331_node.cjs'))],check=True,capture_output=True,text=True)
+        result=subprocess.run(['node',str(Path(__file__).with_name('test_formatos331_node.cjs'))],capture_output=True,text=True)
+        self.assertEqual(result.returncode,0,result.stdout+'\n'+result.stderr)

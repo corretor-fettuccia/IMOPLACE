@@ -19,6 +19,11 @@ class TestEtapas(unittest.TestCase):
         self.tmp = Path(tempfile.mkdtemp())
         self.site = self.tmp/'site'
         shutil.copytree(RAIZ/'site', self.site)
+        # Não usar anúncios/fotos reais como dados de teste.
+        shutil.rmtree(self.site/'imoveis',ignore_errors=True)
+        (self.site/'imoveis').mkdir()
+        (self.site/'catalogo.json').write_text(json.dumps({'contrato':'imoplace-v1','schemaVersao':2,'total':0,'imoveis':[]}),encoding='utf-8')
+
         self.estado = self.tmp/'estado'
         self.estado.mkdir()
         # Configuração isolada: testes não dependem do arquivo de produção.

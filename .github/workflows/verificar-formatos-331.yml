@@ -28,5 +28,7 @@ jobs:
         run: pip install 'Pillow>=11.3,<13' 'pillow-jxl-plugin==1.3.8' 'pywebpush==2.5.0'
       - name: Compilar Python
         run: python -m compileall -q scripts
+      - name: Validar complemento e atualizador Node
+        run: node scripts/tests/test_formatos331_node.cjs
       - name: Testes completos sem credenciais e sem publicação
         run: python -m unittest discover -s scripts/tests -t scripts
