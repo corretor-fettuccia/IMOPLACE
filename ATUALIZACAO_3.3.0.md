@@ -1,5 +1,7 @@
 # ImoplaceCore 3.3.0 — notícias e avisos no navegador
 
+Este pacote é uma atualização sobre a 3.2.2. A pasta CORE contém o servidor completo; GITHUB contém somente os arquivos alterados e deve ser aplicada por sobre o repositório existente, sem apagar os demais arquivos. Não é um backup do catálogo ou das fotos.
+
 ## Entrega
 
 - Os WebP existentes não são reconvertidos, recompactados nem substituídos automaticamente. As URLs e os bytes das fotos legadas permanecem.

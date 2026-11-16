@@ -179,6 +179,7 @@ jobs:
         if: steps.fila.outputs.tem == 'true'
         run: python -u scripts/conferir.py
       - name: '[8/8] Feedback individual no Sheets'
+        id: feedback
         if: steps.fila.outputs.tem == 'true'
         env:
           GOOGLE_ACCESS_TOKEN: ${{ steps.google.outputs.access_token }}
@@ -189,7 +190,7 @@ jobs:
           GOOGLE_ACCESS_TOKEN: ${{ steps.google.outputs.access_token }}
         run: python -u scripts/push_notificar.py
       - name: Registrar erro por imóvel
-        if: failure() && steps.fila.outputs.tem == 'true'
+        if: failure() && steps.fila.outputs.tem == 'true' && steps.feedback.outcome != 'success'
         env:
           GOOGLE_ACCESS_TOKEN: ${{ steps.google.outputs.access_token }}
           MOTIVO_FALHA: 'GitHub Actions interrompido; consultar log do workflow.'
