@@ -67,6 +67,12 @@ def validar(site=None, conf=None) -> list:
                 problemas.append(f'foto ausente: {arq}')
             elif not eh_webp(alvo.read_bytes()[:16]):
                 problemas.append(f'foto não é WebP: {arq}')
+            if f.get('matriz'):
+                from jxl_codec import is_jxl
+                matriz=site/f['matriz']
+                if not dentro(site,matriz) or not matriz.is_file() or not is_jxl(matriz.read_bytes()[:12]):problemas.append('matriz JXL inválida: '+str(f['matriz']))
+            social=(f.get('adaptativas') or {}).get('social')
+            if social and (not dentro(site,site/social['arquivo']) or not (site/social['arquivo']).is_file()):problemas.append('imagem social ausente')
             for rows in (f.get('adaptativas') or {}).get('formatos', {}).values():
                 for variante in rows:
                     caminho = str(variante.get('arquivo', ''))

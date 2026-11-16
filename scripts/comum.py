@@ -13,7 +13,7 @@ RE_ID = re.compile(r'^\d{1,12}$')
 RE_ARQUIVO = re.compile(r'^[a-z0-9-]+-i[0-9a-f]{10}\.v\d{1,6}\.webp$')
 RE_DRIVE_ID = re.compile(r'^[A-Za-z0-9_-]{10,200}$')
 RE_SHA = re.compile(r'^[0-9a-f]{64}$')
-MAX_FOTO_BYTES = 10 * 1024 * 1024
+MAX_FOTO_BYTES = 20 * 1024 * 1024
 UA = 'ImoPlace-Publicador/3.0.0'
 
 # Campos que jamais podem aparecer em nada que vá para o site.

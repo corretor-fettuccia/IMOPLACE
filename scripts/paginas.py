@@ -88,10 +88,10 @@ def pagina(item, conf):
     descricao = (seo.get('descricao') or item.get('descricao') or f'{item.get("tipo", "")} em {local(item)}').strip()[:160]
     indexar = conf['permitirIndexacao']
     fotos = item.get('imagens') or []
-    og = f'\n<meta property="og:image" content="{h(base + "/" + fotos[0]["arquivo"])}">' if fotos else ''
+    og = f'\n<meta property="og:image" content="{h(base + "/" + imagem_social(fotos[0]))}">' if fotos else ''
     schema = {
         '@context': 'https://schema.org', '@type': 'RealEstateListing', 'name': item['titulo'], 'description': descricao,
-        'url': url, 'image': [f'{base}/{f["arquivo"]}' for f in fotos], 'dateModified': item.get('atualizadoEm') or None,
+        'url': url, 'image': [f'{base}/{imagem_seo(f)}' for f in fotos], 'dateModified': item.get('atualizadoEm') or None,
         'offers': {'@type': 'Offer', 'priceCurrency': 'BRL', 'price': item.get('preco'), 'availability': 'https://schema.org/InStock'},
         'address': {'@type': 'PostalAddress', 'addressLocality': (item.get('localizacao') or {}).get('cidade', ''),
                     'addressRegion': (item.get('localizacao') or {}).get('uf', ''), 'addressCountry': 'BR'},
@@ -112,6 +112,7 @@ def pagina(item, conf):
 <meta property="og:title" content="{h(titulo)}">
 <meta property="og:description" content="{h(descricao)}">{og}
 <meta name="twitter:card" content="summary_large_image">
+{social_tags(fotos,base)}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{RAIZ_REL}assets/css/style.css">
@@ -165,3 +166,22 @@ def multimidia(item):
     if links:
         result+='<button class="btn btn-line" type="button" data-open-links>Mais links ↗</button><dialog id="external-links" aria-labelledby="links-title"><h2 id="links-title">Acessos externos</h2><button type="button" class="btn btn-line" data-close-links>Fechar ✕</button>'+''.join('<p><a href="'+h(x['url'])+'" target="_blank" rel="noopener noreferrer">'+h(x['titulo'])+' ↗</a><br>'+h(x['descricao'])+'</p>' for x in links)+'</dialog>'
     return '<div id="multimidia">'+result+'</div>'
+
+
+def imagem_seo(f):
+    formats=(f.get('adaptativas') or {}).get('formatos') or {}
+    rows=formats.get('jpg') or formats.get('png') or []
+    return rows[-1]['arquivo'] if rows else f['arquivo']
+
+
+def imagem_social(f):
+    return ((f.get('adaptativas') or {}).get('social') or {}).get('arquivo') or imagem_seo(f)
+
+
+def social_tags(fotos,base):
+    if not fotos:return ''
+    social=(fotos[0].get('adaptativas') or {}).get('social') or {}
+    url=h(base+'/'+imagem_social(fotos[0]))
+    tags=f'<meta name="twitter:image" content="{url}">\n<meta property="og:image:alt" content="{h(fotos[0].get("alt") or "Imóvel")}">'
+    if social:tags+='\n<meta property="og:image:type" content="image/jpeg">\n<meta property="og:image:width" content="1200">\n<meta property="og:image:height" content="630">'
+    return tags

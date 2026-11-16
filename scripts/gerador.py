@@ -55,7 +55,7 @@ def _entrada(item, fotos):
         'anunciante': {k: (item.get('anunciante') or {}).get(k) or '' for k in ('nome', 'creci', 'whatsapp')},
         'feeds': item.get('feeds') or {},
         'midias': item.get('midias') or [], 'links_externos': item.get('links_externos') or [],
-        'imagens': [{'arquivo': f['arquivo'], 'legenda': f['legenda'], 'alt': f['alt'], **({'adaptativas': f['adaptativas']} if f.get('adaptativas') else {})} for f in fotos],
+        'imagens': [{'arquivo': f['arquivo'], 'legenda': f['legenda'], 'alt': f['alt'], **({'adaptativas': f['adaptativas']} if f.get('adaptativas') else {}), **({'matriz': f['matriz']} if f.get('matriz') else {})} for f in fotos],
     }
 
 
@@ -66,14 +66,27 @@ def baixar_fotos(fotos, site, stats):
         alvo = site / f['arquivo']
         if not dentro(site, alvo):
             raise drive.FalhaDownload(f'caminho inseguro: {f["arquivo"]}')
-        if alvo.is_file() and hashlib.sha256(alvo.read_bytes()).hexdigest() == img['sha256']:
+        formato = img.get('formato') or 'webp'
+        matriz = alvo.with_suffix('.jxl') if formato == 'jxl' else alvo
+        if matriz.is_file() and hashlib.sha256(matriz.read_bytes()).hexdigest() == img['sha256'] and alvo.is_file():
+            if formato == 'jxl': f['matriz'] = matriz.relative_to(site).as_posix()
             continue
         dados = drive.baixar(img['driveFileId'])
-        if not eh_webp(dados):
-            raise drive.FalhaDownload(f'foto {img["imagemId"]} não é WebP')
         if hashlib.sha256(dados).hexdigest() != img['sha256']:
-            raise drive.FalhaDownload(f'foto {img["imagemId"]} chegou diferente do enviado (hash não confere); será tentada de novo')
-        gravar(alvo, dados)
+            raise drive.FalhaDownload(f'foto {img["imagemId"]}: hash diferente do arquivo enviado')
+        if formato == 'jxl':
+            from jxl_codec import is_jxl, decode
+            if not is_jxl(dados): raise drive.FalhaDownload('Matriz sem assinatura JXL')
+            gravar(matriz, dados)
+            try:
+                pixels = decode(matriz)
+                pixels.save(alvo, 'WEBP', quality=82)
+            except Exception as exc:
+                raise drive.FalhaDownload('Não foi possível decodificar a matriz JXL') from exc
+            f['matriz'] = matriz.relative_to(site).as_posix()
+        else:
+            if not eh_webp(dados): raise drive.FalhaDownload('Foto legada não é WebP')
+            gravar(alvo, dados)
         stats['transferidas'] += 1
         stats['bytes'] += len(dados)
 
@@ -99,7 +112,14 @@ def montar(feed_itens, pendencias, site, conf, aguardando=frozenset()):
 
 
     def fotos_do_feed(item):
-        return [{'arquivo': f['arquivo'], 'legenda': f.get('legenda') or '', 'alt': f.get('alt') or ''} for f in item.get('imagens') or []]
+        fotos = [{'arquivo': f['arquivo'], 'legenda': f.get('legenda') or '', 'alt': f.get('alt') or ''} for f in item.get('imagens') or []]
+        for f in fotos:
+            matriz=(site/f['arquivo']).with_suffix('.jxl')
+            anteriores={x['arquivo']:x for x in (anterior.get(item['id']) or {}).get('imagens',[])}
+            if (anteriores.get(f['arquivo']) or {}).get('matriz') and not matriz.is_file():
+                raise drive.FalhaDownload('Matriz JXL ausente; solicite reconstrução a partir do Drive.')
+            if matriz.is_file(): f['matriz']=matriz.relative_to(site).as_posix()
+        return fotos
 
     def completa(e):
         return bool(e and e.get('imagens')) and all((site / f['arquivo']).is_file() for f in e['imagens'])
@@ -231,6 +251,7 @@ def limpar(entradas, site, conf):
             continue
         if pasta.name in usados:
             refs = {f['arquivo'].rsplit('/', 1)[-1] for f in usados[pasta.name]['imagens']}
+            refs |= {f['matriz'].rsplit('/',1)[-1] for f in usados[pasta.name]['imagens'] if f.get('matriz')}
             imgs = pasta / 'imagens'
             if imgs.is_dir():
                 for arquivo in imgs.iterdir():
@@ -265,9 +286,10 @@ def gravar_sitemap(entradas, site, conf):
     base = conf['urlPublica']
     if conf['permitirIndexacao']:
         urls = [f'{base}/'] + [f'{base}/imoveis/{e["codigo"]}/' for e in entradas]
-        corpo = '\n'.join(f'  <url><loc>{xml_esc(u)}</loc></url>' for u in urls)
+        corpo = '  <url><loc>'+xml_esc(base+'/')+'</loc></url>\n'
+        corpo += '\n'.join('<url><loc>'+xml_esc(base+'/imoveis/'+e['codigo']+'/')+'</loc>'+''.join('<image:image><image:loc>'+xml_esc(base+'/'+paginas.imagem_seo(f))+'</image:loc></image:image>' for f in e['imagens'])+'</url>' for e in entradas)
         gravar(site / 'sitemap.xml', '<?xml version="1.0" encoding="UTF-8"?>\n'
-               '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + corpo + '\n</urlset>\n')
+               '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n' + corpo + '\n</urlset>\n')
         gravar(site / 'robots.txt', f'User-agent: *\nAllow: /\nSitemap: {base}/sitemap.xml\n')
     else:
         (site / 'sitemap.xml').unlink(missing_ok=True)
@@ -276,7 +298,7 @@ def gravar_sitemap(entradas, site, conf):
 
 def _item_feed(e, conf, meta):
     base = conf['urlPublica']
-    fotos = [f'{base}/{f["arquivo"]}' for f in e['imagens']]
+    fotos = [f'{base}/{paginas.imagem_seo(f)}' for f in e['imagens']]
     disp = (e.get('feeds') or {}).get('disponibilidade') or 'in_stock'
     if meta:
         disp = 'in stock' if disp == 'in_stock' else 'out of stock'

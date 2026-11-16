@@ -52,10 +52,21 @@ def ler_tabelas():
     """
     sid = _sheet_id()
     specs = [
-        ('IMOVEIS', 'A1:AO'), ('IMOVEIS', 'AT1:AT'), ('IMOVEIS', 'AV1:BA'), ('IMOVEIS', 'BE1:BF'),
+        ('IMOVEIS', 'A1:AO'), ('IMOVEIS', 'AT1:AT'), ('IMOVEIS', 'AV1:BA'),
         ('IMAGENS', 'A1:K'), ('IMAGENS', 'M1:Q'),
         ('FILA', 'A1:I'), ('RESULTADOS', 'A1:L'),
     ]
+    def coluna(n):
+        out=''
+        while n:
+            n,rest=divmod(n-1,26);out=chr(65+rest)+out
+        return out
+    for nome,chaves in [('IMOVEIS',('MIDIAS_JSON','LINKS_EXTERNOS_JSON')),('IMAGENS',('FORMATO',))]:
+        header=_request(f'{API}/{sid}/values/{quote(nome+"!1:1",safe="")}').get('values') or [[]]
+        cab=[str(x).strip().upper() for x in header[0]]
+        for chave in chaves:
+            if chave in cab:
+                col=coluna(cab.index(chave)+1);specs.append((nome,f'{col}1:{col}'))
     ranges = '&'.join('ranges=' + quote("'" + nome + "'!" + faixa, safe='') for nome, faixa in specs)
     ret = _request(f'{API}/{sid}/values:batchGet?{ranges}&valueRenderOption=UNFORMATTED_VALUE')
     vr = ret.get('valueRanges') or []
@@ -193,7 +204,7 @@ def _manifesto(im, fotos):
             nome=str(f.get('NOME','')),legenda=str(f.get('LEGENDA','')),alt=str(f.get('ALT','')),
             ordem=_n(f.get('ORDEM')),versao=versao,versaoPublicada=_n(f.get('VERSAO_PUBLICADA')),
             sha256=str(f.get('SHA256','')).lower(),bytes=_n(f.get('BYTES')),operacao=str(f.get('OPERACAO','')),
-            arquivo=f'{base}-{imagem_id.lower()}.v{versao}.webp'))
+            arquivo=f'{base}-{imagem_id.lower()}.v{versao}.webp', formato=str(f.get('FORMATO') or 'webp').lower()))
     return {'imovelId':iid,'versao':_n(im.get('VERSAO')),'status':str(im.get('STATUS')),
             'caminho':f'imoveis/{codigo}/','capaId':str(im.get('IMAGEM_CAPA_ID','')),'imagens':lista}
 
