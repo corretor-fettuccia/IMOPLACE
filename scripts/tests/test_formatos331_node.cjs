@@ -18,7 +18,7 @@ const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),asse
  await front.api('enviarImagem','1001',{});assert(calls.includes('enviarImagemFormato331'));assert.equal(marked,4);
  selected='webp';wrong=true;await assert.rejects(front.converter({name:'x.png'},{}));
  const {prepararAtualizacao331}=await import(pathToFileURL(path.join(folder,'aplicar-core-3.3.1.mjs')));
- const fixture={'Painel.html':'<body>Olá</body>','ConfigOperacional.gs':'function x(){var dados = { SITE_URL: CONFIG.siteUrl, LOTE_MAXIMO: String(limite) };}','Instalador.gs':'function instalar(){\n  sincronizarConfiguracaoOperacional_();\n}','Codigo.gs':'ImoplaceCore.3.3.0','Imoveis.gs':"var x=(f.FORMATO === 'jxl' ? 'jxl' : 'webp);"};
+ const fixture={'Painel.html':'<body>Olá</body>','ConfigOperacional.gs':'function x(){var dados = { SITE_URL: CONFIG.siteUrl, LOTE_MAXIMO: String(limite) };}','Instalador.gs':'function instalar(){\n  sincronizarConfiguracaoOperacional_();\n}','Codigo.gs':'ImoplaceCore.3.3.0','Imoveis.gs':"var x=(f.FORMATO === 'jxl' ? 'jxl' : 'webp');"};
  const prepared=prepararAtualizacao331(fixture);assert(prepared['Painel.html'].includes('FormatoImagens331Js'));assert(prepared['ConfigOperacional.gs'].includes('FORMATO_PADRAO_IMAGENS'));assert.deepEqual(prepararAtualizacao331(prepared),prepared);assert.throws(()=>prepararAtualizacao331({...fixture,'Instalador.gs':'não reconhecido'}));
  const offline=fs.readFileSync(path.join(folder,'ATUALIZAR-CORE-3.3.1.html'),'utf8');const script=offline.match(/<script>([\s\S]*)<\/script>/)[1];
  const ctx={Uint8Array,DataView,Blob,DecompressionStream,console,document:{querySelector:()=>({addEventListener(){}})}};vm.createContext(ctx);vm.runInContext(script,ctx);
