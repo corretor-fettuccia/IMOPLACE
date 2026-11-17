@@ -1,8 +1,8 @@
 {
   "schemaVersao": 2,
   "contrato": "imoplace-v1",
-  "geradoEm": "2026-11-17T13:03:59.331540+00:00",
-  "total": 11,
+  "geradoEm": "2026-11-17T15:15:55.892862+00:00",
+  "total": 12,
   "imoveis": [
     {
       "id": "1004",
@@ -369,6 +369,139 @@
           "arquivo": "imoveis/novo-imovel-1012/imagens/foto-1-dr-lourencozaccaro-290-centro-nsr-i0f87108ecf.v1.webp",
           "legenda": "Foto 31",
           "alt": "Sobrado Colonial | 3 Dormitórios com Suíte Master | Salão de Festas | Centro de Nova Santa Rita — foto 31"
+        }
+      ]
+    },
+    {
+      "id": "1013",
+      "codigo": "varandas-trend-living-sacada-churrasqueira-monte-castelo-1013",
+      "categoria": "venda",
+      "status": "publicado",
+      "url": "https://imoplace.com.br/imoveis/varandas-trend-living-sacada-churrasqueira-monte-castelo-1013/",
+      "destaque": false,
+      "tag": "PROMOÇÃO",
+      "ordem": 0,
+      "atualizadoEm": "2026-11-17T15:14:42.058Z",
+      "tipo": "Apartamento",
+      "condicao": "Novo",
+      "titulo": "Varandas Trend Living | Apartamentos de 2 e 3 Dormitórios com Suíte e Churrasqueira | Canoas",
+      "descricao": "Imoplace Vende | Conquiste seu apartamento no bairro Nossa Senhora das Graças, com suíte, churrasqueira e lazer do térreo ao rooftop, com parcelas a partir de R$ 3.900/mês!\n\nSeu novo apartamento pode oferecer muito mais do que espaço para morar. No Varandas Trend Living, você encontra ambientes para receber os amigos, aproveitar a família, trabalhar com comodidade e relaxar sem sair do condomínio.\n\nLocalizado na Rua Monte Castelo, 235, em Canoas, o empreendimento oferece apartamentos de 2 e 3 dormitórios, com plantas que atendem a diferentes momentos da vida. São opções com sacada, living estendido e unidades garden com pátio e espera para piscina.\n\nO lazer ganha destaque no rooftop, com piscina, spa com pergolado e espaços para aproveitar a vista. Para os encontros e comemorações, o condomínio reúne salão de festas, espaço gourmet, quiosques de parrilla e pizza, Wine Garden e fireplace.\n\nA praticidade também faz parte do projeto: coworking para trabalhar próximo de casa, minimercado para compras rápidas, lavanderia compartilhada e espaço delivery. As crianças contam com brinquedoteca e playground, enquanto os animais de estimação têm pet place e pet wash.\n\nPlantas.:\n• 55,70 m² - 2 dormitórios, sendo 1 suíte, sacada e churrasqueira\n• 67,88 m² - 2 dormitórios, sendo 1 suíte, living estendido e churrasqueira\n• 67,88 m² - 3 dormitórios, sendo 1 suíte e churrasqueira\n• 78,14 m² - 2 dormitórios, sendo 1 suíte, living estendido, sacada e churrasqueira\n• 78,14 m² - 3 dormitórios, sendo 1 suíte, sacada e churrasqueira\n• Garden: 67,88 m² + 53,45 m² de pátio - 2 dormitórios, sendo 1 suíte, living estendido, churrasqueira e espera para piscina\n• Garden: 78,14 m² + 53,45 m² de pátio - 2 dormitórios, sendo 1 suíte, living estendido, churrasqueira e espera para piscina\n\nCaracterísticas dos apartamentos\n• Opções de 2 e 3 dormitórios, com suíte  \n• Churrasqueira  \n• Plantas com opção de sacada  \n• Opções com living estendido  \n• Unidades garden com pátio e espera para piscina  \n• Vagas de garagem simples ou duplas, conforme a unidade  \n\nEstrutura de lazer e conveniência\n• Piscina no rooftop e spa com pergolado  \n• Academia e espaço zen  \n• Salão de festas e espaço gourmet  \n• Quiosques de parrilla e pizza  \n• Wine Garden e fireplace  \n• Sala de cinema e salão de jogos  \n• Brinquedoteca e playground  \n• Coworking, minimercado e lavanderia  \n• Pet place e pet wash  \n• Espaço delivery  \n• Dois elevadores por torre  \n• Espera para carregador de carro elétrico \n\nCondições de negociação\n• Parcelas a partir de R$ 3.900/mês  \n• Super promoção contate e saiba mais!\n\nEntrega.: Dezembro de 2026\n\nCaracterísticas, valores e condições variam conforme a unidade e a simulação.\n\nAgende sua visita e descubra qual planta do Varandas Trend Living combina com o seu próximo momento.",
+      "seo": {
+        "titulo": "Varandas Trend Living Canoas | 2 e 3 Dormitórios com Suíte",
+        "descricao": "Rooftop com piscina e spa, lazer completo e opções com sacada ou garden. No Nossa Senhora das Graças, com parcelas a partir de R$ 3.900/mês."
+      },
+      "localizacao": {
+        "bairro": "Nossa Senhora das Graças",
+        "cidade": "Canoas",
+        "uf": "RS",
+        "endereco": "Monte castelo, nossa senhora das graças, canoas-RS",
+        "lat": null,
+        "lng": null
+      },
+      "preco": 503000.0,
+      "condominio": 1000.0,
+      "iptuAnual": null,
+      "financiamento": true,
+      "permuta": true,
+      "documentacaoEmDia": true,
+      "dormitorios": 3.0,
+      "suites": 1.0,
+      "banheiros": 2.0,
+      "vagas": 2.0,
+      "areaTotal": null,
+      "areaUtil": null,
+      "comodidades": [],
+      "caracteristicasImovel": [
+        "2 ou 3 dormitórios conforme a planta",
+        "1 suíte",
+        "2 banheiros",
+        "churrasqueira",
+        "sacada ou varanda conforme a unidade",
+        "rebaixo de forro em gesso em todos os cômodos",
+        "espera elétrica para ar-condicionado",
+        "medidores individuais de água e gás",
+        "esquadrias externas em alumínio preto",
+        "vaga simples ou dupla conforme a unidade",
+        "living estendido nas opções de 2 dormitórios com 67",
+        "88 m² e 78",
+        "14 m²",
+        "pátio com espera para piscina nas unidades garden"
+      ],
+      "caracteristicasCondominio": [
+        "Piscina no rooftop",
+        "spa com pergolado",
+        "academia",
+        "espaço zen",
+        "salão de festas",
+        "espaço gourmet",
+        "quiosque parrilla",
+        "quiosque pizza",
+        "Wine Garden",
+        "fireplace",
+        "sala de cinema",
+        "salão de jogos",
+        "brinquedoteca",
+        "playground",
+        "coworking",
+        "minimercado",
+        "lavanderia compartilhada",
+        "pet place",
+        "pet wash",
+        "espaço delivery",
+        "hall de entrada",
+        "2 elevadores por torre",
+        "portaria 24 horas",
+        "portão eletrônico",
+        "espera para carregador de carro elétrico",
+        "áreas de lazer entregues mobiliadas e climatizadas"
+      ],
+      "anunciante": {
+        "nome": "Roberto",
+        "creci": "83599F",
+        "whatsapp": "5551998111078"
+      },
+      "feeds": {
+        "google": false,
+        "meta": false,
+        "disponibilidade": "in_stock"
+      },
+      "midias": [],
+      "links_externos": [],
+      "imagens": [
+        {
+          "arquivo": "imoveis/varandas-trend-living-sacada-churrasqueira-monte-castelo-1013/imagens/gallery-image2-17-i27cef932e4.v1.webp",
+          "legenda": "Foto 1",
+          "alt": "Varandas Trend Living | Apartamentos de 2 e 3 Dormitórios com Suíte e Churrasqueira | Canoas — foto 1"
+        },
+        {
+          "arquivo": "imoveis/varandas-trend-living-sacada-churrasqueira-monte-castelo-1013/imagens/gallery-image1-16-ib207eb0876.v1.webp",
+          "legenda": "Foto 2",
+          "alt": "Varandas Trend Living | Apartamentos de 2 e 3 Dormitórios com Suíte e Churrasqueira | Canoas — foto 2"
+        },
+        {
+          "arquivo": "imoveis/varandas-trend-living-sacada-churrasqueira-monte-castelo-1013/imagens/1fbd68b2-7f5d-479f-a7c3-b48c7b06ff86-i68f238b095.v1.webp",
+          "legenda": "Foto 3",
+          "alt": "Varandas Trend Living | Apartamentos de 2 e 3 Dormitórios com Suíte e Churrasqueira | Canoas — foto 3"
+        },
+        {
+          "arquivo": "imoveis/varandas-trend-living-sacada-churrasqueira-monte-castelo-1013/imagens/gallery-image3-18-i95fec75860.v1.webp",
+          "legenda": "Foto 4",
+          "alt": "Varandas Trend Living | Apartamentos de 2 e 3 Dormitórios com Suíte e Churrasqueira | Canoas — foto 4"
+        },
+        {
+          "arquivo": "imoveis/varandas-trend-living-sacada-churrasqueira-monte-castelo-1013/imagens/38bb3ca9-ea0d-4005-9f07-7c14fa147c09-i5423dc155f.v1.webp",
+          "legenda": "Foto 5",
+          "alt": "Varandas Trend Living | Apartamentos de 2 e 3 Dormitórios com Suíte e Churrasqueira | Canoas — foto 5"
+        },
+        {
+          "arquivo": "imoveis/varandas-trend-living-sacada-churrasqueira-monte-castelo-1013/imagens/9e26e388-462a-4ae3-8d65-10998b7f9f1f-ia9324c969b.v1.webp",
+          "legenda": "Foto 6",
+          "alt": "Varandas Trend Living | Apartamentos de 2 e 3 Dormitórios com Suíte e Churrasqueira | Canoas — foto 6"
+        },
+        {
+          "arquivo": "imoveis/varandas-trend-living-sacada-churrasqueira-monte-castelo-1013/imagens/63436fc0-d0cc-4d4d-80a6-61540d5efa4e-i77a33cac6b.v1.webp",
+          "legenda": "Foto 7",
+          "alt": "Varandas Trend Living | Apartamentos de 2 e 3 Dormitórios com Suíte e Churrasqueira | Canoas — foto 7"
         }
       ]
     },
