@@ -99,6 +99,7 @@ jobs:
           GOOGLE_ACCESS_TOKEN: ${{ steps.google.outputs.access_token }}
         run: |
           python -u scripts/noticias.py
+          python -u scripts/marketing.py site
           if [[ -n "$(git status --porcelain -- site)" ]]; then
             echo "mudou=true" >> "$GITHUB_OUTPUT"
           else

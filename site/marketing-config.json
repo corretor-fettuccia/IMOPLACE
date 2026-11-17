@@ -1,0 +1,22 @@
+{
+  "gtm": {
+    "ativo": true,
+    "id": "GTM-MKJDSLPS"
+  },
+  "analytics": {
+    "ativo": false,
+    "id": ""
+  },
+  "conversao": {
+    "ativo": false,
+    "id": "",
+    "snippets": ""
+  },
+  "facebook": {
+    "ativo": false,
+    "modo": "classica",
+    "id": "",
+    "codigo": "",
+    "capiUrl": ""
+  }
+}
