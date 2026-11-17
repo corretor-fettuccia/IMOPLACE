@@ -1,3 +1,27 @@
 {
-  "artigos": []
+  "artigos": [
+    {
+      "id": "ne0e351e35ef6",
+      "slug": "mcmv-subsidio-imovel",
+      "codigo": "mcmv-subsidio-imovel-ne0e351e35ef6",
+      "titulo": "Minha Casa Minha Vida",
+      "resumo": "Na linha financiada, o desconto descrito acima é destinado às famílias com renda de até R$ 5 mil. Para as faixas superiores, o programa oferece condições específicas de crédito. Por isso, participar do Minha Casa, Minha Vida e receber subsídio são situações diferentes.",
+      "corpo": "Minha Casa, Minha Vida: entenda as faixas de renda e como o subsídio ajuda na compra do imóvel\n\nPrograma atende famílias com renda mensal de até R$ 13 mil; benefício para reduzir o custo da compra depende do enquadramento.\n\nComprar a casa própria pelo Minha Casa, Minha Vida começa por entender a renda familiar. Ela define a faixa de participação no programa e influencia as condições de financiamento e o acesso ao subsídio. Pelas regras atualizadas em 2026, o programa atende famílias com renda bruta mensal de até R$ 13 mil nas áreas urbanas. Secretaria de Comunicação Social\n\nQuais são as faixas de renda?\n\nPara imóveis urbanos, os limites consideram a renda familiar bruta mensal, antes dos descontos:\nFaixa\tRenda familiar bruta mensal\nFaixa 1\tAté R$ 3.200\nFaixa 2\tDe R$ 3.200,01 a R$ 5.000\nFaixa 3\tDe R$ 5.000,01 a R$ 9.600\nFaixa 4    Classe Média\tDe R$ 9.600,01 a R$ 13.000\n\nVia decreto os limites foram atualizados pela Portaria MCID nº 333/2026. Secretaria de Comunicação Social.\n\nComo funciona o subsídio?\n\nNa linha financiada, o subsídio é um desconto aplicado à compra do imóvel. Ele pode diminuir a entrada necessária ou reduzir o valor financiado, ajudando a tornar as prestações mais acessíveis. O cálculo considera a renda familiar e a localização: famílias com menor renda podem receber descontos maiores. Linha Financiada Ministério das Cidades\n\nFamílias com renda de até R$ 5 mil, enquadradas nas faixas 1 e 2, podem receber esse benefício. No Rio Grande do Sul, o subsídio pode chegar a R$ 55 mil, conforme as condições da operação. Estar dentro da faixa de renda não significa receber automaticamente o valor máximo. Na Região Norte, o teto pode alcançar R$ 65 mil. Linha Financiada Ministério das Cidades\n\nComo exemplo ilustrativo, em um imóvel de R$ 230 mil, um subsídio aprovado de R$ 30 mil deixaria R$ 200 mil para serem cobertos pela combinação de financiamento, recursos próprios e eventual uso do FGTS. A entrada efetiva dependeria do valor aprovado pelo banco.\n\nQuem está nas faixas 3 e 4 também recebe subsídio?\n\nNa linha financiada, o desconto descrito acima é destinado às famílias com renda de até R$ 5 mil. Para as faixas superiores, o programa oferece condições específicas de crédito. Por isso, participar do Minha Casa, Minha Vida e receber subsídio são situações diferentes. Linha Financiada Ministério das Cidades\n\nÉ preciso ter saldo no FGTS?\n\nNão é necessário ter saldo no FGTS para acessar o financiamento do Minha Casa, Minha Vida. Quem possui recursos no fundo pode utilizá-los na compra, respeitando as regras de uso. O saldo do trabalhador e o subsídio são recursos distintos. Linha Financiada Ministério das Cidades\n\nComo descobrir o benefício disponível?\n\nO primeiro passo é realizar uma simulação com a renda familiar e os dados do imóvel desejado. Na modalidade financiada, a contratação ocorre diretamente com o banco e depende da aprovação do crédito e do enquadramento da operação. Já o atendimento por moradias subsidiadas da Faixa 1 segue regras próprias de cadastro e seleção, geralmente com participação do poder público local.",
+      "categoria": "regras",
+      "tags": [
+        "MCMV",
+        "dúvidas",
+        "casa própria",
+        "benefício"
+      ],
+      "autor": "Imoplace",
+      "capa": "",
+      "capaAlt": "Minha Casa Minha Vida",
+      "seoTitulo": "MCMV como funciona o subsidio",
+      "seoDescricao": "Minha casa minha vida - Subsídio eu saco como ?",
+      "publicadoEm": "2026-11-17T03:22:53.572Z",
+      "atualizadoEm": "2026-11-17T03:22:53.572Z",
+      "versao": 1
+    }
+  ]
 }
