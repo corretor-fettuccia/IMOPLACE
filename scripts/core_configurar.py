@@ -32,6 +32,8 @@ def carregar_formato_padrao():
 def main():
     site,lote=carregar_configuracao()
     formato=carregar_formato_padrao()
+    from monitoramento import publicar_config_monitor
+    publicar_config_monitor(Path(__file__).resolve().parent.parent/"site")
     raiz=Path(__file__).resolve().parent.parent
     conf=json.loads((raiz/'imoplace.json').read_text('utf-8'))
     conf['urlPublica']=site

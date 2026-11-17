@@ -130,6 +130,7 @@ def pagina(item, conf):
 <script src="{RAIZ_REL}assets/js/protecao.js"></script>
 <script src="{RAIZ_REL}assets/js/main.js"></script>
 <script src="{RAIZ_REL}assets/js/midias.js"></script>
+<span id="monitor-imovel" data-imovel="{h(item['id'])}" hidden></span>
 <script src="{RAIZ_REL}assets/js/imovel.js"></script>
 </body></html>
 '''

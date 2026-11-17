@@ -92,3 +92,15 @@ getCatalog().then(items=>{
   det.innerHTML=detailsHTML(item);
   $('#save').textContent=getFavs().includes(item.codigo)?'Salvo ✓':'Salvar';
 }).catch(error=>{console.warn('Catálogo temporariamente indisponível. Exibindo HTML estático do build.',error);});
+
+/* Contagem anônima: uma chamada por carregamento; não identifica visitantes. */
+(function(){
+ if(window.imoplaceMonitorIniciado)return;window.imoplaceMonitorIniciado=true;
+ const id=document.getElementById('monitor-imovel')?.dataset.imovel;
+ if(!id||!/^[A-Za-z0-9_-]{1,80}$/.test(id))return;
+ fetch(SITE_ROOT+'monitor-config.json',{cache:'no-store',credentials:'omit'})
+ .then(r=>{if(!r.ok)throw Error('config');return r.json();})
+ .then(cfg=>{if(!cfg.ativo||!/^https:\/\/script\.google\.com\/macros\/s\/[A-Za-z0-9_-]+\/exec$/.test(cfg.url))return;
+ return fetch(cfg.url+'?imovel='+encodeURIComponent(id),{mode:'no-cors',credentials:'omit',cache:'no-store',keepalive:true});})
+ .catch(()=>{});
+})();

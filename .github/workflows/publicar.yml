@@ -1,5 +1,15 @@
 name: Publicar ImoPlace — CORE
 on:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/**"
+      - "site/assets/**"
+      - "site/adm/**"
+      - "adm/**"
+      - "imoplace.json"
+      - "VERSAO"
+      - ".github/workflows/publicar.yml"
   schedule:
     - cron: '*/15 * * * *'
   workflow_dispatch:
@@ -121,10 +131,10 @@ jobs:
       # Publicação manual de ajustes visuais, quando nenhum imóvel precisa sincronizar.
       # Não reserva nem confirma versões de imóveis; mantém intacto o catálogo já publicado.
       - name: Validar site estático sem fila
-        if: steps.fila.outputs.tem != 'true' && (steps.noticias.outputs.mudou == 'true' || github.event_name == 'workflow_dispatch')
+        if: steps.fila.outputs.tem != 'true' && (steps.noticias.outputs.mudou == 'true' || (github.event_name == 'workflow_dispatch' || github.event_name == 'push'))
         run: python -u scripts/validar.py
       - name: Preparar artefato do site sem fila
-        if: steps.fila.outputs.tem != 'true' && (steps.noticias.outputs.mudou == 'true' || github.event_name == 'workflow_dispatch')
+        if: steps.fila.outputs.tem != 'true' && (steps.noticias.outputs.mudou == 'true' || (github.event_name == 'workflow_dispatch' || github.event_name == 'push'))
         run: |
           python - <<'PY'
           import hashlib
@@ -149,10 +159,10 @@ jobs:
           print('Artefato visual preparado sem modificar imóveis nem planilha.')
           PY
       - name: Verificar artefato visual
-        if: steps.fila.outputs.tem != 'true' && (steps.noticias.outputs.mudou == 'true' || github.event_name == 'workflow_dispatch')
+        if: steps.fila.outputs.tem != 'true' && (steps.noticias.outputs.mudou == 'true' || (github.event_name == 'workflow_dispatch' || github.event_name == 'push'))
         run: python -u scripts/verificar_publicacao.py --artefato
       - name: Salvar notícias sem fila de imóveis
-        if: steps.fila.outputs.tem != 'true' && (steps.noticias.outputs.mudou == 'true' || github.event_name == 'workflow_dispatch')
+        if: steps.fila.outputs.tem != 'true' && (steps.noticias.outputs.mudou == 'true' || (github.event_name == 'workflow_dispatch' || github.event_name == 'push'))
         run: |
           git config user.name 'imoplace-bot'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
@@ -162,16 +172,16 @@ jobs:
             git push
           fi
       - name: Configurar GitHub Pages
-        if: steps.fila.outputs.tem == 'true' || steps.noticias.outputs.mudou == 'true' || github.event_name == 'workflow_dispatch'
+        if: steps.fila.outputs.tem == 'true' || steps.noticias.outputs.mudou == 'true' || (github.event_name == 'workflow_dispatch' || github.event_name == 'push')
         uses: actions/configure-pages@v5
       - name: Enviar artefato
-        if: steps.fila.outputs.tem == 'true' || steps.noticias.outputs.mudou == 'true' || github.event_name == 'workflow_dispatch'
+        if: steps.fila.outputs.tem == 'true' || steps.noticias.outputs.mudou == 'true' || (github.event_name == 'workflow_dispatch' || github.event_name == 'push')
         uses: actions/upload-pages-artifact@v4
         with:
           name: github-pages-attempt-${{ github.run_attempt }}
           path: ./estado/publicacao
       - name: Publicar GitHub Pages
-        if: steps.fila.outputs.tem == 'true' || steps.noticias.outputs.mudou == 'true' || github.event_name == 'workflow_dispatch'
+        if: steps.fila.outputs.tem == 'true' || steps.noticias.outputs.mudou == 'true' || (github.event_name == 'workflow_dispatch' || github.event_name == 'push')
         uses: actions/deploy-pages@v4
         with:
           artifact_name: github-pages-attempt-${{ github.run_attempt }}
