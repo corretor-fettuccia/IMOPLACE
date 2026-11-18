@@ -1,6 +1,123 @@
 {
   "artigos": [
     {
+      "id": "n14812988b5a8",
+      "slug": "mecanizacao-industrializacao-construcao-civil-bim",
+      "codigo": "mecanizacao-industrializacao-construcao-civil-bim-n14812988b5a8",
+      "titulo": "A construção civil será a próxima a acelerar a mecanização?",
+      "resumo": "Pré-fabricados, equipamentos e BIM já ajudam a reduzir retrabalho. A adoção depende da escala e do projeto.",
+      "corpo": "A mecanização tem espaço para avançar onde há repetição, escassez de mão de obra ou necessidade de cumprir prazos curtos. Pré-fabricados transferem etapas para a fábrica. Equipamentos agilizam a montagem, e o BIM ajuda a coordenar projetos e identificar interferências antes da execução.\n\nA adoção depende da escala, da logística de transporte, da equipe e da padronização dos projetos. Ganho de produtividade pode melhorar a previsibilidade da entrega. O efeito no preço final ainda depende da concorrência e da demanda.\n\nFonte: CBIC, tecnologia e industrialização da construção\nhttps://cbic.org.br/tecnologia-e-ia-impulsionam-produtividade-e-industrializacao-da-construcao/",
+      "categoria": "Mercado",
+      "tags": [
+        "mecanização",
+        "construção civil",
+        "industrialização",
+        "BIM",
+        "pré-fabricados"
+      ],
+      "autor": "ImoPlace",
+      "capa": "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1200&fit=crop&fm=jpg&q=80",
+      "capaAlt": "Canteiro de obras com equipamento de construção",
+      "seoTitulo": "A construção civil será a próxima a acelerar a mecanização?",
+      "seoDescricao": "Pré-fabricados, equipamentos e BIM já ajudam a reduzir retrabalho. A adoção depende da escala e do projeto.",
+      "publicadoEm": "2026-11-18T02:26:32.255Z",
+      "atualizadoEm": "2026-11-18T02:26:32.255Z",
+      "versao": 1
+    },
+    {
+      "id": "nd725bdc24aee",
+      "slug": "imovel-ou-criptoativo-riscos-liquidez-investimento",
+      "codigo": "imovel-ou-criptoativo-riscos-liquidez-investimento-nd725bdc24aee",
+      "titulo": "Imóvel ou criptoativo: o que pesa na escolha?",
+      "resumo": "Compare uso, liquidez, custos e risco antes de escolher onde colocar seu dinheiro.",
+      "corpo": "Um imóvel não some com um download, mas cobra condomínio, manutenção e tributos. Também pode ficar vago ou levar meses para vender. Em troca, é um bem que pode servir de moradia ou gerar aluguel quando ocupado.\n\nCriptoativos podem ser negociados rapidamente em alguns mercados, mas estão sujeitos a oscilações fortes e riscos de custódia e fraude. Se a prioridade é moradia ou renda de aluguel, avalie localização e retorno líquido. Se o objetivo é exposição a cripto, avalie quanto do patrimônio comporta perdas e como será feita a custódia.\n\nFonte: CVM, alertas sobre criptoativos\nhttps://www.gov.br/cvm/pt-br/assuntos/protecao/mercado-forex/criptoativos-forex",
+      "categoria": "Mercado",
+      "tags": [
+        "imóveis",
+        "criptoativos",
+        "investimento",
+        "liquidez",
+        "risco"
+      ],
+      "autor": "ImoPlace",
+      "capa": "https://images.unsplash.com/photo-1518546305927-5a555bb7020d?w=1200&fit=crop&fm=jpg&q=80",
+      "capaAlt": "Representação física do bitcoin em uma fotografia ilustrativa",
+      "seoTitulo": "Imóvel ou criptoativo: o que pesa na escolha?",
+      "seoDescricao": "Compare uso, liquidez, custos e risco antes de escolher onde colocar seu dinheiro.",
+      "publicadoEm": "2026-11-18T02:26:26.803Z",
+      "atualizadoEm": "2026-11-18T02:26:26.803Z",
+      "versao": 1
+    },
+    {
+      "id": "ncd2da26de870",
+      "slug": "parcelamento-direto-imovel-sem-banco-como-avaliar",
+      "codigo": "parcelamento-direto-imovel-sem-banco-como-avaliar-ncd2da26de870",
+      "titulo": "Parcelamento direto sem banco: quando faz sentido?",
+      "resumo": "A negociação direta pode ampliar as opções quando o crédito aperta. Compare o preço total e as regras do contrato.",
+      "corpo": "O parcelamento direto permite negociar o pagamento com o vendedor, a loteadora ou a incorporadora. Pode ser uma saída quando o crédito bancário fica mais restrito, especialmente se a entrada, o prazo e as parcelas puderem ser ajustados ao fluxo de renda.\n\nSome juros, correção, intermediárias e saldo final. Um prazo menor pode pressionar o orçamento mesmo com entrada reduzida. Confira a matrícula e, em lançamento, o registro da incorporação ou do loteamento, conforme o caso. Leia as regras de quitação antecipada, escritura e rescisão antes de fechar.\n\nFonte: Lei nº 4.591/1964, para incorporações\nhttps://www.planalto.gov.br/ccivil_03/leis/l4591.htm",
+      "categoria": "Curiosidades",
+      "tags": [
+        "parcelamento direto",
+        "financiamento imobiliário",
+        "incorporadora",
+        "crédito imobiliário"
+      ],
+      "autor": "ImoPlace",
+      "capa": "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200&fit=crop&fm=jpg&q=80",
+      "capaAlt": "Documentos e cálculos para comparar condições de pagamento",
+      "seoTitulo": "Parcelamento direto sem banco: quando faz sentido?",
+      "seoDescricao": "A negociação direta pode ampliar as opções quando o crédito aperta. Compare o preço total e as regras do contrato.",
+      "publicadoEm": "2026-11-18T02:26:21.207Z",
+      "atualizadoEm": "2026-11-18T02:26:21.207Z",
+      "versao": 1
+    },
+    {
+      "id": "nb6d9c157ed42",
+      "slug": "usar-fgts-comprar-imovel-usado-regras",
+      "codigo": "usar-fgts-comprar-imovel-usado-regras-nb6d9c157ed42",
+      "titulo": "Posso usar o FGTS para comprar imóvel usado?",
+      "resumo": "Saiba quando o saldo do FGTS pode entrar no pagamento de um imóvel residencial usado.",
+      "corpo": "Sim, o FGTS pode compor o pagamento de um imóvel residencial usado para moradia própria, desde que comprador, imóvel e operação atendam às regras. A CAIXA exige pelo menos três anos de trabalho sob o regime do FGTS, somando períodos de empregos diferentes, e ausência de financiamento ativo no SFH.\n\nHá restrições para quem já possui imóvel residencial na região onde mora ou trabalha e para imóveis adquiridos com FGTS nos três anos anteriores. Peça a análise de enquadramento antes de contar com o saldo na entrada.\n\nFonte: CAIXA, Utilização do FGTS na Casa Própria\nhttps://www.caixa.gov.br/voce/habitacao/Paginas/utilizacao-fgts.aspx",
+      "categoria": "Curiosidades",
+      "tags": [
+        "FGTS",
+        "imóvel usado",
+        "moradia própria",
+        "entrada"
+      ],
+      "autor": "ImoPlace",
+      "capa": "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200&fit=crop&fm=jpg&q=80",
+      "capaAlt": "Casa residencial vista pela fachada",
+      "seoTitulo": "Posso usar o FGTS para comprar imóvel usado?",
+      "seoDescricao": "Saiba quando o saldo do FGTS pode entrar no pagamento de um imóvel residencial usado.",
+      "publicadoEm": "2026-11-18T02:26:10.578Z",
+      "atualizadoEm": "2026-11-18T02:26:10.578Z",
+      "versao": 1
+    },
+    {
+      "id": "n2416f59c64c7",
+      "slug": "mcmv-comprar-imovel-usado-com-financiamento-ativo",
+      "codigo": "mcmv-comprar-imovel-usado-com-financiamento-ativo-n2416f59c64c7",
+      "titulo": "Posso comprar imóvel usado e ainda financiado pelo MCMV?",
+      "resumo": "O MCMV Classe Média admite imóveis usados. Se o vendedor ainda deve ao banco, a operação precisa prever a quitação do saldo.",
+      "corpo": "O MCMV Classe Média admite imóveis usados. No Sul e no Sudeste, a cota máxima informada para usados é de 60% do valor do imóvel nessa modalidade. A entrada precisa cobrir a diferença, além das despesas da compra.\n\nSe o vendedor ainda estiver pagando o imóvel, solicite a matrícula atualizada e o saldo devedor. A compra pode ser estruturada com quitação do financiamento anterior e baixa da garantia, conforme o procedimento aprovado pelas instituições. Confirme esse fluxo com o banco antes de comprometer o sinal. O comprador também precisa cumprir os requisitos da linha.\n\nFonte: Ministério das Cidades, MCMV Classe Média\nhttps://www.gov.br/cidades/pt-br/acesso-a-informacao/acoes-e-programas/habitacao/programa-minha-casa-minha-vida/minha-casa-minha-vida-classe-media/minha-casa-minha-vida-classe-media-1",
+      "categoria": "Curiosidades",
+      "tags": [
+        "MCMV imóvel usado",
+        "alienação fiduciária",
+        "interveniente quitante",
+        "financiamento do vendedor"
+      ],
+      "autor": "ImoPlace",
+      "capa": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200&fit=crop&fm=jpg&q=80",
+      "capaAlt": "Chaves de imóvel como ilustração de compra e venda",
+      "seoTitulo": "Posso comprar imóvel usado e ainda financiado pelo MCMV?",
+      "seoDescricao": "O MCMV Classe Média admite imóveis usados. Se o vendedor ainda deve ao banco, a operação precisa prever a quitação do saldo.",
+      "publicadoEm": "2026-11-18T02:26:04.586Z",
+      "atualizadoEm": "2026-11-18T02:26:04.586Z",
+      "versao": 1
+    },
+    {
       "id": "n0be3c163eb62",
       "slug": "reforma-tributaria-impacto-preco-imoveis-ibs-cbs",
       "codigo": "reforma-tributaria-impacto-preco-imoveis-ibs-cbs-n0be3c163eb62",
