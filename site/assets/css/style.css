@@ -168,7 +168,7 @@ button:disabled{opacity:.6;cursor:not-allowed}
 
 .sl picture{display:contents}
 
-/* Contato da ficha 3.4.1 */
+/* Contato da ficha 3.4.2 */
 .dgrid-lead .imovel-info,.imovel-contato{min-width:0}
 .imovel-contato{position:sticky;top:64px}
 .imovel-contato .aside{position:static}
