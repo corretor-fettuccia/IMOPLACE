@@ -1,7 +1,7 @@
 {
   "schemaVersao": 2,
   "contrato": "imoplace-v1",
-  "geradoEm": "2026-11-18T01:59:17.428141+00:00",
+  "geradoEm": "2026-11-18T02:10:42.451459+00:00",
   "total": 14,
   "imoveis": [
     {
@@ -510,7 +510,7 @@
       "destaque": false,
       "tag": "REFORMADO",
       "ordem": 0,
-      "atualizadoEm": "2026-11-18T01:58:05.088Z",
+      "atualizadoEm": "2026-11-18T02:10:00.537Z",
       "tipo": "Apartamento",
       "condicao": "Usado",
       "titulo": "Mahara | Apartamento de 2 dormitórios com sacada e vaga coberta | Fátima, Canoas",
@@ -571,32 +571,32 @@
       "imagens": [
         {
           "arquivo": "imoveis/mahara3ae-1014/imagens/9992f1c3-5b5d-4052-90dc-51419e7d1cf2-ib68a1a2ece.v1.webp",
-          "legenda": "Foto 1",
+          "legenda": "02 dormitórios",
           "alt": "Mahara | Apartamento de 2 dormitórios com sacada e vaga coberta | Fátima, Canoas — foto 1"
         },
         {
           "arquivo": "imoveis/mahara3ae-1014/imagens/20260720-130042-e8ded0e7-i74fa97c132.v1.webp",
-          "legenda": "Foto 2",
+          "legenda": "Vaga coberta",
           "alt": "Mahara | Apartamento de 2 dormitórios com sacada e vaga coberta | Fátima, Canoas — foto 2"
         },
         {
           "arquivo": "imoveis/mahara3ae-1014/imagens/20260720-130102-050fdc3b-i671e4d34db.v1.webp",
-          "legenda": "Foto 3",
+          "legenda": "Salão de festas e água filtrada",
           "alt": "Mahara | Apartamento de 2 dormitórios com sacada e vaga coberta | Fátima, Canoas — foto 3"
         },
         {
           "arquivo": "imoveis/mahara3ae-1014/imagens/20260720-130049-c8fae2c4-i85b8d63e95.v1.webp",
-          "legenda": "Foto 4",
+          "legenda": "Torre em H",
           "alt": "Mahara | Apartamento de 2 dormitórios com sacada e vaga coberta | Fátima, Canoas — foto 4"
         },
         {
           "arquivo": "imoveis/mahara3ae-1014/imagens/482b62aa-1e44-4634-872a-1d104e3a4f0e-ie045bb05c8.v1.webp",
-          "legenda": "Foto 5",
+          "legenda": "02 dormitórios",
           "alt": "Mahara | Apartamento de 2 dormitórios com sacada e vaga coberta | Fátima, Canoas — foto 5"
         },
         {
           "arquivo": "imoveis/mahara3ae-1014/imagens/ac9468e3-ea39-4091-848b-a698567024aa-i3180e89ac0.v1.webp",
-          "legenda": "Foto 6",
+          "legenda": "Sala e cozinha integrada + Sacada",
           "alt": "Mahara | Apartamento de 2 dormitórios com sacada e vaga coberta | Fátima, Canoas — foto 6"
         }
       ]
