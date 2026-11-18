@@ -93,7 +93,9 @@
       const group = document.createElement('fieldset');
       const legend = document.createElement('legend');
       legend.textContent = question.label;
-      group.append(legend);
+      const options = document.createElement('div');
+      options.className = 'imoplace-lead-options';
+      group.append(legend, options);
       for (const option of question.options) {
         const label = document.createElement('label');
         const radio = document.createElement('input');
@@ -102,7 +104,7 @@
         radio.value = option;
         radio.required = true;
         label.append(radio, option);
-        group.append(label);
+        options.append(label);
       }
       questions.append(group);
     });
