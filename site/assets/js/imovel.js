@@ -33,7 +33,7 @@ function detailsHTML(item) {
   ${ImoplaceMidias.html(item)}
   <div class="dhead"><div><h1 class="dt">${esc(item.titulo)}</h1><div class="where">${esc(item.tipo)} · ${esc(local(item))}</div></div>
    <div class="dr"><div class="price big">${brl(item.preco)}</div><div class="dact"><button type="button" class="btn btn-line" id="share">Compartilhar</button><button type="button" class="btn btn-line" id="save">Salvar</button></div></div></div>
-  <div class="dgrid"><div>
+  <div class="dgrid dgrid-lead"><div class="imovel-info">
    <div class="stats">${fields.map(([n,label])=>`<div><b>${value(n)}</b><span>${label}</span></div>`).join('')}</div>
    <div class="box"><h3>Sobre o imóvel</h3><p style="white-space:pre-line">${esc(item.descricao||'Descrição não cadastrada.')}</p></div>
    <div class="box"><h3>Características</h3><div class="cols">
@@ -42,10 +42,10 @@ function detailsHTML(item) {
    <div class="box"><h3>Valores</h3><dl class="vals"><dt>Preço</dt><dd>${brl(item.preco)}</dd><dt>Condomínio</dt><dd>${brl(item.condominio)}</dd><dt>IPTU anual</dt><dd>${brl(item.iptuAnual)}</dd></dl></div>
    <div class="box"><h3>Localização</h3>${mapa}<div class="where">${esc(enderecoPublico)}</div></div>
   </div>
-  <aside class="aside box"><div class="adv"><div class="av">I</div><div><b>${esc(item.anunciante?.nome||'Imoplace')}</b>${item.anunciante?.creci?`<span class="where">CRECI ${esc(item.anunciante.creci)}</span>`:''}</div></div>
+  <div class="imovel-contato"><aside class="aside box"><div class="adv"><div class="av">I</div><div><b>${esc(item.anunciante?.nome||'Imoplace')}</b>${item.anunciante?.creci?`<span class="where">CRECI ${esc(item.anunciante.creci)}</span>`:''}</div></div>
    <div class="contact-note">${whats?'Solicite mais informações diretamente ao anunciante.':'Contato não informado para este anúncio.'}</div>
    ${whats?`<a class="btn btn-accent" id="whatsapp" target="_blank" rel="noopener noreferrer" href="https://wa.me/${whats}?text=${encodeURIComponent('Olá! Tenho interesse no imóvel '+(item.id||item.codigo)+' anunciado no Imoplace.')}">Chamar no WhatsApp</a>`:'<button class="btn btn-accent" disabled>Contato indisponível</button>'}
-   <div class="ref">Código do imóvel: ${ref}</div></aside></div>
+   <div class="ref">Código do imóvel: ${ref}</div></aside><div class="box imoplace-lead" data-lead-property="${ref}" hidden></div></div></div>
   <dialog class="viewer" id="photo-viewer" aria-label="Galeria de fotos">
     <div class="viewer-head"><b id="viewer-caption"></b><button class="btn btn-line" type="button" id="viewer-close">Fechar ✕</button></div>
     <div class="viewer-picture" id="viewer-picture"></div>
@@ -91,7 +91,7 @@ getCatalog().then(items=>{
   document.title=`${item.titulo} | Imoplace`;
   det.innerHTML=detailsHTML(item);
   $('#save').textContent=getFavs().includes(item.codigo)?'Salvo ✓':'Salvar';
-}).catch(error=>{console.warn('Catálogo temporariamente indisponível. Exibindo HTML estático do build.',error);});
+}).catch(error=>{console.warn('Catálogo temporariamente indisponível. Exibindo HTML estático do build.',error);}).finally(()=>window.ImoplaceLead?.mount(det));
 
 /* Contagem anônima: uma chamada por carregamento; não identifica visitantes. */
 (function(){

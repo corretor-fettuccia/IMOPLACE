@@ -72,13 +72,13 @@ def detalhe(item):
 {_galeria(item)}
 {multimidia(item)}
 <div class="dhead"><div><h1 class="dt">{h(item['titulo'])}</h1><div class="where">{h(item.get('tipo'))} · {h(local(item))}</div></div><div class="dr"><div class="price big">{brl(item.get('preco'))}</div></div></div>
-<div class="dgrid"><div>
+<div class="dgrid dgrid-lead"><div class="imovel-info">
 <div class="stats">{stats}</div>
 <div class="box"><h3>Sobre o imóvel</h3><p style="white-space:pre-line">{h(item.get('descricao') or 'Descrição não cadastrada.')}</p></div>
 <div class="box"><h3>Características</h3><div class="cols"><div><h4>No imóvel</h4><ul class="feat">{lista(item.get('caracteristicasImovel'))}</ul></div><div><h4>No condomínio</h4><ul class="feat">{lista(item.get('caracteristicasCondominio'))}</ul></div></div></div>
 <div class="box"><h3>Valores</h3><dl class="vals"><dt>Preço</dt><dd>{brl(item.get('preco'))}</dd>{m2preco}<dt>Condomínio</dt><dd>{brl(item.get('condominio'))}</dd><dt>IPTU anual</dt><dd>{brl(item.get('iptuAnual'))}</dd></dl></div>
 <div class="box"><h3>Localização</h3>{mapa}<div class="where">{h(endereco)}</div></div></div>
-<aside class="aside box"><div class="adv"><div class="av">I</div><div><b>{h(anunc.get('nome') or 'Imoplace')}</b>{creci}</div></div><p class="small-note">{h(nota)}</p>{contato}<div class="ref">Código do imóvel: {h(item['id'])}</div></aside></div>'''
+<div class="imovel-contato"><aside class="aside box"><div class="adv"><div class="av">I</div><div><b>{h(anunc.get('nome') or 'Imoplace')}</b>{creci}</div></div><p class="small-note">{h(nota)}</p>{contato}<div class="ref">Código do imóvel: {h(item['id'])}</div></aside><div class="box imoplace-lead" data-lead-property="{h(item['id'])}" hidden></div></div></div>'''
 
 
 def pagina(item, conf):
@@ -131,6 +131,7 @@ def pagina(item, conf):
 <script src="{RAIZ_REL}assets/js/main.js"></script>
 <script src="{RAIZ_REL}assets/js/midias.js"></script>
 <span id="monitor-imovel" data-imovel="{h(item['id'])}" hidden></span>
+<script src="{RAIZ_REL}assets/js/imovel-lead.js"></script>
 <script src="{RAIZ_REL}assets/js/imovel.js"></script>
 </body></html>
 '''

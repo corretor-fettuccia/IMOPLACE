@@ -167,3 +167,30 @@ button:disabled{opacity:.6;cursor:not-allowed}
 .gal picture{display:contents}.midia-card{padding:16px 0;border-bottom:1px solid #dce2ea}.midia-card [data-player]:not(:empty){margin-top:14px}.midia-card iframe,.midia-card canvas{width:100%;aspect-ratio:2/1;height:auto;min-height:240px;border:0;border-radius:12px}.midia-card canvas{touch-action:none}#external-links{width:min(540px,92vw);max-height:85vh;overflow:auto;border:0;border-radius:20px;padding:24px;color:#172338}#external-links::backdrop{background:#101b30a8}#multimidia{margin:20px 0}#multimidia:has(> :only-child:empty){display:none}
 
 .sl picture{display:contents}
+
+/* Contato da ficha 3.4.1 */
+.dgrid-lead .imovel-info,.imovel-contato{min-width:0}
+.imovel-contato{position:sticky;top:64px}
+.imovel-contato .aside{position:static}
+.imoplace-lead{margin-top:10px}
+.imoplace-lead form,.imoplace-lead-dialog form{display:grid;gap:6px}
+.imoplace-lead h2{font-size:1rem;margin:0}
+.imoplace-lead input,.imoplace-lead textarea{width:100%;min-height:40px;min-width:0;padding:7px 9px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink);font:inherit;font-size:16px}
+.imoplace-lead textarea{min-height:49px;resize:vertical}
+.imoplace-lead .btn{width:100%;min-height:42px}
+.imoplace-lead #status:not(:empty){margin-top:6px}
+.imoplace-lead-dialog{width:min(560px,calc(100% - 24px));max-height:calc(100dvh - 24px);overflow:auto;border:1px solid var(--line);border-radius:12px;padding:16px;background:var(--surface);color:var(--ink)}
+.imoplace-lead-dialog::backdrop{background:#0e223980}
+.imoplace-lead-dialog h2{font-size:1.1rem;margin:0 0 8px}
+.imoplace-lead-dialog fieldset{min-width:0;margin:0 0 6px;padding:5px 8px;border:1px solid var(--line);border-radius:8px}
+.imoplace-lead-dialog legend{font-weight:700}
+.imoplace-lead-dialog label{display:inline-flex;align-items:center;gap:5px;padding:5px 8px 5px 0}
+.imoplace-lead-dialog .actions{display:flex;gap:8px;flex-wrap:wrap}
+.imoplace-lead button:disabled,.imoplace-lead-dialog button:disabled{opacity:.65}
+@media(max-height:680px){.imovel-contato{position:static}}
+@media(max-width:820px){
+  .dgrid.dgrid-lead{display:flex;flex-direction:column;align-items:stretch;gap:0}
+  .dgrid-lead .imovel-info{display:contents}
+  .dgrid-lead .stats{order:-2}
+  .imovel-contato{position:static;order:-1}
+}
