@@ -1,6 +1,143 @@
 {
   "artigos": [
     {
+      "id": "n0be3c163eb62",
+      "slug": "reforma-tributaria-impacto-preco-imoveis-ibs-cbs",
+      "codigo": "reforma-tributaria-impacto-preco-imoveis-ibs-cbs-n0be3c163eb62",
+      "titulo": "Reforma Tributária pode mudar o preço dos imóveis?",
+      "resumo": "Entenda como o regime de IBS e CBS para imóveis pode alterar custos e margens durante a transição.",
+      "corpo": "A Lei Complementar nº 214/2025 criou um regime específico de IBS e CBS para operações imobiliárias enquadradas. A lei prevê redução de 50% nas alíquotas aplicáveis em geral ao regime e de 70% nas operações de locação, cessão onerosa e arrendamento, além de redutores de base em situações previstas.\n\nO efeito no preço depende dos créditos tributários, do enquadramento de cada operação e das regras de transição. A capacidade de repasse da incorporadora também varia conforme estoque, concorrência e demanda. Na prática, dois empreendimentos podem sentir efeitos diferentes.\n\nFonte: Lei Complementar nº 214/2025, arts. 251 a 261\nhttps://www.planalto.gov.br/ccivil_03/leis/lcp/lcp214.htm",
+      "categoria": "Mercado",
+      "tags": [
+        "reforma tributária",
+        "IBS",
+        "CBS",
+        "mercado imobiliário"
+      ],
+      "autor": "ImoPlace",
+      "capa": "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1200&fit=crop&fm=jpg&q=80",
+      "capaAlt": "Análise de documentos sobre uma mesa",
+      "seoTitulo": "Reforma Tributária pode mudar o preço dos imóveis?",
+      "seoDescricao": "Entenda como o regime de IBS e CBS para imóveis pode alterar custos e margens durante a transição.",
+      "publicadoEm": "2026-11-18T02:25:49.682Z",
+      "atualizadoEm": "2026-11-18T02:25:49.682Z",
+      "versao": 1
+    },
+    {
+      "id": "n98e2e8b213e7",
+      "slug": "comprar-imovel-na-planta-vale-a-pena",
+      "codigo": "comprar-imovel-na-planta-vale-a-pena-n98e2e8b213e7",
+      "titulo": "Comprar imóvel na planta é bom negócio?",
+      "resumo": "O preço inicial é só uma parte da conta. Confira o que avaliar antes de assinar.",
+      "corpo": "Pode valer a pena quando o preço total é competitivo, a entrega combina com seus planos e o orçamento suporta o período de obra. Coloque na conta entrada, parcelas intermediárias, correção prevista no contrato e eventual aluguel pago até a mudança. Confirme como será tratado o saldo na entrega.\n\nConfira o registro do memorial de incorporação no Registro de Imóveis, o histórico de entregas da incorporadora e as cláusulas de prazo e tolerância. Compare o custo completo com o de um imóvel pronto semelhante.\n\nFonte: Lei nº 4.591/1964, art. 32\nhttps://www.planalto.gov.br/ccivil_03/leis/l4591.htm",
+      "categoria": "Curiosidades",
+      "tags": [
+        "imóvel na planta",
+        "incorporação imobiliária",
+        "INCC",
+        "compra de imóvel"
+      ],
+      "autor": "ImoPlace",
+      "capa": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&fit=crop&fm=jpg&q=80",
+      "capaAlt": "Fachadas de edifícios vistas de baixo",
+      "seoTitulo": "Comprar imóvel na planta é bom negócio?",
+      "seoDescricao": "O preço inicial é só uma parte da conta. Confira o que avaliar antes de assinar.",
+      "publicadoEm": "2026-11-18T02:25:43.503Z",
+      "atualizadoEm": "2026-11-18T02:25:43.503Z",
+      "versao": 1
+    },
+    {
+      "id": "nec8dd0ad283d",
+      "slug": "aquisicao-terreno-construcao-como-funciona",
+      "codigo": "aquisicao-terreno-construcao-como-funciona-nec8dd0ad283d",
+      "titulo": "Aquisição de terreno e construção: como funciona?",
+      "resumo": "Entenda como financiar a compra do lote e a construção da casa na mesma operação.",
+      "corpo": "A modalidade Aquisição de Terreno e Construção permite financiar a compra do lote e a construção da casa em uma só operação. A CAIXA avalia a documentação do terreno e da obra. Os recursos da construção são liberados conforme o andamento verificado pelo banco.\n\nAntes de escolher o lote, confira a matrícula, as regras municipais de construção e a infraestrutura disponível. O orçamento precisa considerar fundação, ligações de serviços e margem para imprevistos. O FGTS pode compor o pagamento conforme o enquadramento da operação.\n\nFonte: CAIXA, Aquisição de Terreno e Construção\nhttps://www.caixa.gov.br/voce/habitacao/financiamento/aquisicao-terreno-construcao/Paginas/default.aspx",
+      "categoria": "Curiosidades",
+      "tags": [
+        "aquisição de terreno e construção",
+        "CAIXA",
+        "crédito para construção",
+        "FGTS"
+      ],
+      "autor": "ImoPlace",
+      "capa": "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1200&fit=crop&fm=jpg&q=80",
+      "capaAlt": "Plantas de arquitetura e materiais de projeto",
+      "seoTitulo": "Aquisição de terreno e construção: como funciona?",
+      "seoDescricao": "Entenda como financiar a compra do lote e a construção da casa na mesma operação.",
+      "publicadoEm": "2026-11-18T02:25:37.040Z",
+      "atualizadoEm": "2026-11-18T02:25:37.040Z",
+      "versao": 1
+    },
+    {
+      "id": "nc470f76c50ca",
+      "slug": "mao-de-obra-custo-construcao-preco-imoveis",
+      "codigo": "mao-de-obra-custo-construcao-preco-imoveis-nc470f76c50ca",
+      "titulo": "Mão de obra afeta o preço dos imóveis?",
+      "resumo": "A mão de obra representa cerca de 44% do custo nacional medido pelo SINAPI. Veja como isso pode chegar ao preço de venda.",
+      "corpo": "Em outubro de 2026, o SINAPI apurou custo nacional de construção de R$ 2.005,57 por m². Desse total, R$ 873,26 eram de mão de obra, cerca de 44%. A parcela de mão de obra subiu 0,08% no mês.\n\nQuando faltam profissionais especializados, a obra pode ficar mais cara tanto pela remuneração quanto pelo atraso. O repasse ao comprador depende do preço do terreno, do crédito, da concorrência e do estoque. Por isso, o custo de construir ajuda a entender a pressão sobre lançamentos, enquanto o preço final também responde ao que o mercado consegue pagar.\n\nFonte: IBGE, SINAPI de outubro de 2026\nhttps://ftp.ibge.gov.br/Precos_Custos_e_Indices_da_Construcao_Civil/Fasciculo_Indicadores_IBGE/sinapi_202610caderno.pdf",
+      "categoria": "Mercado",
+      "tags": [
+        "mão de obra",
+        "SINAPI",
+        "custo da construção",
+        "imóveis"
+      ],
+      "autor": "ImoPlace",
+      "capa": "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1200&fit=crop&fm=jpg&q=80",
+      "capaAlt": "Profissionais trabalhando em um canteiro de obras",
+      "seoTitulo": "Mão de obra afeta o preço dos imóveis?",
+      "seoDescricao": "A mão de obra representa cerca de 44% do custo nacional medido pelo SINAPI. Veja como isso pode chegar ao preço de venda.",
+      "publicadoEm": "2026-11-18T02:25:31.205Z",
+      "atualizadoEm": "2026-11-18T02:25:31.205Z",
+      "versao": 1
+    },
+    {
+      "id": "n1af058779fb7",
+      "slug": "preco-metro-quadrado-porto-alegre-2026-perspectivas-2027",
+      "codigo": "preco-metro-quadrado-porto-alegre-2026-perspectivas-2027-n1af058779fb7",
+      "titulo": "Metro quadrado em 2026: vale comprar antes de 2027?",
+      "resumo": "Porto Alegre registrou R$ 7.577 por m² em outubro. Veja o que considerar antes de antecipar a compra.",
+      "corpo": "Em outubro de 2026, o FipeZAP apontou R$ 7.577 por m² nos anúncios residenciais de venda de Porto Alegre, com alta de 0,76% em 12 meses. O índice mede preços anunciados. Cada bairro, faixa de preço e tipo de imóvel tem sua dinâmica.\n\nTerreno, mão de obra e financiamento podem pressionar novos lançamentos. Uma alta generalizada de 30% em 2027 carece de evidência nos dados consultados. Comprar agora pode fazer sentido se o desconto for real, o preço estiver competitivo frente a imóveis semelhantes e as parcelas couberem com folga. Compare o valor por m² de área privativa e o custo total.\n\nFonte: FipeZAP, informe de outubro de 2026\nhttps://downloads.fipe.org.br/indices/fipezap/fipezap-202610-residencial-venda.pdf",
+      "categoria": "Mercado",
+      "tags": [
+        "metro quadrado",
+        "Porto Alegre",
+        "FipeZAP",
+        "mercado imobiliário 2027"
+      ],
+      "autor": "ImoPlace",
+      "capa": "https://images.unsplash.com/photo-1460317442991-0ec209397118?w=1200&fit=crop&fm=jpg&q=80",
+      "capaAlt": "Edifícios residenciais na paisagem urbana",
+      "seoTitulo": "Metro quadrado em 2026: vale comprar antes de 2027?",
+      "seoDescricao": "Porto Alegre registrou R$ 7.577 por m² em outubro. Veja o que considerar antes de antecipar a compra.",
+      "publicadoEm": "2026-11-18T02:25:25.786Z",
+      "atualizadoEm": "2026-11-18T02:25:25.786Z",
+      "versao": 1
+    },
+    {
+      "id": "naaef5d0d6b40",
+      "slug": "minha-casa-minha-vida-2026-oportunidades",
+      "codigo": "minha-casa-minha-vida-2026-oportunidades-naaef5d0d6b40",
+      "titulo": "Minha Casa Minha Vida em 2026: onde estão as oportunidades?",
+      "resumo": "Compare entrada, parcela e custo total para aproveitar as condições do Minha Casa Minha Vida em 2026.",
+      "corpo": "O Minha Casa Minha Vida amplia as opções de compra para quem consegue enquadrar renda, imóvel e orçamento. Na modalidade Classe Média, o Ministério das Cidades informa renda familiar de até R$ 13 mil e imóveis de até R$ 600 mil. As condições mudam conforme a linha e o perfil da compra.\n\nEm Canoas e na Grande Porto Alegre, vale colocar lado a lado o preço, a entrada, o custo efetivo total (CET) e as despesas de condomínio e deslocamento. Em imóvel na planta, inclua os custos previstos durante a obra. Uma parcela inicial atraente só é uma vantagem se o fluxo completo couber no orçamento.\n\nFonte: Ministério das Cidades\nhttps://www.gov.br/cidades/pt-br/acesso-a-informacao/acoes-e-programas/habitacao/programa-minha-casa-minha-vida/minha-casa-minha-vida-classe-media/minha-casa-minha-vida-classe-media-1",
+      "categoria": "Mercado",
+      "tags": [
+        "Minha Casa Minha Vida",
+        "crédito habitacional",
+        "imóveis residenciais"
+      ],
+      "autor": "ImoPlace",
+      "capa": "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=1200&fit=crop&fm=jpg&q=80",
+      "capaAlt": "Fachada de uma casa residencial",
+      "seoTitulo": "Minha Casa Minha Vida em 2026: onde estão as oportunidades?",
+      "seoDescricao": "Compare entrada, parcela e custo total para aproveitar as condições do Minha Casa Minha Vida em 2026.",
+      "publicadoEm": "2026-11-18T02:25:00.312Z",
+      "atualizadoEm": "2026-11-18T02:25:00.312Z",
+      "versao": 1
+    },
+    {
       "id": "nb1ff3ac5aed7",
       "slug": "alta-de-763-em-2026-e-supera-indices-de-inflacao",
       "codigo": "alta-de-763-em-2026-e-supera-indices-de-inflacao-nb1ff3ac5aed7",
