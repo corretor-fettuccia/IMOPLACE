@@ -1,6 +1,29 @@
 {
   "artigos": [
     {
+      "id": "nf4713cf09169",
+      "slug": "avaliacao-bancaria-acima-do-preco-entrada-imovel",
+      "codigo": "avaliacao-bancaria-acima-do-preco-entrada-imovel-nf4713cf09169",
+      "titulo": "Imóvel 100% financiado: como funciona na prática?",
+      "resumo": "Entenda a diferença entre financiar 100% do preço e comprar sem entrada em dinheiro, com um exemplo de R$ 250 mil.",
+      "corpo": "Financiar 100% significa que o crédito do banco cobre todo o preço da compra. Na prática, também é possível comprar sem desembolsar dinheiro para a entrada quando o FGTS ou um benefício elegível cobre a diferença entre o preço e o valor aprovado pelo banco.\n\nVocê sabia que um imóvel negociado por R$ 250 mil pode receber uma avaliação bancária de R$ 300 mil? O preço combinado entre comprador e vendedor e o valor do laudo são informações diferentes. Para saber quanto o banco pode financiar, confirme sobre qual valor ele aplica a cota da sua linha de crédito.\n\nSe uma linha aplicasse 80% sobre a avaliação de R$ 300 mil, o cálculo chegaria a R$ 240 mil. Nesse exemplo, ainda faltariam R$ 10 mil para cobrir o preço. O valor efetivamente liberado depende da base de cálculo da linha e da aprovação do crédito.\n\nO contrato deve trazer o preço real acordado entre comprador e vendedor. Inclua o ITBI e o registro no orçamento da compra, pois esses custos podem exigir recursos além da entrada.\n\nJá tem um imóvel em vista? Quanto faltaria para a entrada depois de considerar o crédito aprovado e o FGTS que você pode usar?\n\nFoto: Arina Krasnikova, Pexels.",
+      "categoria": "Curiosidades",
+      "tags": [
+        "avaliação bancária",
+        "financiamento imobiliário",
+        "entrada do imóvel",
+        "ITBI"
+      ],
+      "autor": "ImoPlace",
+      "capa": "https://images.pexels.com/photos/5951727/pexels-photo-5951727.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "capaAlt": "Mãos segurando uma carteira de couro aberta com dinheiro",
+      "seoTitulo": "Imóvel 100% financiado: como funciona na prática?",
+      "seoDescricao": "Entenda a diferença entre financiar 100% do preço e comprar sem entrada em dinheiro, com um exemplo de R$ 250 mil.",
+      "publicadoEm": "2026-11-18T04:42:51.179Z",
+      "atualizadoEm": "2026-11-18T04:43:29.928Z",
+      "versao": 2
+    },
+    {
       "id": "n14812988b5a8",
       "slug": "mecanizacao-industrializacao-construcao-civil-bim",
       "codigo": "mecanizacao-industrializacao-construcao-civil-bim-n14812988b5a8",
