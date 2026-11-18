@@ -1,6 +1,30 @@
 {
   "artigos": [
     {
+      "id": "n09631883644d",
+      "slug": "imovel-rocha-solida-tempos-de-crise",
+      "codigo": "imovel-rocha-solida-tempos-de-crise-n09631883644d",
+      "titulo": "Imóvel é a rocha sólida em tempos de crise?",
+      "resumo": "Juros e renda mudam a forma de comprar ou alugar. A necessidade de moradia ajuda a explicar por que o mercado imobiliário se adapta às crises.",
+      "corpo": "Enquanto o setor de veículos sente a pressão dos custos e das mudanças tecnológicas, o mercado imobiliário se apoia em uma necessidade que atravessa qualquer ciclo econômico: moradia.\n\nO preço de um carro produzido no Brasil pode mudar por razões que começam longe daqui. Câmbio, aço e componentes importados pesam no custo de produção. Com a eletrificação, a cadeia de baterias adiciona outra variável. No fim, o consumidor sente essas mudanças no preço do carro, no financiamento e até no valor de revenda.\n\nNa construção civil, aço, insumos e juros também pesam. Mas o valor de um imóvel depende muito do que acontece ao redor dele. A oferta de casas e apartamentos no bairro, o acesso ao trabalho e aos serviços e o custo do aluguel influenciam quanto as famílias estão dispostas a pagar para morar ali.\n\nEssa dinâmica ajuda a entender por que o preço dos imóveis costuma reagir mais devagar do que o de ativos negociados diariamente no mercado financeiro. Em um momento de crédito caro, a desaceleração pode aparecer primeiro no tempo de venda, nos descontos negociados e na procura por imóveis menores. Para quem adia a compra, o aluguel pode ser a alternativa. A necessidade de morar continua, e as famílias ajustam suas escolhas ao orçamento.\n\nÉ aí que está a força do setor. A crise muda o que as pessoas conseguem comprar, onde escolhem morar e como vão pagar. A necessidade de moradia permanece. É essa capacidade de se adaptar que dá ao mercado imobiliário sua solidez ao longo do tempo.",
+      "categoria": "Mercado",
+      "tags": [
+        "mercado imobiliário",
+        "imóveis em tempos de crise",
+        "moradia",
+        "financiamento imobiliário",
+        "aluguel"
+      ],
+      "autor": "Imoplace",
+      "capa": "",
+      "capaAlt": "Imóvel é a rocha sólida em tempos de crise?",
+      "seoTitulo": "Mercado imobiliário em tempos de crise | Imoplace",
+      "seoDescricao": "Entenda como juros, crédito e demanda por moradia influenciam as vendas, os aluguéis e os preços dos imóveis em tempos de crise.",
+      "publicadoEm": "2026-11-18T13:40:43.003Z",
+      "atualizadoEm": "2026-11-18T13:40:43.003Z",
+      "versao": 1
+    },
+    {
       "id": "n74d72b28f9cc",
       "slug": "apocalipse-bancario-sociedade-sem-bancos-investir-em-imoveis",
       "codigo": "apocalipse-bancario-sociedade-sem-bancos-investir-em-imoveis-n74d72b28f9cc",
