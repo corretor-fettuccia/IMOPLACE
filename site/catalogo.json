@@ -1,8 +1,8 @@
 {
   "schemaVersao": 2,
   "contrato": "imoplace-v1",
-  "geradoEm": "2026-11-17T15:15:55.892862+00:00",
-  "total": 12,
+  "geradoEm": "2026-11-18T01:17:14.678113+00:00",
+  "total": 13,
   "imoveis": [
     {
       "id": "1004",
@@ -369,6 +369,135 @@
           "arquivo": "imoveis/novo-imovel-1012/imagens/foto-1-dr-lourencozaccaro-290-centro-nsr-i0f87108ecf.v1.webp",
           "legenda": "Foto 31",
           "alt": "Sobrado Colonial | 3 Dormitórios com Suíte Master | Salão de Festas | Centro de Nova Santa Rita — foto 31"
+        }
+      ]
+    },
+    {
+      "id": "1021",
+      "codigo": "novo-imovel-1021",
+      "categoria": "lancamento",
+      "status": "publicado",
+      "url": "https://imoplace.com.br/imoveis/novo-imovel-1021/",
+      "destaque": false,
+      "tag": "",
+      "ordem": 0,
+      "atualizadoEm": "2026-11-18T01:16:19.680Z",
+      "tipo": "Apartamento",
+      "condicao": "Na planta",
+      "titulo": "Mezzano Domingos Martins | 2 dormitórios com suíte e rooftop | Centro de Canoas",
+      "descricao": "Imoplace Vende | Apartamentos de 2 dormitórios com suíte, no Centro de Canoas. Consulte as condições do Minha Casa Minha Vida Faixa 4.\n\nCaracterísticas do imóvel\n• Plantas de 63,06 a 63,94 m²\n• Sacada com churrasqueira\n• Vagas individualizadas conforme disponibilidade\n• Torre única com 36 apartamentos\n\nInfraestrutura do condomínio\n• Rooftop com piscina\n• área gourmet\n• academia\n• espaço kids\n• lounge externo\n\nConsulte as plantas, a disponibilidade de vagas e faça uma simulação de financiamento.",
+      "seo": {
+        "titulo": "Mezzano Domingos Martins | 2 dormitórios em Canoas",
+        "descricao": "Plantas de até 63,94 m², sacada com churrasqueira e rooftop com piscina. Consulte as condições do Minha Casa Minha Vida Faixa 4."
+      },
+      "localizacao": {
+        "bairro": "Centro",
+        "cidade": "Canoas",
+        "uf": "RS",
+        "endereco": "Rua Domingos Martins, 584",
+        "lat": null,
+        "lng": null
+      },
+      "preco": 500000.0,
+      "condominio": null,
+      "iptuAnual": null,
+      "financiamento": true,
+      "permuta": false,
+      "documentacaoEmDia": false,
+      "dormitorios": 2.0,
+      "suites": 1.0,
+      "banheiros": 2.0,
+      "vagas": null,
+      "areaTotal": null,
+      "areaUtil": 63.94,
+      "comodidades": [],
+      "caracteristicasImovel": [
+        "Plantas de 63",
+        "06 a 63",
+        "94 m²",
+        "Sacada com churrasqueira",
+        "Vagas individualizadas conforme disponibilidade",
+        "Torre única com 36 apartamentos"
+      ],
+      "caracteristicasCondominio": [
+        "Rooftop com piscina",
+        "área gourmet",
+        "academia",
+        "espaço kids",
+        "lounge externo"
+      ],
+      "anunciante": {
+        "nome": "",
+        "creci": "",
+        "whatsapp": ""
+      },
+      "feeds": {
+        "google": false,
+        "meta": false,
+        "disponibilidade": "in_stock"
+      },
+      "midias": [],
+      "links_externos": [],
+      "imagens": [
+        {
+          "arquivo": "imoveis/novo-imovel-1021/imagens/hero-plus-image1-1-ic216d336c5.v1.webp",
+          "legenda": "Verdadeiro club no rootop",
+          "alt": "Mezzano Domingos Martins | 2 dormitórios com suíte e rooftop | Centro de Canoas — foto 1"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1021/imagens/hero-plus-image2-2-i02c127ccda.v1.webp",
+          "legenda": "Piscina nas alturas",
+          "alt": "Mezzano Domingos Martins | 2 dormitórios com suíte e rooftop | Centro de Canoas — foto 2"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1021/imagens/property-slider-image1-9-ibd30860347.v1.webp",
+          "legenda": "Foto 3",
+          "alt": "Mezzano Domingos Martins | 2 dormitórios com suíte e rooftop | Centro de Canoas — foto 3"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1021/imagens/property-slider-image1-13-iaea8f5985a.v1.webp",
+          "legenda": "Piscina no rooftop",
+          "alt": "Mezzano Domingos Martins | 2 dormitórios com suíte e rooftop | Centro de Canoas — foto 4"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1021/imagens/property-slider-image2-10-i74b6602a7e.v1.webp",
+          "legenda": "Cozinha integrada",
+          "alt": "Mezzano Domingos Martins | 2 dormitórios com suíte e rooftop | Centro de Canoas — foto 5"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1021/imagens/property-slider-image3-11-i58fdc85f03.v1.webp",
+          "legenda": "Dormitórios amplos",
+          "alt": "Mezzano Domingos Martins | 2 dormitórios com suíte e rooftop | Centro de Canoas — foto 6"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1021/imagens/property-slider-image3-14-i7d6976016d.v1.webp",
+          "legenda": "Academia",
+          "alt": "Mezzano Domingos Martins | 2 dormitórios com suíte e rooftop | Centro de Canoas — foto 7"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1021/imagens/property-slider-slide-4-image-12-i6de025c764.v1.webp",
+          "legenda": "Dormitório inteligente",
+          "alt": "Mezzano Domingos Martins | 2 dormitórios com suíte e rooftop | Centro de Canoas — foto 8"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1021/imagens/property-slider-slide-4-image-15-i14ca12b792.v1.webp",
+          "legenda": "Brinquedoteca",
+          "alt": "Mezzano Domingos Martins | 2 dormitórios com suíte e rooftop | Centro de Canoas — foto 9"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1021/imagens/property-slider-slide-5-image-16-ibd45f59956.v1.webp",
+          "legenda": "Lounge",
+          "alt": "Mezzano Domingos Martins | 2 dormitórios com suíte e rooftop | Centro de Canoas — foto 10"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1021/imagens/smart-plant-plant-1-fullimage-4-i337b6008cf.v1.webp",
+          "legenda": "Foto 11",
+          "alt": "Mezzano Domingos Martins | 2 dormitórios com suíte e rooftop | Centro de Canoas — foto 11"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1021/imagens/smart-plant-plant-2-fullimage-7-ibb5a0abfcc.v1.webp",
+          "legenda": "Foto 12",
+          "alt": "Mezzano Domingos Martins | 2 dormitórios com suíte e rooftop | Centro de Canoas — foto 12"
         }
       ]
     },
