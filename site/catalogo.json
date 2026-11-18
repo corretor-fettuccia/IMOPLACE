@@ -1,7 +1,7 @@
 {
   "schemaVersao": 2,
   "contrato": "imoplace-v1",
-  "geradoEm": "2026-11-18T02:10:42.451459+00:00",
+  "geradoEm": "2026-11-18T16:39:15.095764+00:00",
   "total": 14,
   "imoveis": [
     {
@@ -381,7 +381,7 @@
       "destaque": false,
       "tag": "",
       "ordem": 0,
-      "atualizadoEm": "2026-11-18T01:16:19.680Z",
+      "atualizadoEm": "2026-11-18T16:38:25.486Z",
       "tipo": "Apartamento",
       "condicao": "Na planta",
       "titulo": "Mezzano Domingos Martins | 2 dormitórios com suíte e rooftop | Centro de Canoas",
@@ -427,9 +427,9 @@
         "lounge externo"
       ],
       "anunciante": {
-        "nome": "",
-        "creci": "",
-        "whatsapp": ""
+        "nome": "Roberto",
+        "creci": "83599F",
+        "whatsapp": "5551998111078"
       },
       "feeds": {
         "google": false,
