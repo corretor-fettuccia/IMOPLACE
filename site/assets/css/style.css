@@ -173,7 +173,7 @@ button:disabled{opacity:.6;cursor:not-allowed}
 .imovel-contato{position:sticky;top:64px}
 .imovel-contato .aside{position:static}
 .imoplace-lead{margin-top:10px}
-.imoplace-lead form,.imoplace-lead-dialog form{display:grid;gap:6px}
+.imoplace-lead form{display:grid;gap:6px}
 .imoplace-lead h2{font-size:1rem;margin:0}
 .imoplace-lead > form input,.imoplace-lead > form textarea{width:100%;min-height:40px;min-width:0;padding:7px 9px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink);font:inherit;font-size:16px}
 .imoplace-lead textarea{min-height:49px;resize:vertical}
@@ -185,11 +185,11 @@ button:disabled{opacity:.6;cursor:not-allowed}
 .imoplace-lead-dialog fieldset{min-width:0;margin:0 0 6px;padding:5px 8px;border:1px solid var(--line);border-radius:8px}
 .imoplace-lead-dialog legend{font-weight:700}
 .imoplace-lead-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
-.imoplace-lead-options label{display:flex;align-items:center;gap:8px;min-width:0;min-height:42px;padding:6px 8px;border:1px solid var(--line);border-radius:8px;line-height:1.25;cursor:pointer}
-.imoplace-lead-options input[type="radio"]{flex:0 0 16px;width:16px;height:16px;margin:0;accent-color:#a64b00}
-.imoplace-lead-options label:has(:checked){border-color:#a64b00;background:#fff5e8}
-.imoplace-lead-options label:focus-within{outline:2px solid #a64b00;outline-offset:2px}
-.imoplace-lead-dialog .actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.imoplace-lead-dialog .imoplace-lead-progress{margin:0 0 8px;font-size:.85rem;color:var(--muted)}
+.imoplace-lead-options button{min-width:0;min-height:44px;padding:6px 8px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink);font:inherit;line-height:1.25;text-align:left;cursor:pointer}
+.imoplace-lead-options button:hover,.imoplace-lead-options button:focus-visible{border-color:#a64b00;background:#fff5e8}
+.imoplace-lead-options button:focus-visible{outline:2px solid #a64b00;outline-offset:2px}
+.imoplace-lead-dialog #lead-retry:not([hidden]){margin-top:8px}
 @media(max-width:480px){.imoplace-lead-options{grid-template-columns:1fr}}
 .imoplace-lead button:disabled,.imoplace-lead-dialog button:disabled{opacity:.65}
 @media(max-height:680px){.imovel-contato{position:static}}

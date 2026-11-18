@@ -7,7 +7,6 @@
     "product": "Imoplace - [codigoimovel]",
     "successMessage": "Nosso consultor entrará em contato!",
     "quickTitle": "Antes de finalizar, só me confirma rapidinho…",
-    "confirmText": "Concluir envio",
     "questions": [
       {
         "label": "Qual é o seu objetivo?",
@@ -63,51 +62,58 @@
       <p id="status" role="status"></p>
       <dialog class="imoplace-lead-dialog" aria-labelledby="qualification-title">
         <h2 id="qualification-title"></h2>
-        <form id="qualification">
-          <div id="questions"></div>
-          <div class="actions">
-            <button class="btn btn-line cancel" type="button">Voltar</button>
-            <button class="btn btn-accent" type="submit" id="confirm"></button>
-          </div>
-          <p id="qualification-status" role="status" hidden></p>
-        </form>
+        <p class="imoplace-lead-progress"></p>
+        <div id="questions"></div>
+        <p id="qualification-status" role="status" hidden></p>
+        <button class="btn btn-accent" type="button" id="lead-retry" hidden>Tentar novamente</button>
       </dialog>`;
     const lead = slot.querySelector('form');
     const leadButton = lead.querySelector('button[type="submit"]');
     const status = slot.querySelector('#status');
     const dialog = slot.querySelector('dialog');
-    const qualification = slot.querySelector('#qualification');
     const qualificationStatus = slot.querySelector('#qualification-status');
-    const confirmButton = slot.querySelector('#confirm');
-    const backButton = qualification.querySelector('.cancel');
+    const retry = slot.querySelector('#lead-retry');
+    const progress = dialog.querySelector('.imoplace-lead-progress');
+    const answers = [];
     const propertyId = slot.dataset.leadProperty;
     let sending = false;
 
     dialog.querySelector('#qualification-title').textContent = config.quickTitle;
-    confirmButton.textContent = config.confirmText;
     leadButton.disabled = false;
     lead.elements.telefone.addEventListener('input', () => lead.elements.telefone.setCustomValidity(''));
 
     const questions = slot.querySelector('#questions');
-    config.questions.forEach((question, index) => {
+    function showQuestion() {
+      const index = answers.length;
+      const question = config.questions[index];
       const group = document.createElement('fieldset');
       const legend = document.createElement('legend');
+      legend.tabIndex = -1;
       legend.textContent = question.label;
       const options = document.createElement('div');
       options.className = 'imoplace-lead-options';
-      group.append(legend, options);
       for (const option of question.options) {
-        const label = document.createElement('label');
-        const radio = document.createElement('input');
-        radio.type = 'radio';
-        radio.name = 'question_' + index;
-        radio.value = option;
-        radio.required = true;
-        label.append(radio, option);
-        options.append(label);
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.textContent = option;
+        button.addEventListener('click', () => {
+          if (answers.length !== index || !dialog.open) return;
+          answers.push(option);
+          if (answers.length < config.questions.length) {
+            showQuestion();
+          } else {
+            questions.replaceChildren();
+            progress.textContent = '';
+            void sendLead();
+          }
+        });
+        options.append(button);
       }
-      questions.append(group);
-    });
+      group.append(legend, options);
+      progress.textContent = `Pergunta ${index + 1} de ${config.questions.length}`;
+      questions.replaceChildren(group);
+      legend.focus();
+    }
 
     function buildPayload() {
       const data = new FormData(lead);
@@ -117,9 +123,8 @@
       data.set('produto', config.product.replace('[codigoimovel]', () => propertyId));
       data.set('codigoimovel', propertyId);
       data.set('dataHora', new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' }));
-      const answers = new FormData(qualification);
       const blocks = config.questions.map((question, index) => {
-        const block = question.label + '\n' + answers.get('question_' + index) + ';';
+        const block = question.label + '\n' + answers[index] + ';';
         data.set('qualificacao_' + (index + 1), block);
         return block;
       });
@@ -132,9 +137,10 @@
     }
 
     async function sendLead() {
-      if (sending || !lead.reportValidity()) return;
+      if (sending || answers.length !== config.questions.length) return;
       sending = true;
-      leadButton.disabled = confirmButton.disabled = backButton.disabled = true;
+      leadButton.disabled = true;
+      retry.hidden = true;
       qualificationStatus.hidden = true;
       const payload = buildPayload();
       status.textContent = 'Enviando…';
@@ -158,7 +164,7 @@
         }
         if (dialog.open) dialog.close();
         lead.reset();
-        qualification.reset();
+        answers.length = 0;
         status.textContent = config.successMessage;
         // Analytics recebe apenas o ID público do imóvel, depois da confirmação.
         try {
@@ -174,9 +180,11 @@
         status.textContent = message;
         qualificationStatus.textContent = message;
         qualificationStatus.hidden = false;
+        retry.hidden = false;
+        retry.focus();
       } finally {
         sending = false;
-        leadButton.disabled = confirmButton.disabled = backButton.disabled = false;
+        leadButton.disabled = false;
       }
     }
 
@@ -195,16 +203,12 @@
       }
       status.textContent = '';
       qualificationStatus.hidden = true;
+      retry.hidden = true;
       dialog.showModal();
+      showQuestion();
     });
-    qualification.addEventListener('submit', event => {
-      event.preventDefault();
-      void sendLead();
-    });
-    backButton.addEventListener('click', () => dialog.close());
-    dialog.addEventListener('cancel', event => {
-      if (sending) event.preventDefault();
-    });
+    retry.addEventListener('click', () => void sendLead());
+    dialog.addEventListener('cancel', event => event.preventDefault());
     slot.hidden = false;
   }
 
