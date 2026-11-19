@@ -1,8 +1,8 @@
 {
   "schemaVersao": 2,
   "contrato": "imoplace-v1",
-  "geradoEm": "2026-11-19T12:17:15.498914+00:00",
-  "total": 16,
+  "geradoEm": "2026-11-19T12:39:56.572748+00:00",
+  "total": 17,
   "imoveis": [
     {
       "id": "1004",
@@ -598,6 +598,128 @@
           "arquivo": "imoveis/novo-imovel-1027/imagens/gallery-big-four-image4-10-i2fa4179364.v1.webp",
           "legenda": "Foto 10",
           "alt": "NAU Marina & Moradas | Terrenos com acesso náutico em Osório — foto 10"
+        }
+      ]
+    },
+    {
+      "id": "1026",
+      "codigo": "novo-imovel-1026",
+      "categoria": "venda",
+      "status": "publicado",
+      "url": "https://imoplace.com.br/imoveis/novo-imovel-1026/",
+      "destaque": false,
+      "tag": "Aceita Parcelamento direto",
+      "ordem": 0,
+      "atualizadoEm": "2026-11-19T12:39:27.581Z",
+      "tipo": "Apartamento",
+      "condicao": "Novo",
+      "titulo": "Grand Park Lindóia | 2 e 3 dormitórios | Zona Norte de Porto Alegre",
+      "descricao": "Imoplace Vende | Grand Park Lindóia Residencial, da Melnick, na Av. Assis Brasil, perto do Shopping Lindóia. O complexo reúne residencial, serviços e mall.\n\nCaracterísticas do imóvel\n• Apartamentos de 2 e 3 dormitórios\n• Plantas de 56 a 81 m²\n• Consulte configuração, vaga e disponibilidade por unidade\n\n• APTOS 2D: DE 56m² a 60m² | 1 OU 2 VAGAS/APTO\n• APTOS 3D: DE 67m² a 81m² | 1 OU 2 VAGAS/APTO\n\nInfraestrutura do condomínio\n• Parque aquático\n• academia\n• salão de festas\n• espaço gourmet\n• playground\n• espaço pet\n• quadra gramada\n• 06 torres\n\nEntre em contato para consultar as unidades residenciais e agendar visita.",
+      "seo": {
+        "titulo": "Grand Park Lindóia | 2 e 3 dormitórios em Porto Alegre",
+        "descricao": "Plantas de 56 a 81 m² e lazer com parque aquático, quadra e academia. Complexo residencial com mall na Av. Assis Brasil."
+      },
+      "localizacao": {
+        "bairro": "Jardim Lindóia",
+        "cidade": "Porto Alegre",
+        "uf": "RS",
+        "endereco": "Avenida Assis Brasil, 3966 , Jardim Lindóia, Porto Alegre - RS",
+        "lat": null,
+        "lng": null
+      },
+      "preco": 640000.0,
+      "condominio": null,
+      "iptuAnual": null,
+      "financiamento": false,
+      "permuta": false,
+      "documentacaoEmDia": false,
+      "dormitorios": 3.0,
+      "suites": 1.0,
+      "banheiros": 1.0,
+      "vagas": 2.0,
+      "areaTotal": 81.0,
+      "areaUtil": null,
+      "comodidades": [],
+      "caracteristicasImovel": [
+        "Apartamentos de 2 e 3 dormitórios",
+        "Plantas de 56 a 81 m²"
+      ],
+      "caracteristicasCondominio": [
+        "Parque aquático ( piscina adulto e infantil )",
+        "Academia",
+        "Salão de festas",
+        "Espaço gourmet",
+        "Playground",
+        "Espaço pet",
+        "Quadra gramada",
+        "Espaço beauty care",
+        "Pub",
+        "Espaço de jogos",
+        "Hall",
+        "Bicicletário"
+      ],
+      "anunciante": {
+        "nome": "Roberto",
+        "creci": "83599-F",
+        "whatsapp": "5551998111078"
+      },
+      "feeds": {
+        "google": false,
+        "meta": false,
+        "disponibilidade": "in_stock"
+      },
+      "midias": [],
+      "links_externos": [],
+      "imagens": [
+        {
+          "arquivo": "imoveis/novo-imovel-1026/imagens/realty-media-grand-park-lindoia-drone-we-i46deb00c03.v1.webp",
+          "legenda": "Foto 1",
+          "alt": "Grand Park Lindóia | 2 e 3 dormitórios | Zona Norte de Porto Alegre — foto 1"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1026/imagens/realty-media-236imagembasegiganteols-027-iea82ae259f.v1.webp",
+          "legenda": "Foto 2",
+          "alt": "Grand Park Lindóia | 2 e 3 dormitórios | Zona Norte de Porto Alegre — foto 2"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1026/imagens/realty-media-grand-park-lindoia-drone-we-iaa62793dd5.v1.webp",
+          "legenda": "Plantas de 56m² a 81m²",
+          "alt": "Grand Park Lindóia | 2 e 3 dormitórios | Zona Norte de Porto Alegre — foto 3"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1026/imagens/realty-media-grand-park-lindoia-drone-we-icf7ed0d4dd.v1.webp",
+          "legenda": "Foto 4",
+          "alt": "Grand Park Lindóia | 2 e 3 dormitórios | Zona Norte de Porto Alegre — foto 4"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1026/imagens/realty-picture-10153ols-0404-easyresize--id41be7bd2e.v1.webp",
+          "legenda": "Foto 5",
+          "alt": "Grand Park Lindóia | 2 e 3 dormitórios | Zona Norte de Porto Alegre — foto 5"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1026/imagens/realty-picture-10154ols-0409-easyresize--i76011e7448.v1.webp",
+          "legenda": "Paisagismo",
+          "alt": "Grand Park Lindóia | 2 e 3 dormitórios | Zona Norte de Porto Alegre — foto 6"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1026/imagens/realty-picture-10151ols-0379-easyresize--ia632374fd7.v1.webp",
+          "legenda": "Playground",
+          "alt": "Grand Park Lindóia | 2 e 3 dormitórios | Zona Norte de Porto Alegre — foto 7"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1026/imagens/realty-picture-10143ols-0334-easyresize--i1761d26989.v1.webp",
+          "legenda": "Bicicletário",
+          "alt": "Grand Park Lindóia | 2 e 3 dormitórios | Zona Norte de Porto Alegre — foto 8"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1026/imagens/realty-picture-10138ols-0292-easyresize--i9ab066ca50.v1.webp",
+          "legenda": "Academia",
+          "alt": "Grand Park Lindóia | 2 e 3 dormitórios | Zona Norte de Porto Alegre — foto 9"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1026/imagens/realty-picture-10139ols-0301hdr-easyresi-i0d0cfabaa8.v1.webp",
+          "legenda": "Foto 10",
+          "alt": "Grand Park Lindóia | 2 e 3 dormitórios | Zona Norte de Porto Alegre — foto 10"
         }
       ]
     },
