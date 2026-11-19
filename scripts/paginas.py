@@ -6,6 +6,12 @@ import json
 from urllib.parse import quote
 
 RAIZ_REL = '../../'
+# Permite ao Google exibir fotos grandes nos resultados e no Discover.
+ROBOTS_INDEX = 'index,follow,max-image-preview:large'
+
+# Tipo do imóvel no painel → tipo schema.org. Terreno não é moradia, então fica como Place.
+TIPOS_SCHEMA = {'casa': 'SingleFamilyResidence', 'sobrado': 'SingleFamilyResidence',
+                'apartamento': 'Apartment', 'terreno': 'Place'}
 
 
 def h(v):
@@ -81,6 +87,53 @@ def detalhe(item):
 <div class="imovel-contato"><aside class="aside box"><div class="adv"><div class="av">I</div><div><b>{h(anunc.get('nome') or 'Imoplace')}</b>{creci}</div></div><p class="small-note">{h(nota)}</p>{contato}<div class="ref">Código do imóvel: {h(item['id'])}</div></aside><div class="box imoplace-lead" data-lead-property="{h(item['id'])}" hidden></div></div></div>'''
 
 
+def _numero(v):
+    if isinstance(v, bool) or not isinstance(v, (int, float)) or v <= 0:
+        return None
+    return int(v) if float(v).is_integer() else v
+
+
+def dados_estruturados(item, conf, url, descricao):
+    """JSON-LD do anúncio: RealEstateListing (a página) + o imóvel em si + trilha de navegação."""
+    base = conf['urlPublica']
+    loc = item.get('localizacao') or {}
+    fotos = [f'{base}/{imagem_seo(f)}' for f in (item.get('imagens') or [])]
+    tipo = TIPOS_SCHEMA.get(str(item.get('tipo') or '').strip().lower(), 'Accommodation')
+    endereco = {'@type': 'PostalAddress', 'addressLocality': loc.get('cidade'), 'addressRegion': loc.get('uf'),
+                'addressCountry': 'BR'}
+    imovel = {'@type': tipo, 'name': item['titulo'], 'address': {k: v for k, v in endereco.items() if v}}
+    if fotos:
+        imovel['image'] = fotos
+    lat, lng = loc.get('lat'), loc.get('lng')
+    if isinstance(lat, (int, float)) and isinstance(lng, (int, float)):
+        imovel['geo'] = {'@type': 'GeoCoordinates', 'latitude': lat, 'longitude': lng}
+    if tipo != 'Place':
+        for campo, prop in (('dormitorios', 'numberOfBedrooms'), ('banheiros', 'numberOfBathroomsTotal')):
+            if _numero(item.get(campo)) is not None:
+                imovel[prop] = _numero(item.get(campo))
+        area = _numero(item.get('areaUtil')) or _numero(item.get('areaTotal'))
+        if area is not None:
+            imovel['floorSize'] = {'@type': 'QuantitativeValue', 'value': area, 'unitCode': 'MTK'}
+    anuncio = {'@type': 'RealEstateListing', '@id': url + '#anuncio', 'url': url, 'name': item['titulo'],
+               'description': descricao, 'inLanguage': 'pt-BR', 'mainEntity': imovel}
+    if fotos:
+        anuncio['image'] = fotos
+    if item.get('atualizadoEm'):
+        anuncio['dateModified'] = item['atualizadoEm']
+    preco = _numero(item.get('preco'))
+    if preco is not None:
+        anunc = item.get('anunciante') or {}
+        oferta = {'@type': 'Offer', 'price': preco, 'priceCurrency': 'BRL', 'url': url,
+                  'availability': 'https://schema.org/InStock'}
+        if anunc.get('nome'):
+            oferta['seller'] = {'@type': 'RealEstateAgent' if anunc.get('creci') else 'Person', 'name': anunc['nome']}
+        anuncio['offers'] = oferta
+    trilha = {'@type': 'BreadcrumbList', 'itemListElement': [
+        {'@type': 'ListItem', 'position': 1, 'name': 'Início', 'item': base + '/'},
+        {'@type': 'ListItem', 'position': 2, 'name': item['titulo'], 'item': url}]}
+    return {'@context': 'https://schema.org', '@graph': [anuncio, trilha]}
+
+
 def pagina(item, conf):
     base = conf['urlPublica']
     url = f'{base}/imoveis/{item["codigo"]}/'
@@ -90,14 +143,7 @@ def pagina(item, conf):
     indexar = conf['permitirIndexacao']
     fotos = item.get('imagens') or []
     og = f'\n<meta property="og:image" content="{h(base + "/" + imagem_social(fotos[0]))}">' if fotos else ''
-    schema = {
-        '@context': 'https://schema.org', '@type': 'RealEstateListing', 'name': item['titulo'], 'description': descricao,
-        'url': url, 'image': [f'{base}/{imagem_seo(f)}' for f in fotos], 'dateModified': item.get('atualizadoEm') or None,
-        'offers': {'@type': 'Offer', 'priceCurrency': 'BRL', 'price': item.get('preco'), 'availability': 'https://schema.org/InStock'},
-        'address': {'@type': 'PostalAddress', 'addressLocality': (item.get('localizacao') or {}).get('cidade', ''),
-                    'addressRegion': (item.get('localizacao') or {}).get('uf', ''), 'addressCountry': 'BR'},
-    }
-    ld = json.dumps({k: v for k, v in schema.items() if v is not None}, ensure_ascii=False).replace('<', '\\u003c')
+    ld = json.dumps(dados_estruturados(item, conf, url, descricao), ensure_ascii=False).replace('<', '\\u003c')
     return f'''<!doctype html>
 <html lang="pt-BR" data-root="{RAIZ_REL}" data-codigo="{h(item['codigo'])}">
 <head>
@@ -106,7 +152,7 @@ def pagina(item, conf):
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>{h(titulo)}</title>
 <meta name="description" content="{h(descricao)}">
-<meta name="robots" content="{'index,follow' if indexar else 'noindex,follow'}">
+<meta name="robots" content="{ROBOTS_INDEX if indexar else 'noindex,follow'}">
 <link rel="canonical" href="{h(url)}">
 <meta property="og:type" content="website">
 <meta property="og:url" content="{h(url)}">
