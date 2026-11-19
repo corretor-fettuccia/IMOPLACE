@@ -1,4 +1,4 @@
-Pacote Imoplace 3.4.2
-CORE Apps Script 3.4.0
-Monitor GS 1.0
-Marketing Google e Meta com API de Conversões separada.
+Imoplace 4.2 — motor GitHub (saneamento da estrutura)
+Fonte de verdade: branch main, sem CORE privado neste repositório.
+CORE Google Apps Script: implantação separada; Monitor GS: projeto separado.
+Workflow de publicação: .github/workflows/publicar.yml

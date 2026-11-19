@@ -72,7 +72,11 @@ jobs:
         env:
           GOOGLE_ACCESS_TOKEN: ${{ steps.google.outputs.access_token }}
         run: python -u scripts/core_configurar.py
-      - name: Testes do CORE sem rede
+      - name: Validar sintaxe Python e mídias JS
+        run: |
+          python -m compileall -q scripts
+          node scripts/tests/test_midias_node.js
+      - name: Testes do motor sem rede
         run: |
           python -m unittest discover -s scripts/tests -t scripts
       - name: '[1/8] Consultar FILA na planilha'
