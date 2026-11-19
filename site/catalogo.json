@@ -1,7 +1,7 @@
 {
   "schemaVersao": 2,
   "contrato": "imoplace-v1",
-  "geradoEm": "2026-11-19T10:58:46.766351+00:00",
+  "geradoEm": "2026-11-19T12:17:15.498914+00:00",
   "total": 16,
   "imoveis": [
     {
@@ -492,9 +492,9 @@
       "destaque": false,
       "tag": "",
       "ordem": 0,
-      "atualizadoEm": "2026-11-19T10:57:42.883Z",
+      "atualizadoEm": "2026-11-19T12:16:07.200Z",
       "tipo": "Terreno",
-      "condicao": "Usado",
+      "condicao": "Novo",
       "titulo": "NAU Marina & Moradas | Terrenos com acesso náutico em Osório",
       "descricao": "Imoplace Vende | Terrenos em condomínio fechado no Palmital, em Osório. O NAU reúne 494 lotes, marina privativa e acesso navegável às lagoas do Peixoto e da Pinguela.\n\nCaracterísticas do imóvel\n• Lotes de 300 a 734 m²\n• Opções de lote seco e lote molhado com acesso à água conforme a implantação\n• Consulte as regras de atracação e a comercialização das vagas de marina\n\nInfraestrutura do condomínio\n• Clube náutico com deck e rooftop\n• piscina térmica\n• academia\n• espaços gourmet\n• quadras de tênis e beach tennis\n• padel\n• futebol 7\n\nA página comercial indica lotes a partir de R$ 300 mil e parcelamento direto em até 135x.",
       "seo": {
