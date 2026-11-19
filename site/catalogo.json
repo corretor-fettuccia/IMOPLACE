@@ -1,8 +1,8 @@
 {
   "schemaVersao": 2,
   "contrato": "imoplace-v1",
-  "geradoEm": "2026-11-19T01:14:58.822688+00:00",
-  "total": 15,
+  "geradoEm": "2026-11-19T10:58:46.766351+00:00",
+  "total": 16,
   "imoveis": [
     {
       "id": "1004",
@@ -480,6 +480,124 @@
           "arquivo": "imoveis/novo-imovel-1028/imagens/c116159a-acc5-49b1-9292-21de7be41e5f-ieb50d92ae5.v1.webp",
           "legenda": "Foto 5",
           "alt": "Aura Legano | Terrenos em condomínio-clube | Nova Santa Rita — foto 5"
+        }
+      ]
+    },
+    {
+      "id": "1027",
+      "codigo": "novo-imovel-1027",
+      "categoria": "lancamento",
+      "status": "publicado",
+      "url": "https://imoplace.com.br/imoveis/novo-imovel-1027/",
+      "destaque": false,
+      "tag": "",
+      "ordem": 0,
+      "atualizadoEm": "2026-11-19T10:57:42.883Z",
+      "tipo": "Terreno",
+      "condicao": "Usado",
+      "titulo": "NAU Marina & Moradas | Terrenos com acesso náutico em Osório",
+      "descricao": "Imoplace Vende | Terrenos em condomínio fechado no Palmital, em Osório. O NAU reúne 494 lotes, marina privativa e acesso navegável às lagoas do Peixoto e da Pinguela.\n\nCaracterísticas do imóvel\n• Lotes de 300 a 734 m²\n• Opções de lote seco e lote molhado com acesso à água conforme a implantação\n• Consulte as regras de atracação e a comercialização das vagas de marina\n\nInfraestrutura do condomínio\n• Clube náutico com deck e rooftop\n• piscina térmica\n• academia\n• espaços gourmet\n• quadras de tênis e beach tennis\n• padel\n• futebol 7\n\nA página comercial indica lotes a partir de R$ 300 mil e parcelamento direto em até 135x.",
+      "seo": {
+        "titulo": "NAU Marina & Moradas | Terrenos em Osório, RS",
+        "descricao": "Lotes secos e molhados de 300 a 734 m² no Palmital, com marina privativa, clube náutico e conexão às lagoas da Pinguela e do Peixoto."
+      },
+      "localizacao": {
+        "bairro": "Palmital",
+        "cidade": "Osório",
+        "uf": "RS",
+        "endereco": "Linha Peixoto, 1405, Osorio - RS",
+        "lat": null,
+        "lng": null
+      },
+      "preco": 300000.0,
+      "condominio": null,
+      "iptuAnual": null,
+      "financiamento": true,
+      "permuta": true,
+      "documentacaoEmDia": false,
+      "dormitorios": null,
+      "suites": null,
+      "banheiros": null,
+      "vagas": null,
+      "areaTotal": null,
+      "areaUtil": null,
+      "comodidades": [],
+      "caracteristicasImovel": [
+        "Lotes de 300 a 734 m²",
+        "Opções de lote seco e lote molhado com acesso à água conforme a implantação",
+        "Consulte as regras de atracação e a comercialização das vagas de marina"
+      ],
+      "caracteristicasCondominio": [
+        "Clube náutico com deck e rooftop",
+        "piscina térmica",
+        "academia",
+        "espaços gourmet",
+        "quadras de tênis e beach tennis",
+        "padel",
+        "futebol 7"
+      ],
+      "anunciante": {
+        "nome": "Roberto",
+        "creci": "83599-F",
+        "whatsapp": "5551998111078"
+      },
+      "feeds": {
+        "google": false,
+        "meta": false,
+        "disponibilidade": "in_stock"
+      },
+      "midias": [],
+      "links_externos": [],
+      "imagens": [
+        {
+          "arquivo": "imoveis/novo-imovel-1027/imagens/property-slider-slide-8-image-8-i508f449874.v1.webp",
+          "legenda": "Foto 1",
+          "alt": "NAU Marina & Moradas | Terrenos com acesso náutico em Osório — foto 1"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1027/imagens/property-slider-slide-4-image-4-ia4ffee6d3f.v1.webp",
+          "legenda": "Foto 2",
+          "alt": "NAU Marina & Moradas | Terrenos com acesso náutico em Osório — foto 2"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1027/imagens/property-slider-slide-7-image-7-i8434456ccf.v1.webp",
+          "legenda": "Foto 3",
+          "alt": "NAU Marina & Moradas | Terrenos com acesso náutico em Osório — foto 3"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1027/imagens/property-slider-slide-6-image-6-id7cbfa66c4.v1.webp",
+          "legenda": "Foto 4",
+          "alt": "NAU Marina & Moradas | Terrenos com acesso náutico em Osório — foto 4"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1027/imagens/property-slider-slide-5-image-5-i3b7ee830a2.v1.webp",
+          "legenda": "Foto 5",
+          "alt": "NAU Marina & Moradas | Terrenos com acesso náutico em Osório — foto 5"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1027/imagens/property-slider-image3-3-i2dd2efa000.v1.webp",
+          "legenda": "Foto 6",
+          "alt": "NAU Marina & Moradas | Terrenos com acesso náutico em Osório — foto 6"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1027/imagens/property-slider-image2-2-i421649c181.v1.webp",
+          "legenda": "Foto 7",
+          "alt": "NAU Marina & Moradas | Terrenos com acesso náutico em Osório — foto 7"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1027/imagens/property-slider-image1-1-i873cc144c6.v1.webp",
+          "legenda": "Foto 8",
+          "alt": "NAU Marina & Moradas | Terrenos com acesso náutico em Osório — foto 8"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1027/imagens/image-single-image-11-ib87573397d.v1.webp",
+          "legenda": "Foto 9",
+          "alt": "NAU Marina & Moradas | Terrenos com acesso náutico em Osório — foto 9"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1027/imagens/gallery-big-four-image4-10-i2fa4179364.v1.webp",
+          "legenda": "Foto 10",
+          "alt": "NAU Marina & Moradas | Terrenos com acesso náutico em Osório — foto 10"
         }
       ]
     },
