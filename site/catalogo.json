@@ -1,8 +1,8 @@
 {
   "schemaVersao": 2,
   "contrato": "imoplace-v1",
-  "geradoEm": "2026-11-18T16:39:15.095764+00:00",
-  "total": 14,
+  "geradoEm": "2026-11-19T01:09:30.722568+00:00",
+  "total": 15,
   "imoveis": [
     {
       "id": "1004",
@@ -369,6 +369,117 @@
           "arquivo": "imoveis/novo-imovel-1012/imagens/foto-1-dr-lourencozaccaro-290-centro-nsr-i0f87108ecf.v1.webp",
           "legenda": "Foto 31",
           "alt": "Sobrado Colonial | 3 Dormitórios com Suíte Master | Salão de Festas | Centro de Nova Santa Rita — foto 31"
+        }
+      ]
+    },
+    {
+      "id": "1028",
+      "codigo": "novo-imovel-1028",
+      "categoria": "venda",
+      "status": "publicado",
+      "url": "https://imoplace.com.br/imoveis/novo-imovel-1028/",
+      "destaque": false,
+      "tag": "",
+      "ordem": 0,
+      "atualizadoEm": "2026-11-19T01:08:20.706Z",
+      "tipo": "Terreno",
+      "condicao": "Usado",
+      "titulo": "Aura Legano | Terrenos em condomínio-clube | Nova Santa Rita",
+      "descricao": "Imoplace Vende | Terrenos em condomínio fechado no Legano Bairro Cidade, em Nova Santa Rita, com áreas verdes, clube social e complexo esportivo.\n\nCaracterísticas do imóvel\n• Lotes residenciais para diferentes projetos de casa\n• Consulte metragem, posição solar e disponibilidade por quadra\n• Acesso pela BR-386\n\nInfraestrutura do condomínio\n• Clube social\n• piscinas\n• píer\n• quadras de tênis e beach tennis\n• espaços gourmet\n• áreas verdes\n\nSolicite o mapa de lotes e consulte os valores e as opções de pagamento.",
+      "seo": {
+        "titulo": "Aura Legano | Terrenos em Nova Santa Rita, RS",
+        "descricao": "Lotes no Legano Bairro Cidade com clube social, piscinas, píer e complexo esportivo. Acesso pela BR-386 em Nova Santa Rita."
+      },
+      "localizacao": {
+        "bairro": "Legano Bairro Cidade",
+        "cidade": "Nova Santa Rita",
+        "uf": "RS",
+        "endereco": "Av. Vereador Deoclécio Rodrigues, acesso pela BR-386",
+        "lat": null,
+        "lng": null
+      },
+      "preco": null,
+      "condominio": null,
+      "iptuAnual": null,
+      "financiamento": false,
+      "permuta": false,
+      "documentacaoEmDia": false,
+      "dormitorios": null,
+      "suites": null,
+      "banheiros": null,
+      "vagas": null,
+      "areaTotal": null,
+      "areaUtil": null,
+      "comodidades": [],
+      "caracteristicasImovel": [
+        "Lotes residenciais para diferentes projetos de casa",
+        "Consulte metragem",
+        "posição solar e disponibilidade por quadra",
+        "Acesso pela BR-386"
+      ],
+      "caracteristicasCondominio": [
+        "Clube social",
+        "piscinas",
+        "píer",
+        "quadras de tênis e beach tennis",
+        "espaços gourmet",
+        "áreas verdes"
+      ],
+      "anunciante": {
+        "nome": "",
+        "creci": "",
+        "whatsapp": ""
+      },
+      "feeds": {
+        "google": false,
+        "meta": false,
+        "disponibilidade": "in_stock"
+      },
+      "midias": [
+        {
+          "tipo": "video",
+          "url": "https://avivaurbanismo.com.br/auralegano/wp-content/uploads/2026/01/Banner-Aura.mp4",
+          "titulo": "Ver mídia",
+          "descricao": "",
+          "ordem": 1.0,
+          "visivel": true
+        }
+      ],
+      "links_externos": [
+        {
+          "tipo": "site_externo",
+          "url": "https://avivaurbanismo.com.br/mapa-aura-legano/",
+          "titulo": "Mapa interativo",
+          "descricao": "",
+          "ordem": 1.0,
+          "visivel": true
+        }
+      ],
+      "imagens": [
+        {
+          "arquivo": "imoveis/novo-imovel-1028/imagens/aura-legano-mapa-interativo-temp-jpg-1-i01d20819e4.v1.webp",
+          "legenda": "Foto 1",
+          "alt": "Aura Legano | Terrenos em condomínio-clube | Nova Santa Rita — foto 1"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1028/imagens/1cb54e69-a48b-4380-ac12-543b26795174-i35b1f61ef7.v1.webp",
+          "legenda": "Foto 2",
+          "alt": "Aura Legano | Terrenos em condomínio-clube | Nova Santa Rita — foto 2"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1028/imagens/25e502a6-736a-4a5f-8955-ca07c685644c-ic0881ca818.v1.webp",
+          "legenda": "Foto 3",
+          "alt": "Aura Legano | Terrenos em condomínio-clube | Nova Santa Rita — foto 3"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1028/imagens/dd3759f5-36d3-4692-b3eb-16e0be170a76-ifa1cf5036a.v1.webp",
+          "legenda": "Foto 4",
+          "alt": "Aura Legano | Terrenos em condomínio-clube | Nova Santa Rita — foto 4"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1028/imagens/c116159a-acc5-49b1-9292-21de7be41e5f-ieb50d92ae5.v1.webp",
+          "legenda": "Foto 5",
+          "alt": "Aura Legano | Terrenos em condomínio-clube | Nova Santa Rita — foto 5"
         }
       ]
     },
