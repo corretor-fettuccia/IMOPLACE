@@ -272,7 +272,7 @@ def indexacao_home(site, conf):
     if not home.is_file():
         return
     txt = home.read_text(encoding='utf-8')
-    alvo = 'index,follow' if conf['permitirIndexacao'] else 'noindex,follow'
+    alvo = paginas.ROBOTS_INDEX if conf['permitirIndexacao'] else 'noindex,follow'
     novo = re.sub(r'<meta name="robots" content="[^"]*">', f'<meta name="robots" content="{alvo}">', txt, count=1)
     gravar(home, novo)
 
