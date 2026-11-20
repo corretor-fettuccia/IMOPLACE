@@ -199,3 +199,5 @@ button:disabled{opacity:.6;cursor:not-allowed}
   .dgrid-lead .stats{order:-2}
   .imovel-contato{position:static;order:-1}
 }
+/* Compartilhar só em celular/tablet (tela de toque): no computador o botão não aparece. */
+.btn.share-mobile{display:none}@media (pointer:coarse){.btn.share-mobile{display:inline-flex}}
