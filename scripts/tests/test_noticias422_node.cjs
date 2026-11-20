@@ -1,0 +1,13 @@
+"use strict";
+const fs=require('fs'),vm=require('vm'),assert=require('assert'),path=require('path');
+const root=path.resolve(__dirname,'../../../CORE');
+const s=fs.readFileSync(path.join(root,'Noticias.gs'),'utf8');
+const tab={linhas:[{ID:'n1',SLUG:'teste',TITULO:'Teste',VERSAO:2,STATUS:'rascunho'}]};
+const context={console:{warn:()=>{}},ESQUEMA:{abas:{NOTICIAS:['ID','SLUG','TITULO','VERSAO','STATUS']}},exigirAdmin_:()=>true,lerAba_:name=>{assert.strictEqual(name,'NOTICIAS');return tab;},pushAdminPublico_:()=>{throw Error('CONFIG_PUSH indisponível');}};
+vm.createContext(context);vm.runInContext(s,context);
+let r=context.listarNoticias();assert.equal(r.itens.length,1);assert.equal(r.itens[0].TITULO,'Teste');assert.equal(r.push.ativo,false);
+context.pushAdminPublico_=()=>({url:'https://example.org',publicKey:'x',ativo:true});
+r=context.listarNoticias();assert.equal(r.push.ativo,true);assert.equal(r.itens.length,1);
+context.lerAba_=()=>{throw Error('NOTICIAS indisponível')};
+assert.throws(()=>context.listarNoticias(),/NOTICIAS indisponível/);
+console.log('OK: listagem independente do Push, Push ativo e falha real da aba NOTICIAS');

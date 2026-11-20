@@ -1,4 +1,4 @@
-Imoplace 4.2 — motor GitHub (saneamento da estrutura)
-Fonte de verdade: branch main, sem CORE privado neste repositório.
-CORE Google Apps Script: implantação separada; Monitor GS: projeto separado.
+Imoplace 4.2.2 — motor GitHub
+Fonte de verdade: branch main. CORE e Monitor são projetos Apps Script separados (fora deste repositório).
+Administração: /adm redireciona para a implantação do CORE.
 Workflow de publicação: .github/workflows/publicar.yml

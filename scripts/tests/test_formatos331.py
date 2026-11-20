@@ -45,6 +45,8 @@ class Formatos331(unittest.TestCase):
                 self.assertEqual(foto['adaptativas']['preferido'],'webp')
                 self.assertEqual(validar.validar(site,CONF),[])
 
+    # O addon 3.3.1 foi integrado ao CORE (commit 987f389); o CORE só existe no pacote, fora do repositório.
+    @unittest.skipUnless((Path(__file__).resolve().parents[3] / 'CORE').is_dir(), 'pasta CORE/ fica fora do repositório GitHub')
     def test_addon_e_aplicador_reais_em_node(self):
         import subprocess
         result=subprocess.run(['node',str(Path(__file__).with_name('test_formatos331_node.cjs'))],capture_output=True,text=True)
