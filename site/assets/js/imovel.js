@@ -35,7 +35,7 @@ function detailsHTML(item) {
   ${galleryHTML(item,selectedIndex)}
   ${ImoplaceMidias.html(item)}
   <div class="dhead"><div><h1 class="dt">${esc(item.titulo)}</h1><div class="where">${esc(item.tipo)} · ${esc(local(item))}</div></div>
-   <div class="dr"><div class="price big">${brl(item.preco)}</div><div class="dact"><button type="button" class="btn btn-line share-mobile" id="share">Compartilhar</button><button type="button" class="btn btn-line" id="save">Salvar</button></div></div></div>
+   <div class="dr"><div class="price big">${brl(item.preco)}</div><div class="dact"><button type="button" class="btn btn-line share-mobile" id="share"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg><span>Compartilhar</span></button><button type="button" class="btn btn-line" id="save">Salvar</button></div></div></div>
   <div class="dgrid dgrid-lead"><div class="imovel-info">
    ${stats?`<div class="stats">${stats}</div>`:''}
    <div class="box"><h3>Sobre o imóvel</h3><p style="white-space:pre-line">${esc(item.descricao||'Descrição não cadastrada.')}</p></div>
