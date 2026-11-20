@@ -1,7 +1,7 @@
 {
   "schemaVersao": 2,
   "contrato": "imoplace-v1",
-  "geradoEm": "2026-11-19T17:51:56.920824+00:00",
+  "geradoEm": "2026-11-20T00:17:53.887501+00:00",
   "total": 19,
   "imoveis": [
     {
@@ -3374,9 +3374,9 @@
       "destaque": false,
       "tag": "",
       "ordem": 0,
-      "atualizadoEm": "2026-11-19T01:13:54.000Z",
+      "atualizadoEm": "2026-11-20T00:16:56.777Z",
       "tipo": "Terreno",
-      "condicao": "Usado",
+      "condicao": "Novo",
       "titulo": "Aura Legano | Terrenos em condomínio-clube | Nova Santa Rita",
       "descricao": "Imoplace Vende | Terrenos em condomínio fechado no Legano Bairro Cidade, em Nova Santa Rita, com áreas verdes, clube social e complexo esportivo.\n\nCaracterísticas do imóvel\n• Lotes residenciais para diferentes projetos de casa\n• Consulte metragem, posição solar e disponibilidade por quadra\n• Acesso pela BR-386\n\nInfraestrutura do condomínio\n• Clube social\n• piscinas\n• píer\n• quadras de tênis e beach tennis\n• espaços gourmet\n• áreas verdes\n\nSolicite o mapa de lotes e consulte os valores e as opções de pagamento.",
       "seo": {
@@ -3397,7 +3397,7 @@
       "financiamento": true,
       "permuta": false,
       "documentacaoEmDia": false,
-      "dormitorios": null,
+      "dormitorios": 0.0,
       "suites": null,
       "banheiros": null,
       "vagas": null,
