@@ -185,8 +185,20 @@ jobs:
         with:
           name: github-pages-attempt-${{ github.run_attempt }}
           path: ./estado/publicacao
+      # A API de artefatos às vezes ainda não lista o artefato recém-finalizado ("Found 0 artifact(s)").
+      # A primeira tentativa não derruba o job; se falhar, espera e tenta de novo (essa sim derruba).
       - name: Publicar GitHub Pages
+        id: deploy
+        continue-on-error: true
         if: steps.fila.outputs.tem == 'true' || steps.noticias.outputs.mudou == 'true' || (github.event_name == 'workflow_dispatch' || github.event_name == 'push')
+        uses: actions/deploy-pages@v4
+        with:
+          artifact_name: github-pages-attempt-${{ github.run_attempt }}
+      - name: Aguardar artefato antes de nova tentativa
+        if: steps.deploy.outcome == 'failure'
+        run: sleep 30
+      - name: Publicar GitHub Pages (nova tentativa)
+        if: steps.deploy.outcome == 'failure'
         uses: actions/deploy-pages@v4
         with:
           artifact_name: github-pages-attempt-${{ github.run_attempt }}
