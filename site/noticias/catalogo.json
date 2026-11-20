@@ -1,6 +1,51 @@
 {
   "artigos": [
     {
+      "id": "n33a928387dce",
+      "slug": "posso-financiar-um-imovel-que-nao-existe",
+      "codigo": "posso-financiar-um-imovel-que-nao-existe-n33a928387dce",
+      "titulo": "Posso financiar um imóvel que não existe?",
+      "resumo": "Se o apartamento ainda está na planta, como o banco financia a compra? Entenda o que o registro da incorporação tem a ver com isso.",
+      "corpo": "Já pensou em financiar um apartamento que ainda nem tem paredes? É o que pode acontecer na compra de um imóvel na planta. O apartamento ainda não está pronto, mas a futura unidade já pode estar identificada nos documentos do empreendimento.\n\n## O que a Lei das Incorporações exige\n\nO artigo 32 da Lei 4.591/1964 exige que o incorporador registre o memorial de incorporação no Registro de Imóveis competente antes de vender as frações do terreno vinculadas às futuras unidades. Esse registro reúne documentos como o projeto aprovado e o memorial descritivo. Antes de assinar, peça o número do registro e confira no cartório se os dados batem com a unidade ofertada.\n\n## Quando entra o financiamento\n\nEm empreendimentos aptos, o comprador pode contratar crédito bancário ainda durante a construção, sujeito à análise de crédito e às condições do banco. Em outros casos, o comprador paga parcelas à incorporadora durante a obra e busca o financiamento do saldo na entrega. Confira no contrato quando o banco entra, como o saldo é corrigido e se haverá encargos durante a construção.\n\nFontes: Lei 4.591/1964, art. 32 — https://www.planalto.gov.br/ccivil_03/leis/l4591compilado.htm\n\nCAIXA, Compra na Planta — https://www.caixa.gov.br/empresa/construcao-civil/financiamento-para-compra/na-planta/Paginas/default.aspx\n\nFoto ilustrativa de Hhhlx, via Wikimedia Commons (CC0).",
+      "categoria": "Curiosidades",
+      "tags": [
+        "imóvel na planta",
+        "financiamento imobiliário",
+        "memorial de incorporação",
+        "Lei 4.591"
+      ],
+      "autor": "Imoplace",
+      "capa": "https://upload.wikimedia.org/wikipedia/commons/3/3d/A_residential_area_under_construction.jpg",
+      "capaAlt": "Empreendimento residencial em construção",
+      "seoTitulo": "Posso financiar um imóvel que não existe?",
+      "seoDescricao": "Se o apartamento ainda está na planta, como o banco financia a compra? Entenda o que o registro da incorporação tem a ver com isso.",
+      "publicadoEm": "2026-11-20T01:35:44.955Z",
+      "atualizadoEm": "2026-11-20T01:35:44.955Z",
+      "versao": 1
+    },
+    {
+      "id": "nf614a9ac4aa9",
+      "slug": "imoveis-retomados-em-2027-como-evitar-um-pepino",
+      "codigo": "imoveis-retomados-em-2027-como-evitar-um-pepino-nf614a9ac4aa9",
+      "titulo": "Imóveis retomados em 2027: como identificar oportunidades sem arrematar um pepino",
+      "resumo": "O desconto pode chamar atenção. Antes de dar um lance, confira o edital, a ocupação e quanto a compra realmente vai custar.",
+      "corpo": "O mercado de imóveis retomados pode trazer boas oportunidades em 2027. Para saber se o desconto vale a pena, compare o custo total com o preço de imóveis semelhantes na mesma região. O preço anunciado é só o começo da conta.\n\n## O que conferir antes de dar um lance\n\n- Leia o edital ou as regras da modalidade. Confira os prazos, a forma de pagamento e se há comissão do leiloeiro. Se depender de financiamento, confirme que o imóvel aceita essa modalidade e consulte o banco antes de entrar na disputa.\n- Peça uma matrícula atualizada e verifique o que consta no registro. Confira também no edital quem é responsável por cotas de condomínio, IPTU e outras despesas.\n- Descubra se o imóvel está ocupado. Confira quem responde pela desocupação e inclua no orçamento o tempo e os custos até conseguir usar, alugar ou revender o imóvel.\n- Some ITBI, registro, eventuais reparos e uma reserva para imprevistos. Use esse total para definir o valor máximo do lance.\n\nUm imóvel barato no anúncio pode sair caro quando você soma o que precisa gastar até ter as chaves. Faça a conta antes de entrar na disputa.\n\nFonte: CAIXA, regras da Venda Online — https://venda-imoveis.caixa.gov.br/editais/regras-VOL/comocomprar.pdf\n\nFoto ilustrativa de Manchego, via Wikimedia Commons (CC0).",
+      "categoria": "Mercado",
+      "tags": [
+        "imóveis retomados",
+        "leilão de imóveis",
+        "mercado imobiliário 2027"
+      ],
+      "autor": "Imoplace",
+      "capa": "https://upload.wikimedia.org/wikipedia/commons/9/91/Llaves_casa.jpg",
+      "capaAlt": "Chaves de um imóvel",
+      "seoTitulo": "Imóveis retomados em 2027: como identificar oportunidades sem arremata",
+      "seoDescricao": "O desconto pode chamar atenção. Antes de dar um lance, confira o edital, a ocupação e quanto a compra realmente vai custar.",
+      "publicadoEm": "2026-11-20T01:35:31.508Z",
+      "atualizadoEm": "2026-11-20T01:35:31.508Z",
+      "versao": 1
+    },
+    {
       "id": "ne8843e733dd9",
       "slug": "juro-de-obra-no-financiamento-de-terreno-e-construcao",
       "codigo": "juro-de-obra-no-financiamento-de-terreno-e-construcao-ne8843e733dd9",
