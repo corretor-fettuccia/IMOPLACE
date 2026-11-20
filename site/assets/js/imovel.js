@@ -35,7 +35,7 @@ function detailsHTML(item) {
   ${galleryHTML(item,selectedIndex)}
   ${ImoplaceMidias.html(item)}
   <div class="dhead"><div><h1 class="dt">${esc(item.titulo)}</h1><div class="where">${esc(item.tipo)} · ${esc(local(item))}</div></div>
-   <div class="dr"><div class="price big">${brl(item.preco)}</div><div class="dact"><button type="button" class="btn btn-line" id="share">Compartilhar</button><button type="button" class="btn btn-line" id="save">Salvar</button></div></div></div>
+   <div class="dr"><div class="price big">${brl(item.preco)}</div><div class="dact"><button type="button" class="btn btn-line share-mobile" id="share">Compartilhar</button><button type="button" class="btn btn-line" id="save">Salvar</button></div></div></div>
   <div class="dgrid dgrid-lead"><div class="imovel-info">
    ${stats?`<div class="stats">${stats}</div>`:''}
    <div class="box"><h3>Sobre o imóvel</h3><p style="white-space:pre-line">${esc(item.descricao||'Descrição não cadastrada.')}</p></div>
