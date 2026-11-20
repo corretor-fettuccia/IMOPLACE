@@ -49,10 +49,15 @@ def detalhe(item):
         return f'{v} m²' if v is not None else None
     valores = [(item.get('dormitorios'), 'Dormitórios'), (item.get('suites'), 'Suítes'), (item.get('banheiros'), 'Banheiros'),
                (item.get('vagas'), 'Vagas'), (m2(item.get('areaTotal')), 'Área total'), (m2(item.get('areaUtil')), 'Área útil')]
-    stats = ''.join(f'<div><b>{h(v if v is not None else "Não informado")}</b><span>{h(r)}</span></div>' for v, r in valores)
+    # Campo vazio não aparece (antes: "Não informado").
+    stats = ''.join(f'<div><b>{h(v)}</b><span>{h(r)}</span></div>' for v, r in valores if v is not None)
+    stats = f'<div class="stats">{stats}</div>' if stats else ''
 
-    def lista(arr):
-        return ''.join(f'<li>{h(x)}</li>' for x in (arr or [])) or '<li>Não informado</li>'
+    def coluna(titulo, arr):
+        itens = ''.join(f'<li>{h(x)}</li>' for x in (arr or []))
+        return f'<div><h4>{titulo}</h4><ul class="feat">{itens}</ul></div>' if itens else ''
+    colunas = coluna('No imóvel', item.get('caracteristicasImovel')) + coluna('No condomínio', item.get('caracteristicasCondominio'))
+    caracteristicas = f'<div class="box"><h3>Características</h3><div class="cols">{colunas}</div></div>' if colunas else ''
     anunc = item.get('anunciante') or {}
     zap = ''.join(c for c in str(anunc.get('whatsapp') or '') if c.isdigit())
     if len(zap) >= 10:
@@ -61,7 +66,7 @@ def detalhe(item):
         nota = 'Solicite mais informações diretamente ao anunciante.'
     else:
         contato = '<button class="btn btn-accent" disabled>Contato indisponível</button>'
-        nota = 'Contato não informado para este anúncio.'
+        nota = ''
     creci = f'<span class="where">CRECI {h(anunc["creci"])}</span>' if anunc.get('creci') else ''
     endereco = (item.get('localizacao') or {}).get('endereco') or local(item)
     consulta_mapa = str(endereco or '').strip()
@@ -79,12 +84,12 @@ def detalhe(item):
 {multimidia(item)}
 <div class="dhead"><div><h1 class="dt">{h(item['titulo'])}</h1><div class="where">{h(item.get('tipo'))} · {h(local(item))}</div></div><div class="dr"><div class="price big">{brl(item.get('preco'))}</div></div></div>
 <div class="dgrid dgrid-lead"><div class="imovel-info">
-<div class="stats">{stats}</div>
+{stats}
 <div class="box"><h3>Sobre o imóvel</h3><p style="white-space:pre-line">{h(item.get('descricao') or 'Descrição não cadastrada.')}</p></div>
-<div class="box"><h3>Características</h3><div class="cols"><div><h4>No imóvel</h4><ul class="feat">{lista(item.get('caracteristicasImovel'))}</ul></div><div><h4>No condomínio</h4><ul class="feat">{lista(item.get('caracteristicasCondominio'))}</ul></div></div></div>
+{caracteristicas}
 <div class="box"><h3>Valores</h3><dl class="vals"><dt>Preço</dt><dd>{brl(item.get('preco'))}</dd>{m2preco}<dt>Condomínio</dt><dd>{brl(item.get('condominio'))}</dd><dt>IPTU anual</dt><dd>{brl(item.get('iptuAnual'))}</dd></dl></div>
 <div class="box"><h3>Localização</h3>{mapa}<div class="where">{h(endereco)}</div></div></div>
-<div class="imovel-contato"><aside class="aside box"><div class="adv"><div class="av">I</div><div><b>{h(anunc.get('nome') or 'Imoplace')}</b>{creci}</div></div><p class="small-note">{h(nota)}</p>{contato}<div class="ref">Código do imóvel: {h(item['id'])}</div></aside><div class="box imoplace-lead" data-lead-property="{h(item['id'])}" hidden></div></div></div>'''
+<div class="imovel-contato"><aside class="aside box"><div class="adv"><div class="av">I</div><div><b>{h(anunc.get('nome') or 'Imoplace')}</b>{creci}</div></div>{f'<p class="small-note">{h(nota)}</p>' if nota else ''}{contato}<div class="ref">Código do imóvel: {h(item['id'])}</div></aside><div class="box imoplace-lead" data-lead-property="{h(item['id'])}" hidden></div></div></div>'''
 
 
 def _numero(v):

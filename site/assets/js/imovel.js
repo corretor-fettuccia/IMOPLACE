@@ -4,8 +4,9 @@ const det=$('#det');
 const code=document.documentElement.dataset.codigo;
 let selectedIndex=0;
 let currentItem=null;
-const list = items => (items||[]).length ? (items||[]).map(x=>`<li>${esc(x)}</li>`).join('') : '<li>Não informado</li>';
-const value = n => n===null || n===undefined || n==='' ? 'Não informado' : esc(n);
+/* Campo vazio não aparece (antes: "Não informado"). */
+const vazio = n => n===null || n===undefined || n==='';
+const coluna = (titulo,items) => (items||[]).length ? `<div><h4>${titulo}</h4><ul class="feat">${items.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>` : '';
 function imgTag(item,index,cls='') {
   const image=item.imagens?.[index];
   return ImoplaceMidias.picture(image||{},item,index,cls);
@@ -27,6 +28,8 @@ function detailsHTML(item) {
   const whats=String(item.anunciante?.whatsapp||'').replace(/\D/g,'');
   const ref=esc(item.id||item.codigo);
   const enderecoPublico=String(item.localizacao?.endereco||local(item)||'').trim();
+  const stats=fields.filter(([n])=>!vazio(n)).map(([n,label])=>`<div><b>${esc(n)}</b><span>${label}</span></div>`).join('');
+  const colunas=coluna('No imóvel',item.caracteristicasImovel)+coluna('No condomínio',item.caracteristicasCondominio);
   const mapa=enderecoPublico?'<div class="map"><iframe title="Mapa da localização do imóvel" src="https://www.google.com/maps?q='+encodeURIComponent(enderecoPublico+', Brasil')+'&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>':'';
   return `<a class="back" href="${esc(SITE_ROOT)}index.html#imoveis">← Voltar aos resultados</a>
   ${galleryHTML(item,selectedIndex)}
@@ -34,16 +37,14 @@ function detailsHTML(item) {
   <div class="dhead"><div><h1 class="dt">${esc(item.titulo)}</h1><div class="where">${esc(item.tipo)} · ${esc(local(item))}</div></div>
    <div class="dr"><div class="price big">${brl(item.preco)}</div><div class="dact"><button type="button" class="btn btn-line" id="share">Compartilhar</button><button type="button" class="btn btn-line" id="save">Salvar</button></div></div></div>
   <div class="dgrid dgrid-lead"><div class="imovel-info">
-   <div class="stats">${fields.map(([n,label])=>`<div><b>${value(n)}</b><span>${label}</span></div>`).join('')}</div>
+   ${stats?`<div class="stats">${stats}</div>`:''}
    <div class="box"><h3>Sobre o imóvel</h3><p style="white-space:pre-line">${esc(item.descricao||'Descrição não cadastrada.')}</p></div>
-   <div class="box"><h3>Características</h3><div class="cols">
-     <div><h4>No imóvel</h4><ul class="feat">${list(item.caracteristicasImovel)}</ul></div>
-     <div><h4>No condomínio</h4><ul class="feat">${list(item.caracteristicasCondominio)}</ul></div></div></div>
+   ${colunas?`<div class="box"><h3>Características</h3><div class="cols">${colunas}</div></div>`:''}
    <div class="box"><h3>Valores</h3><dl class="vals"><dt>Preço</dt><dd>${brl(item.preco)}</dd><dt>Condomínio</dt><dd>${brl(item.condominio)}</dd><dt>IPTU anual</dt><dd>${brl(item.iptuAnual)}</dd></dl></div>
    <div class="box"><h3>Localização</h3>${mapa}<div class="where">${esc(enderecoPublico)}</div></div>
   </div>
   <div class="imovel-contato"><aside class="aside box"><div class="adv"><div class="av">I</div><div><b>${esc(item.anunciante?.nome||'Imoplace')}</b>${item.anunciante?.creci?`<span class="where">CRECI ${esc(item.anunciante.creci)}</span>`:''}</div></div>
-   <div class="contact-note">${whats?'Solicite mais informações diretamente ao anunciante.':'Contato não informado para este anúncio.'}</div>
+   ${whats?'<div class="contact-note">Solicite mais informações diretamente ao anunciante.</div>':''}
    ${whats?`<a class="btn btn-accent" id="whatsapp" target="_blank" rel="noopener noreferrer" href="https://wa.me/${whats}?text=${encodeURIComponent('Olá! Tenho interesse no imóvel '+(item.id||item.codigo)+' anunciado no Imoplace.')}">Chamar no WhatsApp</a>`:'<button class="btn btn-accent" disabled>Contato indisponível</button>'}
    <div class="ref">Código do imóvel: ${ref}</div></aside><div class="box imoplace-lead" data-lead-property="${ref}" hidden></div></div></div>
   <dialog class="viewer" id="photo-viewer" aria-label="Galeria de fotos">
