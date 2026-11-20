@@ -67,7 +67,7 @@ def shell(title,description,url,content,root,conf,schema=None,cover=''):
 
 def compartilhar(url,titulo):
     """Botão só para celular (CSS .share-mobile); compartilhar.js abre o menu do aparelho."""
-    return f'<button class="btn btn-line share-mobile news-share" type="button" data-compartilhar="{h(url)}" data-titulo="{h(titulo)}">Compartilhar</button>'
+    return f'<button class="btn btn-line share-mobile news-share" type="button" data-compartilhar="{h(url)}" data-titulo="{h(titulo)}"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg><span>Compartilhar</span></button>'
 
 def botao(scope='*'):
     return f'<div class="news-optin"><button class="btn btn-accent" type="button" data-push-scope="{h(scope)}">Notifique-me em caso de atualizações</button><p class="push-status" role="status" aria-live="polite"></p><p class="small-note">Avisos no seu navegador. Você escolhe permitir e pode cancelar a qualquer momento.</p></div>'
