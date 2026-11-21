@@ -1,7 +1,7 @@
 {
   "schemaVersao": 2,
   "contrato": "imoplace-v1",
-  "geradoEm": "2026-11-21T22:17:03.707619+00:00",
+  "geradoEm": "2026-11-21T22:37:49.937295+00:00",
   "total": 20,
   "imoveis": [
     {
@@ -3813,11 +3813,11 @@
       "destaque": false,
       "tag": "Pronto para morar.",
       "ordem": 0,
-      "atualizadoEm": "2026-11-21T22:16:10.024Z",
+      "atualizadoEm": "2026-11-21T22:37:28.830Z",
       "tipo": "Apartamento",
       "condicao": "Novo",
       "titulo": "Monet | 2 e 3 dormitórios com lazer no rooftop | Centro de Canoas",
-      "descricao": "Imoplace Vende | Monet, da Bold, no Centro de Canoas. Torre única com lazer no rooftop e plantas de 2 e 3 dormitórios.\n\nCaracterísticas do imóvel\n• Plantas de 48,1 a 82,5 m² no catálogo\n• Opções de 2 dormitórios com suíte, sacada ou ambos\n• Configuração de 3 dormitórios com suíte e 1 a 2 vagas conforme a unidade\n\nInfraestrutura do condomínio\n• Rooftop com piscina\n• academia\n• salão de festas\n• espaço gourmet\n• coworking\n• minimercado e bicicletário\n\nNa tabela de 01/11/2026, a unidade 703 de 56,69 m² com suíte aparece a R$ 629.772. Consulte unidades disponíveis e agende a visita ao decorado.",
+      "descricao": "Imoplace Vende | Monet, da Bold, no Centro de Canoas. Torre única com lazer no rooftop e plantas de 2 e 3 dormitórios.\nA partir de 600.000.\n\nCaracterísticas do imóvel\n• Plantas de 48,1 a 82,5 m² no catálogo\n• Opções de 2 dormitórios com suíte, sacada ou ambos\n• Configuração de 3 dormitórios com suíte e 1 a 2 vagas conforme a unidade\n\nInfraestrutura do condomínio\n• Rooftop com piscina\n• academia\n• salão de festas\n• espaço gourmet\n• coworking\n• minimercado e bicicletário\n\nNa tabela de 01/11/2026, a unidade 703 de 56,69 m² com suíte aparece a R$ 629.772. Consulte unidades disponíveis e agende a visita ao decorado.",
       "seo": {
         "titulo": "Monet Bold | 2 e 3 dormitórios no Centro de Canoas",
         "descricao": "Plantas de 48,1 a 82,5 m², opções com suíte e sacada, piscina no rooftop e coworking na Rua Guilherme Morsch."
@@ -3833,7 +3833,7 @@
       "preco": 629772.0,
       "condominio": null,
       "iptuAnual": null,
-      "financiamento": false,
+      "financiamento": true,
       "permuta": false,
       "documentacaoEmDia": false,
       "dormitorios": 3.0,
