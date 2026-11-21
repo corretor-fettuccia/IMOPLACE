@@ -29,41 +29,72 @@ def local(item):
     return ', '.join(str(x[k]) for k in ('bairro', 'cidade', 'uf') if x.get(k))
 
 
+ICONES = {
+    'dormitorios': 'M2 18V6M2 14h20v4M22 14v-2a3 3 0 0 0-3-3h-8v5M6 11.5a1.5 1.5 0 1 0 0-.01',
+    'suites': 'M5 21V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v17M3 21h18M14 12h.01',
+    'banheiros': 'M4 12h16v3a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5zM6 12V5a2 2 0 0 1 4 0M7 20l-1 2M17 20l1 2',
+    'vagas': 'M5 16h14M6 16l1.5-5h9L18 16M5 16v3M19 16v3',
+    'area': 'M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7',
+}
+ZAP_ICONE = 'M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.4A8.4 8.4 0 1 1 21 11.5z'
+CARAC_VISIVEIS = 6
+MINI = '132px'   # largura da miniatura na faixa: o navegador baixa a versão pequena da foto
+
+
+def icone(caminho, tam=20, cls='ico'):
+    return (f'<svg class="{cls}" width="{tam}" height="{tam}" viewBox="0 0 24 24" fill="none" stroke="currentColor" '
+            f'stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{caminho}"/></svg>')
+
+
 def _galeria(item):
     fotos = item.get('imagens') or []
     if not fotos:
         return (f'<div class="gal single"><div class="ph main"><img src="{RAIZ_REL}assets/img/sem-imagem.svg" alt="Imagem indisponível" width="960" height="600">'
                 '<span>Imagem indisponível</span></div></div>')
-    botoes = []
-    for k, f in enumerate(fotos[:5]):
-        extra = f'<em>+{len(fotos) - 5} fotos</em>' if k == 4 and len(fotos) > 5 else ''
-        botoes.append(
-            f'<button class="ph{" main" if k == 0 else ""}" type="button" data-k="{k}" aria-label="{h(f.get("legenda") or "Foto")}">'
-            f'{picture(f, item, k)}'
-            f'<span>{h(f.get("legenda") or "Foto")}</span>{extra}</button>')
-    return f'<div class="gal{" single" if len(fotos) == 1 else ""}" id="gal">{"".join(botoes)}</div>'
+    legenda = lambda k: h(fotos[k].get('legenda') or f'Foto {k + 1}')
+    total = f'<em>{len(fotos)} fotos</em>' if len(fotos) > 1 else ''
+    mosaico = ''.join(
+        f'<button class="ph{" main" if k == 0 else ""}" type="button" data-k="{k}" aria-label="Ampliar foto {k + 1}: {legenda(k)}">'
+        f'{picture(fotos[k], item, k)}<span>{legenda(k)}</span>{total if k == 0 else ""}</button>' for k in range(min(5, len(fotos))))
+    faixa = ''.join(
+        f'<button class="gal-mini" type="button" data-k="{k}" aria-label="Ampliar foto {k + 1}: {legenda(k)}">{picture(fotos[k], item, k, MINI)}</button>'
+        for k in range(5, len(fotos)))
+    faixa = f'<div class="gal-faixa" role="group" aria-label="Mais fotos">{faixa}</div>' if faixa else ''
+    return f'<div class="gal{" single" if len(fotos) == 1 else ""}" id="gal">{mosaico}</div>{faixa}'
+
+
+def _carac_grupo(titulo, arr):
+    itens = [x for x in (arr or []) if str(x).strip()]
+    if not itens:
+        return ''
+    lis = ''.join(f'<li class="extra">{h(x)}</li>' if k >= CARAC_VISIVEIS else f'<li>{h(x)}</li>' for k, x in enumerate(itens))
+    mais = (f'<button type="button" class="carac-mais" data-total="{len(itens)}" aria-expanded="false">Mostrar todos os {len(itens)} ↓</button>'
+            if len(itens) > CARAC_VISIVEIS else '')
+    return f'<div class="carac-grupo"><h3>{titulo} ({len(itens)})</h3><ul class="feat">{lis}</ul>{mais}</div>'
 
 
 def detalhe(item):
     def m2(v):
         return f'{v} m²' if v is not None else None
-    valores = [(item.get('dormitorios'), 'Dormitórios'), (item.get('suites'), 'Suítes'), (item.get('banheiros'), 'Banheiros'),
-               (item.get('vagas'), 'Vagas'), (m2(item.get('areaTotal')), 'Área total'), (m2(item.get('areaUtil')), 'Área útil')]
+    valores = [(item.get('dormitorios'), 'Dormitórios', 'dormitorios'), (item.get('suites'), 'Suítes', 'suites'),
+               (item.get('banheiros'), 'Banheiros', 'banheiros'), (item.get('vagas'), 'Vagas', 'vagas'),
+               (m2(item.get('areaTotal')), 'Área total', 'area'), (m2(item.get('areaUtil')), 'Área útil', 'area')]
     # Campo vazio não aparece (antes: "Não informado").
-    stats = ''.join(f'<div><b>{h(v)}</b><span>{h(r)}</span></div>' for v, r in valores if v is not None)
+    stats = ''.join(f'<div>{icone(ICONES[i])}<b>{h(v)}</b><span>{h(r)}</span></div>' for v, r, i in valores if v is not None)
     stats = f'<div class="stats">{stats}</div>' if stats else ''
-
-    def coluna(titulo, arr):
-        itens = ''.join(f'<li>{h(x)}</li>' for x in (arr or []))
-        return f'<div><h4>{titulo}</h4><ul class="feat">{itens}</ul></div>' if itens else ''
-    colunas = coluna('No imóvel', item.get('caracteristicasImovel')) + coluna('No condomínio', item.get('caracteristicasCondominio'))
-    caracteristicas = f'<div class="box"><h3>Características</h3><div class="cols">{colunas}</div></div>' if colunas else ''
+    grupos = _carac_grupo('No imóvel', item.get('caracteristicasImovel')) + _carac_grupo('No condomínio', item.get('caracteristicasCondominio'))
+    caracteristicas = f'<aside class="box carac" aria-label="Características"><h2>Características</h2>{grupos}</aside>' if grupos else ''
     anunc = item.get('anunciante') or {}
     zap = ''.join(c for c in str(anunc.get('whatsapp') or '') if c.isdigit())
+    flutuante = ''
     if len(zap) >= 10:
         texto = quote(f'Olá! Tenho interesse no imóvel {item["id"]} anunciado no Imoplace.')
-        contato = f'<a class="btn btn-accent" id="whatsapp" href="https://wa.me/{zap}?text={texto}" target="_blank" rel="noopener noreferrer">Chamar no WhatsApp</a>'
+        link = f'https://wa.me/{zap}?text={texto}'
+        contato = f'<a class="btn btn-accent" id="whatsapp" href="{link}" target="_blank" rel="noopener noreferrer">Chamar no WhatsApp</a>'
         nota = 'Solicite mais informações diretamente ao anunciante.'
+        # Só aparece (imovel.js) quando o botão do cartão de contato sai da tela.
+        flutuante = (f'<a class="zap-flutuante" href="{link}" target="_blank" rel="noopener noreferrer" aria-label="Chamar no WhatsApp" '
+                     f'title="Chamar no WhatsApp" hidden>{icone(ZAP_ICONE, 28, "")}</a>')
     else:
         contato = '<button class="btn btn-accent" disabled>Contato indisponível</button>'
         nota = ''
@@ -76,20 +107,26 @@ def detalhe(item):
         'loading="lazy" referrerpolicy="no-referrer-when-downgrade" '
         'allowfullscreen></iframe></div>'
     ) if consulta_mapa else ''
-    m2preco = ''
+    localizacao = f'<div class="box imovel-mapa"><h3>Localização</h3>{mapa}<div class="where">{h(endereco)}</div></div>' if consulta_mapa else ''
+    # Valores: o preço já está no topo; linha sem valor não aparece, e o quadro some se não sobrar nenhuma.
+    linhas = []
     if isinstance(item.get('preco'), (int, float)) and item.get('areaTotal'):
-        m2preco = f'<dt>Preço por m²</dt><dd>{brl(item["preco"] / item["areaTotal"])}</dd>'
+        linhas.append(('Preço por m²', brl(item['preco'] / item['areaTotal'])))
+    for campo, rotulo in (('condominio', 'Condomínio'), ('iptuAnual', 'IPTU anual')):
+        if isinstance(item.get(campo), (int, float)) and not isinstance(item.get(campo), bool):
+            linhas.append((rotulo, brl(item[campo])))
+    valores_box = ('<div class="box imovel-valores"><h3>Valores</h3><dl class="vals">' + ''.join(f'<dt>{r}</dt><dd>{v}</dd>' for r, v in linhas) + '</dl></div>') if linhas else ''
     return f'''<a class="back" href="{RAIZ_REL}index.html#imoveis">← Voltar aos resultados</a>
 {_galeria(item)}
+{stats}
 {multimidia(item)}
 <div class="dhead"><div><h1 class="dt">{h(item['titulo'])}</h1><div class="where">{h(item.get('tipo'))} · {h(local(item))}</div></div><div class="dr"><div class="price big">{brl(item.get('preco'))}</div></div></div>
-<div class="dgrid dgrid-lead"><div class="imovel-info">
-{stats}
-<div class="box"><h3>Sobre o imóvel</h3><p style="white-space:pre-line">{h(item.get('descricao') or 'Descrição não cadastrada.')}</p></div>
-{caracteristicas}
-<div class="box"><h3>Valores</h3><dl class="vals"><dt>Preço</dt><dd>{brl(item.get('preco'))}</dd>{m2preco}<dt>Condomínio</dt><dd>{brl(item.get('condominio'))}</dd><dt>IPTU anual</dt><dd>{brl(item.get('iptuAnual'))}</dd></dl></div>
-<div class="box"><h3>Localização</h3>{mapa}<div class="where">{h(endereco)}</div></div></div>
-<div class="imovel-contato"><aside class="aside box"><div class="adv"><div class="av">I</div><div><b>{h(anunc.get('nome') or 'Imoplace')}</b>{creci}</div></div>{f'<p class="small-note">{h(nota)}</p>' if nota else ''}{contato}<div class="ref">Código do imóvel: {h(item['id'])}</div></aside><div class="box imoplace-lead" data-lead-property="{h(item['id'])}" hidden></div></div></div>'''
+<div class="imovel-layout">
+<div class="box imovel-sobre"><h3>Sobre o imóvel</h3><p style="white-space:pre-line">{h(item.get('descricao') or 'Descrição não cadastrada.')}</p></div>
+{valores_box}
+{localizacao}
+<div class="imovel-barra">{caracteristicas}<aside class="aside box"><div class="adv"><div class="av">I</div><div><b>{h(anunc.get('nome') or 'Imoplace')}</b>{creci}</div></div>{f'<p class="small-note">{h(nota)}</p>' if nota else ''}{contato}<div class="ref">Código do imóvel: {h(item['id'])}</div></aside><div class="box imoplace-lead" data-lead-property="{h(item['id'])}" hidden></div></div>
+</div>{flutuante}'''
 
 
 def _numero(v):
@@ -199,12 +236,12 @@ def redirecionamento(destino_rel: str, conf) -> str:
 '''
 
 
-def picture(f,item,k):
+def picture(f,item,k,sizes="(max-width: 768px) 100vw, 60vw"):
     data=f.get('adaptativas') or {};fmts=data.get('formatos') or {}
     fallback=fmts.get('jpg') or fmts.get('png') or []
     src=RAIZ_REL+(fallback[-1]['arquivo'] if fallback else f['arquivo'])
-    sources=''.join('<source type="'+rows[0]['mime']+'" srcset="'+h(', '.join(RAIZ_REL+x['arquivo']+' '+str(x['largura'])+'w' for x in rows))+'" sizes="(max-width: 768px) 100vw, 60vw">' for ext in ordem_formatos(fmts,data.get('preferido','webp')) for rows in [fmts[ext]])
-    srcset=' srcset="'+h(', '.join(RAIZ_REL+x['arquivo']+' '+str(x['largura'])+'w' for x in fallback))+'" sizes="(max-width: 768px) 100vw, 60vw"' if fallback else ''
+    sources=''.join('<source type="'+rows[0]['mime']+'" srcset="'+h(', '.join(RAIZ_REL+x['arquivo']+' '+str(x['largura'])+'w' for x in rows))+'" sizes="'+sizes+'">' for ext in ordem_formatos(fmts,data.get('preferido','webp')) for rows in [fmts[ext]])
+    srcset=' srcset="'+h(', '.join(RAIZ_REL+x['arquivo']+' '+str(x['largura'])+'w' for x in fallback))+'" sizes="'+sizes+'"' if fallback else ''
     return '<picture>'+sources+'<img src="'+h(src)+'"'+srcset+' width="'+str(data.get('largura',960))+'" height="'+str(data.get('altura',600))+'" alt="'+h(f.get('alt') or item['titulo'])+'" loading="'+('eager' if k==0 else 'lazy')+'" '+('fetchpriority="high" ' if k==0 else '')+'decoding="async"></picture>'
 
 

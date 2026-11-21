@@ -13,9 +13,9 @@ const ImoplaceMidias=(()=>{
   if(host==='my.matterport.com'&&u.pathname==='/show/'&&/^[a-zA-Z0-9]+$/.test(u.searchParams.get('m')||''))return 'https://my.matterport.com/show/?m='+u.searchParams.get('m');
   return '';
  }
- function picture(f,item,k,cls=''){
+ function picture(f,item,k,cls='',sizes='(max-width: 768px) 100vw, 60vw'){
   const d=f.adaptativas||{},formats=d.formatos||{},fallback=formats.jpg||formats.png||[];
-  const path=x=>esc(assetURL(x)),sizes='(max-width: 768px) 100vw, 60vw';
+  const path=x=>esc(assetURL(x));
   const set=rows=>rows.map(x=>path(x.arquivo)+' '+Number(x.largura)+'w').join(', ');
   const preferred=(d.preferido||'webp').toLowerCase();
   const order=[preferred==='jpeg'?'jpg':preferred,'webp','avif','jxl'].filter((x,i,a)=>a.indexOf(x)===i);
