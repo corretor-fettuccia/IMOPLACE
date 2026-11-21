@@ -36,6 +36,10 @@ class TestGitHubPages(unittest.TestCase):
         self.assertIn("if: steps.deploy.outcome == 'failure'", segunda[:200])
         self.assertNotIn('continue-on-error', segunda[:300])
 
+    def test_imagens_subidas_em_pictures_disparam_publicacao(self):
+        # Imagens das notícias (capa por URL) sobem à mão em site/pictures: o push precisa publicar.
+        self.assertIn('      - "site/pictures/**"\n', pages.WORKFLOW.read_text('utf-8'))
+
     def test_artefato_tem_index_na_raiz_e_marcador_valido(self):
         with tempfile.TemporaryDirectory() as d:
             art = Path(d)

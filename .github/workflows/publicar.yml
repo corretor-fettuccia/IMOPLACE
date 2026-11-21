@@ -6,6 +6,7 @@ on:
       - "scripts/**"
       - "site/assets/**"
       - "site/adm/**"
+      - "site/pictures/**"
       - "adm/**"
       - "imoplace.json"
       - "VERSAO"
