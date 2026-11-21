@@ -24,6 +24,22 @@ class TestGitHubPages(unittest.TestCase):
         ordem = [txt.index(m) for m in ('scripts/sincronizar.py', 'validar-reserva', 'git push', 'actions/deploy-pages', 'scripts/conferir.py', 'scripts/confirmar.py')]
         self.assertEqual(ordem, sorted(ordem))
 
+    def test_deploy_tenta_de_novo_se_artefato_ainda_nao_aparece(self):
+        # A API às vezes não lista o artefato recém-finalizado ("Found 0 artifact(s)"): 1ª tentativa
+        # não derruba o job; a 2ª, depois de esperar, usa o mesmo artefato e derruba se falhar.
+        txt = pages.WORKFLOW.read_text('utf-8')
+        self.assertEqual(txt.count('uses: actions/deploy-pages@v4'), 2)
+        primeira = txt[txt.index('- name: Publicar GitHub Pages\n'):txt.index('- name: Aguardar artefato')]
+        self.assertIn('id: deploy', primeira)
+        self.assertIn('continue-on-error: true', primeira)
+        segunda = txt[txt.index('- name: Publicar GitHub Pages (nova tentativa)'):]
+        self.assertIn("if: steps.deploy.outcome == 'failure'", segunda[:200])
+        self.assertNotIn('continue-on-error', segunda[:300])
+
+    def test_imagens_subidas_em_pictures_disparam_publicacao(self):
+        # Imagens das notícias (capa por URL) sobem à mão em site/pictures: o push precisa publicar.
+        self.assertIn('      - "site/pictures/**"\n', pages.WORKFLOW.read_text('utf-8'))
+
     def test_artefato_tem_index_na_raiz_e_marcador_valido(self):
         with tempfile.TemporaryDirectory() as d:
             art = Path(d)
