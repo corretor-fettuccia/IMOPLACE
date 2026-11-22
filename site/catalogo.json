@@ -1,7 +1,7 @@
 {
   "schemaVersao": 2,
   "contrato": "imoplace-v1",
-  "geradoEm": "2026-11-22T22:59:53.988545+00:00",
+  "geradoEm": "2026-11-22T23:04:26.670515+00:00",
   "total": 23,
   "imoveis": [
     {
@@ -4582,7 +4582,7 @@
       "destaque": false,
       "tag": "Semi Mobiliado",
       "ordem": 0,
-      "atualizadoEm": "2026-11-22T22:58:48.421Z",
+      "atualizadoEm": "2026-11-22T23:03:34.752Z",
       "tipo": "Sobrado",
       "condicao": "Usado",
       "titulo": "Sobrado com suíte master e piscina aquecida | Estância Velha, Canoas",
@@ -4614,6 +4614,7 @@
       "comodidades": [],
       "caracteristicasImovel": [
         "3 dormitórios",
+        "Lareira",
         "sendo uma suíte master com closet e banheira",
         "Piscina aquecida e pátio",
         "02 banheiros",
