@@ -36,9 +36,46 @@ ICONES = {
     'vagas': 'M5 16h14M6 16l1.5-5h9L18 16M5 16v3M19 16v3',
     'area': 'M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7',
 }
+TIPO_ICONES = {
+    'casa': 'M3 11l9-7 9 7M5 9.5V20h14V9.5M10 20v-5h4v5',
+    'apartamento': 'M5 21V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v17M3 21h18M9 7h1M14 7h1M9 11h1M14 11h1M9 15h1M14 15h1',
+    'terreno': 'M3 7V3h4M17 3h4v4M21 17v4h-4M7 21H3v-4M10 16V8l6 2.5-6 2.5',
+    'sobrado': 'M4 21V10l8-7 8 7v11M2 21h20M9 21v-4h6v4M9 10h1M14 10h1',
+    'cobertura': 'M6 21V9h12v12M4 21h16M4 9h16M8 9V6h8v3M10 13h1M13 13h1M10 17h1M13 17h1',
+    'studio': 'M4 11V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3M2 13a2 2 0 0 1 4 0v2h12v-2a2 2 0 0 1 4 0v4H2zM5 17v2M19 17v2',
+    'comercial': 'M3 9l2-5h14l2 5M3 9a3 3 0 0 0 6 0 3 3 0 0 0 6 0 3 3 0 0 0 6 0M5 12v9h14v-9M10 21v-5h4v5',
+}
+TIPO_SINONIMOS = {'estudio': 'studio', 'stúdio': 'studio', 'kitnet': 'studio', 'loja': 'comercial', 'sala': 'comercial', 'sala comercial': 'comercial', 'lote': 'terreno'}
+FAIXA_ICONES = {'local': 'M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21zM12 7.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4z'}
+CATEGORIAS = {'venda': 'Venda', 'lancamento': 'Lançamento', 'aluguel': 'Aluguel', 'locacao': 'Locação'}
 ZAP_ICONE = 'M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.4A8.4 8.4 0 1 1 21 11.5z'
 CARAC_VISIVEIS = 6
 MINI = '132px'   # largura da miniatura na faixa: o navegador baixa a versão pequena da foto
+MOSAICO_PEQ = '(max-width: 820px) 96px, 30vw'  # fotos 2–5: ocultas no celular, baixa a menor versão
+
+
+def tipo_icone(tipo):
+    t = str(tipo or '').strip().lower()
+    t = TIPO_SINONIMOS.get(t, t)
+    return TIPO_ICONES.get(t, TIPO_ICONES['casa'])
+
+
+def _faixa(item):
+    """Faixa abaixo dos dados: tipo, código, localização e valor. Campo vazio não aparece."""
+    partes = []
+    tipo = str(item.get('tipo') or '').strip()
+    if tipo:
+        partes.append(f'<div class="fi">{icone(tipo_icone(tipo))}<b>{h(tipo)}</b><span>Tipo</span></div>')
+    ref = str(item.get('id') or '').strip()
+    if ref:
+        partes.append(f'<div class="fi fi-codigo"><b>{h(ref)}</b><span>Código</span></div>')
+    x = item.get('localizacao') or {}
+    nomes = [str(x[k]).strip() for k in ('bairro', 'cidade', 'uf') if str(x.get(k) or '').strip()]
+    if nomes:
+        partes.append(f'<div class="fi fi-local">{icone(FAIXA_ICONES["local"])}<b>{h(nomes[0])}</b><span>{h(", ".join(nomes[1:]))}</span></div>')
+    cat = CATEGORIAS.get(str(item.get('categoria') or '').strip().lower(), '')
+    partes.append(f'<div class="fi-valor"><b class="price">{brl(item.get("preco"))}</b>' + (f'<span>{h(cat)}</span>' if cat else '') + '</div>')
+    return '<div class="faixa-info">' + ''.join(partes) + '</div>'
 
 
 def icone(caminho, tam=20, cls='ico'):
@@ -55,11 +92,12 @@ def _galeria(item):
     total = f'<em>{len(fotos)} fotos</em>' if len(fotos) > 1 else ''
     mosaico = ''.join(
         f'<button class="ph{" main" if k == 0 else ""}" type="button" data-k="{k}" aria-label="Ampliar foto {k + 1}: {legenda(k)}">'
-        f'{picture(fotos[k], item, k)}<span>{legenda(k)}</span>{total if k == 0 else ""}</button>' for k in range(min(5, len(fotos))))
+        f'{picture(fotos[k], item, k) if k == 0 else picture(fotos[k], item, k, MOSAICO_PEQ)}<span>{legenda(k)}</span>{total if k == 0 else ""}</button>' for k in range(min(5, len(fotos))))
+    # No celular, as fotos 2 a 5 saem do mosaico e entram na faixa (classe so-cel, oculta no computador).
     faixa = ''.join(
-        f'<button class="gal-mini" type="button" data-k="{k}" aria-label="Ampliar foto {k + 1}: {legenda(k)}">{picture(fotos[k], item, k, MINI)}</button>'
-        for k in range(5, len(fotos)))
-    faixa = f'<div class="gal-faixa" role="group" aria-label="Mais fotos">{faixa}</div>' if faixa else ''
+        f'<button class="gal-mini{" so-cel" if k < 5 else ""}" type="button" data-k="{k}" aria-label="Ampliar foto {k + 1}: {legenda(k)}">{picture(fotos[k], item, k, MINI)}</button>'
+        for k in range(1, len(fotos)))
+    faixa = f'<div class="gal-faixa{" so-cel" if len(fotos) <= 5 else ""}" role="group" aria-label="Mais fotos">{faixa}</div>' if faixa else ''
     return f'<div class="gal{" single" if len(fotos) == 1 else ""}" id="gal">{mosaico}</div>{faixa}'
 
 
@@ -119,8 +157,9 @@ def detalhe(item):
     return f'''<a class="back" href="{RAIZ_REL}index.html#imoveis">← Voltar aos resultados</a>
 {_galeria(item)}
 {stats}
+{_faixa(item)}
 {multimidia(item)}
-<div class="dhead"><div><h1 class="dt">{h(item['titulo'])}</h1><div class="where">{h(item.get('tipo'))} · {h(local(item))}</div></div><div class="dr"><div class="price big">{brl(item.get('preco'))}</div></div></div>
+<div class="dhead"><h1 class="dt">{h(item['titulo'])}</h1></div>
 <div class="imovel-layout">
 <div class="box imovel-sobre"><h3>Sobre o imóvel</h3><p style="white-space:pre-line">{h(item.get('descricao') or 'Descrição não cadastrada.')}</p></div>
 {valores_box}

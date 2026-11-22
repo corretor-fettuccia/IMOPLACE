@@ -221,3 +221,67 @@ button:disabled{opacity:.6;cursor:not-allowed}
 .viewer-thumb{flex:none;position:relative;width:88px;height:60px;padding:0;border:2px solid transparent;border-radius:6px;overflow:hidden;cursor:pointer;background:var(--bg);opacity:.65}
 .viewer-thumb[aria-current="true"]{border-color:var(--accent);opacity:1}
 @media (max-width:820px){.imovel-layout{grid-template-columns:minmax(0,1fr);grid-template-areas:"sobre" "valores" "barra" "mapa";grid-template-rows:auto}.imovel-barra{margin-bottom:12px}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.gal-mini{width:96px;height:64px}.zap-flutuante{width:56px;height:56px}.viewer-thumb{width:64px;height:44px}}
+
+/* Faixa tipo · código · localização · valor, logo abaixo dos dados; espaços compactos */
+.stats{gap:4px;margin-top:8px}
+.stats div{padding:4px 8px;column-gap:8px}
+.stats b{line-height:1.15}
+.faixa-info{display:flex;align-items:center;gap:0;margin-top:4px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:4px 10px}
+.faixa-info .fi{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:8px;align-items:center;padding:0 12px;min-width:0}
+.faixa-info .fi:first-child{padding-left:0}
+.faixa-info .fi+.fi{border-left:1px solid var(--line)}
+.faixa-info .fi .ico{grid-row:span 2;color:var(--brand)}
+:root[data-theme='dark'] .faixa-info .fi .ico{color:var(--accent)}
+.faixa-info b{font:800 1.05rem/1.15 var(--h);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.faixa-info span{font-size:.76rem;line-height:1.2;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.faixa-info .fi-valor{margin-left:auto;text-align:right;display:flex;flex-direction:column;padding-left:12px}
+.faixa-info .fi-valor .price{font:800 1.3rem/1.15 var(--h);letter-spacing:-.02em;overflow:visible}
+.dhead{margin-top:8px;align-items:center}
+.dhead .dt{margin:0}
+#save svg{width:18px;height:18px;vertical-align:-3px;margin-right:6px;fill:none;stroke:currentColor}
+#save[aria-pressed="true"] svg{fill:#e5484d;stroke:#e5484d}
+@media(max-width:820px){
+.faixa-info{display:grid;grid-template-columns:minmax(0,1fr) max-content;row-gap:6px;padding:6px 10px}
+.faixa-info .fi{padding:0 0 0 10px}
+.faixa-info>:nth-child(odd){padding-left:0;border-left:0}
+.faixa-info>:nth-child(even){padding-left:10px;border-left:1px solid var(--line)}
+.faixa-info .fi-valor{margin-left:0;text-align:left}
+.faixa-info .fi-valor:nth-child(odd){grid-column:1/-1}
+.faixa-info .fi-valor .price{font-size:1.15rem}
+.dhead .dt{font-size:1.2rem}
+}
+
+/* Ajuste ao rascunho aprovado: cartões e faixa na mesma altura compacta; Salvar claro com contorno */
+.stats div{padding:3px 8px}
+.stats b{font-size:1rem;line-height:1.1}
+.stats span{font-size:.72rem;line-height:1.15}
+.stats .ico,.faixa-info .ico{width:18px;height:18px}
+.faixa-info{padding:3px 10px}
+.faixa-info b{font-size:1rem;line-height:1.1}
+.faixa-info span{font-size:.72rem;line-height:1.15}
+.faixa-info .fi-valor .price{font-size:1.15rem;line-height:1.1}
+.dhead .dact #save{background:var(--surface);color:inherit;border:1px solid var(--line);min-height:32px;padding:0 12px;font-weight:600}
+.dhead .dact #save:hover{border-color:currentColor}
+@media(max-width:820px){.stats{grid-template-columns:repeat(3,minmax(0,1fr))}.faixa-info{padding:5px 10px}.faixa-info .fi-valor .price{font-size:1.05rem}}
+
+/* Celular: simetria. Dados numa linha de blocos iguais e compactos; faixa em duas colunas iguais. Desktop inalterado. */
+@media(max-width:820px){
+.stats{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);grid-template-columns:none;gap:4px}
+.stats div{grid-template-columns:1fr;justify-items:center;text-align:center;row-gap:1px;padding:5px 2px;min-width:0}
+.stats .ico{grid-row:auto;width:16px;height:16px}
+.stats b{font-size:.86rem;white-space:nowrap}
+.stats span{font-size:.62rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.faixa-info{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+.faixa-info .fi-codigo{grid-template-columns:minmax(0,1fr)}
+@media(max-width:820px){.dhead .dact{width:100%;justify-content:space-between}.dhead .dact #save{order:0}.dhead .dact #share{order:1}}
+
+/* Galeria: no celular, só a foto de destaque + faixa de miniaturas (fotos 2 a 5 entram na faixa). Computador inalterado. */
+.gal-mini.so-cel,.gal-faixa.so-cel{display:none}
+@media(max-width:820px){
+.gal:not(.single){display:block;height:min(62vw,300px)}
+.gal:not(.single) .ph:not(.main){display:none}
+.gal:not(.single) .ph.main{width:100%;height:100%}
+.gal-mini.so-cel{display:block}
+.gal-faixa.so-cel{display:flex}
+}
