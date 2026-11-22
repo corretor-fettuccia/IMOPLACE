@@ -45,9 +45,9 @@ function galleryHTML(item) {
   const imgs=item.imagens||[];
   if (!imgs.length) return `<div class="gal single"><div class="ph main">${imgTag(item,0)}<span>Imagem indisponível</span></div></div>`;
   const legenda=k=>esc(imgs[k].legenda||'Foto '+(k+1));
-  const mosaico=imgs.slice(0,5).map((_,k)=>`<button type="button" class="ph${k===0?' main':''}" data-k="${k}" aria-label="Ampliar foto ${k+1}: ${legenda(k)}">${imgTag(item,k)}<span>${legenda(k)}</span>${k===0&&imgs.length>1?`<em>${imgs.length} fotos</em>`:''}</button>`).join('');
-  const faixa=imgs.slice(5).map((_,j)=>{const k=j+5;return `<button type="button" class="gal-mini" data-k="${k}" aria-label="Ampliar foto ${k+1}: ${legenda(k)}">${imgTag(item,k,'','132px')}</button>`;}).join('');
-  return `<div class="gal${imgs.length===1?' single':''}" id="gal">${mosaico}</div>${faixa?`<div class="gal-faixa" role="group" aria-label="Mais fotos">${faixa}</div>`:''}`;
+  const mosaico=imgs.slice(0,5).map((_,k)=>`<button type="button" class="ph${k===0?' main':''}" data-k="${k}" aria-label="Ampliar foto ${k+1}: ${legenda(k)}">${k===0?imgTag(item,k):imgTag(item,k,'','(max-width: 820px) 96px, 30vw')}<span>${legenda(k)}</span>${k===0&&imgs.length>1?`<em>${imgs.length} fotos</em>`:''}</button>`).join('');
+  const faixa=imgs.slice(1).map((_,j)=>{const k=j+1;return `<button type="button" class="gal-mini${k<5?' so-cel':''}" data-k="${k}" aria-label="Ampliar foto ${k+1}: ${legenda(k)}">${imgTag(item,k,'','132px')}</button>`;}).join('');
+  return `<div class="gal${imgs.length===1?' single':''}" id="gal">${mosaico}</div>${faixa?`<div class="gal-faixa${imgs.length<=5?' so-cel':''}" role="group" aria-label="Mais fotos">${faixa}</div>`:''}`;
 }
 function detailsHTML(item) {
   const m2=v=>vazio(v)?null:v+' m²';

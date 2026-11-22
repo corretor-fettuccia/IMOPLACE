@@ -28,7 +28,12 @@ class LayoutImovel(unittest.TestCase):
         self.assertEqual(html.count('class="gal-mini"'),8)
         self.assertIn('<em>13 fotos</em>',html)
         self.assertIn('data-k="12"',html)
-        self.assertNotIn('gal-faixa',detalhe(item(n_fotos=5)))   # até 5 fotos: sem faixa
+        self.assertEqual(html.count('class="gal-mini so-cel"'),4)   # fotos 2–5: faixa só no celular
+        h5=detalhe(item(n_fotos=5));self.assertIn('class="gal-faixa so-cel"',h5);self.assertNotIn('class="gal-mini"',h5)
+        self.assertNotIn('gal-faixa',detalhe(item(n_fotos=1)))
+        css=(RAIZ/'site/assets/css/style.css').read_text(encoding='utf-8')
+        self.assertIn('.gal-mini.so-cel,.gal-faixa.so-cel{display:none}',css)
+        self.assertIn('.gal:not(.single) .ph:not(.main){display:none}',css)
 
     def test_ordem_e_colunas(self):
         html=detalhe(item())
@@ -74,8 +79,8 @@ class LayoutImovel(unittest.TestCase):
         r=subprocess.run(['node','-e',script],capture_output=True,text=True)
         self.assertEqual(r.returncode,0,r.stderr)
         html=r.stdout
-        self.assertEqual(html.count('class="ph'),5);self.assertEqual(html.count('class="gal-mini"'),8)
-        self.assertEqual(html.count('data-sizes="132px"'),8)
+        self.assertEqual(html.count('class="ph'),5);self.assertEqual(html.count('class="gal-mini"'),8);self.assertEqual(html.count('gal-mini so-cel'),4)
+        self.assertEqual(html.count('data-sizes="132px"'),12)
         a=ordem(html,'id="gal"','class="stats"','class="dhead"','imovel-layout','imovel-sobre','imovel-valores','imovel-mapa','imovel-barra')
         self.assertEqual(a,sorted(a))
         for marca in ('No imóvel (21)','Mostrar todos os 26 ↓','Preço por m²','id="whatsapp"','data-lead-property="1008"','class="zap-flutuante"','id="viewer-thumbs"'):

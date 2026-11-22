@@ -51,6 +51,7 @@ CATEGORIAS = {'venda': 'Venda', 'lancamento': 'Lançamento', 'aluguel': 'Aluguel
 ZAP_ICONE = 'M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.4A8.4 8.4 0 1 1 21 11.5z'
 CARAC_VISIVEIS = 6
 MINI = '132px'   # largura da miniatura na faixa: o navegador baixa a versão pequena da foto
+MOSAICO_PEQ = '(max-width: 820px) 96px, 30vw'  # fotos 2–5: ocultas no celular, baixa a menor versão
 
 
 def tipo_icone(tipo):
@@ -91,11 +92,12 @@ def _galeria(item):
     total = f'<em>{len(fotos)} fotos</em>' if len(fotos) > 1 else ''
     mosaico = ''.join(
         f'<button class="ph{" main" if k == 0 else ""}" type="button" data-k="{k}" aria-label="Ampliar foto {k + 1}: {legenda(k)}">'
-        f'{picture(fotos[k], item, k)}<span>{legenda(k)}</span>{total if k == 0 else ""}</button>' for k in range(min(5, len(fotos))))
+        f'{picture(fotos[k], item, k) if k == 0 else picture(fotos[k], item, k, MOSAICO_PEQ)}<span>{legenda(k)}</span>{total if k == 0 else ""}</button>' for k in range(min(5, len(fotos))))
+    # No celular, as fotos 2 a 5 saem do mosaico e entram na faixa (classe so-cel, oculta no computador).
     faixa = ''.join(
-        f'<button class="gal-mini" type="button" data-k="{k}" aria-label="Ampliar foto {k + 1}: {legenda(k)}">{picture(fotos[k], item, k, MINI)}</button>'
-        for k in range(5, len(fotos)))
-    faixa = f'<div class="gal-faixa" role="group" aria-label="Mais fotos">{faixa}</div>' if faixa else ''
+        f'<button class="gal-mini{" so-cel" if k < 5 else ""}" type="button" data-k="{k}" aria-label="Ampliar foto {k + 1}: {legenda(k)}">{picture(fotos[k], item, k, MINI)}</button>'
+        for k in range(1, len(fotos)))
+    faixa = f'<div class="gal-faixa{" so-cel" if len(fotos) <= 5 else ""}" role="group" aria-label="Mais fotos">{faixa}</div>' if faixa else ''
     return f'<div class="gal{" single" if len(fotos) == 1 else ""}" id="gal">{mosaico}</div>{faixa}'
 
 
