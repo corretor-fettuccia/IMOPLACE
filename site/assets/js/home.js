@@ -65,7 +65,7 @@ function order(items) {
   return items;
 }
 function render() {
-  const tamanho=Number(perPage.value)||10;
+  const tamanho=Number(perPage.value)||12;
   const total=filtered.length;
   const totalPaginas=Math.max(1,Math.ceil(total/tamanho));
   page=Math.min(Math.max(page,1),totalPaginas);
@@ -100,7 +100,7 @@ pageButtons.addEventListener('click',e=>{
   const button=e.target.closest('button[data-page]');
   if (!button || button.disabled)return;
   const destino=Number(button.dataset.page);
-  if (!Number.isInteger(destino)||destino<1||destino>Math.ceil(filtered.length/(Number(perPage.value)||10)))return;
+  if (!Number.isInteger(destino)||destino<1||destino>Math.ceil(filtered.length/(Number(perPage.value)||12)))return;
   page=destino;
   render();
   $('#imoveis').scrollIntoView({behavior:'smooth',block:'start'});
