@@ -1,8 +1,8 @@
 {
   "schemaVersao": 2,
   "contrato": "imoplace-v1",
-  "geradoEm": "2026-11-21T23:55:23.482714+00:00",
-  "total": 20,
+  "geradoEm": "2026-11-22T18:48:08.855023+00:00",
+  "total": 21,
   "imoveis": [
     {
       "id": "1004",
@@ -3362,6 +3362,94 @@
               "mime": "image/jpeg"
             }
           }
+        }
+      ]
+    },
+    {
+      "id": "1030",
+      "codigo": "terreno-1909-m2-sitio-proximo-a-cidade-1030",
+      "categoria": "venda",
+      "status": "publicado",
+      "url": "https://imoplace.com.br/imoveis/terreno-1909-m2-sitio-proximo-a-cidade-1030/",
+      "destaque": false,
+      "tag": "Mini Sítio",
+      "ordem": 0,
+      "atualizadoEm": "2026-11-22T18:47:04.544Z",
+      "tipo": "Terreno",
+      "condicao": "Novo",
+      "titulo": "Terreno de 1.909 m² à venda | 30 m de frente | Ideal para sítio próximo à cidade",
+      "descricao": "Imagine morar ou ter seu sítio de lazer cercado pela natureza, com a praticidade de estar perto da cidade. São 1.909 m² de terreno com frente para via pública, formato praticamente retangular e amplo espaço para planejar sua casa ou um refúgio de fim de semana.\n\nO lote tem 30 m de frente, 30 m de fundos e aproximadamente 63 m em cada lateral. O formato regular facilita o aproveitamento da área para um projeto com casa, piscina, quiosque, pomar ou horta.\n\nNa região tranquila e cercada pela natureza, você pode reunir a família, cultivar seu próprio pomar e desfrutar de mais espaço e privacidade. Uma opção para quem busca uma área para residência, sítio de lazer ou investimento.\n\nValor de venda: R$ 250.000, equivalente a aproximadamente R$ 131/m².",
+      "seo": {
+        "titulo": "Terreno 1.909 m² à Venda | Ideal para Sítio Próximo Cidade",
+        "descricao": "Terreno à venda com 1.909 m², em região tranquila e cercada pela natureza. Ideal para quem busca qualidade de vida e quer morar perto da cidade."
+      },
+      "localizacao": {
+        "bairro": "",
+        "cidade": "Nova Santa Rita",
+        "uf": "RS",
+        "endereco": "",
+        "lat": null,
+        "lng": null
+      },
+      "preco": 250000.0,
+      "condominio": null,
+      "iptuAnual": null,
+      "financiamento": true,
+      "permuta": false,
+      "documentacaoEmDia": true,
+      "dormitorios": null,
+      "suites": null,
+      "banheiros": null,
+      "vagas": null,
+      "areaTotal": 1909.0,
+      "areaUtil": null,
+      "comodidades": [],
+      "caracteristicasImovel": [
+        "30 m de frente",
+        "30 m de fundos",
+        "Laterais de aproximadamente 63 m",
+        "Formato regular",
+        "Frente para via pública",
+        "Lote amplo"
+      ],
+      "caracteristicasCondominio": [],
+      "anunciante": {
+        "nome": "Roberto",
+        "creci": "83599-F",
+        "whatsapp": "5551998111078"
+      },
+      "feeds": {
+        "google": false,
+        "meta": false,
+        "disponibilidade": "in_stock"
+      },
+      "midias": [],
+      "links_externos": [],
+      "imagens": [
+        {
+          "arquivo": "imoveis/terreno-1909-m2-sitio-proximo-a-cidade-1030/imagens/medidas-convertido-ic0b79978fd.v1.webp",
+          "legenda": "Foto 1",
+          "alt": "Terreno de 1.909 m² à venda | 30 m de frente | Ideal para sítio próximo à cidade — foto 1"
+        },
+        {
+          "arquivo": "imoveis/terreno-1909-m2-sitio-proximo-a-cidade-1030/imagens/big-7757de64591a2aa568271367fd0fe0a8-ifd3862568a.v1.webp",
+          "legenda": "Foto 2",
+          "alt": "Terreno de 1.909 m² à venda | 30 m de frente | Ideal para sítio próximo à cidade — foto 2"
+        },
+        {
+          "arquivo": "imoveis/terreno-1909-m2-sitio-proximo-a-cidade-1030/imagens/big-8ef7ec67d355739277a77750322e214a-i3d59132ee5.v1.webp",
+          "legenda": "Foto 3",
+          "alt": "Terreno de 1.909 m² à venda | 30 m de frente | Ideal para sítio próximo à cidade — foto 3"
+        },
+        {
+          "arquivo": "imoveis/terreno-1909-m2-sitio-proximo-a-cidade-1030/imagens/big-86f18631227c39bfbc41dd061ecdf5e9-1-i4a154b8d14.v1.webp",
+          "legenda": "Foto 4",
+          "alt": "Terreno de 1.909 m² à venda | 30 m de frente | Ideal para sítio próximo à cidade — foto 4"
+        },
+        {
+          "arquivo": "imoveis/terreno-1909-m2-sitio-proximo-a-cidade-1030/imagens/big-f9f73fe3a5f2fec315624eed33ba4c2e-i7626b2884f.v1.webp",
+          "legenda": "Foto 5",
+          "alt": "Terreno de 1.909 m² à venda | 30 m de frente | Ideal para sítio próximo à cidade — foto 5"
         }
       ]
     },
