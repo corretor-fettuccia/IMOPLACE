@@ -46,7 +46,7 @@ TIPO_ICONES = {
     'comercial': 'M3 9l2-5h14l2 5M3 9a3 3 0 0 0 6 0 3 3 0 0 0 6 0 3 3 0 0 0 6 0M5 12v9h14v-9M10 21v-5h4v5',
 }
 TIPO_SINONIMOS = {'estudio': 'studio', 'stúdio': 'studio', 'kitnet': 'studio', 'loja': 'comercial', 'sala': 'comercial', 'sala comercial': 'comercial', 'lote': 'terreno'}
-FAIXA_ICONES = {'codigo': 'M5 9h14M5 15h14M10 3 8 21M16 3l-2 18', 'local': 'M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21zM12 7.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4z'}
+FAIXA_ICONES = {'local': 'M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21zM12 7.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4z'}
 CATEGORIAS = {'venda': 'Venda', 'lancamento': 'Lançamento', 'aluguel': 'Aluguel', 'locacao': 'Locação'}
 ZAP_ICONE = 'M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.4A8.4 8.4 0 1 1 21 11.5z'
 CARAC_VISIVEIS = 6
@@ -67,7 +67,7 @@ def _faixa(item):
         partes.append(f'<div class="fi">{icone(tipo_icone(tipo))}<b>{h(tipo)}</b><span>Tipo</span></div>')
     ref = str(item.get('id') or '').strip()
     if ref:
-        partes.append(f'<div class="fi">{icone(FAIXA_ICONES["codigo"])}<b>{h(ref)}</b><span>Código</span></div>')
+        partes.append(f'<div class="fi fi-codigo"><b>{h(ref)}</b><span>Código</span></div>')
     x = item.get('localizacao') or {}
     nomes = [str(x[k]).strip() for k in ('bairro', 'cidade', 'uf') if str(x.get(k) or '').strip()]
     if nomes:

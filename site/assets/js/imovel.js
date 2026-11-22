@@ -14,7 +14,7 @@ const CARAC_VISIVEIS=6;
 const icone=(d,tam=20,cls='ico')=>`<svg class="${cls}" width="${tam}" height="${tam}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${d}"/></svg>`;
 const TIPO_ICONES={'casa': 'M3 11l9-7 9 7M5 9.5V20h14V9.5M10 20v-5h4v5', 'apartamento': 'M5 21V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v17M3 21h18M9 7h1M14 7h1M9 11h1M14 11h1M9 15h1M14 15h1', 'terreno': 'M3 7V3h4M17 3h4v4M21 17v4h-4M7 21H3v-4M10 16V8l6 2.5-6 2.5', 'sobrado': 'M4 21V10l8-7 8 7v11M2 21h20M9 21v-4h6v4M9 10h1M14 10h1', 'cobertura': 'M6 21V9h12v12M4 21h16M4 9h16M8 9V6h8v3M10 13h1M13 13h1M10 17h1M13 17h1', 'studio': 'M4 11V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3M2 13a2 2 0 0 1 4 0v2h12v-2a2 2 0 0 1 4 0v4H2zM5 17v2M19 17v2', 'comercial': 'M3 9l2-5h14l2 5M3 9a3 3 0 0 0 6 0 3 3 0 0 0 6 0 3 3 0 0 0 6 0M5 12v9h14v-9M10 21v-5h4v5'};
 const TIPO_SINONIMOS={'estudio': 'studio', 'stúdio': 'studio', 'kitnet': 'studio', 'loja': 'comercial', 'sala': 'comercial', 'sala comercial': 'comercial', 'lote': 'terreno'};
-const FAIXA_ICONES={'codigo': 'M5 9h14M5 15h14M10 3 8 21M16 3l-2 18', 'local': 'M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21zM12 7.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4z'};
+const FAIXA_ICONES={'local': 'M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21zM12 7.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4z'};
 const CATEGORIAS={'venda': 'Venda', 'lancamento': 'Lançamento', 'aluguel': 'Aluguel', 'locacao': 'Locação'};
 const CORACAO='M12 20s-7-4.4-9.2-8.6A5 5 0 0 1 12 6a5 5 0 0 1 9.2 5.4C19 15.6 12 20 12 20z';
 const tipoIcone=t=>{t=String(t??'').trim().toLowerCase();t=TIPO_SINONIMOS[t]||t;return TIPO_ICONES[t]||TIPO_ICONES.casa;};
@@ -23,7 +23,7 @@ function faixaHTML(item){
   const p=[];const tipo=String(item.tipo??'').trim();
   if(tipo)p.push(`<div class="fi">${icone(tipoIcone(tipo))}<b>${esc(tipo)}</b><span>Tipo</span></div>`);
   const ref=String(item.id??'').trim();
-  if(ref)p.push(`<div class="fi">${icone(FAIXA_ICONES.codigo)}<b>${esc(ref)}</b><span>Código</span></div>`);
+  if(ref)p.push(`<div class="fi fi-codigo"><b>${esc(ref)}</b><span>Código</span></div>`);
   const x=item.localizacao||{};const nomes=['bairro','cidade','uf'].map(k=>String(x[k]??'').trim()).filter(Boolean);
   if(nomes.length)p.push(`<div class="fi fi-local">${icone(FAIXA_ICONES.local)}<b>${esc(nomes[0])}</b><span>${esc(nomes.slice(1).join(', '))}</span></div>`);
   const cat=CATEGORIAS[String(item.categoria??'').trim().toLowerCase()]||'';
