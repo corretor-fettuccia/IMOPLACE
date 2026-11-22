@@ -1,8 +1,8 @@
 {
   "schemaVersao": 2,
   "contrato": "imoplace-v1",
-  "geradoEm": "2026-11-22T18:48:08.855023+00:00",
-  "total": 21,
+  "geradoEm": "2026-11-22T19:30:20.062787+00:00",
+  "total": 22,
   "imoveis": [
     {
       "id": "1004",
@@ -3901,11 +3901,11 @@
       "destaque": false,
       "tag": "Pronto para morar.",
       "ordem": 0,
-      "atualizadoEm": "2026-11-21T23:55:13.997Z",
+      "atualizadoEm": "2026-11-22T19:29:26.217Z",
       "tipo": "Apartamento",
       "condicao": "Novo",
       "titulo": "Monet | 2 e 3 dormitórios com lazer no rooftop | Centro de Canoas",
-      "descricao": "Imoplace Vende | Monet, da Bold, no Centro de Canoas. Torre única com lazer no rooftop e plantas de 2 e 3 dormitórios.\nA partir de 600.000.\n\nCaracterísticas do imóvel\n• Plantas de 48,1 a 82,5 m² no catálogo\n• Opções de 2 dormitórios com suíte, sacada ou ambos\n• Configuração de 3 dormitórios com suíte e 1 a 2 vagas conforme a unidade\n\nInfraestrutura do condomínio\n• Rooftop com piscina\n• academia\n• salão de festas\n• espaço gourmet\n• coworking\n• minimercado e bicicletário\n\nNa tabela de 01/11/2026, a unidade 703 de 56,69 m² com suíte aparece a R$ 629.772. Consulte unidades disponíveis e agende a visita ao decorado.",
+      "descricao": "Imoplace Vende | Monet, da Bold, no Centro de Canoas. Torre única com lazer no rooftop e plantas de 2 e 3 dormitórios.\nA partir de 600.000.\n\nCaracterísticas do imóvel\n• Plantas de 48,1 a 82,5 m² no catálogo\n• Opções de 2 dormitórios com suíte, sacada ou ambos\n• Configuração de 3 dormitórios com suíte e 1 a 2 vagas conforme a unidade\n\nInfraestrutura do condomínio\n• Rooftop com piscina\n• academia\n• salão de festas\n• espaço gourmet\n• coworking\n• minimercado e bicicletário\n\nNa tabela de 01/11/2026, a unidade 703 de 56,69 m² com suíte aparece a R$ 629.772. Consulte unidades disponíveis e agende a visita ao decorado.\nBold construtora.",
       "seo": {
         "titulo": "Monet Bold | 2 e 3 dormitórios no Centro de Canoas",
         "descricao": "Plantas de 48,1 a 82,5 m², opções com suíte e sacada, piscina no rooftop e coworking na Rua Guilherme Morsch."
@@ -3932,20 +3932,22 @@
       "areaUtil": 82.0,
       "comodidades": [],
       "caracteristicasImovel": [
-        "Plantas de 48",
-        "1 a 82",
-        "5 m² no catálogo",
+        "Plantas de 48.1m² a 82.5m² no catálogo",
         "Opções de 2 dormitórios com suíte",
         "sacada ou ambos",
         "Configuração de 3 dormitórios com suíte e 1 a 2 vagas conforme a unidade"
       ],
       "caracteristicasCondominio": [
+        "Elevador duplo",
         "Rooftop com piscina",
         "academia",
         "salão de festas",
         "espaço gourmet",
         "coworking",
-        "minimercado e bicicletário"
+        "minimercado",
+        "bicicletário",
+        "playground",
+        "Espera para carro elétrico"
       ],
       "anunciante": {
         "nome": "Roberto",
@@ -4352,6 +4354,222 @@
           "arquivo": "imoveis/novo-imovel-1018/imagens/manoelsilveira-132-belavista-nsr-anajuli-i90342351e6.v1.webp",
           "legenda": "Lavanderia",
           "alt": "Casa semimobiliada de 3 dormitórios e 100 m² | Centro de Nova Santa Rita — foto 24"
+        }
+      ]
+    },
+    {
+      "id": "1016",
+      "codigo": "novo-imovel-1016",
+      "categoria": "venda",
+      "status": "publicado",
+      "url": "https://imoplace.com.br/imoveis/novo-imovel-1016/",
+      "destaque": false,
+      "tag": "Nunca Habitado",
+      "ordem": 0,
+      "atualizadoEm": "2026-11-22T19:25:18.889Z",
+      "tipo": "Sobrado",
+      "condicao": "Novo",
+      "titulo": "Reservas do Lago | Sobrado de 234 m² com 3 suítes | Nova Santa Rita",
+      "descricao": "Imoplace Vende | Sobrado com três suítes e 234 m² de área construída informada, incluindo beirais e sacadas, em terreno de 360 m².\n\nCaracterísticas do imóvel\n• Três suítes com sacada\n• Living de pé-direito duplo e lareira a lenha\n• Churrasqueira integrada à cozinha\n• Escada em quartzo e esquadrias de PVC\n• Quatro vagas, duas cobertas, com espera para carro elétrico\n\nConsulte as condições de venda e agende uma visita ao condomínio.",
+      "seo": {
+        "titulo": "Sobrado com 3 suítes no Reservas do Lago",
+        "descricao": "Lote de 360 m², living com pé-direito duplo, escada em quartzo, lareira e quatro vagas em condomínio fechado."
+      },
+      "localizacao": {
+        "bairro": "Sanga Funda",
+        "cidade": "Nova Santa Rita",
+        "uf": "RS",
+        "endereco": "Condomínio Reservas do Lago",
+        "lat": null,
+        "lng": null
+      },
+      "preco": 1590000.0,
+      "condominio": 1100.0,
+      "iptuAnual": null,
+      "financiamento": true,
+      "permuta": false,
+      "documentacaoEmDia": false,
+      "dormitorios": 3.0,
+      "suites": 3.0,
+      "banheiros": 1.0,
+      "vagas": 4.0,
+      "areaTotal": 360.0,
+      "areaUtil": 234.0,
+      "comodidades": [],
+      "caracteristicasImovel": [
+        "03 Suítes",
+        "04 Banheiros",
+        "01 Sala",
+        "01 Lavabo",
+        "Garagem para 04 veículos",
+        "Terreno 360m²",
+        "Área Privativa 234m²",
+        "Três suítes com sacada",
+        "Living de pé-direito duplo e lareira a lenha",
+        "Churrasqueira integrada à cozinha",
+        "Escada em quartzo e esquadrias de PVC",
+        "Quatro vagas",
+        "duas cobertas",
+        "com espera para carro elétrico"
+      ],
+      "caracteristicasCondominio": [],
+      "anunciante": {
+        "nome": "Roberto",
+        "creci": "83599-F",
+        "whatsapp": "5551998111078"
+      },
+      "feeds": {
+        "google": false,
+        "meta": false,
+        "disponibilidade": "in_stock"
+      },
+      "midias": [],
+      "links_externos": [],
+      "imagens": [
+        {
+          "arquivo": "imoveis/novo-imovel-1016/imagens/big-0a05852a99d10f8de973f8f7a0097d9f-con-idd4b302565.v1.webp",
+          "legenda": "Sobrado completo",
+          "alt": "Reservas do Lago | Sobrado de 234 m² com 3 suítes | Nova Santa Rita — foto 1"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1016/imagens/big-48e2a7c780f05214f7195f726d782087-con-i0ebca8cd86.v1.webp",
+          "legenda": "Lareira",
+          "alt": "Reservas do Lago | Sobrado de 234 m² com 3 suítes | Nova Santa Rita — foto 2"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1016/imagens/big-84d672e99a07b192fa06fa2094fc53b0-con-i6ed689bf0d.v1.webp",
+          "legenda": "03 suítes",
+          "alt": "Reservas do Lago | Sobrado de 234 m² com 3 suítes | Nova Santa Rita — foto 3"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1016/imagens/big-a4e4d0ff95034aab46c843eff306f0fb-con-i62a43283fe.v1.webp",
+          "legenda": "Foto 4",
+          "alt": "Reservas do Lago | Sobrado de 234 m² com 3 suítes | Nova Santa Rita — foto 4"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1016/imagens/big-516ee6bd819c2f30dd310ad054b7d1c3-con-i8c0a28da20.v1.webp",
+          "legenda": "Foto 5",
+          "alt": "Reservas do Lago | Sobrado de 234 m² com 3 suítes | Nova Santa Rita — foto 5"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1016/imagens/big-4a725813419d7642e237551f6223d1c5-con-i3ea5486909.v1.webp",
+          "legenda": "Foto 6",
+          "alt": "Reservas do Lago | Sobrado de 234 m² com 3 suítes | Nova Santa Rita — foto 6"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1016/imagens/big-35a9f09674b8b663f6ac2b37234f39fd-con-ia65719eadc.v1.webp",
+          "legenda": "2 pavimentos",
+          "alt": "Reservas do Lago | Sobrado de 234 m² com 3 suítes | Nova Santa Rita — foto 7"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1016/imagens/big-6f9e000f23d2e60d989b39bd469a2185-con-ib5519d1970.v1.webp",
+          "legenda": "boa iluminação",
+          "alt": "Reservas do Lago | Sobrado de 234 m² com 3 suítes | Nova Santa Rita — foto 8"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1016/imagens/big-c9812cc592cf188beda080639b1ce0b3-con-i715e6e9d88.v1.webp",
+          "legenda": "Pé direito duplo",
+          "alt": "Reservas do Lago | Sobrado de 234 m² com 3 suítes | Nova Santa Rita — foto 9"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1016/imagens/big-4234f7ea79f82fa5808eedc61fdd9eef-con-if74cfccd10.v1.webp",
+          "legenda": "Foto 10",
+          "alt": "Reservas do Lago | Sobrado de 234 m² com 3 suítes | Nova Santa Rita — foto 10"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1016/imagens/big-4417bc8ef57cc155bf47a56177fad516-con-i47e126df3d.v1.webp",
+          "legenda": "Pé direito duplo",
+          "alt": "Reservas do Lago | Sobrado de 234 m² com 3 suítes | Nova Santa Rita — foto 11"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1016/imagens/big-064587c0a269d53e27b724875bea94b4-con-i614cef1fe9.v1.webp",
+          "legenda": "Foto 12",
+          "alt": "Reservas do Lago | Sobrado de 234 m² com 3 suítes | Nova Santa Rita — foto 12"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1016/imagens/big-b3113ee9aeccb44ca5bbf4a8cade7a47-con-id1516b4e0d.v1.webp",
+          "legenda": "Banho da Suíte",
+          "alt": "Reservas do Lago | Sobrado de 234 m² com 3 suítes | Nova Santa Rita — foto 13"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1016/imagens/big-b0f756ca0feafa30741229f077181b85-con-i51cc6498a5.v1.webp",
+          "legenda": "Banho da suíte",
+          "alt": "Reservas do Lago | Sobrado de 234 m² com 3 suítes | Nova Santa Rita — foto 14"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1016/imagens/big-0274900bbc335a796ed6f3f6af4f7cda-con-i820699cbd3.v1.webp",
+          "legenda": "Pátio",
+          "alt": "Reservas do Lago | Sobrado de 234 m² com 3 suítes | Nova Santa Rita — foto 15"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1016/imagens/big-43cf61f12147aa6bd054605ac9145943-con-i682256ef1a.v1.webp",
+          "legenda": "Playground",
+          "alt": "Reservas do Lago | Sobrado de 234 m² com 3 suítes | Nova Santa Rita — foto 16"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1016/imagens/big-6cabca327bff9e460d79aaae7df6e628-con-ied38b8060e.v1.webp",
+          "legenda": "Foto 17",
+          "alt": "Reservas do Lago | Sobrado de 234 m² com 3 suítes | Nova Santa Rita — foto 17"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1016/imagens/big-e4e5d49b2c66097beba623e5e2b16f6f-con-id4d1633236.v1.webp",
+          "legenda": "Churrasqueira",
+          "alt": "Reservas do Lago | Sobrado de 234 m² com 3 suítes | Nova Santa Rita — foto 18"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1016/imagens/big-517e7713f3ea9146914c5b543f4c94b5-con-i68da277f59.v1.webp",
+          "legenda": "Foto 19",
+          "alt": "Reservas do Lago | Sobrado de 234 m² com 3 suítes | Nova Santa Rita — foto 19"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1016/imagens/big-544fe3f267344903165109e3ba8a27bb-con-ib3717ea33d.v1.webp",
+          "legenda": "Quadra de tennis",
+          "alt": "Reservas do Lago | Sobrado de 234 m² com 3 suítes | Nova Santa Rita — foto 20"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1016/imagens/big-ad8856aa7c340d45548bc1e00ed4de2a-con-i5c422eb1eb.v1.webp",
+          "legenda": "Piscina de borda",
+          "alt": "Reservas do Lago | Sobrado de 234 m² com 3 suítes | Nova Santa Rita — foto 21"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1016/imagens/big-b1e683e98b11b5ab914bfc5255671a8e-con-i9210ce133b.v1.webp",
+          "legenda": "Piscina aquecida",
+          "alt": "Reservas do Lago | Sobrado de 234 m² com 3 suítes | Nova Santa Rita — foto 22"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1016/imagens/big-b68a0c4b2a420374ec6d12cc3721c4ab-con-i3385f6aaa2.v1.webp",
+          "legenda": "Choperia",
+          "alt": "Reservas do Lago | Sobrado de 234 m² com 3 suítes | Nova Santa Rita — foto 23"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1016/imagens/big-b935ee4d0956e5e74da53d84cac8e6ac-con-ibb7943783d.v1.webp",
+          "legenda": "Quadra esportiva",
+          "alt": "Reservas do Lago | Sobrado de 234 m² com 3 suítes | Nova Santa Rita — foto 24"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1016/imagens/big-bb20700e8a006e602dec1062ace676ba-con-i0442375ae8.v1.webp",
+          "legenda": "Área gourmet",
+          "alt": "Reservas do Lago | Sobrado de 234 m² com 3 suítes | Nova Santa Rita — foto 25"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1016/imagens/big-d631feda7bd1bb643e1c42f8569fcf11-con-i7d806a8ae9.v1.webp",
+          "legenda": "Foto 26",
+          "alt": "Reservas do Lago | Sobrado de 234 m² com 3 suítes | Nova Santa Rita — foto 26"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1016/imagens/big-dd18791b4ab5aeb52c921d30c60bdcab-con-i7dd48a7ce4.v1.webp",
+          "legenda": "Club com piscina de borda infinita",
+          "alt": "Reservas do Lago | Sobrado de 234 m² com 3 suítes | Nova Santa Rita — foto 27"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1016/imagens/big-de570fbb3bd9908cdb7a44fab92c74f0-con-ie2d4a0b379.v1.webp",
+          "legenda": "Academia",
+          "alt": "Reservas do Lago | Sobrado de 234 m² com 3 suítes | Nova Santa Rita — foto 28"
+        },
+        {
+          "arquivo": "imoveis/novo-imovel-1016/imagens/big-e2f4d8f37fb3e16f952ed9be1adc2a1b-con-i5e15cebb21.v1.webp",
+          "legenda": "Quadra de Tenis",
+          "alt": "Reservas do Lago | Sobrado de 234 m² com 3 suítes | Nova Santa Rita — foto 29"
         }
       ]
     },
