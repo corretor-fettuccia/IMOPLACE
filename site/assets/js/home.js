@@ -25,7 +25,12 @@ function setTab(which) {
   tabs.forEach(btn=>btn.setAttribute('aria-selected',String(btn.dataset.tab===which)));
   apply();
 }
+/* Código do imóvel: só os dígitos; localiza pelo início do código e ignora os demais filtros e a aba. */
+const codigoBusca = () => String($('#cod')?.value ?? '').replace(/\D/g,'');
+const codigoDe = item => String(item.id ?? '').replace(/\D/g,'') || (String(item.codigo ?? '').match(/(\d+)$/)||[])[1] || '';
 function matches(item) {
+  const cod=codigoBusca();
+  if (cod) return codigoDe(item).startsWith(cod);
   if (tab==='lancamento' && item.categoria!=='lancamento') return false;
   const search=clean($('#q').value.trim());
   if (search && !clean([item.titulo,item.tipo,item.descricao,local(item)].join(' ')).includes(search)) return false;
@@ -66,7 +71,7 @@ function render() {
   page=Math.min(Math.max(page,1),totalPaginas);
   const inicio=(page-1)*tamanho;
   const fim=Math.min(inicio+tamanho,total);
-  grid.innerHTML=total ? filtered.slice(inicio,fim).map(cardHTML).join('') : '<p class="empty-state">Nenhum imóvel corresponde aos filtros. Experimente reduzir os critérios.</p>';
+  grid.innerHTML=total ? filtered.slice(inicio,fim).map(cardHTML).join('') : (codigoBusca() ? `<p class="empty-state">Nenhum imóvel com o código ${esc(codigoBusca())}. Confira o número.</p>` : '<p class="empty-state">Nenhum imóvel corresponde aos filtros. Experimente reduzir os critérios.</p>');
   bindCards(grid);
   resultCount.textContent=`${total} ${total===1?'encontrado':'encontrados'}`;
   pagination.hidden=!total;
@@ -87,6 +92,7 @@ function render() {
 function apply() {filtered=order(entries.filter(matches));page=1;render();updateCount();}
 form.addEventListener('submit',e=>{e.preventDefault();apply();$('#imoveis').scrollIntoView({behavior:'smooth',block:'start'});});
 $('#q').addEventListener('input',apply);
+$('#cod').addEventListener('input',apply);
 ['t','p','a'].forEach(id=>$('#'+id).addEventListener('change',apply));
 sorter.addEventListener('change',apply);
 perPage.addEventListener('change',()=>{page=1;render();});
@@ -112,6 +118,7 @@ tabs.forEach(btn=>btn.addEventListener('click',()=>setTab(btn.dataset.tab)));
 $('#nav-lancamentos')?.addEventListener('click',()=>{});
 const params=new URLSearchParams(location.search);
 if (params.get('categoria')==='lancamento') tab='lancamento';
+if (params.get('codigo')) $('#cod').value=params.get('codigo').replace(/\D/g,'');
 tabs.forEach(btn=>btn.setAttribute('aria-selected',String(btn.dataset.tab===tab)));
 grid.innerHTML='<p class="empty-state">Carregando imóveis...</p>';
 getCatalog().then(items=>{entries=items;apply();}).catch(error=>{
