@@ -1,7 +1,7 @@
 {
   "schemaVersao": 2,
   "contrato": "imoplace-v1",
-  "geradoEm": "2026-11-22T23:04:26.670515+00:00",
+  "geradoEm": "2026-11-22T23:08:16.895889+00:00",
   "total": 23,
   "imoveis": [
     {
@@ -4575,14 +4575,14 @@
     },
     {
       "id": "1015",
-      "codigo": "novo-imovel-1015",
+      "codigo": "sobrado-suite-piscina-vaga-park-shopping-canoas-1015",
       "categoria": "venda",
       "status": "publicado",
-      "url": "https://imoplace.com.br/imoveis/novo-imovel-1015/",
+      "url": "https://imoplace.com.br/imoveis/sobrado-suite-piscina-vaga-park-shopping-canoas-1015/",
       "destaque": false,
       "tag": "Semi Mobiliado",
       "ordem": 0,
-      "atualizadoEm": "2026-11-22T23:03:34.752Z",
+      "atualizadoEm": "2026-11-22T23:07:08.643Z",
       "tipo": "Sobrado",
       "condicao": "Usado",
       "titulo": "Sobrado com suíte master e piscina aquecida | Estância Velha, Canoas",
@@ -4595,7 +4595,7 @@
         "bairro": "Estância Velha",
         "cidade": "Canoas",
         "uf": "RS",
-        "endereco": "Rua das Bromélias, Loteamento Bela Vista III",
+        "endereco": "Rua das Bromélias, Loteamento Bela Vista III, Canoas-RS",
         "lat": null,
         "lng": null
       },
@@ -4643,162 +4643,162 @@
       "links_externos": [],
       "imagens": [
         {
-          "arquivo": "imoveis/novo-imovel-1015/imagens/big-199c49c9a2438a4126fdce411860e661-ib0590ab5f5.v1.webp",
+          "arquivo": "imoveis/sobrado-suite-piscina-vaga-park-shopping-canoas-1015/imagens/big-199c49c9a2438a4126fdce411860e661-ib0590ab5f5.v1.webp",
           "legenda": "Piscina",
           "alt": "Sobrado com suíte master e piscina aquecida | Estância Velha, Canoas — foto 1"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1015/imagens/big-1c7fa7e4248f38d5ffbb716155b85e16-ib6970525aa.v1.webp",
+          "arquivo": "imoveis/sobrado-suite-piscina-vaga-park-shopping-canoas-1015/imagens/big-1c7fa7e4248f38d5ffbb716155b85e16-ib6970525aa.v1.webp",
           "legenda": "Suíte Master",
           "alt": "Sobrado com suíte master e piscina aquecida | Estância Velha, Canoas — foto 2"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1015/imagens/big-2e2b4bdcf2749b74a720e3eab056ae2c-i8df69a3468.v1.webp",
+          "arquivo": "imoveis/sobrado-suite-piscina-vaga-park-shopping-canoas-1015/imagens/big-2e2b4bdcf2749b74a720e3eab056ae2c-i8df69a3468.v1.webp",
           "legenda": "Sala de Estar",
           "alt": "Sobrado com suíte master e piscina aquecida | Estância Velha, Canoas — foto 3"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1015/imagens/big-fe8eca86e7cb9ec2d5de90e1e65d6cca-i2bde801ef7.v1.webp",
+          "arquivo": "imoveis/sobrado-suite-piscina-vaga-park-shopping-canoas-1015/imagens/big-fe8eca86e7cb9ec2d5de90e1e65d6cca-i2bde801ef7.v1.webp",
           "legenda": "Cozinha",
           "alt": "Sobrado com suíte master e piscina aquecida | Estância Velha, Canoas — foto 4"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1015/imagens/big-921d071b44b953f21307bceafdfdeca0-ia0e4f0b676.v1.webp",
+          "arquivo": "imoveis/sobrado-suite-piscina-vaga-park-shopping-canoas-1015/imagens/big-921d071b44b953f21307bceafdfdeca0-ia0e4f0b676.v1.webp",
           "legenda": "Sala de jantar com mesa assinada",
           "alt": "Sobrado com suíte master e piscina aquecida | Estância Velha, Canoas — foto 5"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1015/imagens/big-5bf90811bd9e0230c62a3b5c9bb5cd8d-i93f6dd4089.v1.webp",
+          "arquivo": "imoveis/sobrado-suite-piscina-vaga-park-shopping-canoas-1015/imagens/big-5bf90811bd9e0230c62a3b5c9bb5cd8d-i93f6dd4089.v1.webp",
           "legenda": "Foto 6",
           "alt": "Sobrado com suíte master e piscina aquecida | Estância Velha, Canoas — foto 6"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1015/imagens/big-3db3a653de68bda792e286a811656c16-i0c08e36cb0.v1.webp",
+          "arquivo": "imoveis/sobrado-suite-piscina-vaga-park-shopping-canoas-1015/imagens/big-3db3a653de68bda792e286a811656c16-i0c08e36cb0.v1.webp",
           "legenda": "Foto 7",
           "alt": "Sobrado com suíte master e piscina aquecida | Estância Velha, Canoas — foto 7"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1015/imagens/big-7c1fd9ca38d1bb612c259f5ad0efe0b7-ic050ffa3e1.v1.webp",
+          "arquivo": "imoveis/sobrado-suite-piscina-vaga-park-shopping-canoas-1015/imagens/big-7c1fd9ca38d1bb612c259f5ad0efe0b7-ic050ffa3e1.v1.webp",
           "legenda": "Suíte Master",
           "alt": "Sobrado com suíte master e piscina aquecida | Estância Velha, Canoas — foto 8"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1015/imagens/big-482df3238dd460221ffaafc755c003ec-i65822be4f7.v1.webp",
+          "arquivo": "imoveis/sobrado-suite-piscina-vaga-park-shopping-canoas-1015/imagens/big-482df3238dd460221ffaafc755c003ec-i65822be4f7.v1.webp",
           "legenda": "Sala de TV no 2 piso",
           "alt": "Sobrado com suíte master e piscina aquecida | Estância Velha, Canoas — foto 9"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1015/imagens/big-7cf9d195802a5336f740721019242a69-i6039e9ebf5.v1.webp",
+          "arquivo": "imoveis/sobrado-suite-piscina-vaga-park-shopping-canoas-1015/imagens/big-7cf9d195802a5336f740721019242a69-i6039e9ebf5.v1.webp",
           "legenda": "Vista Garagem",
           "alt": "Sobrado com suíte master e piscina aquecida | Estância Velha, Canoas — foto 10"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1015/imagens/big-0f75d10217236f6f4cf1635e3c63e733-i1753c635d0.v1.webp",
+          "arquivo": "imoveis/sobrado-suite-piscina-vaga-park-shopping-canoas-1015/imagens/big-0f75d10217236f6f4cf1635e3c63e733-i1753c635d0.v1.webp",
           "legenda": "Churrasqueira com chapa hamburguer e parrilla",
           "alt": "Sobrado com suíte master e piscina aquecida | Estância Velha, Canoas — foto 11"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1015/imagens/big-5cb84ee249d23c5a7492a731fef3c860-iadcc3a9d32.v1.webp",
+          "arquivo": "imoveis/sobrado-suite-piscina-vaga-park-shopping-canoas-1015/imagens/big-5cb84ee249d23c5a7492a731fef3c860-iadcc3a9d32.v1.webp",
           "legenda": "Closet",
           "alt": "Sobrado com suíte master e piscina aquecida | Estância Velha, Canoas — foto 12"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1015/imagens/big-9ad0d52e6557df9e0571a0b3f252e127-i8128be235a.v1.webp",
+          "arquivo": "imoveis/sobrado-suite-piscina-vaga-park-shopping-canoas-1015/imagens/big-9ad0d52e6557df9e0571a0b3f252e127-i8128be235a.v1.webp",
           "legenda": "Lavabo e Depósito",
           "alt": "Sobrado com suíte master e piscina aquecida | Estância Velha, Canoas — foto 13"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1015/imagens/big-39b379a583988359b531e6b6aa7fa4d5-if4d2219a4a.v1.webp",
+          "arquivo": "imoveis/sobrado-suite-piscina-vaga-park-shopping-canoas-1015/imagens/big-39b379a583988359b531e6b6aa7fa4d5-if4d2219a4a.v1.webp",
           "legenda": "Vista pátio fundos",
           "alt": "Sobrado com suíte master e piscina aquecida | Estância Velha, Canoas — foto 14"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1015/imagens/big-9c81ddf5820cb798a3969b383ff8deba-i4403f36bd9.v1.webp",
+          "arquivo": "imoveis/sobrado-suite-piscina-vaga-park-shopping-canoas-1015/imagens/big-9c81ddf5820cb798a3969b383ff8deba-i4403f36bd9.v1.webp",
           "legenda": "Lareira",
           "alt": "Sobrado com suíte master e piscina aquecida | Estância Velha, Canoas — foto 15"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1015/imagens/big-14a45c6b586f01c501d3e2eae170e7bc-i268cf5e244.v1.webp",
+          "arquivo": "imoveis/sobrado-suite-piscina-vaga-park-shopping-canoas-1015/imagens/big-14a45c6b586f01c501d3e2eae170e7bc-i268cf5e244.v1.webp",
           "legenda": "Frente",
           "alt": "Sobrado com suíte master e piscina aquecida | Estância Velha, Canoas — foto 16"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1015/imagens/big-37df03fb15e7345194d475b96abbc07c-i44d0080e91.v1.webp",
+          "arquivo": "imoveis/sobrado-suite-piscina-vaga-park-shopping-canoas-1015/imagens/big-37df03fb15e7345194d475b96abbc07c-i44d0080e91.v1.webp",
           "legenda": "Sala de TV com sacada",
           "alt": "Sobrado com suíte master e piscina aquecida | Estância Velha, Canoas — foto 17"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1015/imagens/big-66eb0b131b9bfc2296e73db293e43d1b-i3a4ff03360.v1.webp",
+          "arquivo": "imoveis/sobrado-suite-piscina-vaga-park-shopping-canoas-1015/imagens/big-66eb0b131b9bfc2296e73db293e43d1b-i3a4ff03360.v1.webp",
           "legenda": "Sala de estar",
           "alt": "Sobrado com suíte master e piscina aquecida | Estância Velha, Canoas — foto 18"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1015/imagens/big-66f3b6b3db4f2cd0a73997e5b21d805f-i849494ef10.v1.webp",
+          "arquivo": "imoveis/sobrado-suite-piscina-vaga-park-shopping-canoas-1015/imagens/big-66f3b6b3db4f2cd0a73997e5b21d805f-i849494ef10.v1.webp",
           "legenda": "Sala de Jantar",
           "alt": "Sobrado com suíte master e piscina aquecida | Estância Velha, Canoas — foto 19"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1015/imagens/big-97d4051e2fe074cf0f1ff11e7b64d518-i536801bcd2.v1.webp",
+          "arquivo": "imoveis/sobrado-suite-piscina-vaga-park-shopping-canoas-1015/imagens/big-97d4051e2fe074cf0f1ff11e7b64d518-i536801bcd2.v1.webp",
           "legenda": "Suíte master",
           "alt": "Sobrado com suíte master e piscina aquecida | Estância Velha, Canoas — foto 20"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1015/imagens/big-2386d4f3d5bd96526df50bb5cae38b45-i15a72e5d85.v1.webp",
+          "arquivo": "imoveis/sobrado-suite-piscina-vaga-park-shopping-canoas-1015/imagens/big-2386d4f3d5bd96526df50bb5cae38b45-i15a72e5d85.v1.webp",
           "legenda": "Dormitório com Closet + Sacada",
           "alt": "Sobrado com suíte master e piscina aquecida | Estância Velha, Canoas — foto 21"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1015/imagens/big-756253318ae616be29c2c24bdc04d680-ie19e5632ec.v1.webp",
+          "arquivo": "imoveis/sobrado-suite-piscina-vaga-park-shopping-canoas-1015/imagens/big-756253318ae616be29c2c24bdc04d680-ie19e5632ec.v1.webp",
           "legenda": "Dormitório com closet + Sacada",
           "alt": "Sobrado com suíte master e piscina aquecida | Estância Velha, Canoas — foto 22"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1015/imagens/big-d0418c374683089cb82a36955e9b423f-i4d1f7284cb.v1.webp",
+          "arquivo": "imoveis/sobrado-suite-piscina-vaga-park-shopping-canoas-1015/imagens/big-d0418c374683089cb82a36955e9b423f-i4d1f7284cb.v1.webp",
           "legenda": "Vista bancada área gourmet",
           "alt": "Sobrado com suíte master e piscina aquecida | Estância Velha, Canoas — foto 23"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1015/imagens/big-d624c2541974417fd37531921fed696b-id8abafe79e.v1.webp",
+          "arquivo": "imoveis/sobrado-suite-piscina-vaga-park-shopping-canoas-1015/imagens/big-d624c2541974417fd37531921fed696b-id8abafe79e.v1.webp",
           "legenda": "Foto 24",
           "alt": "Sobrado com suíte master e piscina aquecida | Estância Velha, Canoas — foto 24"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1015/imagens/big-e103a8490425ebfb206ae4c82e9ccba4-ief37d21280.v1.webp",
+          "arquivo": "imoveis/sobrado-suite-piscina-vaga-park-shopping-canoas-1015/imagens/big-e103a8490425ebfb206ae4c82e9ccba4-ief37d21280.v1.webp",
           "legenda": "Garagem",
           "alt": "Sobrado com suíte master e piscina aquecida | Estância Velha, Canoas — foto 25"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1015/imagens/big-49867fa658b0498e459eb6e916714a11-ia7b251df45.v1.webp",
+          "arquivo": "imoveis/sobrado-suite-piscina-vaga-park-shopping-canoas-1015/imagens/big-49867fa658b0498e459eb6e916714a11-ia7b251df45.v1.webp",
           "legenda": "Sala de jarntar",
           "alt": "Sobrado com suíte master e piscina aquecida | Estância Velha, Canoas — foto 26"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1015/imagens/big-53116aee7d54549b241d12d6ba0e3209-i19d8aa1bb8.v1.webp",
+          "arquivo": "imoveis/sobrado-suite-piscina-vaga-park-shopping-canoas-1015/imagens/big-53116aee7d54549b241d12d6ba0e3209-i19d8aa1bb8.v1.webp",
           "legenda": "Dormitório com Closet + Sacada",
           "alt": "Sobrado com suíte master e piscina aquecida | Estância Velha, Canoas — foto 27"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1015/imagens/big-77822d89ab4242d2064b24c87cc4d820-i51038c44bf.v1.webp",
+          "arquivo": "imoveis/sobrado-suite-piscina-vaga-park-shopping-canoas-1015/imagens/big-77822d89ab4242d2064b24c87cc4d820-i51038c44bf.v1.webp",
           "legenda": "Banho social",
           "alt": "Sobrado com suíte master e piscina aquecida | Estância Velha, Canoas — foto 28"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1015/imagens/big-f948b43ae56e11a7983c612dde857791-i9d4e000d84.v1.webp",
+          "arquivo": "imoveis/sobrado-suite-piscina-vaga-park-shopping-canoas-1015/imagens/big-f948b43ae56e11a7983c612dde857791-i9d4e000d84.v1.webp",
           "legenda": "Banho da Suíte",
           "alt": "Sobrado com suíte master e piscina aquecida | Estância Velha, Canoas — foto 29"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1015/imagens/big-9530542a0f832ee8bec071c48911912e-i6c07e6aeaa.v1.webp",
+          "arquivo": "imoveis/sobrado-suite-piscina-vaga-park-shopping-canoas-1015/imagens/big-9530542a0f832ee8bec071c48911912e-i6c07e6aeaa.v1.webp",
           "legenda": "Suíte Master",
           "alt": "Sobrado com suíte master e piscina aquecida | Estância Velha, Canoas — foto 30"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1015/imagens/big-d55fcaec7780a9f64e869bc4a4f6dde4-i963ba5de85.v1.webp",
+          "arquivo": "imoveis/sobrado-suite-piscina-vaga-park-shopping-canoas-1015/imagens/big-d55fcaec7780a9f64e869bc4a4f6dde4-i963ba5de85.v1.webp",
           "legenda": "Sacada",
           "alt": "Sobrado com suíte master e piscina aquecida | Estância Velha, Canoas — foto 31"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1015/imagens/big-febb1325b3af780838a015f80b913e63-i6298975fb0.v1.webp",
+          "arquivo": "imoveis/sobrado-suite-piscina-vaga-park-shopping-canoas-1015/imagens/big-febb1325b3af780838a015f80b913e63-i6298975fb0.v1.webp",
           "legenda": "Área Gourmet",
           "alt": "Sobrado com suíte master e piscina aquecida | Estância Velha, Canoas — foto 32"
         }
