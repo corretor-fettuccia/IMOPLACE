@@ -72,8 +72,104 @@ def compartilhar(url,titulo):
 def botao(scope='*'):
     return f'<div class="news-optin"><button class="btn btn-accent" type="button" data-push-scope="{h(scope)}">Notifique-me em caso de atualizações</button><p class="push-status" role="status" aria-live="polite"></p><p class="small-note">Avisos no seu navegador. Você escolhe permitir e pode cancelar a qualquer momento.</p></div>'
 
+# ---------- Imóveis relacionados à matéria (carrossel no rodapé + card que desliza) ----------
+import unicodedata
+REL_MAX=6
+REL_SIZES='(max-width: 768px) 72vw, 280px'
+
+def _norm(v):
+    v=unicodedata.normalize('NFKD',str(v or '')).encode('ascii','ignore').decode().lower()
+    return ' '+re.sub(r'[^a-z0-9%]+',' ',v).strip()+' '
+
+def _tem(texto,*termos):
+    return any(_norm(t) in texto for t in termos)
+
+# Assuntos: (termos na matéria, título do bloco, teste no imóvel). A ordem define a prioridade.
+ASSUNTOS=[
+    (('100% financiado','100 financiado'),'Imóveis 100% financiados',lambda i:'100%' in str(i.get('tag') or '') or '100% financ' in str(i.get('descricao') or '').lower()),
+    (('parcelamento direto',),'Imóveis com parcelamento direto',lambda i:'parcelamento direto' in _norm(str(i.get('tag') or '')+' '+str(i.get('descricao') or ''))),
+    (('na planta','incorporacao','memorial de incorporacao','incc'),'Imóveis na planta',lambda i:_norm(i.get('condicao'))==' na planta '),
+    (('terreno','loteamento','lote'),'Terrenos e loteamentos',lambda i:_norm(i.get('tipo'))==' terreno '),
+    (('lancamento','lancamentos'),'Lançamentos',lambda i:_norm(i.get('categoria'))==' lancamento ' or _norm(i.get('condicao')) in (' novo ',' na planta ')),
+    (('imovel usado','imoveis usados'),'Imóveis usados',lambda i:_norm(i.get('condicao'))==' usado '),
+    (('fgts','financiamento','financiado','minha casa minha vida','mcmv','credito imobiliario','credito habitacional','sfh'),'Imóveis que aceitam financiamento',lambda i:bool(i.get('financiamento'))),
+]
+
+def relacionados(artigo,imoveis):
+    """Escolhe até REL_MAX imóveis publicados para a matéria. Retorna (título, lista, cidade|None)."""
+    pub=[i for i in imoveis if str(i.get('status','publicado'))=='publicado' and i.get('codigo') and i.get('imagens')]
+    if not pub:return '',[],None
+    texto=_norm(' '.join([artigo.get('titulo',''),' '.join(artigo.get('tags') or [])]))
+    cidades={}
+    for i in pub:
+        c=str((i.get('localizacao') or {}).get('cidade') or '').strip()
+        if c and len(_norm(c).strip())>=4:cidades.setdefault(_norm(c),c)
+    cidade=next((c for n,c in sorted(cidades.items(),key=lambda kv:-len(kv[0])) if n in texto),None)
+    assunto=next((a for a in ASSUNTOS if _tem(texto,*a[0])),None)
+    def ordem(i):return (not i.get('destaque'),i.get('ordem') if isinstance(i.get('ordem'),(int,float)) else 1e9)
+    if cidade:
+        nc=_norm(cidade);da=[i for i in pub if _norm((i.get('localizacao') or {}).get('cidade'))==nc]
+        if assunto:da.sort(key=lambda i:(not assunto[2](i),)+ordem(i))
+        else:da.sort(key=ordem)
+        return 'Imóveis em '+cidade.strip().title().replace(' Da ',' da ').replace(' De ',' de ').replace(' Do ',' do '),da[:REL_MAX],cidade
+    if assunto:
+        da=sorted([i for i in pub if assunto[2](i)],key=ordem)
+        if da:return assunto[1],da[:REL_MAX],None
+    da=sorted(pub,key=ordem)
+    return 'Imóveis em destaque',da[:REL_MAX],None
+
+def _num(v):
+    return isinstance(v,(int,float)) and not isinstance(v,bool) and v>0
+
+def _fmt(v):
+    return str(int(v)) if float(v).is_integer() else str(v).replace('.',',')
+
+def _dados(i):
+    d=[]
+    if _num(i.get('dormitorios')):d.append(_fmt(i['dormitorios'])+(' dorm.'))
+    if _num(i.get('suites')):d.append(_fmt(i['suites'])+(' suíte' if i['suites']==1 else ' suítes'))
+    if _num(i.get('vagas')):d.append(_fmt(i['vagas'])+(' vaga' if i['vagas']==1 else ' vagas'))
+    area=i.get('areaUtil') if _num(i.get('areaUtil')) else i.get('areaTotal')
+    if _num(area):d.append(_fmt(area)+' m²')
+    return ' · '.join(d)
+
+def _onde(i):
+    x=i.get('localizacao') or {};return ' · '.join(str(x[k]).strip() for k in ('bairro','cidade') if x.get(k))
+
+def _card_imovel(i):
+    from paginas import picture,brl
+    tag=f'<span class="rel-tag">{h(i["tag"])}</span>' if str(i.get('tag') or '').strip() else ''
+    dados=_dados(i);dados=f'<span class="rel-dados">{h(dados)}</span>' if dados else ''
+    onde=' · '.join(x for x in (str(i.get('tipo') or '').strip(),_onde(i)) if x)
+    return (f'<a class="rel-card" href="../../imoveis/{h(i["codigo"])}/"><span class="rel-foto">{picture(i["imagens"][0],i,1,REL_SIZES)}{tag}</span>'
+            f'<span class="rel-corpo"><span class="rel-onde">{h(onde)}</span><b class="rel-titulo">{h(i["titulo"])}</b>{dados}'
+            f'<span class="rel-rodape"><b class="rel-preco">{h(brl(i.get("preco")))}</b><span class="rel-ver">Ver imóvel →</span></span></span></a>')
+
+SETA_E='<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>'
+SETA_D='<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>'
+FECHAR='<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>'
+
+def bloco_imoveis(artigo,imoveis):
+    """HTML do carrossel e do card que desliza; vazio quando não há imóvel publicado."""
+    titulo,lista,cidade=relacionados(artigo,imoveis)
+    if not lista:return ''
+    cards=''.join(_card_imovel(i) for i in lista)
+    todos='Ver todos os imóveis'+(' em '+h(titulo[len('Imóveis em '):]) if cidade else '')+' →'
+    primeiro=lista[0];from paginas import picture,brl
+    rotulo=('Imóvel em '+titulo[len('Imóveis em '):]) if cidade else 'Imóvel relacionado'
+    dados=_dados(primeiro)
+    mini=(f'<aside class="rel-mini" aria-label="Imóvel relacionado à matéria" hidden><div class="rel-mini-topo"><span class="rel-mini-rotulo">{h(rotulo)}</span>'
+          f'<button class="rel-mini-fechar" type="button" aria-label="Fechar sugestão">{FECHAR}</button></div>'
+          f'<a class="rel-mini-link" href="../../imoveis/{h(primeiro["codigo"])}/"><span class="rel-mini-foto">{picture(primeiro["imagens"][0],primeiro,1,"120px")}</span>'
+          f'<span class="rel-mini-texto"><b>{h(primeiro["titulo"])}</b>'+(f'<span class="rel-dados">{h(dados)}</span>' if dados else '')+
+          f'<span class="rel-preco">{h(brl(primeiro.get("preco")))}</span></span></a><a class="rel-mini-ver" href="../../imoveis/{h(primeiro["codigo"])}/">Ver imóvel</a></aside>')
+    return (f'<section class="rel-imoveis" aria-labelledby="rel-titulo"><div class="rel-cabeca"><div><span class="news-kicker">Imóveis relacionados a esta matéria</span><h2 id="rel-titulo">{h(titulo)}</h2></div>'
+            f'<div class="rel-setas" hidden><button type="button" class="rel-seta" data-rel-dir="-1" aria-label="Imóveis anteriores">{SETA_E}</button><button type="button" class="rel-seta" data-rel-dir="1" aria-label="Próximos imóveis">{SETA_D}</button></div></div>'
+            f'<div class="rel-faixa">{cards}</div><a class="news-read rel-todos" href="../../index.html#imoveis">{todos}</a></section>{mini}<script src="../../assets/js/noticias-imoveis.js" defer></script>')
+
 def construir(site,conf,rows,config):
     site=Path(site);base=conf['urlPublica'].rstrip('/');anterior=ler_json(site/'noticias/catalogo.json',{}) or {}
+    imoveis=(ler_json(site/'catalogo.json',{}) or {}).get('imoveis') or []
     if rows is None:
         if anterior.get('artigos'):log('noticias','Tabela ainda não disponível; mantidas matérias anteriores.');return anterior['artigos']
         rows=[]
@@ -102,8 +198,9 @@ def construir(site,conf,rows,config):
         url=base+'/noticias/'+x['codigo']+'/'
         schema={'@context':'https://schema.org','@type':'BlogPosting','headline':x['titulo'],'description':x['seoDescricao'],'mainEntityOfPage':url,'url':url,'datePublished':x['publicadoEm'],'dateModified':x['atualizadoEm'],'author':{'@type':'Person','name':x['autor']},'publisher':{'@type':'Organization','name':'Imoplace','url':base,'logo':{'@type':'ImageObject','url':base+'/icon-512.png','width':512,'height':512}},'inLanguage':'pt-BR','keywords':x['tags']}
         if x['capa']:schema['image']=[x['capa']]
+        rel=bloco_imoveis(x,imoveis)
         cover=f'<img class="article-cover" src="{h(x["capa"])}" alt="{h(x["capaAlt"])}" width="1200" height="750" fetchpriority="high">' if x['capa'] else ''
-        content=f'<nav class="news-breadcrumb" aria-label="Você está aqui"><a href="../../">Início</a> / <a href="../">Notícias</a> / {h(x["categoria"])}</nav><article class="news-article"><header><span class="news-kicker">{h(x["categoria"])}</span><h1>{h(x["titulo"])}</h1><p class="news-deck">{h(x["resumo"])}</p><p class="news-meta">Por {h(x["autor"])} · {h(data_label(x["publicadoEm"]))}'+(f' · Atualizado em {h(data_label(x["atualizadoEm"]))}' if x['atualizadoEm']!=x['publicadoEm'] else '')+f'</p>{compartilhar(url,x["titulo"])}</header>{cover}<div class="article-body">{corpo(x["corpo"])}</div><aside class="news-follow"><h2>Acompanhe esta matéria</h2>{botao(x["id"])}</aside><a class="news-read" href="../../index.html#imoveis">Encontre seu próximo imóvel →</a></article>'
+        content=f'<nav class="news-breadcrumb" aria-label="Você está aqui"><a href="../../">Início</a> / <a href="../">Notícias</a> / {h(x["categoria"])}</nav><article class="news-article"><header><span class="news-kicker">{h(x["categoria"])}</span><h1>{h(x["titulo"])}</h1><p class="news-deck">{h(x["resumo"])}</p><p class="news-meta">Por {h(x["autor"])} · {h(data_label(x["publicadoEm"]))}'+(f' · Atualizado em {h(data_label(x["atualizadoEm"]))}' if x['atualizadoEm']!=x['publicadoEm'] else '')+f'</p>{compartilhar(url,x["titulo"])}</header>{cover}<div class="article-body">{corpo(x["corpo"])}</div>'+rel+f'<aside class="news-follow"><h2>Acompanhe esta matéria</h2>{botao(x["id"])}</aside>'+('' if rel else '<a class="news-read" href="../../index.html#imoveis">Encontre seu próximo imóvel →</a>')+'</article>'
         gravar(site/'noticias'/x['codigo']/'index.html',shell(x['seoTitulo'],x['seoDescricao'],url,content,'../../',conf,schema,x['capa']))
     management='<section class="news-hero"><div><span class="news-kicker">Sua escolha</span><h1>Avisos do Imoplace</h1><p>Receba novidades no navegador. Cancele todos os avisos deste aparelho quando quiser.</p><p>Para entregar os avisos, guardamos a inscrição técnica deste navegador. Não pedimos e-mail.</p>'+botao()+'<button class="btn btn-line" type="button" data-push-cancelar>Cancelar avisos neste navegador</button><p class="push-status" role="status"></p></div></section>'
     gravar(site/'noticias/avisos/index.html',shell('Gerenciar avisos','Escolha receber ou cancelar avisos do Imoplace no seu navegador.',base+'/noticias/avisos/',management,'../../',dict(conf,permitirIndexacao=False)))
