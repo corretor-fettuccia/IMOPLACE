@@ -12,6 +12,24 @@ const ICONES={dormitorios:'M2 18V6M2 14h20v4M22 14v-2a3 3 0 0 0-3-3h-8v5M6 11.5a
 const ZAP_ICONE='M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.4A8.4 8.4 0 1 1 21 11.5z';
 const CARAC_VISIVEIS=6;
 const icone=(d,tam=20,cls='ico')=>`<svg class="${cls}" width="${tam}" height="${tam}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${d}"/></svg>`;
+const TIPO_ICONES={'casa': 'M3 11l9-7 9 7M5 9.5V20h14V9.5M10 20v-5h4v5', 'apartamento': 'M5 21V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v17M3 21h18M9 7h1M14 7h1M9 11h1M14 11h1M9 15h1M14 15h1', 'terreno': 'M3 7V3h4M17 3h4v4M21 17v4h-4M7 21H3v-4M10 16V8l6 2.5-6 2.5', 'sobrado': 'M4 21V10l8-7 8 7v11M2 21h20M9 21v-4h6v4M9 10h1M14 10h1', 'cobertura': 'M6 21V9h12v12M4 21h16M4 9h16M8 9V6h8v3M10 13h1M13 13h1M10 17h1M13 17h1', 'studio': 'M4 11V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3M2 13a2 2 0 0 1 4 0v2h12v-2a2 2 0 0 1 4 0v4H2zM5 17v2M19 17v2', 'comercial': 'M3 9l2-5h14l2 5M3 9a3 3 0 0 0 6 0 3 3 0 0 0 6 0 3 3 0 0 0 6 0M5 12v9h14v-9M10 21v-5h4v5'};
+const TIPO_SINONIMOS={'estudio': 'studio', 'stúdio': 'studio', 'kitnet': 'studio', 'loja': 'comercial', 'sala': 'comercial', 'sala comercial': 'comercial', 'lote': 'terreno'};
+const FAIXA_ICONES={'codigo': 'M5 9h14M5 15h14M10 3 8 21M16 3l-2 18', 'local': 'M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21zM12 7.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4z'};
+const CATEGORIAS={'venda': 'Venda', 'lancamento': 'Lançamento', 'aluguel': 'Aluguel', 'locacao': 'Locação'};
+const CORACAO='M12 20s-7-4.4-9.2-8.6A5 5 0 0 1 12 6a5 5 0 0 1 9.2 5.4C19 15.6 12 20 12 20z';
+const tipoIcone=t=>{t=String(t??'').trim().toLowerCase();t=TIPO_SINONIMOS[t]||t;return TIPO_ICONES[t]||TIPO_ICONES.casa;};
+/* Faixa abaixo dos dados: tipo, código, localização e valor (igual a paginas._faixa). */
+function faixaHTML(item){
+  const p=[];const tipo=String(item.tipo??'').trim();
+  if(tipo)p.push(`<div class="fi">${icone(tipoIcone(tipo))}<b>${esc(tipo)}</b><span>Tipo</span></div>`);
+  const ref=String(item.id??'').trim();
+  if(ref)p.push(`<div class="fi">${icone(FAIXA_ICONES.codigo)}<b>${esc(ref)}</b><span>Código</span></div>`);
+  const x=item.localizacao||{};const nomes=['bairro','cidade','uf'].map(k=>String(x[k]??'').trim()).filter(Boolean);
+  if(nomes.length)p.push(`<div class="fi fi-local">${icone(FAIXA_ICONES.local)}<b>${esc(nomes[0])}</b><span>${esc(nomes.slice(1).join(', '))}</span></div>`);
+  const cat=CATEGORIAS[String(item.categoria??'').trim().toLowerCase()]||'';
+  p.push(`<div class="fi-valor"><b class="price">${brl(item.preco)}</b>${cat?`<span>${esc(cat)}</span>`:''}</div>`);
+  return `<div class="faixa-info">${p.join('')}</div>`;
+}
 function caracGrupo(titulo,arr){
   const itens=(arr||[]).filter(x=>String(x??'').trim());
   if(!itens.length)return '';
@@ -53,9 +71,9 @@ function detailsHTML(item) {
   return `<a class="back" href="${esc(SITE_ROOT)}index.html#imoveis">← Voltar aos resultados</a>
   ${galleryHTML(item)}
   ${stats?`<div class="stats">${stats}</div>`:''}
+  ${faixaHTML(item)}
   ${ImoplaceMidias.html(item)}
-  <div class="dhead"><div><h1 class="dt">${esc(item.titulo)}</h1><div class="where">${esc(item.tipo)} · ${esc(local(item))}</div></div>
-   <div class="dr"><div class="price big">${brl(item.preco)}</div><div class="dact"><button type="button" class="btn btn-line share-mobile" id="share"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg><span>Compartilhar</span></button><button type="button" class="btn btn-line" id="save">Salvar</button></div></div></div>
+  <div class="dhead"><h1 class="dt">${esc(item.titulo)}</h1><div class="dact"><button type="button" class="btn btn-line share-mobile" id="share"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg><span>Compartilhar</span></button><button type="button" class="btn btn-line" id="save" aria-pressed="false">${icone(CORACAO,18,"")}<span>Salvar</span></button></div></div>
   <div class="imovel-layout">
    <div class="box imovel-sobre"><h3>Sobre o imóvel</h3><p style="white-space:pre-line">${esc(item.descricao||'Descrição não cadastrada.')}</p></div>
    ${linhas.length?`<div class="box imovel-valores"><h3>Valores</h3><dl class="vals">${linhas.map(([r,v])=>`<dt>${r}</dt><dd>${v}</dd>`).join('')}</dl></div>`:''}
@@ -125,17 +143,18 @@ det.addEventListener('click',async e=>{
   if(e.target.closest('#save')) {
     const favs=getFavs(),found=favs.includes(currentItem.codigo);
     setFavs(found?favs.filter(x=>x!==currentItem.codigo):[...favs,currentItem.codigo]);
-    $('#save').textContent=found?'Salvar':'Salvo ✓';
+    marcarSalvo(!found);
     $('#announce').textContent=found?'Removido dos favoritos.':'Salvo neste navegador.';
   }
 });
+function marcarSalvo(salvo){const b=$('#save');if(!b)return;b.setAttribute('aria-pressed',String(salvo));const t=b.querySelector('span');if(t)t.textContent=salvo?'Salvo':'Salvar';}
 getCatalog().then(items=>{
   const item=items.find(x=>x.codigo===code);
   if(!item){det.innerHTML=`<a class="back" href="${SITE_ROOT}index.html#imoveis">← Voltar</a><div class="box"><h3>Imóvel não disponível</h3></div>`;return;}
   currentItem=item;
   document.title=`${item.titulo} | Imoplace`;
   det.innerHTML=detailsHTML(item);
-  $('#save').textContent=getFavs().includes(item.codigo)?'Salvo ✓':'Salvar';
+  marcarSalvo(getFavs().includes(item.codigo));
 }).catch(error=>{console.warn('Catálogo temporariamente indisponível. Exibindo HTML estático do build.',error);}).finally(()=>{window.ImoplaceLead?.mount(det);ligarZapFlutuante();});
 
 /* Contagem anônima: uma chamada por carregamento; não identifica visitantes. */
