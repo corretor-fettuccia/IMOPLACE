@@ -250,3 +250,16 @@ button:disabled{opacity:.6;cursor:not-allowed}
 .faixa-info .fi-valor .price{font-size:1.15rem}
 .dhead .dt{font-size:1.2rem}
 }
+
+/* Ajuste ao rascunho aprovado: cartões e faixa na mesma altura compacta; Salvar claro com contorno */
+.stats div{padding:3px 8px}
+.stats b{font-size:1rem;line-height:1.1}
+.stats span{font-size:.72rem;line-height:1.15}
+.stats .ico,.faixa-info .ico{width:18px;height:18px}
+.faixa-info{padding:3px 10px}
+.faixa-info b{font-size:1rem;line-height:1.1}
+.faixa-info span{font-size:.72rem;line-height:1.15}
+.faixa-info .fi-valor .price{font-size:1.15rem;line-height:1.1}
+.dhead .dact #save{background:var(--surface);color:inherit;border:1px solid var(--line);min-height:32px;padding:0 12px;font-weight:600}
+.dhead .dact #save:hover{border-color:currentColor}
+@media(max-width:820px){.stats{grid-template-columns:repeat(3,minmax(0,1fr))}.faixa-info{padding:5px 10px}.faixa-info .fi-valor .price{font-size:1.05rem}}
