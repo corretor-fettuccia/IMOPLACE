@@ -1,8 +1,8 @@
 {
   "schemaVersao": 2,
   "contrato": "imoplace-v1",
-  "geradoEm": "2026-11-22T23:08:16.895889+00:00",
-  "total": 23,
+  "geradoEm": "2026-11-22T23:32:20.001233+00:00",
+  "total": 24,
   "imoveis": [
     {
       "id": "1004",
@@ -4354,6 +4354,184 @@
           "arquivo": "imoveis/novo-imovel-1018/imagens/manoelsilveira-132-belavista-nsr-anajuli-i90342351e6.v1.webp",
           "legenda": "Lavanderia",
           "alt": "Casa semimobiliada de 3 dormitórios e 100 m² | Centro de Nova Santa Rita — foto 24"
+        }
+      ]
+    },
+    {
+      "id": "1017",
+      "codigo": "sobrado-04dormitorios-reservas-do-lago-nova-santa-rita-1017",
+      "categoria": "venda",
+      "status": "publicado",
+      "url": "https://imoplace.com.br/imoveis/sobrado-04dormitorios-reservas-do-lago-nova-santa-rita-1017/",
+      "destaque": false,
+      "tag": "DESTAQUE",
+      "ordem": 0,
+      "atualizadoEm": "2026-11-22T23:31:13.661Z",
+      "tipo": "Casa",
+      "condicao": "Novo",
+      "titulo": "Reservas do Lago | Casa de 240 m² com 4 dormitórios | Nova Santa Rita",
+      "descricao": "IMOPLACE VENDE | SOBRADO NO RESERVAS DO LAGO | Nova Santa Rita – RS\n\nCasa nova de 240 m² em lote de esquina com 391,88 m². O destaque é o living com pé-direito duplo, integrado à cozinha com churrasqueira. Na área íntima, são quatro dormitórios, incluindo duas suítes com sacada.\n\nDESTAQUES DO SOBRADO\n• 4 dormitórios, sendo 2 suítes com sacada\n• Living amplo com pé-direito duplo\n• Cozinha integrada com churrasqueira\n• 4 banheiros, incluindo o da dependência de serviço\n• Dependência de serviço completa\n• Depósitos interno e externo\n• 2 vagas cobertas de garagem\n\nLAZER E SEGURANÇA NO CONDOMÍNIO\n• Portaria 24 horas, controle de acesso e monitoramento por câmeras\n• Piscina térmica coberta e piscina com borda panorâmica\n• Academia equipada\n• Quadras de tênis, futebol e poliesportiva\n• Espaço gourmet e salão de festas\n• Chopeira e água quente para chimarrão\n• Espaço kids, playground e áreas verdes\n• Coworking com internet banda larga\n• Condomínio que aceita animais de estimação\n\nLOCALIZAÇÃO E ACESSOS\n• Próximo ao Centro e à Policlínica de Nova Santa Rita\n• Escolas, comércio e serviços na região\n• Próximo ao viaduto da BR-386, com acesso à BR-448 (Rodovia do Parque)\n• Conexão com Canoas e Porto Alegre\n\nFINANCIAMENTO\nAceita financiamento pelas linhas SBPE e Pró-Cotista, conforme enquadramento.\n\nAGENDE SUA VISITA\nWhatsApp (51) 99811-1078",
+      "seo": {
+        "titulo": "Casa com 4 dormitórios no Reservas do Lago",
+        "descricao": "Lote de esquina com 391,88 m², duas suítes com sacada, living com pé-direito duplo e duas vagas cobertas."
+      },
+      "localizacao": {
+        "bairro": "Sanga Funda",
+        "cidade": "Nova Santa Rita",
+        "uf": "RS",
+        "endereco": "Condomínio Reservas do Lago",
+        "lat": null,
+        "lng": null
+      },
+      "preco": 1500000.0,
+      "condominio": null,
+      "iptuAnual": null,
+      "financiamento": true,
+      "permuta": false,
+      "documentacaoEmDia": false,
+      "dormitorios": 4.0,
+      "suites": 2.0,
+      "banheiros": 4.0,
+      "vagas": 2.0,
+      "areaTotal": 391.88,
+      "areaUtil": 240.0,
+      "comodidades": [],
+      "caracteristicasImovel": [
+        "Duas suítes com sacada e quatro banheiros informados",
+        "Living com pé-direito duplo",
+        "Cozinha integrada com churrasqueira",
+        "Dependência completa e depósitos interno e externo",
+        "Duas vagas cobertas em lote de 391",
+        "88 m²"
+      ],
+      "caracteristicasCondominio": [],
+      "anunciante": {
+        "nome": "Roberto",
+        "creci": "83599-F",
+        "whatsapp": "5551998111078"
+      },
+      "feeds": {
+        "google": false,
+        "meta": false,
+        "disponibilidade": "in_stock"
+      },
+      "midias": [],
+      "links_externos": [],
+      "imagens": [
+        {
+          "arquivo": "imoveis/sobrado-04dormitorios-reservas-do-lago-nova-santa-rita-1017/imagens/big-e18fc88df6c4a8bc5a8e65a2b974cd8a-i01101e4f36.v1.webp",
+          "legenda": "Foto 1",
+          "alt": "Reservas do Lago | Casa de 240 m² com 4 dormitórios | Nova Santa Rita — foto 1"
+        },
+        {
+          "arquivo": "imoveis/sobrado-04dormitorios-reservas-do-lago-nova-santa-rita-1017/imagens/big-54a40691bfbec54f69d5e996dbda0ac3-i81f4886604.v1.webp",
+          "legenda": "Foto 2",
+          "alt": "Reservas do Lago | Casa de 240 m² com 4 dormitórios | Nova Santa Rita — foto 2"
+        },
+        {
+          "arquivo": "imoveis/sobrado-04dormitorios-reservas-do-lago-nova-santa-rita-1017/imagens/big-06c1f2c78548095f3194f85b5196adff-i3139852ffc.v1.webp",
+          "legenda": "Foto 3",
+          "alt": "Reservas do Lago | Casa de 240 m² com 4 dormitórios | Nova Santa Rita — foto 3"
+        },
+        {
+          "arquivo": "imoveis/sobrado-04dormitorios-reservas-do-lago-nova-santa-rita-1017/imagens/big-841bbf17b9d053cd8095e444f4170f71-ic757ee05f2.v1.webp",
+          "legenda": "Foto 4",
+          "alt": "Reservas do Lago | Casa de 240 m² com 4 dormitórios | Nova Santa Rita — foto 4"
+        },
+        {
+          "arquivo": "imoveis/sobrado-04dormitorios-reservas-do-lago-nova-santa-rita-1017/imagens/big-66c42f462f2198ef5fe7f2e2ac86d040-i080cebce04.v1.webp",
+          "legenda": "Foto 5",
+          "alt": "Reservas do Lago | Casa de 240 m² com 4 dormitórios | Nova Santa Rita — foto 5"
+        },
+        {
+          "arquivo": "imoveis/sobrado-04dormitorios-reservas-do-lago-nova-santa-rita-1017/imagens/big-58f10fbeccc0caea744b4da8f14b15e0-ib3600139d8.v1.webp",
+          "legenda": "Foto 6",
+          "alt": "Reservas do Lago | Casa de 240 m² com 4 dormitórios | Nova Santa Rita — foto 6"
+        },
+        {
+          "arquivo": "imoveis/sobrado-04dormitorios-reservas-do-lago-nova-santa-rita-1017/imagens/big-053e215df37939677b422aa063d0e58c-ic482edca4d.v1.webp",
+          "legenda": "Foto 7",
+          "alt": "Reservas do Lago | Casa de 240 m² com 4 dormitórios | Nova Santa Rita — foto 7"
+        },
+        {
+          "arquivo": "imoveis/sobrado-04dormitorios-reservas-do-lago-nova-santa-rita-1017/imagens/big-3b4d32ce551fa6a3add1b9ae35cf2d20-i9224a8e0be.v1.webp",
+          "legenda": "Foto 8",
+          "alt": "Reservas do Lago | Casa de 240 m² com 4 dormitórios | Nova Santa Rita — foto 8"
+        },
+        {
+          "arquivo": "imoveis/sobrado-04dormitorios-reservas-do-lago-nova-santa-rita-1017/imagens/big-adfd7d09784a70cb98e31797a6e6de9c-i22a50b4432.v1.webp",
+          "legenda": "Foto 9",
+          "alt": "Reservas do Lago | Casa de 240 m² com 4 dormitórios | Nova Santa Rita — foto 9"
+        },
+        {
+          "arquivo": "imoveis/sobrado-04dormitorios-reservas-do-lago-nova-santa-rita-1017/imagens/big-3f1df3712be9d869851885ac3e991cc4-i7b4e2aee9d.v1.webp",
+          "legenda": "Foto 10",
+          "alt": "Reservas do Lago | Casa de 240 m² com 4 dormitórios | Nova Santa Rita — foto 10"
+        },
+        {
+          "arquivo": "imoveis/sobrado-04dormitorios-reservas-do-lago-nova-santa-rita-1017/imagens/big-3f7d8615304f788d36bd99aee5ef9c28-i57f08f4515.v1.webp",
+          "legenda": "Foto 11",
+          "alt": "Reservas do Lago | Casa de 240 m² com 4 dormitórios | Nova Santa Rita — foto 11"
+        },
+        {
+          "arquivo": "imoveis/sobrado-04dormitorios-reservas-do-lago-nova-santa-rita-1017/imagens/big-0d6ad8f02249727de9a5da52c3402e05-i44967e6b47.v1.webp",
+          "legenda": "Foto 12",
+          "alt": "Reservas do Lago | Casa de 240 m² com 4 dormitórios | Nova Santa Rita — foto 12"
+        },
+        {
+          "arquivo": "imoveis/sobrado-04dormitorios-reservas-do-lago-nova-santa-rita-1017/imagens/big-615873e885e38ab6f63df59154d3fbf7-i83e12acad7.v1.webp",
+          "legenda": "Foto 13",
+          "alt": "Reservas do Lago | Casa de 240 m² com 4 dormitórios | Nova Santa Rita — foto 13"
+        },
+        {
+          "arquivo": "imoveis/sobrado-04dormitorios-reservas-do-lago-nova-santa-rita-1017/imagens/big-82ebf6ecaec2903ea5af11b8cebddc73-i382d3340b4.v1.webp",
+          "legenda": "Foto 14",
+          "alt": "Reservas do Lago | Casa de 240 m² com 4 dormitórios | Nova Santa Rita — foto 14"
+        },
+        {
+          "arquivo": "imoveis/sobrado-04dormitorios-reservas-do-lago-nova-santa-rita-1017/imagens/big-f25a05170d6bd3521e3fa731a6964963-i0aa22ec02c.v1.webp",
+          "legenda": "Foto 15",
+          "alt": "Reservas do Lago | Casa de 240 m² com 4 dormitórios | Nova Santa Rita — foto 15"
+        },
+        {
+          "arquivo": "imoveis/sobrado-04dormitorios-reservas-do-lago-nova-santa-rita-1017/imagens/big-dff2ad5502a594fdbb9ea6c5a019be75-ibecd648435.v1.webp",
+          "legenda": "Foto 16",
+          "alt": "Reservas do Lago | Casa de 240 m² com 4 dormitórios | Nova Santa Rita — foto 16"
+        },
+        {
+          "arquivo": "imoveis/sobrado-04dormitorios-reservas-do-lago-nova-santa-rita-1017/imagens/big-38b68ea4702484c61eb7d201a8acb700-if11860b420.v1.webp",
+          "legenda": "Foto 17",
+          "alt": "Reservas do Lago | Casa de 240 m² com 4 dormitórios | Nova Santa Rita — foto 17"
+        },
+        {
+          "arquivo": "imoveis/sobrado-04dormitorios-reservas-do-lago-nova-santa-rita-1017/imagens/big-bdc1d25654ee313d5ec280b155a480c1-i0b6734dd34.v1.webp",
+          "legenda": "Foto 18",
+          "alt": "Reservas do Lago | Casa de 240 m² com 4 dormitórios | Nova Santa Rita — foto 18"
+        },
+        {
+          "arquivo": "imoveis/sobrado-04dormitorios-reservas-do-lago-nova-santa-rita-1017/imagens/big-fd18e669144b7aa687e3483959661722-ib900947b15.v1.webp",
+          "legenda": "Foto 19",
+          "alt": "Reservas do Lago | Casa de 240 m² com 4 dormitórios | Nova Santa Rita — foto 19"
+        },
+        {
+          "arquivo": "imoveis/sobrado-04dormitorios-reservas-do-lago-nova-santa-rita-1017/imagens/big-1b74555ce27581620e4ecd4ad564ee81-i28eba62e3f.v1.webp",
+          "legenda": "Foto 20",
+          "alt": "Reservas do Lago | Casa de 240 m² com 4 dormitórios | Nova Santa Rita — foto 20"
+        },
+        {
+          "arquivo": "imoveis/sobrado-04dormitorios-reservas-do-lago-nova-santa-rita-1017/imagens/big-e78272629c87182e71f04820de148192-idbde45d1c5.v1.webp",
+          "legenda": "Foto 21",
+          "alt": "Reservas do Lago | Casa de 240 m² com 4 dormitórios | Nova Santa Rita — foto 21"
+        },
+        {
+          "arquivo": "imoveis/sobrado-04dormitorios-reservas-do-lago-nova-santa-rita-1017/imagens/big-e24a4ac22547b62e6ce9d3cb9cd1e1f3-ia3e085f654.v1.webp",
+          "legenda": "Foto 22",
+          "alt": "Reservas do Lago | Casa de 240 m² com 4 dormitórios | Nova Santa Rita — foto 22"
+        },
+        {
+          "arquivo": "imoveis/sobrado-04dormitorios-reservas-do-lago-nova-santa-rita-1017/imagens/big-c09e9f4b2125c91eeb10305f55c2786f-ibc7aee97c9.v1.webp",
+          "legenda": "Foto 23",
+          "alt": "Reservas do Lago | Casa de 240 m² com 4 dormitórios | Nova Santa Rita — foto 23"
         }
       ]
     },
