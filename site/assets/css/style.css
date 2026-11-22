@@ -285,3 +285,10 @@ button:disabled{opacity:.6;cursor:not-allowed}
 .gal-mini.so-cel{display:block}
 .gal-faixa.so-cel{display:flex}
 }
+
+/* Celular: fonte mais leve. Dados e faixa em Public Sans 600; preço e título em Bricolage 700 (único destaque forte). Computador inalterado. */
+@media(max-width:820px){
+.stats b,.faixa-info .fi b{font-family:var(--b);font-weight:600;letter-spacing:0}
+.faixa-info .fi-valor .price{font-weight:700}
+.dhead .dt{font-weight:700}
+}

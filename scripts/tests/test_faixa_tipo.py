@@ -74,6 +74,13 @@ class Faixa(unittest.TestCase):
         for sel in ('.faixa-info{', '.faixa-info .fi+.fi', '#save[aria-pressed="true"] svg'):
             self.assertIn(sel, css)
 
+    def test_fonte_leve_so_no_celular(self):
+        css = (RAIZ / 'site/assets/css/style.css').read_text(encoding='utf-8')
+        bloco = css[css.index('Celular: fonte mais leve'):]
+        self.assertTrue(bloco.split('\n', 1)[1].startswith('@media(max-width:820px){'))
+        self.assertIn('.stats b,.faixa-info .fi b{font-family:var(--b);font-weight:600', bloco)
+        self.assertIn('.dhead .dt{font-weight:700}', bloco)
+
     def test_publicados_tem_faixa(self):
         pags = [p for p in (RAIZ / 'site/imoveis').glob('*/index.html')] if (RAIZ / 'site/imoveis').exists() else []
         pags = [p for p in pags if 'imovel-layout' in p.read_text(encoding='utf-8')]
