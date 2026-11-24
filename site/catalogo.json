@@ -1,7 +1,7 @@
 {
   "schemaVersao": 2,
   "contrato": "imoplace-v1",
-  "geradoEm": "2026-11-24T12:06:17.153307+00:00",
+  "geradoEm": "2026-11-24T12:14:04.583245+00:00",
   "total": 26,
   "imoveis": [
     {
@@ -3374,7 +3374,7 @@
       "destaque": false,
       "tag": "Black Friday",
       "ordem": 0,
-      "atualizadoEm": "2026-11-24T12:05:17.259Z",
+      "atualizadoEm": "2026-11-24T12:13:10.583Z",
       "tipo": "Terreno",
       "condicao": "Novo",
       "titulo": "Lote 4.500m² (50x90) por R$120.000 | Mini sítio a 650m da BR-386 em Nova Santa Rita",
@@ -3387,7 +3387,7 @@
         "bairro": "",
         "cidade": "Nova Santa Rita",
         "uf": "RS",
-        "endereco": "https://maps.app.goo.gl/aZ79Zw3aivvmfRku9",
+        "endereco": "nova santa rita-rs",
         "lat": null,
         "lng": null
       },
