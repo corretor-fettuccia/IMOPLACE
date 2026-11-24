@@ -1,7 +1,7 @@
 {
   "schemaVersao": 2,
   "contrato": "imoplace-v1",
-  "geradoEm": "2026-11-24T13:17:21.974989+00:00",
+  "geradoEm": "2026-11-24T13:30:28.865026+00:00",
   "total": 27,
   "imoveis": [
     {
@@ -136,14 +136,14 @@
     },
     {
       "id": "1012",
-      "codigo": "novo-imovel-1012",
+      "codigo": "sobrado-671m2-total-330m2-privativo-nova-santa-rita-1012",
       "categoria": "venda",
       "status": "publicado",
-      "url": "https://imoplace.com.br/imoveis/novo-imovel-1012/",
+      "url": "https://imoplace.com.br/imoveis/sobrado-671m2-total-330m2-privativo-nova-santa-rita-1012/",
       "destaque": true,
       "tag": "Exclusividade",
       "ordem": 1,
-      "atualizadoEm": "2026-11-17T13:03:15.579Z",
+      "atualizadoEm": "2026-11-24T13:29:19.125Z",
       "tipo": "Sobrado",
       "condicao": "Usado",
       "titulo": "Sobrado Colonial | 3 Dormitórios com Suíte Master | Salão de Festas | Centro de Nova Santa Rita",
@@ -216,157 +216,157 @@
       "links_externos": [],
       "imagens": [
         {
-          "arquivo": "imoveis/novo-imovel-1012/imagens/foto-33-dr-lourencozaccaro-290-centro-ns-i8d99e438a6.v1.webp",
+          "arquivo": "imoveis/sobrado-671m2-total-330m2-privativo-nova-santa-rita-1012/imagens/foto-33-dr-lourencozaccaro-290-centro-ns-i8d99e438a6.v1.webp",
           "legenda": "Foto 1",
           "alt": "Sobrado Colonial | 3 Dormitórios com Suíte Master | Salão de Festas | Centro de Nova Santa Rita — foto 1"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1012/imagens/foto-32-dr-lourencozaccaro-290-centro-ns-i3b746dc367.v1.webp",
+          "arquivo": "imoveis/sobrado-671m2-total-330m2-privativo-nova-santa-rita-1012/imagens/foto-32-dr-lourencozaccaro-290-centro-ns-i3b746dc367.v1.webp",
           "legenda": "Foto 2",
           "alt": "Sobrado Colonial | 3 Dormitórios com Suíte Master | Salão de Festas | Centro de Nova Santa Rita — foto 2"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1012/imagens/foto-31-dr-lourencozaccaro-290-centro-ns-ib33e53460b.v1.webp",
+          "arquivo": "imoveis/sobrado-671m2-total-330m2-privativo-nova-santa-rita-1012/imagens/foto-31-dr-lourencozaccaro-290-centro-ns-ib33e53460b.v1.webp",
           "legenda": "Foto 3",
           "alt": "Sobrado Colonial | 3 Dormitórios com Suíte Master | Salão de Festas | Centro de Nova Santa Rita — foto 3"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1012/imagens/foto-30-dr-lourencozaccaro-290-centro-ns-i834fe46a7d.v1.webp",
+          "arquivo": "imoveis/sobrado-671m2-total-330m2-privativo-nova-santa-rita-1012/imagens/foto-30-dr-lourencozaccaro-290-centro-ns-i834fe46a7d.v1.webp",
           "legenda": "Foto 4",
           "alt": "Sobrado Colonial | 3 Dormitórios com Suíte Master | Salão de Festas | Centro de Nova Santa Rita — foto 4"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1012/imagens/foto-28-dr-lourencozaccaro-290-centro-ns-if090f2337d.v1.webp",
+          "arquivo": "imoveis/sobrado-671m2-total-330m2-privativo-nova-santa-rita-1012/imagens/foto-28-dr-lourencozaccaro-290-centro-ns-if090f2337d.v1.webp",
           "legenda": "Foto 5",
           "alt": "Sobrado Colonial | 3 Dormitórios com Suíte Master | Salão de Festas | Centro de Nova Santa Rita — foto 5"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1012/imagens/foto-27-dr-lourencozaccaro-290-centro-ns-ie9bbd6998d.v1.webp",
+          "arquivo": "imoveis/sobrado-671m2-total-330m2-privativo-nova-santa-rita-1012/imagens/foto-27-dr-lourencozaccaro-290-centro-ns-ie9bbd6998d.v1.webp",
           "legenda": "Foto 6",
           "alt": "Sobrado Colonial | 3 Dormitórios com Suíte Master | Salão de Festas | Centro de Nova Santa Rita — foto 6"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1012/imagens/foto-25-dr-lourencozaccaro-290-centro-ns-i8ca169c813.v1.webp",
+          "arquivo": "imoveis/sobrado-671m2-total-330m2-privativo-nova-santa-rita-1012/imagens/foto-25-dr-lourencozaccaro-290-centro-ns-i8ca169c813.v1.webp",
           "legenda": "Foto 7",
           "alt": "Sobrado Colonial | 3 Dormitórios com Suíte Master | Salão de Festas | Centro de Nova Santa Rita — foto 7"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1012/imagens/foto-24-dr-lourencozaccaro-290-centro-ns-iad80310824.v1.webp",
+          "arquivo": "imoveis/sobrado-671m2-total-330m2-privativo-nova-santa-rita-1012/imagens/foto-24-dr-lourencozaccaro-290-centro-ns-iad80310824.v1.webp",
           "legenda": "Foto 8",
           "alt": "Sobrado Colonial | 3 Dormitórios com Suíte Master | Salão de Festas | Centro de Nova Santa Rita — foto 8"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1012/imagens/foto-23-dr-lourencozaccaro-290-centro-ns-i34206516d4.v1.webp",
+          "arquivo": "imoveis/sobrado-671m2-total-330m2-privativo-nova-santa-rita-1012/imagens/foto-23-dr-lourencozaccaro-290-centro-ns-i34206516d4.v1.webp",
           "legenda": "Foto 9",
           "alt": "Sobrado Colonial | 3 Dormitórios com Suíte Master | Salão de Festas | Centro de Nova Santa Rita — foto 9"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1012/imagens/foto-22-dr-lourencozaccaro-290-centro-ns-i64192da8ed.v1.webp",
+          "arquivo": "imoveis/sobrado-671m2-total-330m2-privativo-nova-santa-rita-1012/imagens/foto-22-dr-lourencozaccaro-290-centro-ns-i64192da8ed.v1.webp",
           "legenda": "Foto 10",
           "alt": "Sobrado Colonial | 3 Dormitórios com Suíte Master | Salão de Festas | Centro de Nova Santa Rita — foto 10"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1012/imagens/foto-21-dr-lourencozaccaro-290-centro-ns-i28b7e1c2b5.v1.webp",
+          "arquivo": "imoveis/sobrado-671m2-total-330m2-privativo-nova-santa-rita-1012/imagens/foto-21-dr-lourencozaccaro-290-centro-ns-i28b7e1c2b5.v1.webp",
           "legenda": "Foto 11",
           "alt": "Sobrado Colonial | 3 Dormitórios com Suíte Master | Salão de Festas | Centro de Nova Santa Rita — foto 11"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1012/imagens/foto-20-dr-lourencozaccaro-290-centro-ns-i21c4717b9a.v1.webp",
+          "arquivo": "imoveis/sobrado-671m2-total-330m2-privativo-nova-santa-rita-1012/imagens/foto-20-dr-lourencozaccaro-290-centro-ns-i21c4717b9a.v1.webp",
           "legenda": "Foto 12",
           "alt": "Sobrado Colonial | 3 Dormitórios com Suíte Master | Salão de Festas | Centro de Nova Santa Rita — foto 12"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1012/imagens/foto-19-dr-lourencozaccaro-290-centro-ns-ibc63068122.v1.webp",
+          "arquivo": "imoveis/sobrado-671m2-total-330m2-privativo-nova-santa-rita-1012/imagens/foto-19-dr-lourencozaccaro-290-centro-ns-ibc63068122.v1.webp",
           "legenda": "Foto 13",
           "alt": "Sobrado Colonial | 3 Dormitórios com Suíte Master | Salão de Festas | Centro de Nova Santa Rita — foto 13"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1012/imagens/foto-18-dr-lourencozaccaro-290-centro-ns-i230b890cc5.v1.webp",
+          "arquivo": "imoveis/sobrado-671m2-total-330m2-privativo-nova-santa-rita-1012/imagens/foto-18-dr-lourencozaccaro-290-centro-ns-i230b890cc5.v1.webp",
           "legenda": "Foto 14",
           "alt": "Sobrado Colonial | 3 Dormitórios com Suíte Master | Salão de Festas | Centro de Nova Santa Rita — foto 14"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1012/imagens/foto-17-dr-lourencozaccaro-290-centro-ns-iaf202035a7.v1.webp",
+          "arquivo": "imoveis/sobrado-671m2-total-330m2-privativo-nova-santa-rita-1012/imagens/foto-17-dr-lourencozaccaro-290-centro-ns-iaf202035a7.v1.webp",
           "legenda": "Foto 15",
           "alt": "Sobrado Colonial | 3 Dormitórios com Suíte Master | Salão de Festas | Centro de Nova Santa Rita — foto 15"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1012/imagens/foto-16-dr-lourencozaccaro-290-centro-ns-i931bbdbcaf.v1.webp",
+          "arquivo": "imoveis/sobrado-671m2-total-330m2-privativo-nova-santa-rita-1012/imagens/foto-16-dr-lourencozaccaro-290-centro-ns-i931bbdbcaf.v1.webp",
           "legenda": "Foto 16",
           "alt": "Sobrado Colonial | 3 Dormitórios com Suíte Master | Salão de Festas | Centro de Nova Santa Rita — foto 16"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1012/imagens/foto-15-dr-lourencozaccaro-290-centro-ns-ib6b3a872cb.v1.webp",
+          "arquivo": "imoveis/sobrado-671m2-total-330m2-privativo-nova-santa-rita-1012/imagens/foto-15-dr-lourencozaccaro-290-centro-ns-ib6b3a872cb.v1.webp",
           "legenda": "Foto 17",
           "alt": "Sobrado Colonial | 3 Dormitórios com Suíte Master | Salão de Festas | Centro de Nova Santa Rita — foto 17"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1012/imagens/foto-14-dr-lourencozaccaro-290-centro-ns-iad8fc06b3a.v1.webp",
+          "arquivo": "imoveis/sobrado-671m2-total-330m2-privativo-nova-santa-rita-1012/imagens/foto-14-dr-lourencozaccaro-290-centro-ns-iad8fc06b3a.v1.webp",
           "legenda": "Foto 18",
           "alt": "Sobrado Colonial | 3 Dormitórios com Suíte Master | Salão de Festas | Centro de Nova Santa Rita — foto 18"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1012/imagens/foto-13-dr-lourencozaccaro-290-centro-ns-i8921e91cc5.v1.webp",
+          "arquivo": "imoveis/sobrado-671m2-total-330m2-privativo-nova-santa-rita-1012/imagens/foto-13-dr-lourencozaccaro-290-centro-ns-i8921e91cc5.v1.webp",
           "legenda": "Foto 19",
           "alt": "Sobrado Colonial | 3 Dormitórios com Suíte Master | Salão de Festas | Centro de Nova Santa Rita — foto 19"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1012/imagens/foto-12-dr-lourencozaccaro-290-centro-ns-i3ccf36498a.v1.webp",
+          "arquivo": "imoveis/sobrado-671m2-total-330m2-privativo-nova-santa-rita-1012/imagens/foto-12-dr-lourencozaccaro-290-centro-ns-i3ccf36498a.v1.webp",
           "legenda": "Foto 20",
           "alt": "Sobrado Colonial | 3 Dormitórios com Suíte Master | Salão de Festas | Centro de Nova Santa Rita — foto 20"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1012/imagens/foto-11-dr-lourencozaccaro-290-centro-ns-i981427b351.v1.webp",
+          "arquivo": "imoveis/sobrado-671m2-total-330m2-privativo-nova-santa-rita-1012/imagens/foto-11-dr-lourencozaccaro-290-centro-ns-i981427b351.v1.webp",
           "legenda": "Foto 21",
           "alt": "Sobrado Colonial | 3 Dormitórios com Suíte Master | Salão de Festas | Centro de Nova Santa Rita — foto 21"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1012/imagens/foto-10-dr-lourencozaccaro-290-centro-ns-i536d9b8ad2.v1.webp",
+          "arquivo": "imoveis/sobrado-671m2-total-330m2-privativo-nova-santa-rita-1012/imagens/foto-10-dr-lourencozaccaro-290-centro-ns-i536d9b8ad2.v1.webp",
           "legenda": "Foto 22",
           "alt": "Sobrado Colonial | 3 Dormitórios com Suíte Master | Salão de Festas | Centro de Nova Santa Rita — foto 22"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1012/imagens/foto-9-dr-lourencozaccaro-290-centro-nsr-i0fafba07e4.v1.webp",
+          "arquivo": "imoveis/sobrado-671m2-total-330m2-privativo-nova-santa-rita-1012/imagens/foto-9-dr-lourencozaccaro-290-centro-nsr-i0fafba07e4.v1.webp",
           "legenda": "Foto 23",
           "alt": "Sobrado Colonial | 3 Dormitórios com Suíte Master | Salão de Festas | Centro de Nova Santa Rita — foto 23"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1012/imagens/foto-8-dr-lourencozaccaro-290-centro-nsr-i63dd440848.v1.webp",
+          "arquivo": "imoveis/sobrado-671m2-total-330m2-privativo-nova-santa-rita-1012/imagens/foto-8-dr-lourencozaccaro-290-centro-nsr-i63dd440848.v1.webp",
           "legenda": "Foto 24",
           "alt": "Sobrado Colonial | 3 Dormitórios com Suíte Master | Salão de Festas | Centro de Nova Santa Rita — foto 24"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1012/imagens/foto-7-dr-lourencozaccaro-290-centro-nsr-ib5a9edd461.v1.webp",
+          "arquivo": "imoveis/sobrado-671m2-total-330m2-privativo-nova-santa-rita-1012/imagens/foto-7-dr-lourencozaccaro-290-centro-nsr-ib5a9edd461.v1.webp",
           "legenda": "Foto 25",
           "alt": "Sobrado Colonial | 3 Dormitórios com Suíte Master | Salão de Festas | Centro de Nova Santa Rita — foto 25"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1012/imagens/foto-6-dr-lourencozaccaro-290-centro-nsr-i364e43b4df.v1.webp",
+          "arquivo": "imoveis/sobrado-671m2-total-330m2-privativo-nova-santa-rita-1012/imagens/foto-6-dr-lourencozaccaro-290-centro-nsr-i364e43b4df.v1.webp",
           "legenda": "Foto 26",
           "alt": "Sobrado Colonial | 3 Dormitórios com Suíte Master | Salão de Festas | Centro de Nova Santa Rita — foto 26"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1012/imagens/foto-5-dr-lourencozaccaro-290-centro-nsr-idf43d5badd.v1.webp",
+          "arquivo": "imoveis/sobrado-671m2-total-330m2-privativo-nova-santa-rita-1012/imagens/foto-5-dr-lourencozaccaro-290-centro-nsr-idf43d5badd.v1.webp",
           "legenda": "Foto 27",
           "alt": "Sobrado Colonial | 3 Dormitórios com Suíte Master | Salão de Festas | Centro de Nova Santa Rita — foto 27"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1012/imagens/foto-4-dr-lourencozaccaro-290-centro-nsr-i3b096700f7.v1.webp",
+          "arquivo": "imoveis/sobrado-671m2-total-330m2-privativo-nova-santa-rita-1012/imagens/foto-4-dr-lourencozaccaro-290-centro-nsr-i3b096700f7.v1.webp",
           "legenda": "Foto 28",
           "alt": "Sobrado Colonial | 3 Dormitórios com Suíte Master | Salão de Festas | Centro de Nova Santa Rita — foto 28"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1012/imagens/foto-3-dr-lourencozaccaro-290-centro-nsr-i507c13dc5a.v1.webp",
+          "arquivo": "imoveis/sobrado-671m2-total-330m2-privativo-nova-santa-rita-1012/imagens/foto-3-dr-lourencozaccaro-290-centro-nsr-i507c13dc5a.v1.webp",
           "legenda": "Foto 29",
           "alt": "Sobrado Colonial | 3 Dormitórios com Suíte Master | Salão de Festas | Centro de Nova Santa Rita — foto 29"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1012/imagens/foto-2-dr-lourencozaccaro-290-centro-nsr-i3af6e53a42.v1.webp",
+          "arquivo": "imoveis/sobrado-671m2-total-330m2-privativo-nova-santa-rita-1012/imagens/foto-2-dr-lourencozaccaro-290-centro-nsr-i3af6e53a42.v1.webp",
           "legenda": "Foto 30",
           "alt": "Sobrado Colonial | 3 Dormitórios com Suíte Master | Salão de Festas | Centro de Nova Santa Rita — foto 30"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1012/imagens/foto-1-dr-lourencozaccaro-290-centro-nsr-i0f87108ecf.v1.webp",
+          "arquivo": "imoveis/sobrado-671m2-total-330m2-privativo-nova-santa-rita-1012/imagens/foto-1-dr-lourencozaccaro-290-centro-nsr-i0f87108ecf.v1.webp",
           "legenda": "Foto 31",
           "alt": "Sobrado Colonial | 3 Dormitórios com Suíte Master | Salão de Festas | Centro de Nova Santa Rita — foto 31"
         }
