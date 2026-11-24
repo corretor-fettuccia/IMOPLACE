@@ -1,7 +1,7 @@
 {
   "schemaVersao": 2,
   "contrato": "imoplace-v1",
-  "geradoEm": "2026-11-24T13:37:31.377922+00:00",
+  "geradoEm": "2026-11-24T13:39:50.084410+00:00",
   "total": 27,
   "imoveis": [
     {
@@ -3471,7 +3471,7 @@
       "destaque": false,
       "tag": "Black Friday",
       "ordem": 0,
-      "atualizadoEm": "2026-11-24T12:49:57.384Z",
+      "atualizadoEm": "2026-11-24T13:38:56.681Z",
       "tipo": "Terreno",
       "condicao": "Novo",
       "titulo": "Lote 400m² (10x40) por R$120.000 | Terreno a 650m da BR-386 em Nova Santa Rita",
@@ -3524,12 +3524,12 @@
       "imagens": [
         {
           "arquivo": "imoveis/terreno10x40-nova-santa-rita-rs-terreno-lote-1032/imagens/2026-11-24-08-25-convertido-i479a0f9af1.v1.webp",
-          "legenda": "Medidas 50x90",
+          "legenda": "Medidas 10x40",
           "alt": "Lote 400m² (10x40) por R$120.000 | Terreno a 650m da BR-386 em Nova Santa Rita — foto 1"
         },
         {
           "arquivo": "imoveis/terreno10x40-nova-santa-rita-rs-terreno-lote-1032/imagens/2026-11-24-08-24-convertido-i8d6cf2ee6a.v1.webp",
-          "legenda": "4500m² por 120mil a 650m da BR-386",
+          "legenda": "400m² por 120mil a 650m da BR-386",
           "alt": "Lote 400m² (10x40) por R$120.000 | Terreno a 650m da BR-386 em Nova Santa Rita — foto 2"
         },
         {
@@ -3539,12 +3539,12 @@
         },
         {
           "arquivo": "imoveis/terreno10x40-nova-santa-rita-rs-terreno-lote-1032/imagens/whatsapp-image-2026-11-19-at-08-24-49-2-ie054279fa4.v1.webp",
-          "legenda": "Frente 50m - Profundidade 90m",
+          "legenda": "10x40",
           "alt": "Lote 400m² (10x40) por R$120.000 | Terreno a 650m da BR-386 em Nova Santa Rita — foto 4"
         },
         {
           "arquivo": "imoveis/terreno10x40-nova-santa-rita-rs-terreno-lote-1032/imagens/whatsapp-image-2026-11-19-at-08-24-49-3-if48c8e225d.v1.webp",
-          "legenda": "4500m²",
+          "legenda": "400m²",
           "alt": "Lote 400m² (10x40) por R$120.000 | Terreno a 650m da BR-386 em Nova Santa Rita — foto 5"
         },
         {
