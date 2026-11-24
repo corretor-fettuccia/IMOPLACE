@@ -1,7 +1,7 @@
 {
   "schemaVersao": 2,
   "contrato": "imoplace-v1",
-  "geradoEm": "2026-11-24T00:52:10.229337+00:00",
+  "geradoEm": "2026-11-24T01:00:54.514237+00:00",
   "total": 25,
   "imoveis": [
     {
@@ -3374,11 +3374,11 @@
       "destaque": false,
       "tag": "BLACK FRIDAY",
       "ordem": 0,
-      "atualizadoEm": "2026-11-24T00:52:03.928Z",
+      "atualizadoEm": "2026-11-24T00:59:57.357Z",
       "tipo": "Terreno",
       "condicao": "Novo",
       "titulo": "Terreno plano de 250 m² à venda | Vale do Sol, Nova Santa Rita",
-      "descricao": "Imoplace Vende - Procurando imóvel acessível, se liga nesta oportunidade, se casa pronta parece estar fora do alcance, na planta tal vez seja a solução.\n\nQuer construir uma casa independente, com pátio só seu? No Loteamento Vale do Sol, em Nova Santa Rita, este terreno plano de 250 m² (10 m de frente por 25 m de profundidade) dá espaço para planejar a casa e reservar área para jardim, lazer ou para os pets.\n\nO lote fica em rua pavimentada, em uma região tranquila e perto do Centro. O loteamento está pronto para morar, com fibra óptica disponível no bairro e praça, escola e ponto de ônibus nas proximidades.\n\nCONDIÇÕES DE COMPRA\n• Valor do terreno: R$ 105.000,00.\n• Matrícula regularizada e terreno pronto para financiar.\n• Possibilidade de financiamento somente do terreno.\n• Possibilidade de financiar a compra do terreno e a construção da casa na mesma operação pelo Minha Casa Minha Vida.\n• Possibilidade de usar o FGTS na modalidade de terreno e construção, conforme as regras do programa e a análise do banco.\n• Estuda desconto para pagamento à vista.\n\nQuer conhecer o lote ou simular a compra do terreno com a construção da casa? Fale com nosso time de especialistas e entenda como transformar sua expectativa em realidade.",
+      "descricao": "Imoplace Vende - Procurando imóvel acessível, se liga nesta oportunidade, se casa pronta parece estar fora do alcance, na planta tal vez seja a solução.\n\nQuer construir uma casa independente, com pátio só seu? No Loteamento Vale do Sol, em Nova Santa Rita, este terreno plano de 250 m² (10 m de frente por 25 m de profundidade) dá espaço para planejar a casa e reservar área para jardim, lazer ou para os pets.\n\nO lote fica em rua pavimentada, em uma região tranquila e perto do Centro. O loteamento está pronto para morar, com fibra óptica disponível no bairro e praça, escola e ponto de ônibus nas proximidades.\n\nCONDIÇÕES DE COMPRA\n• Valor do terreno: R$ 106.400,00.\n• Matrícula regularizada e terreno pronto para financiar.\n• Possibilidade de financiamento somente do terreno.\n• Possibilidade de financiar a compra do terreno e a construção da casa na mesma operação pelo Minha Casa Minha Vida.\n• Possibilidade de usar o FGTS na modalidade de terreno e construção, conforme as regras do programa e a análise do banco.\n• Estuda desconto para pagamento à vista.\n\nQuer conhecer o lote ou simular a compra do terreno com a construção da casa? Fale com nosso time de especialistas e entenda como transformar sua expectativa em realidade.",
       "seo": {
         "titulo": "Terreno de 250 m² no Vale do Sol | Nova Santa Rita-RS",
         "descricao": "Terreno plano de 250 m² no Vale do Sol, em Nova Santa Rita, por R$ 100.700. Rua pavimentada e opção de financiar terreno e construção pelo MCMV."
@@ -3391,7 +3391,7 @@
         "lat": null,
         "lng": null
       },
-      "preco": 105000.0,
+      "preco": 106400.0,
       "condominio": null,
       "iptuAnual": null,
       "financiamento": true,
