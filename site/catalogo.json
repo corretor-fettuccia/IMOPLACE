@@ -1,8 +1,8 @@
 {
   "schemaVersao": 2,
   "contrato": "imoplace-v1",
-  "geradoEm": "2026-11-24T12:14:04.583245+00:00",
-  "total": 26,
+  "geradoEm": "2026-11-24T12:16:44.087645+00:00",
+  "total": 25,
   "imoveis": [
     {
       "id": "1004",
@@ -3362,103 +3362,6 @@
               "mime": "image/jpeg"
             }
           }
-        }
-      ]
-    },
-    {
-      "id": "1032",
-      "codigo": "terreno50x90-nova-santa-rita-rs-area-sitio-1032",
-      "categoria": "venda",
-      "status": "publicado",
-      "url": "https://imoplace.com.br/imoveis/terreno50x90-nova-santa-rita-rs-area-sitio-1032/",
-      "destaque": false,
-      "tag": "Black Friday",
-      "ordem": 0,
-      "atualizadoEm": "2026-11-24T12:13:10.583Z",
-      "tipo": "Terreno",
-      "condicao": "Novo",
-      "titulo": "Lote 4.500m² (50x90) por R$120.000 | Mini sítio a 650m da BR-386 em Nova Santa Rita",
-      "descricao": "Imoplace Vende | Terreno de 4.500 m² por R$ 120 mil, perto do Velopark, em Nova Santa Rita.\nㅤ\nSão 50 metros de frente por 90 metros de profundidade, dentro do perímetro urbano de Nova Santa Rita, a apenas 650 metros da BR-386 e perto do Velopark.\nㅤ\nCom 50 metros de frente, você tem espaço para planejar a casa, a garagem e a entrada de veículos. Os 90 metros de profundidade permitem reservar área para pomar, horta e lazer. É uma opção para montar um mini sítio com acesso rápido à rodovia ou para quem procura espaço para instalar uma oficina, conforme o zoneamento municipal.\nㅤ\nOPÇÕES DE COMPRA\n• Área inteira — 50 m × 90 m (4.500 m²) - R$ 120.000\n• Meia área — 25 m × 90 m (2.250 m²) - R$ 70.000\n• Área menor — 12,50 m × 90 m (1.125 m²) - R$ 35.000\nㅤ\nQuer ver de perto o que cabe nesse terreno? Chame a Imoplace para receber a localização e agendar uma visita.",
-      "seo": {
-        "titulo": "Terreno 50x90 a 650m da BR-386 em Nova Santa Rita-RS| 120mil",
-        "descricao": "4.500 m² por R$ 120 mil em Nova Santa Rita! Monte seu mini sítio dentro da cidade, a só 650 m da BR-386, com espaço para casa, pomar e lazer. Agende sua visita!"
-      },
-      "localizacao": {
-        "bairro": "",
-        "cidade": "Nova Santa Rita",
-        "uf": "RS",
-        "endereco": "nova santa rita-rs",
-        "lat": null,
-        "lng": null
-      },
-      "preco": 120000.0,
-      "condominio": null,
-      "iptuAnual": null,
-      "financiamento": false,
-      "permuta": true,
-      "documentacaoEmDia": false,
-      "dormitorios": null,
-      "suites": null,
-      "banheiros": null,
-      "vagas": null,
-      "areaTotal": 4500.0,
-      "areaUtil": null,
-      "comodidades": [],
-      "caracteristicasImovel": [
-        "Frente 50m",
-        "Fundos 90m",
-        "Plano",
-        "Distante 650m da BR-386",
-        "Perímetro urbano"
-      ],
-      "caracteristicasCondominio": [],
-      "anunciante": {
-        "nome": "Roberto",
-        "creci": "83599-F",
-        "whatsapp": "5551998111078"
-      },
-      "feeds": {
-        "google": false,
-        "meta": false,
-        "disponibilidade": "in_stock"
-      },
-      "midias": [],
-      "links_externos": [],
-      "imagens": [
-        {
-          "arquivo": "imoveis/terreno50x90-nova-santa-rita-rs-area-sitio-1032/imagens/2026-11-24-08-25-convertido-i479a0f9af1.v1.webp",
-          "legenda": "Medidas 50x90",
-          "alt": "Lote 4.500m² (50x90) por R$120.000 | Mini sítio a 650m da BR-386 em Nova Santa Rita — foto 1"
-        },
-        {
-          "arquivo": "imoveis/terreno50x90-nova-santa-rita-rs-area-sitio-1032/imagens/2026-11-24-08-24-convertido-i8d6cf2ee6a.v1.webp",
-          "legenda": "4500m² por 120mil a 650m da BR-386",
-          "alt": "Lote 4.500m² (50x90) por R$120.000 | Mini sítio a 650m da BR-386 em Nova Santa Rita — foto 2"
-        },
-        {
-          "arquivo": "imoveis/terreno50x90-nova-santa-rita-rs-area-sitio-1032/imagens/whatsapp-image-2026-11-19-at-08-24-id3faad3a56.v1.webp",
-          "legenda": "Perímetro urbano.",
-          "alt": "Lote 4.500m² (50x90) por R$120.000 | Mini sítio a 650m da BR-386 em Nova Santa Rita — foto 3"
-        },
-        {
-          "arquivo": "imoveis/terreno50x90-nova-santa-rita-rs-area-sitio-1032/imagens/whatsapp-image-2026-11-19-at-08-24-49-2-ie054279fa4.v1.webp",
-          "legenda": "Frente 50m - Profundidade 90m",
-          "alt": "Lote 4.500m² (50x90) por R$120.000 | Mini sítio a 650m da BR-386 em Nova Santa Rita — foto 4"
-        },
-        {
-          "arquivo": "imoveis/terreno50x90-nova-santa-rita-rs-area-sitio-1032/imagens/whatsapp-image-2026-11-19-at-08-24-49-3-if48c8e225d.v1.webp",
-          "legenda": "4500m²",
-          "alt": "Lote 4.500m² (50x90) por R$120.000 | Mini sítio a 650m da BR-386 em Nova Santa Rita — foto 5"
-        },
-        {
-          "arquivo": "imoveis/terreno50x90-nova-santa-rita-rs-area-sitio-1032/imagens/whatsapp-image-2026-11-19-at-08-24-50-1-i7b3fee3e47.v1.webp",
-          "legenda": "Aceita fracionamento.",
-          "alt": "Lote 4.500m² (50x90) por R$120.000 | Mini sítio a 650m da BR-386 em Nova Santa Rita — foto 6"
-        },
-        {
-          "arquivo": "imoveis/terreno50x90-nova-santa-rita-rs-area-sitio-1032/imagens/whatsapp-image-2026-11-19-at-08-24-50-3-i24402ba91a.v1.webp",
-          "legenda": "Foto 7",
-          "alt": "Lote 4.500m² (50x90) por R$120.000 | Mini sítio a 650m da BR-386 em Nova Santa Rita — foto 7"
         }
       ]
     },
