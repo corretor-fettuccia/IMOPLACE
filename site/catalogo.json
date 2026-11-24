@@ -1,8 +1,8 @@
 {
   "schemaVersao": 2,
   "contrato": "imoplace-v1",
-  "geradoEm": "2026-11-23T11:22:20.682851+00:00",
-  "total": 24,
+  "geradoEm": "2026-11-24T00:48:32.620409+00:00",
+  "total": 25,
   "imoveis": [
     {
       "id": "1004",
@@ -13,7 +13,7 @@
       "destaque": true,
       "tag": "EXCLUSIVIDADE",
       "ordem": 0,
-      "atualizadoEm": "2026-11-23T11:21:22.675Z",
+      "atualizadoEm": "2026-11-23T11:44:02.524Z",
       "tipo": "Casa",
       "condicao": "Usado",
       "titulo": "CASA 4 DORMITÓRIOS COM SUÍTE E TERRENO DE 360m²",
@@ -3362,6 +3362,92 @@
               "mime": "image/jpeg"
             }
           }
+        }
+      ]
+    },
+    {
+      "id": "1031",
+      "codigo": "terreno-vale-do-sol-nova-santa-rita-1031",
+      "categoria": "venda",
+      "status": "publicado",
+      "url": "https://imoplace.com.br/imoveis/terreno-vale-do-sol-nova-santa-rita-1031/",
+      "destaque": false,
+      "tag": "BLACK FRIDAY",
+      "ordem": 0,
+      "atualizadoEm": "2026-11-24T00:47:42.381Z",
+      "tipo": "Terreno",
+      "condicao": "Novo",
+      "titulo": "Terreno plano de 250 m² à venda | Vale do Sol, Nova Santa Rita",
+      "descricao": "Imoplace Vende - Procurando imóvel acessível, se liga nesta oportunidade, se casa pronta parece estar fora do alcance, na planta tal vez seja a solução.\n\nQuer construir uma casa independente, com pátio só seu? No Loteamento Vale do Sol, em Nova Santa Rita, este terreno plano de 250 m² (10 m de frente por 25 m de profundidade) dá espaço para planejar a casa e reservar área para jardim, lazer ou para os pets.\n\nO lote fica em rua pavimentada, em uma região tranquila e perto do Centro. O loteamento está pronto para morar, com fibra óptica disponível no bairro e praça, escola e ponto de ônibus nas proximidades.\n\nCONDIÇÕES DE COMPRA\n• Valor do terreno: R$ 105.000,00.\n• Matrícula regularizada e terreno pronto para financiar.\n• Possibilidade de financiamento somente do terreno.\n• Possibilidade de financiar a compra do terreno e a construção da casa na mesma operação pelo Minha Casa Minha Vida.\n• Possibilidade de usar o FGTS na modalidade de terreno e construção, conforme as regras do programa e a análise do banco.\n• Estuda desconto para pagamento à vista.\n\nQuer conhecer o lote ou simular a compra do terreno com a construção da casa? Fale com nosso time de especialistas e entenda como transformar sua expectativa em realidade.",
+      "seo": {
+        "titulo": "Terreno de 250 m² no Vale do Sol | Nova Santa Rita-RS",
+        "descricao": "Terreno plano de 250 m² no Vale do Sol, em Nova Santa Rita, por R$ 100.700. Rua pavimentada e opção de financiar terreno e construção pelo MCMV."
+      },
+      "localizacao": {
+        "bairro": "Loteamento Vale do Sol",
+        "cidade": "Nova Santa Rita",
+        "uf": "RS",
+        "endereco": "Loteamento Vale do Sol, Nova Santa Rita – RS",
+        "lat": null,
+        "lng": null
+      },
+      "preco": 100700.0,
+      "condominio": null,
+      "iptuAnual": null,
+      "financiamento": true,
+      "permuta": false,
+      "documentacaoEmDia": true,
+      "dormitorios": null,
+      "suites": null,
+      "banheiros": null,
+      "vagas": null,
+      "areaTotal": 250.0,
+      "areaUtil": 250.0,
+      "comodidades": [],
+      "caracteristicasImovel": [
+        "Área total 250m²",
+        "Terreno plano",
+        "10 m de frente",
+        "25 m de profundidade",
+        "Rua pavimentada",
+        "Próximo ao Centro",
+        "Fibra óptica no bairro",
+        "Água encanada",
+        "fácil acesso Canoas e BR-386"
+      ],
+      "caracteristicasCondominio": [],
+      "anunciante": {
+        "nome": "Roberto",
+        "creci": "83599-F",
+        "whatsapp": "5551998111078"
+      },
+      "feeds": {
+        "google": false,
+        "meta": false,
+        "disponibilidade": "in_stock"
+      },
+      "midias": [],
+      "links_externos": [],
+      "imagens": [
+        {
+          "arquivo": "imoveis/terreno-vale-do-sol-nova-santa-rita-1031/imagens/c654bd2b-9d64-498f-9d46-1e05be3b51f5-con-i8cb9b26fa4.v1.webp",
+          "legenda": "Lote 10x25",
+          "alt": "Terreno plano de 250 m² à venda | Vale do Sol, Nova Santa Rita — foto 1"
+        },
+        {
+          "arquivo": "imoveis/terreno-vale-do-sol-nova-santa-rita-1031/imagens/777233f8-bada-4a59-8f76-f9ec43b4c663-con-iacb54107de.v1.webp",
+          "legenda": "Lote 10x25 plano",
+          "alt": "Terreno plano de 250 m² à venda | Vale do Sol, Nova Santa Rita — foto 2"
+        },
+        {
+          "arquivo": "imoveis/terreno-vale-do-sol-nova-santa-rita-1031/imagens/60837b4c-4664-460c-981a-a7edfd727d5c-con-i2428d89251.v1.webp",
+          "legenda": "Praça",
+          "alt": "Terreno plano de 250 m² à venda | Vale do Sol, Nova Santa Rita — foto 3"
+        },
+        {
+          "arquivo": "imoveis/terreno-vale-do-sol-nova-santa-rita-1031/imagens/74a3d1c9-fc7c-49f9-aef6-5d4ba81dd9fc-con-ibf90963e10.v1.webp",
+          "legenda": "Playground",
+          "alt": "Terreno plano de 250 m² à venda | Vale do Sol, Nova Santa Rita — foto 4"
         }
       ]
     },
