@@ -1,8 +1,8 @@
 {
   "schemaVersao": 2,
   "contrato": "imoplace-v1",
-  "geradoEm": "2026-11-24T12:16:44.087645+00:00",
-  "total": 25,
+  "geradoEm": "2026-11-24T12:48:53.279646+00:00",
+  "total": 26,
   "imoveis": [
     {
       "id": "1004",
@@ -3362,6 +3362,103 @@
               "mime": "image/jpeg"
             }
           }
+        }
+      ]
+    },
+    {
+      "id": "1032",
+      "codigo": "terreno50x90-nova-santa-rita-rs-area-sitio-1032",
+      "categoria": "venda",
+      "status": "publicado",
+      "url": "https://imoplace.com.br/imoveis/terreno50x90-nova-santa-rita-rs-area-sitio-1032/",
+      "destaque": false,
+      "tag": "Black Friday",
+      "ordem": 0,
+      "atualizadoEm": "2026-11-24T12:47:35.271Z",
+      "tipo": "Terreno",
+      "condicao": "Novo",
+      "titulo": "Lote 400m² (10x40) por R$120.000 | Terreno a 650m da BR-386 em Nova Santa Rita",
+      "descricao": "Imoplace Vende | Terreno de 400 m² por R$ 120 mil, perto do Velopark, em Nova Santa Rita.\nㅤ\nA apenas 650 metros da BR-386, este terreno fica dentro do perímetro urbano de Nova Santa Rita, perto do Velopark. A área total tem 10 metros de frente por 40 metros de profundidade, com a opção de comprar a área inteira ou um terreno de 10 × 20 m.\nㅤ\nQuer construir uma casa independente com pátio só seu? Na área de 400 m², os 40 metros de profundidade dão espaço para planejar a garagem na frente e reservar os fundos para uma churrasqueira, jardim ou horta. O terreno de 200 m² é uma opção para quem quer construir uma casa mais compacta e investir menos na compra do terreno.\nㅤ\nOPÇÕES DE COMPRA\n• Área total - 10 × 40 m (400 m²) por R$ 120.000\n• Um terreno - 10 × 20 m (200 m²) por R$ 70.000 (cada)\nㅤ\nQuer conhecer o terreno e ver qual opção combina com o seu projeto? \nChame a Imoplace para receber a localização e agendar uma visita.",
+      "seo": {
+        "titulo": "Terreno 10x40 a 650m da BR-386 em Nova Santa Rita-RS| 120mil",
+        "descricao": "400 m² por R$ 120 mil em Nova Santa Rita! Monte seu mini sítio dentro da cidade, a só 650 m da BR-386, com espaço para casa, pomar e lazer. Agende sua visita!"
+      },
+      "localizacao": {
+        "bairro": "",
+        "cidade": "Nova Santa Rita",
+        "uf": "RS",
+        "endereco": "nova santa rita-rs",
+        "lat": null,
+        "lng": null
+      },
+      "preco": 120000.0,
+      "condominio": null,
+      "iptuAnual": null,
+      "financiamento": false,
+      "permuta": true,
+      "documentacaoEmDia": false,
+      "dormitorios": null,
+      "suites": null,
+      "banheiros": null,
+      "vagas": null,
+      "areaTotal": 400.0,
+      "areaUtil": null,
+      "comodidades": [],
+      "caracteristicasImovel": [
+        "Frente 10m",
+        "Fundos 40m",
+        "Plano",
+        "Distante 650m da BR-386",
+        "Perímetro urbano"
+      ],
+      "caracteristicasCondominio": [],
+      "anunciante": {
+        "nome": "Roberto",
+        "creci": "83599-F",
+        "whatsapp": "5551998111078"
+      },
+      "feeds": {
+        "google": false,
+        "meta": false,
+        "disponibilidade": "in_stock"
+      },
+      "midias": [],
+      "links_externos": [],
+      "imagens": [
+        {
+          "arquivo": "imoveis/terreno50x90-nova-santa-rita-rs-area-sitio-1032/imagens/2026-11-24-08-25-convertido-i479a0f9af1.v1.webp",
+          "legenda": "Medidas 50x90",
+          "alt": "Lote 400m² (10x40) por R$120.000 | Terreno a 650m da BR-386 em Nova Santa Rita — foto 1"
+        },
+        {
+          "arquivo": "imoveis/terreno50x90-nova-santa-rita-rs-area-sitio-1032/imagens/2026-11-24-08-24-convertido-i8d6cf2ee6a.v1.webp",
+          "legenda": "4500m² por 120mil a 650m da BR-386",
+          "alt": "Lote 400m² (10x40) por R$120.000 | Terreno a 650m da BR-386 em Nova Santa Rita — foto 2"
+        },
+        {
+          "arquivo": "imoveis/terreno50x90-nova-santa-rita-rs-area-sitio-1032/imagens/whatsapp-image-2026-11-19-at-08-24-id3faad3a56.v1.webp",
+          "legenda": "Perímetro urbano.",
+          "alt": "Lote 400m² (10x40) por R$120.000 | Terreno a 650m da BR-386 em Nova Santa Rita — foto 3"
+        },
+        {
+          "arquivo": "imoveis/terreno50x90-nova-santa-rita-rs-area-sitio-1032/imagens/whatsapp-image-2026-11-19-at-08-24-49-2-ie054279fa4.v1.webp",
+          "legenda": "Frente 50m - Profundidade 90m",
+          "alt": "Lote 400m² (10x40) por R$120.000 | Terreno a 650m da BR-386 em Nova Santa Rita — foto 4"
+        },
+        {
+          "arquivo": "imoveis/terreno50x90-nova-santa-rita-rs-area-sitio-1032/imagens/whatsapp-image-2026-11-19-at-08-24-49-3-if48c8e225d.v1.webp",
+          "legenda": "4500m²",
+          "alt": "Lote 400m² (10x40) por R$120.000 | Terreno a 650m da BR-386 em Nova Santa Rita — foto 5"
+        },
+        {
+          "arquivo": "imoveis/terreno50x90-nova-santa-rita-rs-area-sitio-1032/imagens/whatsapp-image-2026-11-19-at-08-24-50-1-i7b3fee3e47.v1.webp",
+          "legenda": "Aceita fracionamento.",
+          "alt": "Lote 400m² (10x40) por R$120.000 | Terreno a 650m da BR-386 em Nova Santa Rita — foto 6"
+        },
+        {
+          "arquivo": "imoveis/terreno50x90-nova-santa-rita-rs-area-sitio-1032/imagens/whatsapp-image-2026-11-19-at-08-24-50-3-i24402ba91a.v1.webp",
+          "legenda": "Foto 7",
+          "alt": "Lote 400m² (10x40) por R$120.000 | Terreno a 650m da BR-386 em Nova Santa Rita — foto 7"
         }
       ]
     },
