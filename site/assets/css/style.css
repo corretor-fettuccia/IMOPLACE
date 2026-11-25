@@ -292,3 +292,38 @@ button:disabled{opacity:.6;cursor:not-allowed}
 .faixa-info .fi-valor .price{font-weight:700}
 .dhead .dt{font-weight:700}
 }
+/* Avatar do cachorrinho ao lado do WhatsApp flutuante (assets/js/avatar.js) */
+.imo-avatar{position:fixed;right:calc(max(20px,env(safe-area-inset-right)) + 64px);bottom:calc(max(20px,calc(env(safe-area-inset-bottom) + 16px)) - 8px);z-index:29;width:140px;height:130px;pointer-events:none;transform-origin:bottom right;font-family:var(--b)}
+.imo-avatar[hidden]{display:none}
+.imo-avatar svg{width:140px;height:130px;overflow:visible;display:block}
+.imo-avatar .imo-ln{stroke:#2B2B2B;stroke-width:3;stroke-linejoin:round;stroke-linecap:round}
+.imo-avatar .imo-tail{transform-origin:38px 94px;animation:imo-wag 1.2s ease-in-out infinite}
+.imo-avatar .imo-head{transform-origin:84px 72px;transition:transform .4s}
+.imo-avatar .imo-ear{transform-origin:106px 36px;transition:transform .4s}
+.imo-avatar .imo-paw{transform-origin:89px 92px;transition:transform .35s}
+.imo-avatar .imo-body{transform-origin:70px 122px}
+.imo-avatar .imo-eyes-closed,.imo-avatar .imo-zzz,.imo-avatar .imo-tongue{display:none}
+.imo-avatar .imo-zzz{animation:imo-zz 2.4s ease-in-out infinite}
+.imo-avatar .imo--idle .imo-body{animation:imo-breathe 2.6s ease-in-out infinite}
+.imo-avatar .imo--sleep .imo-eyes-open{display:none}
+.imo-avatar .imo--sleep .imo-eyes-closed,.imo-avatar .imo--sleep .imo-zzz{display:inline}
+.imo-avatar .imo--sleep .imo-tail{animation:none;transform:rotate(30deg)}
+.imo-avatar .imo--sleep .imo-head{transform:rotate(16deg) translateY(10px)}
+.imo-avatar .imo--sleep .imo-ear{transform:rotate(-35deg)}
+.imo-avatar .imo--dance .imo-body{animation:imo-dance 1.8s ease-in-out}
+.imo-avatar .imo--dance .imo-tail{animation-duration:.25s}
+.imo-avatar .imo--talk .imo-tail{animation-duration:.35s}
+.imo-avatar .imo--talk .imo-tongue{display:inline}
+.imo-avatar .imo--talk .imo-head{transform:rotate(-6deg)}
+.imo-avatar .imo--talk .imo-ear{animation:imo-perk .6s ease-in-out 2}
+.imo-avatar .imo--talk .imo-paw{transform:rotate(-60deg)}
+.imo-avatar .imo-bubble{position:absolute;right:-50px;bottom:130px;width:260px;box-sizing:border-box;background:#fff;color:#0f1d2e;border-radius:16px;padding:12px 16px;font-size:15px;line-height:1.45;box-shadow:0 12px 28px -8px rgba(6,19,39,.35);opacity:0;transform:translateY(10px) scale(.94);transition:opacity .3s,transform .3s}
+.imo-avatar .imo-bubble.imo-show{opacity:1;transform:none}
+.imo-avatar .imo-bubble::after{content:"";position:absolute;right:116px;bottom:-9px;border:10px solid transparent;border-top-color:#fff;border-bottom:0}
+@keyframes imo-wag{0%,100%{transform:rotate(-8deg)}50%{transform:rotate(14deg)}}
+@keyframes imo-breathe{0%,100%{transform:scaleY(1)}50%{transform:scaleY(1.03)}}
+@keyframes imo-zz{0%{opacity:0;transform:translate(0,6px)}50%{opacity:1}100%{opacity:0;transform:translate(8px,-12px)}}
+@keyframes imo-dance{0%{transform:none}15%{transform:translateY(-22px) rotate(-8deg)}30%{transform:scaleY(.92)}45%{transform:translateY(-26px) rotate(10deg)}60%{transform:scaleY(.92)}75%{transform:translateY(-14px) scaleX(-1)}90%{transform:scaleX(-1)}100%{transform:none}}
+@keyframes imo-perk{50%{transform:rotate(16deg)}}
+@media (max-width:820px){.imo-avatar{right:calc(max(20px,env(safe-area-inset-right)) + 58px);transform:scale(.62)}.imo-avatar .imo-bubble{width:340px;font-size:24px;padding:16px 20px}}
+@media (prefers-reduced-motion:reduce){.imo-avatar *{animation:none!important;transition:none!important}}

@@ -260,6 +260,7 @@ def pagina(item, conf):
 <span id="monitor-imovel" data-imovel="{h(item['id'])}" hidden></span>
 <script src="{RAIZ_REL}assets/js/imovel-lead.js"></script>
 <script src="{RAIZ_REL}assets/js/imovel.js"></script>
+<script src="{RAIZ_REL}assets/js/avatar.js"></script>
 </body></html>
 '''
 
