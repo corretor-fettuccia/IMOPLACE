@@ -292,3 +292,7 @@ button:disabled{opacity:.6;cursor:not-allowed}
 .faixa-info .fi-valor .price{font-weight:700}
 .dhead .dt{font-weight:700}
 }
+/* WhatsApp flutuante: pulso suave a cada 2 s (parado para quem prefere menos movimento) */
+.zap-flutuante{animation:zap-pulso 2s ease-out infinite}
+@keyframes zap-pulso{0%{box-shadow:0 0 0 0 rgba(22,128,61,.55),0 12px 28px -10px rgba(6,19,39,.6)}70%{box-shadow:0 0 0 18px rgba(22,128,61,0),0 12px 28px -10px rgba(6,19,39,.6)}100%{box-shadow:0 0 0 0 rgba(22,128,61,0),0 12px 28px -10px rgba(6,19,39,.6)}}
+@media (prefers-reduced-motion:reduce){.zap-flutuante{animation:none}}

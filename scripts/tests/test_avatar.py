@@ -30,5 +30,16 @@ class TestAvatar(unittest.TestCase):
         self.assertTrue(folha.is_file())
         self.assertLess(folha.stat().st_size, 400_000)
 
+    def test_whatsapp_flutuante_logo_e_pulso(self):
+        py = (RAIZ / 'scripts/paginas.py').read_text(encoding='utf-8')
+        js = (RAIZ / 'site/assets/js/imovel.js').read_text(encoding='utf-8')
+        logo = 'viewBox="0 0 448 512" fill="currentColor"'
+        self.assertIn(logo, py)
+        self.assertIn(logo, js)
+        css = (RAIZ / 'site/assets/css/style.css').read_text(encoding='utf-8')
+        self.assertIn('.zap-flutuante{animation:zap-pulso', css)
+        self.assertIn('prefers-reduced-motion:reduce){.zap-flutuante{animation:none}', css)
+
+
 if __name__ == '__main__':
     unittest.main()

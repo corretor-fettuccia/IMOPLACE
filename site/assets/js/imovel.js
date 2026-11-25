@@ -9,7 +9,8 @@ const vazio = n => n===null || n===undefined || n==='';
 document.documentElement.classList.add('js');   /* com JS, as listas longas começam recolhidas */
 const ICONES={dormitorios:'M2 18V6M2 14h20v4M22 14v-2a3 3 0 0 0-3-3h-8v5M6 11.5a1.5 1.5 0 1 0 0-.01',suites:'M5 21V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v17M3 21h18M14 12h.01',
   banheiros:'M4 12h16v3a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5zM6 12V5a2 2 0 0 1 4 0M7 20l-1 2M17 20l1 2',vagas:'M5 16h14M6 16l1.5-5h9L18 16M5 16v3M19 16v3',area:'M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7'};
-const ZAP_ICONE='M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.4A8.4 8.4 0 1 1 21 11.5z';
+/* Logo do WhatsApp do botão flutuante: 'fab fa-whatsapp' do Font Awesome Free 6.7.2 (CC BY 4.0). Igual ao paginas.py. */
+const ZAP_FAB='<svg class="zap-ico" width="30" height="30" viewBox="0 0 448 512" fill="currentColor" aria-hidden="true"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>';
 const CARAC_VISIVEIS=6;
 const icone=(d,tam=20,cls='ico')=>`<svg class="${cls}" width="${tam}" height="${tam}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${d}"/></svg>`;
 const TIPO_ICONES={'casa': 'M3 11l9-7 9 7M5 9.5V20h14V9.5M10 20v-5h4v5', 'apartamento': 'M5 21V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v17M3 21h18M9 7h1M14 7h1M9 11h1M14 11h1M9 15h1M14 15h1', 'terreno': 'M3 7V3h4M17 3h4v4M21 17v4h-4M7 21H3v-4M10 16V8l6 2.5-6 2.5', 'sobrado': 'M4 21V10l8-7 8 7v11M2 21h20M9 21v-4h6v4M9 10h1M14 10h1', 'cobertura': 'M6 21V9h12v12M4 21h16M4 9h16M8 9V6h8v3M10 13h1M13 13h1M10 17h1M13 17h1', 'studio': 'M4 11V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3M2 13a2 2 0 0 1 4 0v2h12v-2a2 2 0 0 1 4 0v4H2zM5 17v2M19 17v2', 'comercial': 'M3 9l2-5h14l2 5M3 9a3 3 0 0 0 6 0 3 3 0 0 0 6 0 3 3 0 0 0 6 0M5 12v9h14v-9M10 21v-5h4v5'};
@@ -83,7 +84,7 @@ function detailsHTML(item) {
    ${zapLink?`<a class="btn btn-accent" id="whatsapp" target="_blank" rel="noopener noreferrer" href="${zapLink}">Chamar no WhatsApp</a>`:'<button class="btn btn-accent" disabled>Contato indisponível</button>'}
    <div class="ref">Código do imóvel: ${ref}</div></aside><div class="box imoplace-lead" data-lead-property="${ref}" hidden></div></div>
   </div>
-  ${zapLink?`<a class="zap-flutuante" href="${zapLink}" target="_blank" rel="noopener noreferrer" aria-label="Chamar no WhatsApp" title="Chamar no WhatsApp" hidden>${icone(ZAP_ICONE,28,'')}</a>`:''}
+  ${zapLink?`<a class="zap-flutuante" href="${zapLink}" target="_blank" rel="noopener noreferrer" aria-label="Chamar no WhatsApp" title="Chamar no WhatsApp" hidden>${ZAP_FAB}</a>`:''}
   <dialog class="viewer" id="photo-viewer" aria-label="Galeria de fotos">
     <div class="viewer-head"><b id="viewer-caption"></b><button class="btn btn-line" type="button" id="viewer-close">Fechar ✕</button></div>
     <div class="viewer-picture" id="viewer-picture"></div>

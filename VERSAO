@@ -1,4 +1,4 @@
-Imoplace 4.2.2 — motor GitHub
+Imoplace 4.3.0 — motor GitHub
 Fonte de verdade: branch main. CORE e Monitor são projetos Apps Script separados (fora deste repositório).
 Administração: /adm redireciona para a implantação do CORE.
 Workflow de publicação: .github/workflows/publicar.yml
