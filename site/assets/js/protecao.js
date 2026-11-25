@@ -6,7 +6,8 @@
   const flags = Object.freeze({
     bloquearMenuContexto: true,
     bloquearAtalhosDevTools: true,
-    bloquearSelecaoTexto: true
+    bloquearSelecaoTexto: true,
+    bloquearCopia: true
   });
   const editavel = alvo => alvo instanceof Element &&
     Boolean(alvo.closest('input, textarea, select, [contenteditable=""], [contenteditable="true"], [role="textbox"]'));
@@ -17,7 +18,9 @@
       html, body, body *:not(input):not(textarea):not(select):not(option):not([contenteditable]) {
         -webkit-user-select: none;
         user-select: none;
+        -webkit-touch-callout: none;
       }
+      img, picture, svg { -webkit-user-drag: none; }
       input, textarea, select, option, [contenteditable], [role="textbox"] {
         -webkit-user-select: text;
         user-select: text;
@@ -26,6 +29,15 @@
     document.head.appendChild(estilo);
     document.addEventListener('selectstart', e => {
       if (!editavel(e.target)) e.preventDefault();
+    });
+  }
+
+  // Copiar, recortar e arrastar texto/imagens (inclui Ctrl+C pelo menu do navegador).
+  if (flags.bloquearCopia) {
+    ['copy', 'cut', 'dragstart'].forEach(tipo => {
+      document.addEventListener(tipo, e => {
+        if (!editavel(e.target)) e.preventDefault();
+      }, true);
     });
   }
 
@@ -42,7 +54,9 @@
       const devTools = e.key === 'F12' ||
         ((e.ctrlKey || e.metaKey) && e.shiftKey && ['i', 'j', 'c'].includes(tecla)) ||
         ((e.ctrlKey || e.metaKey) && tecla === 'u');
-      if (devTools) {
+      const copia = flags.bloquearCopia && (e.ctrlKey || e.metaKey) && !e.shiftKey &&
+        ['c', 'x', 'a', 's'].includes(tecla);
+      if (devTools || copia) {
         e.preventDefault();
         e.stopPropagation();
       }
