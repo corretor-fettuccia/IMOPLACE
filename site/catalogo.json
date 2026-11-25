@@ -1,8 +1,8 @@
 {
   "schemaVersao": 2,
   "contrato": "imoplace-v1",
-  "geradoEm": "2026-11-24T13:39:50.084410+00:00",
-  "total": 27,
+  "geradoEm": "2026-11-25T12:07:04.604198+00:00",
+  "total": 28,
   "imoveis": [
     {
       "id": "1004",
@@ -3362,6 +3362,94 @@
               "mime": "image/jpeg"
             }
           }
+        }
+      ]
+    },
+    {
+      "id": "1034",
+      "codigo": "galpao-comercial-niteroi-canoas-1034",
+      "categoria": "venda",
+      "status": "publicado",
+      "url": "https://imoplace.com.br/imoveis/galpao-comercial-niteroi-canoas-1034/",
+      "destaque": false,
+      "tag": "",
+      "ordem": 0,
+      "atualizadoEm": "2026-11-25T12:05:40.512Z",
+      "tipo": "Comercial",
+      "condicao": "Usado",
+      "titulo": "Galpão à venda em Niterói, Canoas | Estacionamento e acesso para caminhões",
+      "descricao": "Imoplace Vende | Pavilhão comercial por R$ 630.000 na Rua Venâncio Aires, em Niterói, Canoas. Com estacionamento, portão para caminhões e entrada independente para clientes, o imóvel permite separar o atendimento da movimentação de mercadorias.\n\nINDICADO PARA OS USOS.\n• Mini Mercado\n• Loja de conveniência\n• Armazenagem de pequeno porte\n• Distribuidora de bebidas\n• Autopeça / Mecânica\nㅤ\nESTRUTURA DO IMÓVEL\n• Pé-direito de 7 m e mezanino com vista para o salão\n• Portão pendular para acesso de veículos\n• Energia trifásica, piso em basalto e cobertura com estrutura metálica\n• Lavabo, exaustão eólica e suporte na fachada para letreiro\nㅤ\nO pavilhão fica no Condomínio Comercial Knoop, próximo à BR-116. A estrutura pode atender showroom, depósito ou oficina, conforme a viabilidade da atividade no endereço.\nㅤ\nAgende uma visita para conferir o acesso de veículos e a distribuição do salão.",
+      "seo": {
+        "titulo": "Galpão à venda em Niterói, Canoas",
+        "descricao": "Pavilhão comercial em Niterói, Canoas, por R$ 630 mil. Estacionamento, acesso para caminhões, pé-direito de 7 m, mezanino e energia trifásica."
+      },
+      "localizacao": {
+        "bairro": "Niterói",
+        "cidade": "Canoas",
+        "uf": "RS",
+        "endereco": "Rua Venâncio Aires, niterói, Canoas-RS",
+        "lat": null,
+        "lng": null
+      },
+      "preco": 630000.0,
+      "condominio": null,
+      "iptuAnual": null,
+      "financiamento": false,
+      "permuta": false,
+      "documentacaoEmDia": false,
+      "dormitorios": null,
+      "suites": null,
+      "banheiros": 1.0,
+      "vagas": 2.0,
+      "areaTotal": null,
+      "areaUtil": null,
+      "comodidades": [],
+      "caracteristicasImovel": [
+        "Não pegou enchente",
+        "Estacionamento",
+        "acesso para caminhões",
+        "pé-direito de 7 m",
+        "mezanino",
+        "energia trifásica",
+        "piso em basalto",
+        "lavabo",
+        "exaustão eólica"
+      ],
+      "caracteristicasCondominio": [
+        "Condomínio Comercial Knoop"
+      ],
+      "anunciante": {
+        "nome": "Roberto",
+        "creci": "83599-F",
+        "whatsapp": "5551998111078"
+      },
+      "feeds": {
+        "google": false,
+        "meta": false,
+        "disponibilidade": "in_stock"
+      },
+      "midias": [],
+      "links_externos": [],
+      "imagens": [
+        {
+          "arquivo": "imoveis/galpao-comercial-niteroi-canoas-1034/imagens/interior-comercial-com-vitrines-de-vidro-ie8073fd5dd.v1.webp",
+          "legenda": "Loja",
+          "alt": "Galpão à venda em Niterói, Canoas | Estacionamento e acesso para caminhões — foto 1"
+        },
+        {
+          "arquivo": "imoveis/galpao-comercial-niteroi-canoas-1034/imagens/244b3992-a459-40e4-88c2-f9e97cd65b88-con-ia470935815.v1.webp",
+          "legenda": "Mesanino",
+          "alt": "Galpão à venda em Niterói, Canoas | Estacionamento e acesso para caminhões — foto 2"
+        },
+        {
+          "arquivo": "imoveis/galpao-comercial-niteroi-canoas-1034/imagens/1fee00ca-0d1c-4384-a79b-3d7c51e2f14d-con-i51ebacb780.v1.webp",
+          "legenda": "Fachada com garagem 3 veículos",
+          "alt": "Galpão à venda em Niterói, Canoas | Estacionamento e acesso para caminhões — foto 3"
+        },
+        {
+          "arquivo": "imoveis/galpao-comercial-niteroi-canoas-1034/imagens/big-f6cc5a9539ffe963a11fa7a756bf1adf-i110b13d30c.v1.webp",
+          "legenda": "Vista do Galpão",
+          "alt": "Galpão à venda em Niterói, Canoas | Estacionamento e acesso para caminhões — foto 4"
         }
       ]
     },
