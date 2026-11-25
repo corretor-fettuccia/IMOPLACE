@@ -14,7 +14,7 @@ class TestAvatar(unittest.TestCase):
 
     def test_modelo_tem_script_do_avatar(self):
         src = (RAIZ / 'scripts/paginas.py').read_text(encoding='utf-8')
-        self.assertIn('<script src="{RAIZ_REL}assets/js/avatar.js"></script>', src)
+        self.assertIn('<script src="{RAIZ_REL}assets/js/avatar.js?v=2"></script>', src)
 
     def test_avatar_acompanha_o_botao_e_nao_tem_clique(self):
         js = (RAIZ / 'site/assets/js/avatar.js').read_text(encoding='utf-8')
@@ -22,10 +22,13 @@ class TestAvatar(unittest.TestCase):
         self.assertNotIn('addEventListener(\'click\'', js)
         for frase in ('Eu não mordo!', 'negócio verde', 'eu te ajudo também'):
             self.assertIn(frase, js)
-        css = (RAIZ / 'site/assets/css/style.css').read_text(encoding='utf-8')
-        self.assertIn('.imo-avatar{', css)
-        self.assertIn('pointer-events:none', css)
-
+        # versão em sprites: o estilo vem no próprio avatar.js e a folha é WebP
+        self.assertIn('.imo-avatar{', js)
+        self.assertIn('pointer-events:none', js)
+        self.assertIn('tijolo-sprites.webp', js)
+        folha = RAIZ / 'site/assets/img/tijolo-sprites.webp'
+        self.assertTrue(folha.is_file())
+        self.assertLess(folha.stat().st_size, 400_000)
 
 if __name__ == '__main__':
     unittest.main()
