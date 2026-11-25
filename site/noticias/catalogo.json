@@ -1,6 +1,30 @@
 {
   "artigos": [
     {
+      "id": "n8571c33a6cfe",
+      "slug": "regras-fgts-compra-imovel",
+      "codigo": "regras-fgts-compra-imovel-n8571c33a6cfe",
+      "titulo": "Regras do FGTS que você nunca viu em nenhum lugar",
+      "resumo": "Um FAQ sobre o uso do FGTS na compra da moradia própria, com exemplos de herança, financiamento anterior e compra em outra cidade.",
+      "corpo": "Comprar um imóvel com o FGTS parte de um princípio simples. O saldo deve ser usado para a moradia do próprio titular. Na prática, surgem dúvidas quando o comprador tem uma parte de um imóvel herdado, já usou o FGTS antes ou pretende comprar em outra cidade.\n\nEste FAQ explica essas situações a partir de três pontos: quem compra, qual imóvel está sendo comprado e qual é o vínculo entre o comprador e o imóvel.\n\n## 1. Quem pode usar o FGTS?\n\n## Preciso ter três anos de carteira assinada no mesmo emprego?\n\nOs três anos de trabalho sob o regime do FGTS podem ser somados ao longo da carreira, em empregos diferentes e com intervalos entre eles. Por exemplo, quem trabalhou um ano em uma empresa e dois anos em outra já atende ao requisito de tempo.\n\n## Ter outro financiamento impede o uso do FGTS?\n\nUm financiamento ativo no Sistema Financeiro da Habitação (SFH), em qualquer parte do Brasil, é impeditivo. Já um financiamento de carro, de terreno sem construção ou de imóvel comercial, por si só, não gera esse impedimento.\n\n## E se eu tiver usufruto ou uma parte de um imóvel herdado?\n\nQuando há usufruto sobre um imóvel residencial, é preciso analisar o direito registrado na matrícula e a localização do imóvel. Na copropriedade, também importa o percentual que pertence ao comprador.\n\nImagine que você tenha recebido 25% de um imóvel quitado por herança, sem usufruto. Essa fração, por si só, pode se enquadrar na exceção que permite o uso do FGTS. A matrícula ajuda a comprovar quais direitos você efetivamente possui.\n\n## Já usei o FGTS em outro imóvel. Posso usar de novo?\n\nA venda do imóvel anterior pode permitir uma nova compra com FGTS, desde que a transferência esteja formalizada no Registro de Imóveis e os demais requisitos sejam atendidos. Vale distinguir a data do registro da compra e a da baixa da garantia após a quitação. Cada uma comprova um fato diferente.\n\n## 2. O que verificar no imóvel que quero comprar?\n\n## O vendedor usou FGTS quando comprou. Isso interfere na minha compra?\n\nSim. A matrícula deve ser analisada para identificar se houve uso do FGTS na aquisição anterior e quando essa compra foi registrada. É a data do registro que serve de referência para verificar o intervalo exigido para voltar a usar FGTS na aquisição daquele mesmo imóvel.\n\n## E se o vendedor usou FGTS para quitar o financiamento antes de vender?\n\nO uso do FGTS para quitar um financiamento é diferente do uso do saldo na compra do imóvel. Se o vendedor usou FGTS apenas para quitar a dívida, essa quitação, por si só, não abre uma nova contagem de prazo para o comprador. O agente financeiro ainda precisa verificar o histórico da aquisição e a situação da garantia na matrícula.\n\n## 3. Qual é o vínculo entre o comprador e o imóvel?\n\n## Posso usar o FGTS para comprar em outra cidade?\n\nO imóvel precisa se destinar à sua moradia. A análise considera onde você mora, onde exerce sua atividade profissional principal e como a compra se encaixa nesse contexto.\n\nImagine que Fernando more e trabalhe na Grande Porto Alegre e queira comprar em Caxias do Sul. Se ele pretende se mudar, terá de demonstrar como o imóvel será de fato sua moradia.\n\n## Ter um imóvel de lazer em outra cidade impede o uso do FGTS?\n\nDepende da localização do imóvel que você já possui e da existência de financiamento ativo no SFH. Por exemplo, ter um imóvel quitado em Santa Maria, usado para lazer, pode não impedir a compra da sua moradia em Caxias do Sul. Para avaliar o caso, é preciso considerar também onde você mora e trabalha atualmente.\n\nAs diretrizes para o uso do saldo habitacional são estabelecidas pelo Conselho Curador do FGTS (CCFGTS). Antes de contar com esse dinheiro na entrada, vale pedir ao agente financeiro que avalie o seu enquadramento e a matrícula do imóvel escolhido.\n\n## O papel de um corretor qualificado na compra do imóvel\n\nUm corretor de imóveis qualificado ajuda você a entender o que precisa ser resolvido antes de assinar a proposta ou pagar o sinal. Ele orienta a leitura da matrícula, identifica pendências na documentação e ajuda a confirmar com o agente financeiro se o FGTS poderá compor a entrada. Também esclarece os custos e os prazos da negociação para que você saiba quanto precisa desembolsar e em que momento.\n\nEsse acompanhamento faz diferença quando surge uma dúvida sobre um imóvel herdado, um financiamento anterior ou a compra em outra cidade. Com essas questões esclarecidas desde o início, você pode negociar com mais segurança e evitar surpresas no caminho até o registro da compra.\n\nArtigo escrito por Roberto Fettuccia, corretor de imóveis, profissional certificado FBB100 e CA300, com mais de 10 anos de atuação como correspondente bancário.\n\nDetalhes transformam vidas.",
+      "categoria": "Regras",
+      "tags": [
+        "FGTS",
+        "moradia própria",
+        "compra de imóvel",
+        "financiamento imobiliário",
+        "matrícula"
+      ],
+      "autor": "Roberto Fettuccia",
+      "capa": "",
+      "capaAlt": "Regras do FGTS que você nunca viu em nenhum lugar",
+      "seoTitulo": "Regras do FGTS na compra de imóvel | Imoplace",
+      "seoDescricao": "Um FAQ sobre o uso do FGTS na compra da moradia própria, com exemplos de herança, financiamento anterior e compra em outra cidade.",
+      "publicadoEm": "2026-11-25T02:51:18.221Z",
+      "atualizadoEm": "2026-11-25T02:51:18.221Z",
+      "versao": 1
+    },
+    {
       "id": "nc37b4e4363d2",
       "slug": "juros-eua-financiamento-imobiliario-brasil",
       "codigo": "juros-eua-financiamento-imobiliario-brasil-nc37b4e4363d2",
