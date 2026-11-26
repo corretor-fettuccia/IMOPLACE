@@ -1,7 +1,7 @@
 {
   "schemaVersao": 2,
   "contrato": "imoplace-v1",
-  "geradoEm": "2026-11-26T18:50:28.791433+00:00",
+  "geradoEm": "2026-11-26T18:52:37.215258+00:00",
   "total": 28,
   "imoveis": [
     {
@@ -6513,7 +6513,7 @@
       "destaque": false,
       "tag": "",
       "ordem": 0,
-      "atualizadoEm": "2026-11-17T02:58:15.330Z",
+      "atualizadoEm": "2026-11-26T18:52:23.651Z",
       "tipo": "Apartamento",
       "condicao": "Novo",
       "titulo": "Varandas Trend Living",
@@ -6601,7 +6601,14 @@
       "tarja": "",
       "tarjaTexto": "",
       "precoAnterior": null,
-      "grupos": [],
+      "grupos": [
+        {
+          "id": "G2",
+          "nome": "Condomínio de apartamento",
+          "tipo": "Condomínio",
+          "titulo": "Condomínio de apartamento"
+        }
+      ],
       "unidade": "",
       "midias": [],
       "links_externos": [],
@@ -7037,7 +7044,7 @@
       "destaque": false,
       "tag": "NA PLANTA 100% FINANCIADO",
       "ordem": 0,
-      "atualizadoEm": "2026-11-17T02:56:14.425Z",
+      "atualizadoEm": "2026-11-26T18:51:47.045Z",
       "tipo": "Apartamento",
       "condicao": "Na planta",
       "titulo": "ORA Lottici - 2 e 3 Dormitórios",
@@ -7113,7 +7120,14 @@
       "tarja": "",
       "tarjaTexto": "",
       "precoAnterior": null,
-      "grupos": [],
+      "grupos": [
+        {
+          "id": "G2",
+          "nome": "Condomínio de apartamento",
+          "tipo": "Condomínio",
+          "titulo": "Condomínio de apartamento"
+        }
+      ],
       "unidade": "",
       "midias": [],
       "links_externos": [],
