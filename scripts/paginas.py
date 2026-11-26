@@ -1,5 +1,5 @@
 """ImoPlace — HTML das páginas dos imóveis (layout do ImoPlace v2.1, sem dados de demonstração)."""
-from midias import colecao, alvo, estilo, ALLOW, SANDBOX
+from midias import colecao, alvo, estilo, pixels, ALLOW, SANDBOX
 from formatos_imagens import ordem_formatos
 import html
 import json
@@ -159,11 +159,11 @@ def detalhe(item):
 {_galeria(item)}
 {stats}
 {_faixa(item)}
-{multimidia(item)}
 <div class="dhead"><h1 class="dt">{h(item['titulo'])}</h1></div>
 <div class="imovel-layout">
 <div class="box imovel-sobre"><h3>Sobre o imóvel</h3><p style="white-space:pre-line">{h(item.get('descricao') or 'Descrição não cadastrada.')}</p></div>
 {valores_box}
+{multimidia(item)}
 {localizacao}
 <div class="imovel-barra">{caracteristicas}<aside class="aside box"><div class="adv"><div class="av">I</div><div><b>{h(anunc.get('nome') or 'Imoplace')}</b>{creci}</div></div>{f'<p class="small-note">{h(nota)}</p>' if nota else ''}{contato}<div class="ref">Código do imóvel: {h(item['id'])}</div></aside><div class="box imoplace-lead" data-lead-property="{h(item['id'])}" hidden></div></div>
 </div>{flutuante}'''
@@ -290,7 +290,10 @@ def midia_player(x):
     """Renderiza direto, sem botão: iframe com loading=lazy, vídeo nativo, panorama ou imagem."""
     modo,src,prop=alvo(x);st=estilo(prop);titulo=h(x['titulo'])
     if modo=='iframe':
-        return f'<div class="midia-quadro" style="{st}"><iframe src="{h(src)}" title="{titulo}" loading="lazy" allow="{ALLOW}" allowfullscreen sandbox="{SANDBOX}" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>'
+        px=pixels(prop)
+        escala=f' data-escala="{px[0]}"' if px else ''
+        tam=f' style="width:{px[0]}px;height:{px[1]}px"' if px else ''
+        return f'<div class="midia-quadro" style="{st}"{escala}><iframe src="{h(src)}" title="{titulo}"{tam} loading="lazy" allow="{ALLOW}" allowfullscreen sandbox="{SANDBOX}" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>'
     if modo=='video':
         capa=f' poster="{h(x["capa"])}"' if x.get('capa') else ''
         return f'<div class="midia-quadro" style="{st}"><video src="{h(src)}" controls playsinline preload="metadata"{capa}>Seu navegador não reproduz este vídeo.</video></div>'
@@ -301,15 +304,25 @@ def midia_player(x):
     return ''
 
 
+def carrossel(cards):
+    """Um item: card simples. Dois ou mais: carrossel com setas ‹ › e contador."""
+    if len(cards)<2: return ''.join(cards)
+    n=len(cards)
+    return ('<div class="midia-carrossel" data-carrossel><div class="mc-trilho" tabindex="0" aria-label="Mídias do imóvel, use as setas para navegar">'+''.join(cards)+'</div>'
+            '<button type="button" class="mc-nav mc-prev" data-mc="-1" aria-label="Mídia anterior">‹</button>'
+            '<button type="button" class="mc-nav mc-next" data-mc="1" aria-label="Próxima mídia">›</button>'
+            f'<div class="mc-contador" aria-live="polite"><span data-mc-atual>1</span> / {n}</div></div>')
+
+
 def multimidia(item):
     medias=colecao(item.get('midias')); links=colecao(item.get('links_externos'),links=True)
     cards=[]
     for x in medias:
         cards.append('<article class="midia-card"><h3>'+h(x['titulo'])+'</h3>'+('<p>'+h(x['descricao'])+'</p>' if x['descricao'] else '')+midia_player(x)+'<a class="midia-abrir" href="'+h(x['url'])+'" target="_blank" rel="noopener noreferrer">Abrir em nova aba ↗</a></article>')
-    result='<section class="box" aria-label="Vídeos e tours"><h2>Vídeos e tours</h2>'+''.join(cards)+'</section>' if cards else ''
+    result='<section class="box" aria-label="Vídeos e tours"><h3>Vídeos e tours</h3>'+carrossel(cards)+'</section>' if cards else ''
     if links:
         result+='<button class="btn btn-line" type="button" data-open-links>Mais links ↗</button><dialog id="external-links" aria-labelledby="links-title"><h2 id="links-title">Acessos externos</h2><button type="button" class="btn btn-line" data-close-links>Fechar ✕</button>'+''.join('<p><a href="'+h(x['url'])+'" target="_blank" rel="noopener noreferrer">'+h(x['titulo'])+' ↗</a><br>'+h(x['descricao'])+'</p>' for x in links)+'</dialog>'
-    return '<div id="multimidia">'+result+'</div>'
+    return '<div id="multimidia" class="imovel-midias">'+result+'</div>'
 
 
 def imagem_seo(f):

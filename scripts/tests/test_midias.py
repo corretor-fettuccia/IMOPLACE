@@ -63,7 +63,11 @@ class Evolucao(unittest.TestCase):
         self.assertEqual(x['proporcao'],'500/463')
         html=paginas.multimidia({'midias':[x],'links_externos':[]})
         self.assertIn('loading="lazy"',html)
-        self.assertIn('aspect-ratio:500/463;max-width:500px',html)
+        self.assertIn('style="aspect-ratio:500/463" data-escala="500"',html)
+        self.assertIn('style="width:500px;height:463px"',html)
+        self.assertNotIn('max-width:500px',html)
+        auto=paginas.multimidia({'midias':midias.colecao(json.dumps([{'tipo':'iframe','url':'https://x.example/','titulo':'A','proporcao':'16/9'}]))})
+        self.assertNotIn('data-escala',auto)
         self.assertNotIn('style="border:none"',html)
         self.assertEqual(midias.colecao(json.dumps([{'url':'<iframe srcdoc="<script>x</script>"></iframe>'}])),[])
 
@@ -77,6 +81,21 @@ class Evolucao(unittest.TestCase):
         self.assertEqual(midias.alvo({'tipo':'panorama_360','url':'https://x.example/p.jpg'})[0],'panorama')
         self.assertEqual(midias.alvo({'tipo':'iframe','url':'https://www.imoplace.com.br/adm/'})[0],'link')
         self.assertEqual(midias.alvo({'tipo':'iframe','url':'https://kuula.co/share/abc'}),('iframe','https://kuula.co/share/abc','16/9'))
+
+    def test_carrossel_so_com_mais_de_um_item(self):
+        um=midias.colecao(json.dumps([{'tipo':'iframe','url':'https://a.example/','titulo':'A'}]))
+        dois=midias.colecao(json.dumps([{'tipo':'iframe','url':'https://a.example/','titulo':'A'},{'tipo':'video','url':'https://b.example/v.mp4','titulo':'B'}]))
+        self.assertNotIn('data-carrossel',paginas.multimidia({'midias':um}))
+        html=paginas.multimidia({'midias':dois})
+        self.assertIn('data-carrossel',html);self.assertIn('data-mc="-1"',html);self.assertIn('data-mc="1"',html)
+        self.assertIn('<span data-mc-atual>1</span> / 2',html)
+        self.assertEqual(html.count('class="midia-card"'),2)
+
+    def test_midias_antes_do_mapa(self):
+        base={'id':'1','titulo':'Casa','localizacao':{'endereco':'Rua A, Canoas'},'midias':[{'tipo':'iframe','url':'https://a.example/','titulo':'A','descricao':'','ordem':1,'visivel':True}]}
+        html=paginas.detalhe(base)
+        self.assertLess(html.index('id="multimidia"'),html.index('imovel-mapa'))
+        self.assertGreater(html.index('id="multimidia"'),html.index('class="dhead"'))
 
     def test_frontend_real_em_node(self):
         import subprocess

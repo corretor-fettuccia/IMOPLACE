@@ -37,7 +37,7 @@ class LayoutImovel(unittest.TestCase):
 
     def test_ordem_e_colunas(self):
         html=detalhe(item())
-        a=ordem(html,'id="gal"','class="stats"','class="dhead"','imovel-layout','imovel-sobre','imovel-valores','imovel-mapa','imovel-barra')
+        a=ordem(html,'id="gal"','class="stats"','class="dhead"','imovel-layout','imovel-sobre','imovel-valores','id="multimidia"','imovel-mapa','imovel-barra')
         self.assertEqual(a,sorted(a))
         barra=html[html.index('imovel-barra'):]
         self.assertLess(barra.index('class="box carac"'),barra.index('id="whatsapp"'))
@@ -81,7 +81,7 @@ class LayoutImovel(unittest.TestCase):
         html=r.stdout
         self.assertEqual(html.count('class="ph'),5);self.assertEqual(html.count('class="gal-mini"'),8);self.assertEqual(html.count('gal-mini so-cel'),4)
         self.assertEqual(html.count('data-sizes="132px"'),12)
-        a=ordem(html,'id="gal"','class="stats"','class="dhead"','imovel-layout','imovel-sobre','imovel-valores','imovel-mapa','imovel-barra')
+        a=ordem(html,'id="gal"','class="stats"','class="dhead"','imovel-layout','imovel-sobre','imovel-valores','id="multimidia"','imovel-mapa','imovel-barra')
         self.assertEqual(a,sorted(a))
         for marca in ('No imóvel (21)','Mostrar todos os 26 ↓','Preço por m²','id="whatsapp"','data-lead-property="1008"','class="zap-flutuante"','id="viewer-thumbs"'):
             self.assertIn(marca,html)
@@ -90,8 +90,8 @@ class LayoutImovel(unittest.TestCase):
 
     def test_css_layout_e_ordem_no_celular(self):
         css=(RAIZ/'site/assets/css/style.css').read_text(encoding='utf-8')
-        self.assertIn('grid-template-columns:minmax(0,2fr) minmax(0,1fr);grid-template-areas:"sobre barra" "valores barra" "mapa barra"',css)
-        self.assertIn('grid-template-areas:"sobre" "valores" "barra" "mapa"',css)   # celular: mapa depois da barra
+        self.assertIn('grid-template-columns:minmax(0,2fr) minmax(0,1fr);grid-template-areas:"sobre barra" "valores barra" "midias barra" "mapa barra"',css)
+        self.assertIn('grid-template-areas:"sobre" "valores" "barra" "midias" "mapa"',css)   # celular: mídias logo antes do mapa
         self.assertIn('.zap-flutuante{position:fixed',css);self.assertIn('border-radius:50%;background:#16803d',css)
         self.assertNotIn('dgrid',css)
 
