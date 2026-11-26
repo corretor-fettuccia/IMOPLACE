@@ -141,9 +141,9 @@ def detalhe(item):
         link = f'https://wa.me/{zap}?text={texto}'
         contato = f'<a class="btn btn-accent" id="whatsapp" href="{link}" target="_blank" rel="noopener noreferrer">Chamar no WhatsApp</a>'
         nota = 'Solicite mais informações diretamente ao anunciante.'
-        # Só aparece (imovel.js) quando o botão do cartão de contato sai da tela.
+        # Botão fixo: fica sempre na tela (o imovel.js só esconde com o visualizador de fotos aberto).
         flutuante = (f'<a class="zap-flutuante" href="{link}" target="_blank" rel="noopener noreferrer" aria-label="Chamar no WhatsApp" '
-                     f'title="Chamar no WhatsApp" hidden>{ZAP_FAB}</a>')
+                     f'title="Chamar no WhatsApp">{ZAP_FAB}</a>')
     else:
         contato = '<button class="btn btn-accent" disabled>Contato indisponível</button>'
         nota = ''

@@ -61,7 +61,11 @@ class LayoutImovel(unittest.TestCase):
 
     def test_whatsapp_flutuante_so_com_numero(self):
         html=detalhe(item())
-        self.assertRegex(html,r'<a class="zap-flutuante" href="https://wa\.me/5551999999999\?text=[^"]+"[^>]*aria-label="Chamar no WhatsApp"[^>]*hidden>')
+        self.assertRegex(html,r'<a class="zap-flutuante" href="https://wa\.me/5551999999999\?text=[^"]+"[^>]*aria-label="Chamar no WhatsApp"[^>]*>')
+        self.assertNotRegex(html,r'<a class="zap-flutuante"[^>]*hidden')   # botão fixo: sempre na tela
+        js=(RAIZ/'site/assets/js/imovel.js').read_text(encoding='utf-8')
+        self.assertIn("flutuante.hidden=!!$('#photo-viewer',det)?.open",js)
+        self.assertNotIn('cartaoVisivel',js)
         self.assertNotIn('zap-flutuante',detalhe(item(anunciante={'nome':'Roberto'})))
 
     def test_campo_vazio_continua_invisivel(self):

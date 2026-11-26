@@ -84,7 +84,7 @@ function detailsHTML(item) {
    ${zapLink?`<a class="btn btn-accent" id="whatsapp" target="_blank" rel="noopener noreferrer" href="${zapLink}">Chamar no WhatsApp</a>`:'<button class="btn btn-accent" disabled>Contato indisponível</button>'}
    <div class="ref">Código do imóvel: ${ref}</div></aside><div class="box imoplace-lead" data-lead-property="${ref}" hidden></div></div>
   </div>
-  ${zapLink?`<a class="zap-flutuante" href="${zapLink}" target="_blank" rel="noopener noreferrer" aria-label="Chamar no WhatsApp" title="Chamar no WhatsApp" hidden>${ZAP_FAB}</a>`:''}
+  ${zapLink?`<a class="zap-flutuante" href="${zapLink}" target="_blank" rel="noopener noreferrer" aria-label="Chamar no WhatsApp" title="Chamar no WhatsApp">${ZAP_FAB}</a>`:''}
   <dialog class="viewer" id="photo-viewer" aria-label="Galeria de fotos">
     <div class="viewer-head"><b id="viewer-caption"></b><button class="btn btn-line" type="button" id="viewer-close">Fechar ✕</button></div>
     <div class="viewer-picture" id="viewer-picture"></div>
@@ -105,16 +105,14 @@ function updateViewer(index) {
   $$('.viewer-thumb',thumbs||document).forEach(b=>b.setAttribute('aria-current',String(Number(b.dataset.k)===selectedIndex)));
   $(`.viewer-thumb[data-k="${selectedIndex}"]`)?.scrollIntoView({block:'nearest',inline:'nearest'});
 }
-/* WhatsApp flutuante: aparece quando o botão do cartão de contato sai da tela; some com o cartão à vista,
-   com o visualizador de fotos aberto e enquanto se digita no formulário. Nunca os dois botões juntos. */
+/* WhatsApp flutuante: botão fixo, sempre na tela (junto com o botão do cartão de contato).
+   Só se esconde com o visualizador de fotos aberto, para não ficar por cima da foto. */
 let atualizarZap=()=>{};
 function ligarZapFlutuante(){
-  const flutuante=$('.zap-flutuante',det),cartao=$('#whatsapp',det);
+  const flutuante=$('.zap-flutuante',det);
   if(!flutuante){atualizarZap=()=>{};return;}
-  let cartaoVisivel=false;
-  atualizarZap=()=>{flutuante.hidden=cartaoVisivel||!!det.dataset.digitando||!!$('#photo-viewer',det)?.open;};
-  if(cartao&&'IntersectionObserver' in window)new IntersectionObserver(es=>{cartaoVisivel=es[0].isIntersecting;atualizarZap();}).observe(cartao);
-  else atualizarZap();
+  atualizarZap=()=>{flutuante.hidden=!!$('#photo-viewer',det)?.open;};
+  atualizarZap();
   $('#photo-viewer',det)?.addEventListener('close',()=>atualizarZap());
 }
 det.addEventListener('focusin',e=>{if(e.target.closest('.imoplace-lead')){det.dataset.digitando='1';atualizarZap();}});
