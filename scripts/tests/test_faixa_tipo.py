@@ -15,13 +15,19 @@ def item(**kw):
     d = json.loads(json.dumps(BASE)); d.update(kw); return d
 
 
+def helpers_main():
+    """Disponibilidade, tarja e preço moram no main.js (usados pela lista e pela página do imóvel)."""
+    m = (RAIZ / 'site/assets/js/main.js').read_text(encoding='utf-8')
+    return m[m.index('const TARJAS='):m.index('function cardHTML')]
+
+
 def faixa_js(it):
     js = (RAIZ / 'site/assets/js/imovel.js').read_text(encoding='utf-8')
     ini = js.index('const ICONES='); fim = js.index('function faixaHTML')
     fim = js.index('\n}\n', fim) + 3
     script = ('const esc=v=>String(v??"").replace(/[&<>"\']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",\'"\':"&quot;","\'":"&#39;"}[c]));'
               'const brl=n=>n==null?"Sob consulta":"R$ "+Math.round(n).toLocaleString("pt-BR");'
-              + js[ini:fim] + '\nprocess.stdout.write(faixaHTML(' + json.dumps(it, ensure_ascii=False) + '));')
+              + helpers_main() + js[ini:fim] + '\nprocess.stdout.write(faixaHTML(' + json.dumps(it, ensure_ascii=False) + '));')
     r = subprocess.run(['node', '-e', script], capture_output=True, text=True)
     assert r.returncode == 0, r.stderr
     return r.stdout

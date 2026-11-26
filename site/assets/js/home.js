@@ -62,6 +62,9 @@ function order(items) {
   else if (order==='Maior preço') items.sort((a,b)=>(b.preco||0)-(a.preco||0));
   else if (order==='Mais recentes') items.sort((a,b)=>String(b.atualizadoEm).localeCompare(String(a.atualizadoEm)));
   else items.sort((a,b)=>Number(b.destaque)-Number(a.destaque));
+  /* Indisponível e vendido vão para o fim da lista (sort estável mantém a ordem escolhida). */
+  const pos={in_stock:0,out_of_stock:1,sold:2};
+  items.sort((a,b)=>pos[disponibilidade(a)]-pos[disponibilidade(b)]);
   return items;
 }
 function render() {

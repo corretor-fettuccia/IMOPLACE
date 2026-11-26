@@ -28,7 +28,7 @@ function faixaHTML(item){
   const x=item.localizacao||{};const nomes=['bairro','cidade','uf'].map(k=>String(x[k]??'').trim()).filter(Boolean);
   if(nomes.length)p.push(`<div class="fi fi-local">${icone(FAIXA_ICONES.local)}<b>${esc(nomes[0])}</b><span>${esc(nomes.slice(1).join(', '))}</span></div>`);
   const cat=CATEGORIAS[String(item.categoria??'').trim().toLowerCase()]||'';
-  p.push(`<div class="fi-valor"><b class="price">${brl(item.preco)}</b>${cat?`<span>${esc(cat)}</span>`:''}</div>`);
+  p.push(`<div class="fi-valor">${precoHTML(item)}${cat?`<span>${esc(cat)}</span>`:''}</div>`);
   return `<div class="faixa-info">${p.join('')}</div>`;
 }
 function caracGrupo(titulo,arr){
@@ -46,7 +46,7 @@ function galleryHTML(item) {
   const imgs=item.imagens||[];
   if (!imgs.length) return `<div class="gal single"><div class="ph main">${imgTag(item,0)}<span>Imagem indisponível</span></div></div>`;
   const legenda=k=>esc(imgs[k].legenda||'Foto '+(k+1));
-  const mosaico=imgs.slice(0,5).map((_,k)=>`<button type="button" class="ph${k===0?' main':''}" data-k="${k}" aria-label="Ampliar foto ${k+1}: ${legenda(k)}">${k===0?imgTag(item,k):imgTag(item,k,'','(max-width: 820px) 96px, 30vw')}<span>${legenda(k)}</span>${k===0&&imgs.length>1?`<em>${imgs.length} fotos</em>`:''}</button>`).join('');
+  const mosaico=imgs.slice(0,5).map((_,k)=>`<button type="button" class="ph${k===0?' main':''}" data-k="${k}" aria-label="Ampliar foto ${k+1}: ${legenda(k)}">${k===0?imgTag(item,k):imgTag(item,k,'','(max-width: 820px) 96px, 30vw')}<span>${legenda(k)}</span>${k===0&&imgs.length>1?`<em>${imgs.length} fotos</em>`:''}${k===0?tarjaHTML(item):''}</button>`).join('');
   const faixa=imgs.slice(1).map((_,j)=>{const k=j+1;return `<button type="button" class="gal-mini${k<5?' so-cel':''}" data-k="${k}" aria-label="Ampliar foto ${k+1}: ${legenda(k)}">${imgTag(item,k,'','132px')}</button>`;}).join('');
   return `<div class="gal${imgs.length===1?' single':''}" id="gal">${mosaico}</div>${faixa?`<div class="gal-faixa${imgs.length<=5?' so-cel':''}" role="group" aria-label="Mais fotos">${faixa}</div>`:''}`;
 }
@@ -80,7 +80,7 @@ function detailsHTML(item) {
    ${ImoplaceMidias.html(item)}
    ${enderecoPublico?`<div class="box imovel-mapa"><h3>Localização</h3>${mapa}<div class="where">${esc(enderecoPublico)}</div></div>`:''}
    <div class="imovel-barra">${grupos?`<aside class="box carac" aria-label="Características"><h2>Características</h2>${grupos}</aside>`:''}<aside class="aside box"><div class="adv"><div class="av">I</div><div><b>${esc(item.anunciante?.nome||'Imoplace')}</b>${item.anunciante?.creci?`<span class="where">CRECI ${esc(item.anunciante.creci)}</span>`:''}</div></div>
-   ${zapLink?'<div class="contact-note">Solicite mais informações diretamente ao anunciante.</div>':''}
+   ${zapLink?`<div class="contact-note">${disponibilidade(item)==='sold'?'Este imóvel já foi vendido. Procurando algo parecido? Fale com a gente.':'Solicite mais informações diretamente ao anunciante.'}</div>`:''}
    ${zapLink?`<a class="btn btn-accent" id="whatsapp" target="_blank" rel="noopener noreferrer" href="${zapLink}">Chamar no WhatsApp</a>`:'<button class="btn btn-accent" disabled>Contato indisponível</button>'}
    <div class="ref">Código do imóvel: ${ref}</div></aside><div class="box imoplace-lead" data-lead-property="${ref}" hidden></div></div>
   </div>
@@ -152,7 +152,7 @@ getCatalog().then(items=>{
   if(!item){det.innerHTML=`<a class="back" href="${SITE_ROOT}index.html#imoveis">← Voltar</a><div class="box"><h3>Imóvel não disponível</h3></div>`;return;}
   currentItem=item;
   document.title=`${item.titulo} | Imoplace`;
-  det.innerHTML=detailsHTML(item);ImoplaceMidias.iniciar?.(det);
+  det.innerHTML=detailsHTML(item);det.classList.remove('estado-vendido','estado-indisponivel');if(estadoClasse(item))det.classList.add(estadoClasse(item));ImoplaceMidias.iniciar?.(det);
   marcarSalvo(getFavs().includes(item.codigo));
 }).catch(error=>{console.warn('Catálogo temporariamente indisponível. Exibindo HTML estático do build.',error);}).finally(()=>{window.ImoplaceLead?.mount(det);ligarZapFlutuante();});
 

@@ -164,6 +164,15 @@ def _fotos(im, rows, pendente=False):
     return fotos
 
 
+DISPONIBILIDADES = ('in_stock', 'out_of_stock', 'sold')
+TARJAS = ('', 'black_friday', 'oportunidade', 'baixou_preco', 'lancamento', 'personalizada')
+
+
+def _disp(im):
+    v = str(im.get('DISPONIBILIDADE') or 'in_stock')
+    return v if v in DISPONIBILIDADES else 'in_stock'
+
+
 def _publico(im, imagens, site):
     iid = str(im['ID']); codigo = _slug(im.get('SLUG') or im.get('TITULO')) + '-' + iid
     caminho = f'imoveis/{codigo}/'; titulo = str(im.get('TITULO',''))[:160]
@@ -184,8 +193,11 @@ def _publico(im, imagens, site):
         comodidades=_lista(im.get('COMODIDADES')),caracteristicasImovel=_lista(im.get('CARACT_IMOVEL')),
         caracteristicasCondominio=_lista(im.get('CARACT_CONDOMINIO')),
         anunciante={'nome':txt('ANUNCIANTE_NOME',80),'creci':txt('CRECI',30),'whatsapp':re.sub(r'\D','',txt('WHATSAPP'))[:15]},
+        disponibilidade=_disp(im), vendidoEm=str(im.get('VENDIDO_EM') or '') if _disp(im)=='sold' else '',
+        tarja=str(im.get('TARJA') or '') if str(im.get('TARJA') or '') in TARJAS else '', tarjaTexto=txt('TARJA_TEXTO',20),
+        precoAnterior=_numero(im.get('PRECO_ANTERIOR')),
         feeds={'google':_flag(im.get('PUBLICAR_GOOGLE')),'meta':_flag(im.get('PUBLICAR_META')),
-               'disponibilidade':str(im.get('DISPONIBILIDADE') or 'in_stock')},
+               'disponibilidade':_disp(im)},
         imagemCapaId=fotos[0]['id'] if fotos else '', imagens=fotos,
         caminho=caminho,url=site.rstrip('/')+'/'+caminho,atualizadoEm=str(im.get('ATUALIZADO_EM') or ''))
     return item

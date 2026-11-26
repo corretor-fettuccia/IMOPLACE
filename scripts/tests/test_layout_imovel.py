@@ -21,6 +21,11 @@ def ordem(html,*marcas):
     return [html.index(m) for m in marcas]
 
 
+def helpers_main():
+    m=(RAIZ/'site/assets/js/main.js').read_text(encoding='utf-8')
+    return m[m.index('const TARJAS='):m.index('function cardHTML')]
+
+
 class LayoutImovel(unittest.TestCase):
     def test_galeria_mosaico_e_faixa(self):
         html=detalhe(item())
@@ -79,7 +84,7 @@ class LayoutImovel(unittest.TestCase):
                 'const SITE_ROOT="../../";const esc=v=>String(v??"").replace(/[&<>"\']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",\'"\':"&quot;","\'":"&#39;"}[c]));'
                 'const brl=n=>"R$ "+Math.round(n).toLocaleString("pt-BR");const local=i=>[i.localizacao?.bairro,i.localizacao?.cidade,i.localizacao?.uf].filter(Boolean).join(", ");'
                 'const ImoplaceMidias={picture:(f,item,k,cls,sizes)=>`<picture data-sizes="${sizes||""}"></picture>`,html:()=>\'<div id="multimidia"></div>\'};'
-                +js[js.index("let selectedIndex"):fim]+'\nprocess.stdout.write(detailsHTML('+json.dumps(item(),ensure_ascii=False)+'));')
+                +helpers_main()+js[js.index("let selectedIndex"):fim]+'\nprocess.stdout.write(detailsHTML('+json.dumps(item(),ensure_ascii=False)+'));')
         r=subprocess.run(['node','-e',script],capture_output=True,text=True)
         self.assertEqual(r.returncode,0,r.stderr)
         html=r.stdout

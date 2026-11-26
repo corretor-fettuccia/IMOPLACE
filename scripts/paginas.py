@@ -71,6 +71,43 @@ def tipo_icone(tipo):
     return TIPO_ICONES.get(t, TIPO_ICONES['casa'])
 
 
+TARJAS = {'black_friday': 'BLACK FRIDAY', 'oportunidade': 'OPORTUNIDADE', 'baixou_preco': 'BAIXOU O PREÇO', 'lancamento': 'LANÇAMENTO'}
+
+
+def disponibilidade(item):
+    v = item.get('disponibilidade') or (item.get('feeds') or {}).get('disponibilidade') or 'in_stock'
+    return v if v in ('in_stock', 'out_of_stock', 'sold') else 'in_stock'
+
+
+def selo(item):
+    """Tarja diagonal: vendido e indisponível têm prioridade sobre a tarja de destaque."""
+    d = disponibilidade(item)
+    if d == 'sold': return ('vendido', 'VENDIDO')
+    if d == 'out_of_stock': return ('indisponivel', 'INDISPONÍVEL')
+    t = str(item.get('tarja') or '')
+    if t in TARJAS: return (t, TARJAS[t])
+    texto = str(item.get('tarjaTexto') or '').strip().upper()[:20]
+    if t == 'personalizada' and texto: return ('personalizada', texto)
+    return None
+
+
+def tarja_html(item):
+    s = selo(item)
+    return f'<span class="tarja tarja--{s[0]}">{h(s[1])}</span>' if s else ''
+
+
+def estado_classe(item):
+    return {'sold': 'estado-vendido', 'out_of_stock': 'estado-indisponivel'}.get(disponibilidade(item), '')
+
+
+def preco_html(item):
+    if disponibilidade(item) == 'sold':
+        return '<b class="price price-vendido">Vendido</b>'
+    ant, atual = item.get('precoAnterior'), item.get('preco')
+    velho = f'<s class="price-old">{brl(ant)}</s>' if isinstance(ant, (int, float)) and isinstance(atual, (int, float)) and ant > atual else ''
+    return f'{velho}<b class="price">{brl(atual)}</b>'
+
+
 def _faixa(item):
     """Faixa abaixo dos dados: tipo, código, localização e valor. Campo vazio não aparece."""
     partes = []
@@ -85,7 +122,7 @@ def _faixa(item):
     if nomes:
         partes.append(f'<div class="fi fi-local">{icone(FAIXA_ICONES["local"])}<b>{h(nomes[0])}</b><span>{h(", ".join(nomes[1:]))}</span></div>')
     cat = CATEGORIAS.get(str(item.get('categoria') or '').strip().lower(), '')
-    partes.append(f'<div class="fi-valor"><b class="price">{brl(item.get("preco"))}</b>' + (f'<span>{h(cat)}</span>' if cat else '') + '</div>')
+    partes.append(f'<div class="fi-valor">{preco_html(item)}' + (f'<span>{h(cat)}</span>' if cat else '') + '</div>')
     return '<div class="faixa-info">' + ''.join(partes) + '</div>'
 
 
@@ -103,7 +140,7 @@ def _galeria(item):
     total = f'<em>{len(fotos)} fotos</em>' if len(fotos) > 1 else ''
     mosaico = ''.join(
         f'<button class="ph{" main" if k == 0 else ""}" type="button" data-k="{k}" aria-label="Ampliar foto {k + 1}: {legenda(k)}">'
-        f'{picture(fotos[k], item, k) if k == 0 else picture(fotos[k], item, k, MOSAICO_PEQ)}<span>{legenda(k)}</span>{total if k == 0 else ""}</button>' for k in range(min(5, len(fotos))))
+        f'{picture(fotos[k], item, k) if k == 0 else picture(fotos[k], item, k, MOSAICO_PEQ)}<span>{legenda(k)}</span>{total if k == 0 else ""}{tarja_html(item) if k == 0 else ""}</button>' for k in range(min(5, len(fotos))))
     # No celular, as fotos 2 a 5 saem do mosaico e entram na faixa (classe so-cel, oculta no computador).
     faixa = ''.join(
         f'<button class="gal-mini{" so-cel" if k < 5 else ""}" type="button" data-k="{k}" aria-label="Ampliar foto {k + 1}: {legenda(k)}">{picture(fotos[k], item, k, MINI)}</button>'
@@ -140,7 +177,8 @@ def detalhe(item):
         texto = quote(f'Olá! Tenho interesse no imóvel {item["id"]} anunciado no Imoplace.')
         link = f'https://wa.me/{zap}?text={texto}'
         contato = f'<a class="btn btn-accent" id="whatsapp" href="{link}" target="_blank" rel="noopener noreferrer">Chamar no WhatsApp</a>'
-        nota = 'Solicite mais informações diretamente ao anunciante.'
+        nota = ('Este imóvel já foi vendido. Procurando algo parecido? Fale com a gente.' if disponibilidade(item) == 'sold'
+                else 'Solicite mais informações diretamente ao anunciante.')
         # Botão fixo: fica sempre na tela (o imovel.js só esconde com o visualizador de fotos aberto).
         flutuante = (f'<a class="zap-flutuante" href="{link}" target="_blank" rel="noopener noreferrer" aria-label="Chamar no WhatsApp" '
                      f'title="Chamar no WhatsApp">{ZAP_FAB}</a>')
@@ -216,7 +254,7 @@ def dados_estruturados(item, conf, url, descricao):
     if preco is not None:
         anunc = item.get('anunciante') or {}
         oferta = {'@type': 'Offer', 'price': preco, 'priceCurrency': 'BRL', 'url': url,
-                  'availability': 'https://schema.org/InStock'}
+                  'availability': 'https://schema.org/' + {'sold': 'SoldOut', 'out_of_stock': 'OutOfStock'}.get(disponibilidade(item), 'InStock')}
         if anunc.get('nome'):
             oferta['seller'] = {'@type': 'RealEstateAgent' if anunc.get('creci') else 'Person', 'name': anunc['nome']}
         anuncio['offers'] = oferta
@@ -263,7 +301,7 @@ def pagina(item, conf):
 <nav aria-label="Principal"><a href="{RAIZ_REL}noticias/">Notícias</a><a href="{RAIZ_REL}index.html#imoveis">Comprar</a><a href="{RAIZ_REL}index.html?categoria=lancamento#imoveis">Lançamentos</a></nav>
 <div class="actions"><a class="btn btn-accent" href="{RAIZ_REL}anunciar/">Anuncie seu imóvel</a></div>
 </div></header>
-<main class="wrap" id="det">{detalhe(item)}</main>
+<main class="wrap {estado_classe(item)}" id="det">{detalhe(item)}</main>
 <footer><div class="wrap"><span>© {h(conf.get('ano', '2026'))} Imoplace · imoplace.com.br</span><span>Informações sujeitas a confirmação com o anunciante.</span></div></footer>
 <script src="{ativo("assets/js/protecao.js")}"></script>
 <script src="{ativo("assets/js/main.js")}"></script>

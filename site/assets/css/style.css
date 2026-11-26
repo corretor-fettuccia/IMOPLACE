@@ -297,3 +297,16 @@ button:disabled{opacity:.6;cursor:not-allowed}
 .zap-flutuante{animation:zap-pulso 2s ease-out infinite}
 @keyframes zap-pulso{0%{box-shadow:0 0 0 0 rgba(22,128,61,.55),0 12px 28px -10px rgba(6,19,39,.6)}70%{box-shadow:0 0 0 18px rgba(22,128,61,0),0 12px 28px -10px rgba(6,19,39,.6)}100%{box-shadow:0 0 0 0 rgba(22,128,61,0),0 12px 28px -10px rgba(6,19,39,.6)}}
 @media (prefers-reduced-motion:reduce){.zap-flutuante{animation:none}}
+/* 4.4.0 — tarjas diagonais, vendido em preto e branco, indisponível apagado, preço anterior riscado */
+.thumb{overflow:hidden}
+.tarja{position:absolute;z-index:3;top:30px;left:-64px;right:auto;bottom:auto;width:240px;margin:0;border-radius:0;transform:rotate(-35deg);text-align:center;font:800 .72rem/1 var(--h);letter-spacing:.1em;color:#fff;padding:7px 0;box-shadow:0 3px 10px #0005;pointer-events:none;white-space:nowrap;overflow:hidden;text-overflow:clip}
+.thumb:has(.tarja) .tag{top:auto;bottom:8px}
+.ph .tarja{position:absolute;margin:0;border-radius:0}
+.ph.main .tarja{top:40px;left:auto;right:-74px;width:300px;transform:rotate(35deg);font-size:.95rem;padding:10px 0}
+.tarja.tarja--vendido{background:#c62828}.tarja.tarja--indisponivel{background:#5f6670}.tarja.tarja--black_friday,.tarja.tarja--personalizada{background:#111}
+.tarja.tarja--oportunidade{background:#ef7d00}.tarja.tarja--baixou_preco{background:#1b8a4b}.tarja.tarja--lancamento{background:#1f4fa3}
+.estado-vendido .thumb img,.card.estado-vendido .thumb img,#det.estado-vendido .gal img,#det.estado-vendido .gal-faixa img,#det.estado-vendido .viewer img{filter:grayscale(1)}
+.card.estado-indisponivel .thumb img,#det.estado-indisponivel .gal img,#det.estado-indisponivel .gal-faixa img{filter:saturate(.35) brightness(.97)}
+.price-old{display:block;font:500 .78rem var(--b);color:#7a8494;text-decoration:line-through;margin-bottom:1px}
+.faixa-info .price-old{display:inline;margin-right:6px}
+.price-vendido{color:#c62828}
