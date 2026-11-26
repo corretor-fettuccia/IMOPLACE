@@ -1,7 +1,7 @@
 {
   "schemaVersao": 2,
   "contrato": "imoplace-v1",
-  "geradoEm": "2026-11-26T18:42:05.596528+00:00",
+  "geradoEm": "2026-11-26T18:43:47.275955+00:00",
   "total": 28,
   "imoveis": [
     {
@@ -7108,7 +7108,7 @@
       "destaque": false,
       "tag": "",
       "ordem": 0,
-      "atualizadoEm": "2026-11-17T02:56:36.785Z",
+      "atualizadoEm": "2026-11-26T18:43:07.205Z",
       "tipo": "Apartamento",
       "condicao": "Usado",
       "titulo": "MY HOUSE - OLARIA 2 DORMITÓRIOS",
@@ -7164,7 +7164,14 @@
       "tarja": "",
       "tarjaTexto": "",
       "precoAnterior": null,
-      "grupos": [],
+      "grupos": [
+        {
+          "id": "G5",
+          "nome": "Apartamentos usados",
+          "tipo": "Condomínio fechado",
+          "titulo": ""
+        }
+      ],
       "unidade": "",
       "midias": [],
       "links_externos": [],
