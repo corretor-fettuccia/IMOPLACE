@@ -35,6 +35,13 @@ def _fotos_manifesto(item, pend):
     return fotos
 
 
+def _grupo(g):
+    """Grupo do imóvel (loteamento/condomínio) no formato do catálogo; None se não houver."""
+    if not isinstance(g, dict) or not str(g.get('id') or '').strip() or not str(g.get('nome') or '').strip():
+        return None
+    return {k: str(g.get(k) or '').strip() for k in ('id', 'nome', 'tipo', 'titulo')}
+
+
 def _entrada(item, fotos):
     """Formato que a vitrine (main.js / home.js / imovel.js) lê."""
     loc = item.get('localizacao') or {}
@@ -57,6 +64,7 @@ def _entrada(item, fotos):
         'disponibilidade': item.get('disponibilidade') or (item.get('feeds') or {}).get('disponibilidade') or 'in_stock',
         'vendidoEm': item.get('vendidoEm') or '', 'tarja': item.get('tarja') or '', 'tarjaTexto': item.get('tarjaTexto') or '',
         'precoAnterior': item.get('precoAnterior'),
+        'grupos': [g for g in (_grupo(x) for x in item.get('grupos') or []) if g], 'unidade': str(item.get('unidade') or '')[:40],
         'midias': item.get('midias') or [], 'links_externos': item.get('links_externos') or [],
         'imagens': [{'arquivo': f['arquivo'], 'legenda': f['legenda'], 'alt': f['alt'], **({'adaptativas': f['adaptativas']} if f.get('adaptativas') else {}), **({'matriz': f['matriz']} if f.get('matriz') else {})} for f in fotos],
     }
@@ -211,7 +219,7 @@ def montar(feed_itens, pendencias, site, conf, aguardando=frozenset()):
     gravar_json(site / 'catalogo.json', catalogo)
 
     for e in entradas:
-        gravar(site / 'imoveis' / e['codigo'] / 'index.html', paginas.pagina(e, conf))
+        gravar(site / 'imoveis' / e['codigo'] / 'index.html', paginas.pagina(e, conf, entradas))
     limpar(entradas, site, conf)
     # Extras gerados na etapa [4/8] montar_extras.py.
 

@@ -48,6 +48,48 @@ function precoHTML(item,cls='price'){
   const a=item.precoAnterior,p=item.preco;
   return (typeof a==='number'&&typeof p==='number'&&a>p?`<s class="price-old">${brl(a)}</s>`:'')+`<b class="${cls}">${brl(p)}</b>`;
 }
+/* Grupos do imóvel (sem limite) e uma tabela por grupo logo depois do mapa. Igual a paginas.unidades_html. */
+const UN_VISIVEIS=8;
+function gruposDo(item){const vistos=new Set();return (Array.isArray(item?.grupos)?item.grupos:[]).filter(g=>{const id=String(g?.id??'').trim();if(!id||vistos.has(id)||!String(g.nome??'').trim())return false;vistos.add(id);return true;});}
+function unidadesGrupo(item,items,gid){
+  const lista=(Array.isArray(items)?items:[]).filter(e=>gruposDo(e).some(g=>String(g.id)===gid));
+  if(!lista.some(e=>e.codigo===item.codigo))lista.push(item);
+  if(lista.length<2)return[];
+  const num=v=>typeof v==='number'&&Number.isFinite(v);
+  return lista.sort((a,b)=>(num(a.preco)?0:1)-(num(b.preco)?0:1)||(num(a.preco)?a.preco:0)-(num(b.preco)?b.preco:0)||Number(a.id||0)-Number(b.id||0));
+}
+function tabelaGrupo(item,g,lista){
+  const gid=String(g.id),titulo=g.titulo||g.nome;
+  const tem=v=>v!==null&&v!==undefined&&v!=='';
+  const cel=v=>tem(v)?esc(v):'—';
+  const areaDe=e=>e.areaUtil!==null&&e.areaUtil!==undefined?e.areaUtil:e.areaTotal;
+  /* Coluna que nenhuma unidade preenche não aparece (ex.: loteamento sem dormitórios e vagas). */
+  const cols=[['Área',areaDe],['Dorm.',e=>e.dormitorios],['Vagas',e=>e.vagas]].filter(([,f])=>lista.some(e=>tem(f(e)))).map(([c])=>c);
+  const linhas=lista.map((e,k)=>{
+    const atual=e.codigo===item.codigo,d=disponibilidade(e);
+    const cls='un-linha'+(atual?' un-atual':'')+({sold:' un-vendida',out_of_stock:' un-indisponivel'}[d]||'')+(k>=UN_VISIVEIS&&!atual?' un-extra':'');
+    const area=areaDe(e),s={sold:'Vendido',out_of_stock:'Indisponível'}[d];
+    const valor=s?`<span class="un-selo">${s}</span>`:esc(brl(e.preco));
+    const acao=atual?'<span class="un-aqui"><i aria-hidden="true"></i><span class="un-longo">Você está aqui</span><span class="un-curto">Aqui</span></span>':`<a href="${esc(detailURL(e))}" aria-label="Ver anúncio: ${esc(e.unidade||e.titulo||e.tipo||'Imóvel')}"><span class="un-longo">Ver anúncio →</span><span class="un-curto">Ver →</span></a>`;
+    return `<tr class="${cls}"${atual?' aria-current="page"':''}><th scope="row"><span class="un-nome">${esc(e.unidade||e.titulo||e.tipo||'Imóvel')}</span><span class="un-tipo">${esc(e.tipo||'Imóvel')}</span></th>`
+      +`<td class="un-valor">${valor}</td>`
+      +(cols.includes('Área')?`<td>${cel(tem(area)?area+' m²':null)}</td>`:'')
+      +(cols.includes('Dorm.')?`<td>${cel(e.dormitorios)}</td>`:'')
+      +(cols.includes('Vagas')?`<td class="un-vagas">${cel(e.vagas)}</td>`:'')
+      +`<td class="un-acao">${acao}</td></tr>`;
+  }).join('');
+  const mais=lista.length>UN_VISIVEIS?`<button type="button" class="un-mais" data-total="${lista.length}" aria-expanded="false">Mostrar todos os ${lista.length} ↓</button>`:'';
+  const sub=[g.tipo||'',`${lista.length} imóveis`].filter(Boolean).join(' · ');
+  return `<section class="box imovel-unidades" aria-labelledby="un-${esc(gid)}"><h3 id="un-${esc(gid)}">${esc(titulo)}</h3>`
+    +`<p class="un-sub">${esc(sub)}</p>`
+    +'<div class="un-tabela-wrap"><table class="un-tabela"><thead><tr><th scope="col"><span class="un-nome">Imóvel</span><span class="un-tipo">Tipo</span></th><th scope="col">Valor</th>'
+    +cols.map(c=>`<th scope="col"${c==='Vagas'?' class="un-vagas"':''}>${c}</th>`).join('')+'<th scope="col"><span class="sr-only">Anúncio</span></th></tr></thead>'
+    +`<tbody>${linhas}</tbody></table></div>${mais}</section>`;
+}
+function unidadesHTML(item,items){
+  const tabelas=gruposDo(item).map(g=>{const l=unidadesGrupo(item,items,String(g.id));return l.length?tabelaGrupo(item,g,l):'';}).join('');
+  return tabelas?`<div class="imovel-unidades-lista">${tabelas}</div>`:'';
+}
 function cardHTML(item) {
   const pics = (item.imagens || []).slice(0,5);
   const first = pics.length ? pics : [{arquivo:'',alt:'Imagem indisponível',legenda:'Sem imagem'}];
