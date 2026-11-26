@@ -1,7 +1,7 @@
 {
   "schemaVersao": 2,
   "contrato": "imoplace-v1",
-  "geradoEm": "2026-11-26T18:21:45.616843+00:00",
+  "geradoEm": "2026-11-26T18:23:34.420327+00:00",
   "total": 28,
   "imoveis": [
     {
@@ -6030,7 +6030,7 @@
       "destaque": false,
       "tag": "",
       "ordem": 0,
-      "atualizadoEm": "2026-11-17T02:59:18.186Z",
+      "atualizadoEm": "2026-11-26T18:22:41.741Z",
       "tipo": "Apartamento",
       "condicao": "Na planta",
       "titulo": "LINQ Your Place | 2 Dormitórios com Sacada e Churrasqueira no Igara – Canoas | Parcelas a partir de R$ 2.000/mês",
@@ -6111,7 +6111,14 @@
       "tarja": "",
       "tarjaTexto": "",
       "precoAnterior": null,
-      "grupos": [],
+      "grupos": [
+        {
+          "id": "G2",
+          "nome": "Condomínio de apartamento",
+          "tipo": "Condomínio",
+          "titulo": "Condomínio de apartamento"
+        }
+      ],
       "unidade": "",
       "midias": [],
       "links_externos": [],
