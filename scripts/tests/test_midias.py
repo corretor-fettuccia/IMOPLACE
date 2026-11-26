@@ -63,7 +63,8 @@ class Evolucao(unittest.TestCase):
         self.assertEqual(x['proporcao'],'500/463')
         html=paginas.multimidia({'midias':[x],'links_externos':[]})
         self.assertIn('loading="lazy"',html)
-        self.assertIn('style="aspect-ratio:500/463" data-escala="500"',html)
+        self.assertIn('<div class="midia-quadro" data-escala="500x463">',html)
+        self.assertNotIn('aspect-ratio',html)
         self.assertIn('style="width:500px;height:463px"',html)
         self.assertNotIn('max-width:500px',html)
         auto=paginas.multimidia({'midias':midias.colecao(json.dumps([{'tipo':'iframe','url':'https://x.example/','titulo':'A','proporcao':'16/9'}]))})
@@ -81,6 +82,17 @@ class Evolucao(unittest.TestCase):
         self.assertEqual(midias.alvo({'tipo':'panorama_360','url':'https://x.example/p.jpg'})[0],'panorama')
         self.assertEqual(midias.alvo({'tipo':'iframe','url':'https://www.imoplace.com.br/adm/'})[0],'link')
         self.assertEqual(midias.alvo({'tipo':'iframe','url':'https://kuula.co/share/abc'}),('iframe','https://kuula.co/share/abc','16/9'))
+
+    def test_facebook_sem_tamanho_ganha_500x281(self):
+        url='https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fx&show_text=false'
+        modo,src,prop=midias.alvo({'tipo':'iframe','url':url})
+        self.assertEqual((modo,prop),('iframe','500/281'))
+        self.assertTrue(src.endswith('&width=500'))
+        modo,src,prop=midias.alvo({'tipo':'iframe','url':url+'&width=552&height=999'})
+        self.assertEqual(prop,'552/311');self.assertNotIn('height=',src);self.assertEqual(src.count('width='),1)
+        self.assertEqual(midias.alvo({'tipo':'iframe','url':url+'&width=500','proporcao':'500/463'})[2],'500/463')
+        html=paginas.multimidia({'midias':midias.colecao(json.dumps([{'tipo':'iframe','url':url,'titulo':'A'}]))})
+        self.assertIn('data-escala="500x281"',html)
 
     def test_carrossel_so_com_mais_de_um_item(self):
         um=midias.colecao(json.dumps([{'tipo':'iframe','url':'https://a.example/','titulo':'A'}]))

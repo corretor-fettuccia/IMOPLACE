@@ -35,16 +35,25 @@ const ImoplaceMidias=(()=>{
   if(EXT_VIDEO.test(path))return['video',url,p||'16/9'];
   if(EXT_IMAGEM.test(path))return x.tipo==='panorama_360'?['panorama',url,'2/1']:['imagem',url,p];
   if(proprio(url))return['link',url,''];
-  return['iframe',url,p||(x.tipo==='panorama_360'?'2/1':'16/9')];
+  const fb=facebook(url,p);
+  return['iframe',fb[0],fb[1]||(x.tipo==='panorama_360'?'2/1':'16/9')];
+ }
+ /* Plugin do Facebook sem width/height: fixa width na URL (padrão 500) e o tamanho em 16:9, para esticar no quadro. */
+ function facebook(url,p){
+  const u=new URL(url);
+  if(!['www.facebook.com','facebook.com','web.facebook.com'].includes(u.hostname)||!u.pathname.startsWith('/plugins/')||pixels(p))return[url,p];
+  const w=Math.min(750,Math.max(200,parseInt(u.searchParams.get('width'),10)||500));
+  u.searchParams.delete('height');u.searchParams.delete('width');u.searchParams.append('width',String(w));
+  return[u.href,w+'/'+Math.round(w*9/16)];
  }
  const pixels=p=>{if(!p||PRESETS.includes(p))return null;const[w,h]=p.split('/').map(Number);return w>=80&&w<=1400&&h>=50&&h<=2000?[w,h]:null;};
- const estilo=p=>p?'aspect-ratio:'+p:'';
+ const estilo=()=>'';
  function player(x){
   const[modo,src,p]=alvo(x),st=esc(estilo(p)),t=esc(x.titulo);
-  if(modo==='iframe'){const px=pixels(p);return `<div class="midia-quadro" style="${st}"${px?` data-escala="${px[0]}"`:''}><iframe src="${esc(src)}" title="${t}"${px?` style="width:${px[0]}px;height:${px[1]}px"`:''} loading="lazy" allow="${ALLOW}" allowfullscreen sandbox="${SANDBOX}" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>`;}
-  if(modo==='video')return `<div class="midia-quadro" style="${st}"><video src="${esc(src)}" controls playsinline preload="metadata"${safe(x.capa)?` poster="${esc(safe(x.capa))}"`:''}>Seu navegador não reproduz este vídeo.</video></div>`;
-  if(modo==='panorama')return `<div class="midia-quadro midia-panorama" style="${st}" data-panorama="${esc(src)}"></div>`;
-  if(modo==='imagem')return `<div class="midia-imagem"><img src="${esc(src)}" alt="${t}" loading="lazy" decoding="async"></div>`;
+  if(modo==='iframe'){const px=pixels(p);return `<div class="midia-quadro"${px?` data-escala="${px[0]}x${px[1]}"`:''}><iframe src="${esc(src)}" title="${t}"${px?` style="width:${px[0]}px;height:${px[1]}px"`:''} loading="lazy" allow="${ALLOW}" allowfullscreen sandbox="${SANDBOX}" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>`;}
+  if(modo==='video')return `<div class="midia-quadro"><video src="${esc(src)}" controls playsinline preload="metadata"${safe(x.capa)?` poster="${esc(safe(x.capa))}"`:''}>Seu navegador não reproduz este vídeo.</video></div>`;
+  if(modo==='panorama')return `<div class="midia-quadro midia-panorama" data-panorama="${esc(src)}"></div>`;
+  if(modo==='imagem')return `<div class="midia-quadro midia-imagem"><img src="${esc(src)}" alt="${t}" loading="lazy" decoding="async"></div>`;
   return '';
  }
  function carrossel(cards){
@@ -76,7 +85,8 @@ const ImoplaceMidias=(()=>{
  document.addEventListener('close',e=>{if(e.target.id==='external-links')opener?.focus();},true);
  /* Panoramas de imagem 2:1 montam sozinhos quando chegam perto da tela. */
  /* Iframe com tamanho em px (do código colado): renderiza nesse tamanho e estica por escala até a largura do quadro. */
- const escalar=box=>{const f=box.querySelector('iframe'),w=Number(box.dataset.escala);if(f&&w&&box.clientWidth)f.style.transform='scale('+(box.clientWidth/w)+')';};
+ /* Cabe inteiro no quadro padrão (contain) e fica centralizado. */
+ const escalar=box=>{const f=box.querySelector('iframe'),[w,h]=String(box.dataset.escala).split('x').map(Number),W=box.clientWidth,H=box.clientHeight;if(!f||!w||!h||!W||!H)return;const k=Math.min(W/w,H/h);f.style.transform='translate('+((W-w*k)/2)+'px,'+((H-h*k)/2)+'px) scale('+k+')';};
  const ro=typeof ResizeObserver!=='undefined'?new ResizeObserver(es=>es.forEach(e=>escalar(e.target))):null;
  function iniciar(root=document){
   root.querySelectorAll('[data-escala]').forEach(box=>{escalar(box);ro?.observe(box);});

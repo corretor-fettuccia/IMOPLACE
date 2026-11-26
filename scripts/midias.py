@@ -7,7 +7,7 @@ continuam convertidos para o player oficial. A planilha guarda só URL, nunca HT
 import html as _html
 import json
 import re
-from urllib.parse import urlsplit, parse_qs
+from urllib.parse import urlsplit, parse_qs, urlencode, urlunsplit, parse_qsl
 
 TIPOS = ('iframe', 'video', 'video_360', 'tour_virtual', 'panorama_360', 'planta')
 EXT_VIDEO = ('.mp4', '.webm', '.ogv', '.ogg', '.mov', '.m4v')
@@ -97,7 +97,20 @@ def alvo(x, extras=()):
         if x.get('tipo')=='panorama_360': return ('panorama',url,'2/1')
         return ('imagem',url,prop)
     if proprio(url, extras): return ('link',url,'')
+    url,prop=facebook(url,prop)
     return ('iframe',url,prop or ('2/1' if x.get('tipo')=='panorama_360' else '16/9'))
+
+
+def facebook(url, prop):
+    """Plugin do Facebook sem width/height: fixa width na URL (padrão 500) e o tamanho em 16:9, para esticar no quadro."""
+    u=urlsplit(url)
+    if (u.hostname or '') not in ('www.facebook.com','facebook.com','web.facebook.com') or not u.path.startswith('/plugins/') or pixels(prop): return url,prop
+    q=parse_qsl(u.query,keep_blank_values=True)
+    try: w=int(dict(q).get('width') or 500)
+    except ValueError: w=500
+    w=min(max(w,200),750)
+    q=[(k,v) for k,v in q if k not in ('width','height')]+[('width',str(w))]
+    return urlunsplit((u.scheme,u.netloc,u.path,urlencode(q),u.fragment)),f'{w}/{int(w*9/16+0.5)}'
 
 
 def pixels(prop):
@@ -108,5 +121,5 @@ def pixels(prop):
 
 
 def estilo(prop):
-    """Só aspect-ratio: o quadro ocupa a largura toda. Tamanho em px é esticado por escala (data-escala)."""
-    return f'aspect-ratio:{prop}' if prop else ''
+    """Todo quadro tem o mesmo tamanho padrão (16:9, no CSS); o conteúdo se ajusta dentro dele."""
+    return ''

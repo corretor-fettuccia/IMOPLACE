@@ -301,16 +301,16 @@ def midia_player(x):
     modo,src,prop=alvo(x);st=estilo(prop);titulo=h(x['titulo'])
     if modo=='iframe':
         px=pixels(prop)
-        escala=f' data-escala="{px[0]}"' if px else ''
+        escala=f' data-escala="{px[0]}x{px[1]}"' if px else ''
         tam=f' style="width:{px[0]}px;height:{px[1]}px"' if px else ''
-        return f'<div class="midia-quadro" style="{st}"{escala}><iframe src="{h(src)}" title="{titulo}"{tam} loading="lazy" allow="{ALLOW}" allowfullscreen sandbox="{SANDBOX}" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>'
+        return f'<div class="midia-quadro"{escala}><iframe src="{h(src)}" title="{titulo}"{tam} loading="lazy" allow="{ALLOW}" allowfullscreen sandbox="{SANDBOX}" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>'
     if modo=='video':
         capa=f' poster="{h(x["capa"])}"' if x.get('capa') else ''
-        return f'<div class="midia-quadro" style="{st}"><video src="{h(src)}" controls playsinline preload="metadata"{capa}>Seu navegador não reproduz este vídeo.</video></div>'
+        return f'<div class="midia-quadro"><video src="{h(src)}" controls playsinline preload="metadata"{capa}>Seu navegador não reproduz este vídeo.</video></div>'
     if modo=='panorama':
-        return f'<div class="midia-quadro midia-panorama" style="{st}" data-panorama="{h(src)}"></div>'
+        return f'<div class="midia-quadro midia-panorama" data-panorama="{h(src)}"></div>'
     if modo=='imagem':
-        return f'<div class="midia-imagem"><img src="{h(src)}" alt="{titulo}" loading="lazy" decoding="async"></div>'
+        return f'<div class="midia-quadro midia-imagem"><img src="{h(src)}" alt="{titulo}" loading="lazy" decoding="async"></div>'
     return ''
 
 
