@@ -1,7 +1,7 @@
 {
   "schemaVersao": 2,
   "contrato": "imoplace-v1",
-  "geradoEm": "2026-11-26T18:20:01.134581+00:00",
+  "geradoEm": "2026-11-26T18:21:45.616843+00:00",
   "total": 28,
   "imoveis": [
     {
@@ -4132,7 +4132,7 @@
       "destaque": false,
       "tag": "Aceita Parcelamento direto",
       "ordem": 0,
-      "atualizadoEm": "2026-11-26T18:19:55.857Z",
+      "atualizadoEm": "2026-11-26T18:20:08.676Z",
       "tipo": "Apartamento",
       "condicao": "Novo",
       "titulo": "Grand Park Lindóia | 2 e 3 dormitórios | Zona Norte de Porto Alegre",
@@ -4268,7 +4268,7 @@
       "destaque": false,
       "tag": "PROMOCAO",
       "ordem": 0,
-      "atualizadoEm": "2026-11-19T17:51:01.658Z",
+      "atualizadoEm": "2026-11-26T18:20:45.736Z",
       "tipo": "Apartamento",
       "condicao": "Usado",
       "titulo": "Grand Park Moinhos | 2 e 3 dormitórios e gardens | Canoas",
@@ -4327,7 +4327,14 @@
       "tarja": "",
       "tarjaTexto": "",
       "precoAnterior": null,
-      "grupos": [],
+      "grupos": [
+        {
+          "id": "G2",
+          "nome": "Condomínio de apartamento",
+          "tipo": "Condomínio",
+          "titulo": "Condomínio de apartamento"
+        }
+      ],
       "unidade": "",
       "midias": [],
       "links_externos": [],
@@ -4556,7 +4563,7 @@
       "destaque": false,
       "tag": "",
       "ordem": 0,
-      "atualizadoEm": "2026-11-18T16:38:25.486Z",
+      "atualizadoEm": "2026-11-26T18:21:25.766Z",
       "tipo": "Apartamento",
       "condicao": "Na planta",
       "titulo": "Mezzano Domingos Martins | 2 dormitórios com suíte e rooftop | Centro de Canoas",
