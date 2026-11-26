@@ -1,5 +1,5 @@
 """ImoPlace — HTML das páginas dos imóveis (layout do ImoPlace v2.1, sem dados de demonstração)."""
-from midias import colecao, embed
+from midias import colecao, alvo, estilo, ALLOW, SANDBOX
 from formatos_imagens import ordem_formatos
 import html
 import json
@@ -286,14 +286,26 @@ def picture(f,item,k,sizes="(max-width: 768px) 100vw, 60vw"):
     return '<picture>'+sources+'<img src="'+h(src)+'"'+srcset+' width="'+str(data.get('largura',960))+'" height="'+str(data.get('altura',600))+'" alt="'+h(f.get('alt') or item['titulo'])+'" loading="'+('eager' if k==0 else 'lazy')+'" '+('fetchpriority="high" ' if k==0 else '')+'decoding="async"></picture>'
 
 
+def midia_player(x):
+    """Renderiza direto, sem botão: iframe com loading=lazy, vídeo nativo, panorama ou imagem."""
+    modo,src,prop=alvo(x);st=estilo(prop);titulo=h(x['titulo'])
+    if modo=='iframe':
+        return f'<div class="midia-quadro" style="{st}"><iframe src="{h(src)}" title="{titulo}" loading="lazy" allow="{ALLOW}" allowfullscreen sandbox="{SANDBOX}" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>'
+    if modo=='video':
+        capa=f' poster="{h(x["capa"])}"' if x.get('capa') else ''
+        return f'<div class="midia-quadro" style="{st}"><video src="{h(src)}" controls playsinline preload="metadata"{capa}>Seu navegador não reproduz este vídeo.</video></div>'
+    if modo=='panorama':
+        return f'<div class="midia-quadro midia-panorama" style="{st}" data-panorama="{h(src)}"></div>'
+    if modo=='imagem':
+        return f'<div class="midia-imagem"><img src="{h(src)}" alt="{titulo}" loading="lazy" decoding="async"></div>'
+    return ''
+
+
 def multimidia(item):
     medias=colecao(item.get('midias')); links=colecao(item.get('links_externos'),links=True)
     cards=[]
     for x in medias:
-        target=embed(x['url']);action=''
-        if target: action='<button type="button" class="btn btn-line" data-embed="'+h(target)+'">Carregar player</button>'
-        elif x['tipo']=='panorama_360': action='<button type="button" class="btn btn-line" data-panorama="'+h(x['url'])+'">Explorar em 360°</button>'
-        cards.append('<article class="midia-card"><h3>'+h(x['titulo'])+'</h3><p>'+h(x['descricao'])+'</p>'+action+' <a href="'+h(x['url'])+'" target="_blank" rel="noopener noreferrer">Abrir em nova aba ↗</a><div data-player></div></article>')
+        cards.append('<article class="midia-card"><h3>'+h(x['titulo'])+'</h3>'+('<p>'+h(x['descricao'])+'</p>' if x['descricao'] else '')+midia_player(x)+'<a class="midia-abrir" href="'+h(x['url'])+'" target="_blank" rel="noopener noreferrer">Abrir em nova aba ↗</a></article>')
     result='<section class="box" aria-label="Vídeos e tours"><h2>Vídeos e tours</h2>'+''.join(cards)+'</section>' if cards else ''
     if links:
         result+='<button class="btn btn-line" type="button" data-open-links>Mais links ↗</button><dialog id="external-links" aria-labelledby="links-title"><h2 id="links-title">Acessos externos</h2><button type="button" class="btn btn-line" data-close-links>Fechar ✕</button>'+''.join('<p><a href="'+h(x['url'])+'" target="_blank" rel="noopener noreferrer">'+h(x['titulo'])+' ↗</a><br>'+h(x['descricao'])+'</p>' for x in links)+'</dialog>'

@@ -1,4 +1,4 @@
-/* Mídias só carregam terceiros após ação do visitante. */
+/* Mídias renderizam direto na página (iframe com loading=lazy, vídeo nativo, panorama ao chegar na tela). */
 'use strict';
 const ImoplaceMidias=(()=>{
  const safe=value=>{try{const u=new URL(value);return u.protocol==='https:'&&!u.username&&!u.password?u.href:'';}catch{return '';}};
@@ -22,27 +22,49 @@ const ImoplaceMidias=(()=>{
   return '<picture>'+order.filter(x=>formats[x]?.length).map(x=>`<source type="image/${x==='jpg'?'jpeg':x}" srcset="${set(formats[x])}" sizes="${sizes}">`).join('')+
    `<img class="${esc(cls)}" src="${path(fallback.length?fallback.at(-1).arquivo:f.arquivo||'')}" ${fallback.length?`srcset="${set(fallback)}" sizes="${sizes}"`:''} width="${Number(d.largura)||960}" height="${Number(d.altura)||600}" alt="${esc(f.alt||item.titulo)}" loading="${k===0?'eager':'lazy'}" ${k===0?'fetchpriority="high"':''} decoding="async"></picture>`;
  }
+ const EXT_VIDEO=/\.(mp4|webm|ogv|ogg|mov|m4v)$/i,EXT_IMAGEM=/\.(jpe?g|png|webp|avif)$/i;
+ const PRESETS=['16/9','4/3','1/1','9/16','2/1','21/9','3/4'];
+ const SANDBOX='allow-scripts allow-same-origin allow-presentation allow-popups allow-popups-to-escape-sandbox allow-forms';
+ const ALLOW='autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture; web-share; accelerometer; gyroscope; xr-spatial-tracking';
+ const prop=v=>{const m=String(v||'').match(/^\s*(\d{1,4})\s*[\/:x×]\s*(\d{1,4})\s*$/);return m&&+m[1]&&+m[2]?(+m[1])+'/'+(+m[2]):'';};
+ const proprio=url=>{const h=new URL(url).hostname.toLowerCase(),own=['imoplace.com.br',(typeof location!=='undefined'&&location.hostname)||''].filter(Boolean);return own.some(d=>h===d||h.endsWith('.'+d));};
+ function alvo(x){
+  const url=safe(x.url);if(!url)return['link','',''];
+  const path=new URL(url).pathname,p=prop(x.proporcao),oficial=embed(url);
+  if(oficial)return['iframe',oficial,p||'16/9'];
+  if(EXT_VIDEO.test(path))return['video',url,p||'16/9'];
+  if(EXT_IMAGEM.test(path))return x.tipo==='panorama_360'?['panorama',url,'2/1']:['imagem',url,p];
+  if(proprio(url))return['link',url,''];
+  return['iframe',url,p||(x.tipo==='panorama_360'?'2/1':'16/9')];
+ }
+ const estilo=p=>{if(!p)return '';const[w]=p.split('/').map(Number);return 'aspect-ratio:'+p+(PRESETS.includes(p)||w<80||w>1400?'':';max-width:'+w+'px');};
+ function player(x){
+  const[modo,src,p]=alvo(x),st=esc(estilo(p)),t=esc(x.titulo);
+  if(modo==='iframe')return `<div class="midia-quadro" style="${st}"><iframe src="${esc(src)}" title="${t}" loading="lazy" allow="${ALLOW}" allowfullscreen sandbox="${SANDBOX}" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>`;
+  if(modo==='video')return `<div class="midia-quadro" style="${st}"><video src="${esc(src)}" controls playsinline preload="metadata"${safe(x.capa)?` poster="${esc(safe(x.capa))}"`:''}>Seu navegador não reproduz este vídeo.</video></div>`;
+  if(modo==='panorama')return `<div class="midia-quadro midia-panorama" style="${st}" data-panorama="${esc(src)}"></div>`;
+  if(modo==='imagem')return `<div class="midia-imagem"><img src="${esc(src)}" alt="${t}" loading="lazy" decoding="async"></div>`;
+  return '';
+ }
  function html(item){
   const medias=collection(item.midias),links=collection(item.links_externos);
-  return '<div id="multimidia">'+(medias.length?'<section class="box" aria-label="Vídeos e tours"><h2>Vídeos e tours</h2>'+medias.map(x=>{
-   const target=embed(x.url);return `<article class="midia-card"><h3>${esc(x.titulo)}</h3><p>${esc(x.descricao||'')}</p>${target?`<button type="button" class="btn btn-line" data-embed="${esc(target)}">Carregar player</button>`:x.tipo==='panorama_360'?`<button type="button" class="btn btn-line" data-panorama="${esc(x.url)}">Explorar em 360°</button>`:''} <a href="${esc(safe(x.url))}" target="_blank" rel="noopener noreferrer">Abrir em nova aba ↗</a><div data-player></div></article>`;
-  }).join('')+'</section>':'')+(links.length?`<button class="btn btn-line" type="button" data-open-links>Mais links ↗</button><dialog id="external-links" aria-labelledby="links-title"><h2 id="links-title">Acessos externos</h2><button type="button" class="btn btn-line" data-close-links>Fechar ✕</button>${links.map(x=>`<p><a href="${esc(safe(x.url))}" target="_blank" rel="noopener noreferrer">${esc(x.titulo)} ↗</a><br>${esc(x.descricao||'')}</p>`).join('')}</dialog>`:'')+'</div>';
+  return '<div id="multimidia">'+(medias.length?'<section class="box" aria-label="Vídeos e tours"><h2>Vídeos e tours</h2>'+medias.map(x=>`<article class="midia-card"><h3>${esc(x.titulo)}</h3>${x.descricao?`<p>${esc(x.descricao)}</p>`:''}${player(x)}<a class="midia-abrir" href="${esc(safe(x.url))}" target="_blank" rel="noopener noreferrer">Abrir em nova aba ↗</a></article>`).join('')+'</section>':'')+(links.length?`<button class="btn btn-line" type="button" data-open-links>Mais links ↗</button><dialog id="external-links" aria-labelledby="links-title"><h2 id="links-title">Acessos externos</h2><button type="button" class="btn btn-line" data-close-links>Fechar ✕</button>${links.map(x=>`<p><a href="${esc(safe(x.url))}" target="_blank" rel="noopener noreferrer">${esc(x.titulo)} ↗</a><br>${esc(x.descricao||'')}</p>`).join('')}</dialog>`:'')+'</div>';
  }
  let opener;
- document.addEventListener('click',async e=>{
+ document.addEventListener('click',e=>{
   if(e.target.closest('[data-open-links]')){opener=e.target.closest('button');document.querySelector('#external-links')?.showModal();}
   if(e.target.closest('[data-close-links]'))document.querySelector('#external-links')?.close();
-  const b=e.target.closest('[data-embed], [data-panorama]');if(!b)return;
-  const player=b.closest('article').querySelector('[data-player]');player.replaceChildren();
-  if(b.dataset.embed){
-   const url=embed(b.dataset.embed);if(!url)return;
-   const iframe=document.createElement('iframe');iframe.src=url;iframe.title=b.closest('article').querySelector('h3').textContent;
-   iframe.setAttribute('sandbox','allow-scripts allow-same-origin allow-presentation');iframe.allow='fullscreen; accelerometer; gyroscope; picture-in-picture';iframe.allowFullscreen=true;iframe.referrerPolicy='no-referrer';player.append(iframe);
-  }else{
-   try{await panorama(player,safe(b.dataset.panorama));}catch{player.textContent='Não foi possível carregar o panorama. Use o link para abrir a imagem.';}
-  }
  });
  document.addEventListener('close',e=>{if(e.target.id==='external-links')opener?.focus();},true);
+ /* Panoramas de imagem 2:1 montam sozinhos quando chegam perto da tela. */
+ function iniciar(root=document){
+  const boxes=[...root.querySelectorAll('[data-panorama]:not([data-pronto])')];if(!boxes.length)return;
+  const montar=box=>{box.dataset.pronto='1';panorama(box,safe(box.dataset.panorama)).catch(()=>{box.textContent='Não foi possível carregar o panorama. Use o link para abrir a imagem.';});};
+  if(typeof IntersectionObserver==='undefined'){boxes.forEach(montar);return;}
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){io.unobserve(e.target);montar(e.target);}}),{rootMargin:'300px'});
+  boxes.forEach(b=>io.observe(b));
+ }
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>iniciar());else if(document.querySelectorAll)iniciar();
  async function panorama(box,url){
   const img=new Image();img.crossOrigin='anonymous';img.src=url;await img.decode();
   if(Math.abs(img.width/img.height-2)>.1)throw Error('Use imagem equiretangular 2:1');
@@ -62,5 +84,5 @@ const ImoplaceMidias=(()=>{
   canvas.onkeydown=e=>{if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(e.key))return;e.preventDefault();yaw+=(e.key==='ArrowRight'?.1:e.key==='ArrowLeft'?-.1:0);pitch=Math.max(-1.4,Math.min(1.4,pitch+(e.key==='ArrowUp'?.1:e.key==='ArrowDown'?-.1:0)));draw();};
   box.append(canvas);draw();
  }
- return {html,picture,embed};
+ return {html,picture,embed,alvo,player,iniciar};
 })();

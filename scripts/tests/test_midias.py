@@ -15,9 +15,13 @@ class Evolucao(unittest.TestCase):
         self.assertEqual(len(items),1)
         html=paginas.multimidia({'midias':items,'links_externos':items})
         self.assertNotIn('<script>',html)
-        self.assertNotIn('<iframe',html)
+        self.assertNotIn('javascript:',html)
         self.assertIn('&lt;script&gt;',html)
         self.assertIn('data-open-links',html)
+        self.assertIn('<iframe src="https://x.example/"',html)
+        self.assertIn('sandbox=',html)
+        self.assertNotIn('data-embed',html)
+        self.assertNotIn('Carregar player',html)
 
     def test_embed_valida_host_e_identificador(self):
         self.assertEqual(midias.embed('https://youtu.be/abcdefghijk'),'https://www.youtube-nocookie.com/embed/abcdefghijk')
@@ -51,6 +55,28 @@ class Evolucao(unittest.TestCase):
         out=core_google._publico(im,[],'https://imoplace.com.br')
         self.assertEqual(out['midias'][0]['titulo'],'Tour')
         self.assertEqual(out['links_externos'],[])
+
+    def test_iframe_colado_vira_url_e_formato(self):
+        cod='<iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fx&amp;show_text=true&amp;width=500" width="500" height="463" style="border:none" allowfullscreen="true"></iframe>'
+        x=midias.colecao(json.dumps([{'tipo':'iframe','url':cod,'titulo':'Post'}]))[0]
+        self.assertEqual(x['url'],'https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fx&show_text=true&width=500')
+        self.assertEqual(x['proporcao'],'500/463')
+        html=paginas.multimidia({'midias':[x],'links_externos':[]})
+        self.assertIn('loading="lazy"',html)
+        self.assertIn('aspect-ratio:500/463;max-width:500px',html)
+        self.assertNotIn('style="border:none"',html)
+        self.assertEqual(midias.colecao(json.dumps([{'url':'<iframe srcdoc="<script>x</script>"></iframe>'}])),[])
+
+    def test_video_por_arquivo_e_regras(self):
+        v={'tipo':'video','url':'https://cdn.example.org/tour.mp4?x=1','titulo':'Tour','capa':'https://cdn.example.org/capa.jpg'}
+        x=midias.colecao(json.dumps([v]))[0]
+        self.assertEqual(midias.alvo(x)[0],'video')
+        html=paginas.multimidia({'midias':[x],'links_externos':[]})
+        self.assertIn('<video src="https://cdn.example.org/tour.mp4?x=1" controls playsinline preload="metadata" poster="https://cdn.example.org/capa.jpg"',html)
+        self.assertEqual(midias.alvo({'tipo':'video','url':'https://youtu.be/abcdefghijk'})[:2],('iframe','https://www.youtube-nocookie.com/embed/abcdefghijk'))
+        self.assertEqual(midias.alvo({'tipo':'panorama_360','url':'https://x.example/p.jpg'})[0],'panorama')
+        self.assertEqual(midias.alvo({'tipo':'iframe','url':'https://www.imoplace.com.br/adm/'})[0],'link')
+        self.assertEqual(midias.alvo({'tipo':'iframe','url':'https://kuula.co/share/abc'}),('iframe','https://kuula.co/share/abc','16/9'))
 
     def test_frontend_real_em_node(self):
         import subprocess
