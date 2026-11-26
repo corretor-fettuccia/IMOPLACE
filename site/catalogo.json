@@ -1,7 +1,7 @@
 {
   "schemaVersao": 2,
   "contrato": "imoplace-v1",
-  "geradoEm": "2026-11-26T18:56:20.220943+00:00",
+  "geradoEm": "2026-11-26T21:57:59.542488+00:00",
   "total": 28,
   "imoveis": [
     {
@@ -5371,7 +5371,7 @@
       "destaque": false,
       "tag": "Semi Mobiliado",
       "ordem": 0,
-      "atualizadoEm": "2026-11-22T23:07:08.643Z",
+      "atualizadoEm": "2026-11-26T18:54:24.429Z",
       "tipo": "Sobrado",
       "condicao": "Usado",
       "titulo": "Sobrado com suíte master e piscina aquecida | Estância Velha, Canoas",
@@ -5433,7 +5433,14 @@
       "tarja": "",
       "tarjaTexto": "",
       "precoAnterior": null,
-      "grupos": [],
+      "grupos": [
+        {
+          "id": "G6",
+          "nome": "Casa de bairro",
+          "tipo": "Outro",
+          "titulo": ""
+        }
+      ],
       "unidade": "",
       "midias": [],
       "links_externos": [],
