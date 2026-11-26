@@ -1,7 +1,7 @@
 {
   "schemaVersao": 2,
   "contrato": "imoplace-v1",
-  "geradoEm": "2026-11-26T18:25:19.436575+00:00",
+  "geradoEm": "2026-11-26T18:42:05.596528+00:00",
   "total": 28,
   "imoveis": [
     {
@@ -13,7 +13,7 @@
       "destaque": true,
       "tag": "EXCLUSIVIDADE",
       "ordem": 0,
-      "atualizadoEm": "2026-11-23T11:44:02.524Z",
+      "atualizadoEm": "2026-11-26T18:41:56.856Z",
       "tipo": "Casa",
       "condicao": "Usado",
       "titulo": "CASA 4 DORMITÓRIOS COM SUÍTE E TERRENO DE 360m²",
@@ -74,7 +74,14 @@
       "tarja": "",
       "tarjaTexto": "",
       "precoAnterior": null,
-      "grupos": [],
+      "grupos": [
+        {
+          "id": "G6",
+          "nome": "Casa de bairro",
+          "tipo": "Outro",
+          "titulo": ""
+        }
+      ],
       "unidade": "",
       "midias": [],
       "links_externos": [],
@@ -4699,7 +4706,7 @@
       "destaque": false,
       "tag": "",
       "ordem": 0,
-      "atualizadoEm": "2026-11-19T13:16:40.731Z",
+      "atualizadoEm": "2026-11-26T18:41:06.340Z",
       "tipo": "Casa",
       "condicao": "Usado",
       "titulo": "Casa semimobiliada de 3 dormitórios e 100 m² | Centro de Nova Santa Rita",
@@ -4754,7 +4761,14 @@
       "tarja": "",
       "tarjaTexto": "",
       "precoAnterior": null,
-      "grupos": [],
+      "grupos": [
+        {
+          "id": "G6",
+          "nome": "Casa de bairro",
+          "tipo": "Outro",
+          "titulo": ""
+        }
+      ],
       "unidade": "",
       "midias": [],
       "links_externos": [],
