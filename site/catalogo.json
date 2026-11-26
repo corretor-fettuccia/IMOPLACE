@@ -1,7 +1,7 @@
 {
   "schemaVersao": 2,
   "contrato": "imoplace-v1",
-  "geradoEm": "2026-11-26T18:54:14.787866+00:00",
+  "geradoEm": "2026-11-26T18:56:20.220943+00:00",
   "total": 28,
   "imoveis": [
     {
@@ -6692,7 +6692,7 @@
       "destaque": false,
       "tag": "a partir R$719/Mês",
       "ordem": 0,
-      "atualizadoEm": "2026-11-17T02:58:00.005Z",
+      "atualizadoEm": "2026-11-26T18:55:10.534Z",
       "tipo": "Apartamento",
       "condicao": "Na planta",
       "titulo": "𝗥𝗘𝗦𝗜𝗗𝗘𝗡𝗖𝗜𝗔𝗟 𝗟𝗔𝗦 𝗣𝗔𝗟𝗠𝗔𝗦 𝗖𝗔𝗡𝗢𝗔𝗦 | Mato Grande | Canoas | Baliza",
@@ -6749,7 +6749,14 @@
       "tarja": "",
       "tarjaTexto": "",
       "precoAnterior": null,
-      "grupos": [],
+      "grupos": [
+        {
+          "id": "G2",
+          "nome": "Condomínio de apartamento",
+          "tipo": "Condomínio",
+          "titulo": "Condomínio de apartamento"
+        }
+      ],
       "unidade": "",
       "midias": [],
       "links_externos": [],
@@ -6875,7 +6882,7 @@
       "destaque": false,
       "tag": "a partir 2mil/mês",
       "ordem": 0,
-      "atualizadoEm": "2026-11-17T02:57:31.115Z",
+      "atualizadoEm": "2026-11-26T18:55:46.821Z",
       "tipo": "Apartamento",
       "condicao": "Na planta",
       "titulo": "Napoles - Apartamento com 2 Dormitórios, Sacada e Churrasqueira em Canoas | Parcelas a partir de R$ 2.000/mês",
@@ -6946,7 +6953,14 @@
       "tarja": "",
       "tarjaTexto": "",
       "precoAnterior": null,
-      "grupos": [],
+      "grupos": [
+        {
+          "id": "G2",
+          "nome": "Condomínio de apartamento",
+          "tipo": "Condomínio",
+          "titulo": "Condomínio de apartamento"
+        }
+      ],
       "unidade": "",
       "midias": [],
       "links_externos": [],
