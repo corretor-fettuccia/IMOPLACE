@@ -1,7 +1,7 @@
 {
   "schemaVersao": 2,
   "contrato": "imoplace-v1",
-  "geradoEm": "2026-11-26T18:46:56.641985+00:00",
+  "geradoEm": "2026-11-26T18:50:28.791433+00:00",
   "total": 28,
   "imoveis": [
     {
@@ -5135,7 +5135,7 @@
       "destaque": false,
       "tag": "Nunca Habitado",
       "ordem": 0,
-      "atualizadoEm": "2026-11-22T19:25:18.889Z",
+      "atualizadoEm": "2026-11-26T18:50:18.698Z",
       "tipo": "Sobrado",
       "condicao": "Novo",
       "titulo": "Reservas do Lago | Sobrado de 234 m² com 3 suítes | Nova Santa Rita",
@@ -5197,7 +5197,20 @@
       "tarja": "",
       "tarjaTexto": "",
       "precoAnterior": null,
-      "grupos": [],
+      "grupos": [
+        {
+          "id": "G3",
+          "nome": "Condomínio de casas",
+          "tipo": "Condomínio",
+          "titulo": ""
+        },
+        {
+          "id": "G7",
+          "nome": "Reservas do lago",
+          "tipo": "Condomínio fechado",
+          "titulo": ""
+        }
+      ],
       "unidade": "",
       "midias": [],
       "links_externos": [],
@@ -5874,7 +5887,7 @@
       "destaque": false,
       "tag": "",
       "ordem": 0,
-      "atualizadoEm": "2026-11-17T02:59:32.871Z",
+      "atualizadoEm": "2026-11-26T18:49:25.077Z",
       "tipo": "Terreno",
       "condicao": "Novo",
       "titulo": "Legano Multy - Loteamento",
@@ -5944,7 +5957,14 @@
       "tarja": "",
       "tarjaTexto": "",
       "precoAnterior": null,
-      "grupos": [],
+      "grupos": [
+        {
+          "id": "G9",
+          "nome": "Bairro planejado",
+          "tipo": "Bairro",
+          "titulo": ""
+        }
+      ],
       "unidade": "",
       "midias": [],
       "links_externos": [],
