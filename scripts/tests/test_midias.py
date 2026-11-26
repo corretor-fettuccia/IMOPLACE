@@ -90,7 +90,9 @@ class Evolucao(unittest.TestCase):
         self.assertTrue(src.endswith('&width=500'))
         modo,src,prop=midias.alvo({'tipo':'iframe','url':url+'&width=552&height=999'})
         self.assertEqual(prop,'552/311');self.assertNotIn('height=',src);self.assertEqual(src.count('width='),1)
-        self.assertEqual(midias.alvo({'tipo':'iframe','url':url+'&width=500','proporcao':'500/463'})[2],'500/463')
+        self.assertEqual(midias.alvo({'tipo':'iframe','url':url+'&width=500','proporcao':'500/463'})[2],'500/281')  # sem texto: ignora altura colada
+        com_texto=url.replace('show_text=false','show_text=true')+'&width=500'
+        self.assertEqual(midias.alvo({'tipo':'iframe','url':com_texto,'proporcao':'500/463'})[2],'500/463')
         html=paginas.multimidia({'midias':midias.colecao(json.dumps([{'tipo':'iframe','url':url,'titulo':'A'}]))})
         self.assertIn('data-escala="500x281"',html)
 
