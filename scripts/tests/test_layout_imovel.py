@@ -105,3 +105,14 @@ class LayoutImovel(unittest.TestCase):
 
 if __name__=='__main__':
     unittest.main()
+
+    def test_arquivos_com_versao_no_endereco(self):
+        import paginas
+        rel='assets/js/imovel.js'
+        url=paginas.ativo(rel)
+        self.assertRegex(url,r'^\.\./\.\./assets/js/imovel\.js\?v=[0-9a-f]{10}$')
+        self.assertEqual(url,paginas.ativo(rel))
+        self.assertEqual(paginas.ativo('assets/js/nao-existe.js'),'../../assets/js/nao-existe.js')
+        src=(RAIZ/'scripts/paginas.py').read_text(encoding='utf-8')
+        for a in ('assets/css/style.css','assets/js/main.js','assets/js/midias.js','assets/js/imovel.js'):
+            self.assertIn('{ativo("'+a+'")}',src)

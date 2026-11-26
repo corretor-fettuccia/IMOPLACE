@@ -1,11 +1,21 @@
 """ImoPlace — HTML das páginas dos imóveis (layout do ImoPlace v2.1, sem dados de demonstração)."""
 from midias import colecao, alvo, estilo, pixels, ALLOW, SANDBOX
 from formatos_imagens import ordem_formatos
+import hashlib
 import html
 import json
+from pathlib import Path
 from urllib.parse import quote
 
 RAIZ_REL = '../../'
+SITE = Path(__file__).resolve().parent.parent / 'site'
+
+
+def ativo(rel):
+    """Endereço do arquivo com a versão (hash do conteúdo): cada publicação força o navegador e a CDN a baixar o novo."""
+    try: v = hashlib.sha256((SITE / rel).read_bytes()).hexdigest()[:10]
+    except OSError: return RAIZ_REL + rel
+    return f'{RAIZ_REL}{rel}?v={v}'
 # Permite ao Google exibir fotos grandes nos resultados e no Discover.
 ROBOTS_INDEX = 'index,follow,max-image-preview:large'
 
@@ -244,7 +254,7 @@ def pagina(item, conf):
 {social_tags(fotos,base)}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{RAIZ_REL}assets/css/style.css">
+<link rel="stylesheet" href="{ativo("assets/css/style.css")}">
 <script type="application/ld+json">{ld}</script>
 </head>
 <body>
@@ -255,13 +265,13 @@ def pagina(item, conf):
 </div></header>
 <main class="wrap" id="det">{detalhe(item)}</main>
 <footer><div class="wrap"><span>© {h(conf.get('ano', '2026'))} Imoplace · imoplace.com.br</span><span>Informações sujeitas a confirmação com o anunciante.</span></div></footer>
-<script src="{RAIZ_REL}assets/js/protecao.js"></script>
-<script src="{RAIZ_REL}assets/js/main.js"></script>
-<script src="{RAIZ_REL}assets/js/midias.js"></script>
+<script src="{ativo("assets/js/protecao.js")}"></script>
+<script src="{ativo("assets/js/main.js")}"></script>
+<script src="{ativo("assets/js/midias.js")}"></script>
 <span id="monitor-imovel" data-imovel="{h(item['id'])}" hidden></span>
-<script src="{RAIZ_REL}assets/js/imovel-lead.js"></script>
-<script src="{RAIZ_REL}assets/js/imovel.js"></script>
-<script src="{RAIZ_REL}assets/js/avatar.js?v=2"></script>
+<script src="{ativo("assets/js/imovel-lead.js")}"></script>
+<script src="{ativo("assets/js/imovel.js")}"></script>
+<script src="{ativo("assets/js/avatar.js")}"></script>
 </body></html>
 '''
 
