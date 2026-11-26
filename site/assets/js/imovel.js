@@ -73,11 +73,11 @@ function detailsHTML(item) {
   ${galleryHTML(item)}
   ${stats?`<div class="stats">${stats}</div>`:''}
   ${faixaHTML(item)}
-  ${ImoplaceMidias.html(item)}
   <div class="dhead"><h1 class="dt">${esc(item.titulo)}</h1><div class="dact"><button type="button" class="btn btn-line share-mobile" id="share"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg><span>Compartilhar</span></button><button type="button" class="btn btn-line" id="save" aria-pressed="false">${icone(CORACAO,18,"")}<span>Salvar</span></button></div></div>
   <div class="imovel-layout">
    <div class="box imovel-sobre"><h3>Sobre o imóvel</h3><p style="white-space:pre-line">${esc(item.descricao||'Descrição não cadastrada.')}</p></div>
    ${linhas.length?`<div class="box imovel-valores"><h3>Valores</h3><dl class="vals">${linhas.map(([r,v])=>`<dt>${r}</dt><dd>${v}</dd>`).join('')}</dl></div>`:''}
+   ${ImoplaceMidias.html(item)}
    ${enderecoPublico?`<div class="box imovel-mapa"><h3>Localização</h3>${mapa}<div class="where">${esc(enderecoPublico)}</div></div>`:''}
    <div class="imovel-barra">${grupos?`<aside class="box carac" aria-label="Características"><h2>Características</h2>${grupos}</aside>`:''}<aside class="aside box"><div class="adv"><div class="av">I</div><div><b>${esc(item.anunciante?.nome||'Imoplace')}</b>${item.anunciante?.creci?`<span class="where">CRECI ${esc(item.anunciante.creci)}</span>`:''}</div></div>
    ${zapLink?'<div class="contact-note">Solicite mais informações diretamente ao anunciante.</div>':''}

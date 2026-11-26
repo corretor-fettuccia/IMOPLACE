@@ -78,6 +78,21 @@ class Evolucao(unittest.TestCase):
         self.assertEqual(midias.alvo({'tipo':'iframe','url':'https://www.imoplace.com.br/adm/'})[0],'link')
         self.assertEqual(midias.alvo({'tipo':'iframe','url':'https://kuula.co/share/abc'}),('iframe','https://kuula.co/share/abc','16/9'))
 
+    def test_carrossel_so_com_mais_de_um_item(self):
+        um=midias.colecao(json.dumps([{'tipo':'iframe','url':'https://a.example/','titulo':'A'}]))
+        dois=midias.colecao(json.dumps([{'tipo':'iframe','url':'https://a.example/','titulo':'A'},{'tipo':'video','url':'https://b.example/v.mp4','titulo':'B'}]))
+        self.assertNotIn('data-carrossel',paginas.multimidia({'midias':um}))
+        html=paginas.multimidia({'midias':dois})
+        self.assertIn('data-carrossel',html);self.assertIn('data-mc="-1"',html);self.assertIn('data-mc="1"',html)
+        self.assertIn('<span data-mc-atual>1</span> / 2',html)
+        self.assertEqual(html.count('class="midia-card"'),2)
+
+    def test_midias_antes_do_mapa(self):
+        base={'id':'1','titulo':'Casa','localizacao':{'endereco':'Rua A, Canoas'},'midias':[{'tipo':'iframe','url':'https://a.example/','titulo':'A','descricao':'','ordem':1,'visivel':True}]}
+        html=paginas.detalhe(base)
+        self.assertLess(html.index('id="multimidia"'),html.index('imovel-mapa'))
+        self.assertGreater(html.index('id="multimidia"'),html.index('class="dhead"'))
+
     def test_frontend_real_em_node(self):
         import subprocess
         subprocess.run(['node',str(Path(__file__).with_name('test_midias_node.js'))],check=True,capture_output=True,text=True)

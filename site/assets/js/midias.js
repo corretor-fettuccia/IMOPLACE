@@ -46,15 +46,32 @@ const ImoplaceMidias=(()=>{
   if(modo==='imagem')return `<div class="midia-imagem"><img src="${esc(src)}" alt="${t}" loading="lazy" decoding="async"></div>`;
   return '';
  }
+ function carrossel(cards){
+  if(cards.length<2)return cards.join('');
+  return `<div class="midia-carrossel" data-carrossel><div class="mc-trilho" tabindex="0" aria-label="Mídias do imóvel, use as setas para navegar">${cards.join('')}</div><button type="button" class="mc-nav mc-prev" data-mc="-1" aria-label="Mídia anterior">‹</button><button type="button" class="mc-nav mc-next" data-mc="1" aria-label="Próxima mídia">›</button><div class="mc-contador" aria-live="polite"><span data-mc-atual>1</span> / ${cards.length}</div></div>`;
+ }
  function html(item){
   const medias=collection(item.midias),links=collection(item.links_externos);
-  return '<div id="multimidia">'+(medias.length?'<section class="box" aria-label="Vídeos e tours"><h2>Vídeos e tours</h2>'+medias.map(x=>`<article class="midia-card"><h3>${esc(x.titulo)}</h3>${x.descricao?`<p>${esc(x.descricao)}</p>`:''}${player(x)}<a class="midia-abrir" href="${esc(safe(x.url))}" target="_blank" rel="noopener noreferrer">Abrir em nova aba ↗</a></article>`).join('')+'</section>':'')+(links.length?`<button class="btn btn-line" type="button" data-open-links>Mais links ↗</button><dialog id="external-links" aria-labelledby="links-title"><h2 id="links-title">Acessos externos</h2><button type="button" class="btn btn-line" data-close-links>Fechar ✕</button>${links.map(x=>`<p><a href="${esc(safe(x.url))}" target="_blank" rel="noopener noreferrer">${esc(x.titulo)} ↗</a><br>${esc(x.descricao||'')}</p>`).join('')}</dialog>`:'')+'</div>';
+  const cards=medias.map(x=>`<article class="midia-card"><h3>${esc(x.titulo)}</h3>${x.descricao?`<p>${esc(x.descricao)}</p>`:''}${player(x)}<a class="midia-abrir" href="${esc(safe(x.url))}" target="_blank" rel="noopener noreferrer">Abrir em nova aba ↗</a></article>`);
+  return '<div id="multimidia" class="imovel-midias">'+(cards.length?'<section class="box" aria-label="Vídeos e tours"><h3>Vídeos e tours</h3>'+carrossel(cards)+'</section>':'')+(links.length?`<button class="btn btn-line" type="button" data-open-links>Mais links ↗</button><dialog id="external-links" aria-labelledby="links-title"><h2 id="links-title">Acessos externos</h2><button type="button" class="btn btn-line" data-close-links>Fechar ✕</button>${links.map(x=>`<p><a href="${esc(safe(x.url))}" target="_blank" rel="noopener noreferrer">${esc(x.titulo)} ↗</a><br>${esc(x.descricao||'')}</p>`).join('')}</dialog>`:'')+'</div>';
+ }
+ /* Carrossel: setas ‹ › andam um item (com volta ao início), contador e pausa do vídeo que sai da tela. */
+ const mcAtual=tr=>Math.round(tr.scrollLeft/Math.max(1,tr.clientWidth));
+ function mcAtualizar(tr){
+  const box=tr.closest('[data-carrossel]'),i=mcAtual(tr),out=box.querySelector('[data-mc-atual]');
+  if(out&&out.textContent!==String(i+1))out.textContent=i+1;
+  [...tr.children].forEach((card,k)=>{if(k!==i)card.querySelectorAll('video').forEach(v=>{if(!v.paused)v.pause();});});
  }
  let opener;
  document.addEventListener('click',e=>{
+  const nav=e.target.closest('[data-mc]');
+  if(nav){const tr=nav.closest('[data-carrossel]').querySelector('.mc-trilho'),n=tr.children.length,i=(mcAtual(tr)+Number(nav.dataset.mc)+n)%n;tr.scrollTo({left:i*tr.clientWidth,behavior:'smooth'});}
   if(e.target.closest('[data-open-links]')){opener=e.target.closest('button');document.querySelector('#external-links')?.showModal();}
   if(e.target.closest('[data-close-links]'))document.querySelector('#external-links')?.close();
  });
+ let mcTimer;
+ document.addEventListener('scroll',e=>{const tr=e.target;if(!tr.classList?.contains('mc-trilho'))return;clearTimeout(mcTimer);mcTimer=setTimeout(()=>mcAtualizar(tr),80);},true);
+ document.addEventListener('keydown',e=>{const tr=e.target;if(!tr.classList?.contains('mc-trilho')||!['ArrowLeft','ArrowRight'].includes(e.key))return;e.preventDefault();tr.closest('[data-carrossel]').querySelector(e.key==='ArrowLeft'?'.mc-prev':'.mc-next').click();});
  document.addEventListener('close',e=>{if(e.target.id==='external-links')opener?.focus();},true);
  /* Panoramas de imagem 2:1 montam sozinhos quando chegam perto da tela. */
  function iniciar(root=document){
