@@ -1,7 +1,7 @@
 {
   "schemaVersao": 2,
   "contrato": "imoplace-v1",
-  "geradoEm": "2026-11-26T18:52:37.215258+00:00",
+  "geradoEm": "2026-11-26T18:54:14.787866+00:00",
   "total": 28,
   "imoveis": [
     {
@@ -6329,7 +6329,7 @@
       "destaque": false,
       "tag": "",
       "ordem": 0,
-      "atualizadoEm": "2026-11-17T02:58:40.017Z",
+      "atualizadoEm": "2026-11-26T18:53:40.523Z",
       "tipo": "Apartamento",
       "condicao": "Na planta",
       "titulo": "MRV - Apartamento | Sacada + churrasqueira | Alto Petropolis | POA",
@@ -6432,7 +6432,20 @@
       "tarja": "",
       "tarjaTexto": "",
       "precoAnterior": null,
-      "grupos": [],
+      "grupos": [
+        {
+          "id": "G2",
+          "nome": "Condomínio de apartamento",
+          "tipo": "Condomínio",
+          "titulo": "Condomínio de apartamento"
+        },
+        {
+          "id": "G10",
+          "nome": "MRV",
+          "tipo": "Outro",
+          "titulo": ""
+        }
+      ],
       "unidade": "",
       "midias": [],
       "links_externos": [],
