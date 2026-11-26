@@ -74,6 +74,8 @@ class Tabela(unittest.TestCase):
         self.assertIn('<th scope="col">Área</th>', h)
         self.assertNotIn('Dorm.', h); self.assertNotIn('Vagas', h)   # coluna vazia não aparece
         self.assertNotIn('un-mais', h)
+        self.assertIn('<span class="un-nome">Lote 14</span><span class="un-tipo">Terreno</span>', h)   # celular: só o tipo
+        self.assertIn('<span class="un-longo">Ver anúncio →</span><span class="un-curto">Ver →</span>', h)
 
     def test_grupo_grande_mostra_8_e_botao(self):
         cidade = [un(500 + k, f'Casa {k}', 100000 + k * 1000, grupos=(CID,)) for k in range(12)]
@@ -116,6 +118,7 @@ class Tabela(unittest.TestCase):
         self.assertIn('@keyframes un-respira{0%,100%{background:#e3eefb}50%{background:#cfe1f8}}', css)
         self.assertIn('.un-aqui i{width:8px;height:8px;border-radius:50%;background:#fff;animation:un-onda 1.8s', css)
         self.assertIn('box-shadow:inset 5px 0 0 #0a3a7a', css)
+        self.assertIn('.un-nome,.un-longo,.un-vagas{display:none}', css)   # celular compacto
         self.assertIn('@media (prefers-reduced-motion:reduce){.un-atual,.un-aqui i{animation:none}}', css)
 
 

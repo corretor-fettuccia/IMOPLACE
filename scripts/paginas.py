@@ -206,23 +206,23 @@ def _tabela_grupo(item, g, lista):
         area = area_de(e)
         selo_un = {'sold': 'Vendido', 'out_of_stock': 'Indisponível'}.get(d)
         valor = f'<span class="un-selo">{selo_un}</span>' if selo_un else h(brl(e.get('preco')))
-        acao = ('<span class="un-aqui"><i aria-hidden="true"></i>Você está aqui</span>' if atual
-                else f'<a href="{RAIZ_REL}imoveis/{h(e["codigo"])}/">Ver anúncio →</a>')
+        acao = ('<span class="un-aqui"><i aria-hidden="true"></i><span class="un-longo">Você está aqui</span><span class="un-curto">Aqui</span></span>' if atual
+                else f'<a href="{RAIZ_REL}imoveis/{h(e["codigo"])}/" aria-label="Ver anúncio: {h(nome)}"><span class="un-longo">Ver anúncio →</span><span class="un-curto">Ver →</span></a>')
         corrente = ' aria-current="page"' if atual else ''
         linhas.append(f'<tr class="{cls}"{corrente}>'
-                      f'<th scope="row" data-rotulo="Imóvel">{h(nome)}</th>'
-                      f'<td class="un-valor" data-rotulo="Valor">{valor}</td>'
-                      + (f'<td data-rotulo="Área">{cel(f"{area} m²" if tem(area) else None)}</td>' if 'Área' in cols else '')
-                      + (f'<td data-rotulo="Dorm.">{cel(e.get("dormitorios"))}</td>' if 'Dorm.' in cols else '')
-                      + (f'<td data-rotulo="Vagas">{cel(e.get("vagas"))}</td>' if 'Vagas' in cols else '') +
+                      f'<th scope="row"><span class="un-nome">{h(nome)}</span><span class="un-tipo">{h(e.get("tipo") or "Imóvel")}</span></th>'
+                      f'<td class="un-valor">{valor}</td>'
+                      + (f'<td>{cel(f"{area} m²" if tem(area) else None)}</td>' if 'Área' in cols else '')
+                      + (f'<td>{cel(e.get("dormitorios"))}</td>' if 'Dorm.' in cols else '')
+                      + (f'<td class="un-vagas">{cel(e.get("vagas"))}</td>' if 'Vagas' in cols else '') +
                       f'<td class="un-acao">{acao}</td></tr>')
     mais = (f'<button type="button" class="un-mais" data-total="{len(lista)}" aria-expanded="false">Mostrar todos os {len(lista)} ↓</button>'
             if len(lista) > UN_VISIVEIS else '')
     sub = ' · '.join(x for x in (g.get('tipo') or '', f'{len(lista)} imóveis') if x)
     return (f'<section class="box imovel-unidades" aria-labelledby="un-{h(gid)}"><h3 id="un-{h(gid)}">{h(titulo)}</h3>'
             f'<p class="un-sub">{h(sub)}</p>'
-            '<div class="un-tabela-wrap"><table class="un-tabela"><thead><tr><th scope="col">Imóvel</th><th scope="col">Valor</th>'
-            + ''.join(f'<th scope="col">{c}</th>' for c in cols) +
+            '<div class="un-tabela-wrap"><table class="un-tabela"><thead><tr><th scope="col"><span class="un-nome">Imóvel</span><span class="un-tipo">Tipo</span></th><th scope="col">Valor</th>'
+            + ''.join(('<th scope="col" class="un-vagas">' if c == 'Vagas' else '<th scope="col">') + c + '</th>' for c in cols) +
             '<th scope="col"><span class="sr-only">Anúncio</span></th></tr></thead>'
             f'<tbody>{"".join(linhas)}</tbody></table></div>{mais}</section>')
 

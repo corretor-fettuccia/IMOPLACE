@@ -345,15 +345,22 @@ html:not(.js) .un-mais{display:none}
 @keyframes un-respira{0%,100%{background:#e3eefb}50%{background:#cfe1f8}}
 @keyframes un-respira-escuro{0%,100%{background:rgba(66,133,244,.14)}50%{background:rgba(66,133,244,.26)}}
 @keyframes un-onda{0%{box-shadow:0 0 0 0 rgba(255,255,255,.75),0 0 0 0 rgba(255,255,255,.45)}70%{box-shadow:0 0 0 6px rgba(255,255,255,0),0 0 0 11px rgba(255,255,255,0)}100%{box-shadow:0 0 0 0 rgba(255,255,255,0),0 0 0 0 rgba(255,255,255,0)}}
+/* Celular: mesma tabela, compacta — Tipo · Valor · Área · Dorm. · Ver anúncio (sem nome e sem vagas). */
+.un-tipo,.un-curto{display:none}
 @media (max-width:640px){
-  .un-tabela thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
-  .un-tabela,.un-tabela tbody,.un-tabela tr,.un-tabela td,.un-tabela tbody th{display:block;width:100%}
-  .un-tabela tr{border:1px solid var(--line);border-radius:12px;padding:6px 12px;margin-bottom:10px}
-  .un-tabela td,.un-tabela tbody th{border:0;padding:6px 0;display:flex;justify-content:space-between;gap:12px}
-  .un-tabela tbody th{font-size:16px}
-  .un-tabela td[data-rotulo]::before{content:attr(data-rotulo);color:var(--muted);font-weight:500}
-  .un-acao{justify-content:flex-end!important}
-  .un-atual{box-shadow:inset 5px 0 0 #0a3a7a;border-color:#0a3a7a!important}
-  .un-atual>th{box-shadow:none}
+  .un-nome,.un-longo,.un-vagas{display:none}
+  .un-tipo,.un-curto{display:inline}
+  .un-tabela{font-size:13px}
+  .un-tabela thead th{font-size:10.5px;padding:6px 4px}
+  .un-tabela td,.un-tabela tbody th{padding:9px 4px}
+  .un-tabela td:first-child,.un-tabela th:first-child{padding-left:8px}
+  .un-acao{padding-right:2px!important}
+  .un-tabela tbody th{font-weight:600}
+  .un-acao a{font-size:12.5px}
+  .un-selo{font-size:10.5px;padding:2px 7px}
+  .un-aqui{font-size:11px;padding:3px 8px 3px 7px;gap:5px}
+  .un-aqui i{width:6px;height:6px}
+  .un-atual>th{box-shadow:inset 4px 0 0 #0a3a7a}
+  .imovel-unidades{padding-left:12px;padding-right:12px}
 }
 @media (prefers-reduced-motion:reduce){.un-atual,.un-aqui i{animation:none}}
