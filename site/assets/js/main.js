@@ -30,17 +30,35 @@ function getCatalog() {
   }
   return catalogPromise;
 }
+/* Disponibilidade e tarja (igual a paginas.selo): vendido e indisponível têm prioridade. */
+const TARJAS={black_friday:'BLACK FRIDAY',oportunidade:'OPORTUNIDADE',baixou_preco:'BAIXOU O PREÇO',lancamento:'LANÇAMENTO'};
+function disponibilidade(item){const v=item.disponibilidade||item.feeds?.disponibilidade||'in_stock';return ['in_stock','out_of_stock','sold'].includes(v)?v:'in_stock';}
+function selo(item){
+  const d=disponibilidade(item);
+  if(d==='sold')return['vendido','VENDIDO'];
+  if(d==='out_of_stock')return['indisponivel','INDISPONÍVEL'];
+  const t=String(item.tarja||'');if(TARJAS[t])return[t,TARJAS[t]];
+  const tx=String(item.tarjaTexto||'').trim().toUpperCase().slice(0,20);
+  return t==='personalizada'&&tx?['personalizada',tx]:null;
+}
+function tarjaHTML(item){const s=selo(item);return s?`<span class="tarja tarja--${s[0]}">${esc(s[1])}</span>`:'';}
+function estadoClasse(item){return {sold:'estado-vendido',out_of_stock:'estado-indisponivel'}[disponibilidade(item)]||'';}
+function precoHTML(item,cls='price'){
+  if(disponibilidade(item)==='sold')return`<b class="${cls} price-vendido">Vendido</b>`;
+  const a=item.precoAnterior,p=item.preco;
+  return (typeof a==='number'&&typeof p==='number'&&a>p?`<s class="price-old">${brl(a)}</s>`:'')+`<b class="${cls}">${brl(p)}</b>`;
+}
 function cardHTML(item) {
   const pics = (item.imagens || []).slice(0,5);
   const first = pics.length ? pics : [{arquivo:'',alt:'Imagem indisponível',legenda:'Sem imagem'}];
   const slides = first.map((img,j) => `<div class="sl${j===0?' on':''}">${typeof ImoplaceMidias!=='undefined'?ImoplaceMidias.picture(img,item,1):`<img src="${esc(assetURL(img.arquivo))}" alt="${esc(img.alt||item.titulo)}" loading="lazy" width="640" height="400">`}</div>`).join('');
-  return `<article class="card" data-codigo="${esc(item.codigo)}">
+  return `<article class="card ${estadoClasse(item)}" data-codigo="${esc(item.codigo)}">
   <div class="thumb">
-    ${item.tag?`<span class="tag">${esc(item.tag)}</span>`:''}
+    ${item.tag?`<span class="tag">${esc(item.tag)}</span>`:''}${tarjaHTML(item)}
     <button class="fav" type="button" aria-pressed="false" aria-label="Salvar ${esc(item.titulo)}" title="Favorito neste navegador"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.6-9.3-9.2C1.3 8.6 3.2 5 6.6 5c2 0 3.6 1.1 5.4 3 1.8-1.9 3.4-3 5.4-3 3.4 0 5.3 3.6 3.9 6.8C19 16.4 12 21 12 21z"/></svg></button>
     ${slides}<span class="plb"></span><div class="dots" aria-hidden="true">${first.map((_,j)=>`<i${j===0?' class="on"':''}></i>`).join('')}</div>
   </div>
-  <div class="body"><div class="price">${brl(item.preco)}</div>
+  <div class="body"><div class="price">${precoHTML(item,'price-v')}</div>
     <a class="title" href="${esc(detailURL(item))}">${esc(item.tipo)} · ${esc(item.titulo)}</a>
     <div class="where">${esc(local(item))}</div>
     <div class="specs"><span><b>${esc(item.dormitorios ?? '—')}</b> dorm.</span><span><b>${esc(item.banheiros ?? '—')}</b> banh.</span><span><b>${esc(item.vagas ?? '—')}</b> vagas</span><span><b>${esc(item.areaTotal ?? '—')}</b> m²</span></div>

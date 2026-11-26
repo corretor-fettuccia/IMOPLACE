@@ -54,6 +54,9 @@ def _entrada(item, fotos):
         'caracteristicasCondominio': item.get('caracteristicasCondominio') or [],
         'anunciante': {k: (item.get('anunciante') or {}).get(k) or '' for k in ('nome', 'creci', 'whatsapp')},
         'feeds': item.get('feeds') or {},
+        'disponibilidade': item.get('disponibilidade') or (item.get('feeds') or {}).get('disponibilidade') or 'in_stock',
+        'vendidoEm': item.get('vendidoEm') or '', 'tarja': item.get('tarja') or '', 'tarjaTexto': item.get('tarjaTexto') or '',
+        'precoAnterior': item.get('precoAnterior'),
         'midias': item.get('midias') or [], 'links_externos': item.get('links_externos') or [],
         'imagens': [{'arquivo': f['arquivo'], 'legenda': f['legenda'], 'alt': f['alt'], **({'adaptativas': f['adaptativas']} if f.get('adaptativas') else {}), **({'matriz': f['matriz']} if f.get('matriz') else {})} for f in fotos],
     }
@@ -299,6 +302,7 @@ def _item_feed(e, conf, meta):
     base = conf['urlPublica']
     fotos = [f'{base}/{paginas.imagem_seo(f)}' for f in e['imagens']]
     disp = (e.get('feeds') or {}).get('disponibilidade') or 'in_stock'
+    disp = 'in_stock' if disp == 'in_stock' else 'out_of_stock'   # vendido também sai como indisponível
     if meta:
         disp = 'in stock' if disp == 'in_stock' else 'out of stock'
     cond = 'used' if e.get('condicao') == 'Usado' else 'new'
