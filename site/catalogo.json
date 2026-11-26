@@ -1,7 +1,7 @@
 {
   "schemaVersao": 2,
   "contrato": "imoplace-v1",
-  "geradoEm": "2026-11-26T18:45:25.581193+00:00",
+  "geradoEm": "2026-11-26T18:46:56.641985+00:00",
   "total": 28,
   "imoveis": [
     {
@@ -157,7 +157,7 @@
       "destaque": true,
       "tag": "Exclusividade",
       "ordem": 1,
-      "atualizadoEm": "2026-11-24T13:29:19.125Z",
+      "atualizadoEm": "2026-11-26T18:46:51.584Z",
       "tipo": "Sobrado",
       "condicao": "Usado",
       "titulo": "Sobrado Colonial | 3 Dormitórios com Suíte Master | Salão de Festas | Centro de Nova Santa Rita",
@@ -231,7 +231,14 @@
       "tarja": "",
       "tarjaTexto": "",
       "precoAnterior": null,
-      "grupos": [],
+      "grupos": [
+        {
+          "id": "G6",
+          "nome": "Casa de bairro",
+          "tipo": "Outro",
+          "titulo": ""
+        }
+      ],
       "unidade": "",
       "midias": [],
       "links_externos": [],
@@ -402,7 +409,7 @@
       "destaque": true,
       "tag": "4 suítes - Impecável",
       "ordem": 1,
-      "atualizadoEm": "2026-11-19T13:20:30.318Z",
+      "atualizadoEm": "2026-11-26T18:46:25.190Z",
       "tipo": "Sobrado",
       "condicao": "Usado",
       "titulo": "Reservas Do Lago Sobrado 1011",
@@ -495,7 +502,20 @@
       "tarja": "",
       "tarjaTexto": "",
       "precoAnterior": null,
-      "grupos": [],
+      "grupos": [
+        {
+          "id": "G3",
+          "nome": "Condomínio de casas",
+          "tipo": "Condomínio",
+          "titulo": ""
+        },
+        {
+          "id": "G7",
+          "nome": "Reservas do lago",
+          "tipo": "Condomínio fechado",
+          "titulo": ""
+        }
+      ],
       "unidade": "",
       "midias": [],
       "links_externos": [],
@@ -4014,7 +4034,7 @@
       "destaque": false,
       "tag": "",
       "ordem": 0,
-      "atualizadoEm": "2026-11-19T12:16:07.200Z",
+      "atualizadoEm": "2026-11-26T18:45:40.292Z",
       "tipo": "Terreno",
       "condicao": "Novo",
       "titulo": "NAU Marina & Moradas | Terrenos com acesso náutico em Osório",
@@ -4073,7 +4093,20 @@
       "tarja": "",
       "tarjaTexto": "",
       "precoAnterior": null,
-      "grupos": [],
+      "grupos": [
+        {
+          "id": "G3",
+          "nome": "Condomínio de casas",
+          "tipo": "Condomínio",
+          "titulo": ""
+        },
+        {
+          "id": "G8",
+          "nome": "Nau",
+          "tipo": "Condomínio fechado",
+          "titulo": ""
+        }
+      ],
       "unidade": "",
       "midias": [],
       "links_externos": [],
