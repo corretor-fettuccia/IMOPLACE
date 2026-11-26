@@ -102,10 +102,12 @@ def alvo(x, extras=()):
 
 
 def facebook(url, prop):
-    """Plugin do Facebook sem width/height: fixa width na URL (padrão 500) e o tamanho em 16:9, para esticar no quadro."""
+    """Plugin do Facebook: sem width/height, ou foto/vídeo sem texto (show_text=false), vira width x 16:9 para preencher o quadro."""
     u=urlsplit(url)
-    if (u.hostname or '') not in ('www.facebook.com','facebook.com','web.facebook.com') or not u.path.startswith('/plugins/') or pixels(prop): return url,prop
+    if (u.hostname or '') not in ('www.facebook.com','facebook.com','web.facebook.com') or not u.path.startswith('/plugins/'): return url,prop
     q=parse_qsl(u.query,keep_blank_values=True)
+    sem_texto=u.path.startswith('/plugins/video') or dict(q).get('show_text','').lower() in ('false','0')
+    if pixels(prop) and not sem_texto: return url,prop   # post com texto: vale a altura colada
     try: w=int(dict(q).get('width') or 500)
     except ValueError: w=500
     w=min(max(w,200),750)

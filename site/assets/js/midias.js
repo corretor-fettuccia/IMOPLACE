@@ -38,10 +38,12 @@ const ImoplaceMidias=(()=>{
   const fb=facebook(url,p);
   return['iframe',fb[0],fb[1]||(x.tipo==='panorama_360'?'2/1':'16/9')];
  }
- /* Plugin do Facebook sem width/height: fixa width na URL (padrão 500) e o tamanho em 16:9, para esticar no quadro. */
+ /* Plugin do Facebook: sem width/height, ou foto/vídeo sem texto (show_text=false), vira width x 16:9 para preencher o quadro. */
  function facebook(url,p){
   const u=new URL(url);
-  if(!['www.facebook.com','facebook.com','web.facebook.com'].includes(u.hostname)||!u.pathname.startsWith('/plugins/')||pixels(p))return[url,p];
+  if(!['www.facebook.com','facebook.com','web.facebook.com'].includes(u.hostname)||!u.pathname.startsWith('/plugins/'))return[url,p];
+  const semTexto=u.pathname.startsWith('/plugins/video')||['false','0'].includes(String(u.searchParams.get('show_text')||'').toLowerCase());
+  if(pixels(p)&&!semTexto)return[url,p];
   const w=Math.min(750,Math.max(200,parseInt(u.searchParams.get('width'),10)||500));
   u.searchParams.delete('height');u.searchParams.delete('width');u.searchParams.append('width',String(w));
   return[u.href,w+'/'+Math.round(w*9/16)];
