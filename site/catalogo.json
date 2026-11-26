@@ -1,7 +1,7 @@
 {
   "schemaVersao": 2,
   "contrato": "imoplace-v1",
-  "geradoEm": "2026-11-26T04:01:51.708539+00:00",
+  "geradoEm": "2026-11-26T04:11:37.623767+00:00",
   "total": 28,
   "imoveis": [
     {
@@ -4272,7 +4272,7 @@
       "destaque": false,
       "tag": "Pronto para morar.",
       "ordem": 0,
-      "atualizadoEm": "2026-11-26T04:01:02.135Z",
+      "atualizadoEm": "2026-11-26T04:10:42.823Z",
       "tipo": "Apartamento",
       "condicao": "Novo",
       "titulo": "Monet | 2 e 3 dormitórios com lazer no rooftop | Centro de Canoas",
@@ -4333,12 +4333,12 @@
       "midias": [
         {
           "tipo": "iframe",
-          "url": "https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Froberto.fettuccia.14%2Fposts%2Fpfbid02eYeoJQsSm9PCqfcFDgh18Taba125N8tA6fxhdFKHzUfYXQbTVKxqnKAuMWGs7H46l&show_text=false&width=500",
+          "url": "https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Froberto.fettuccia.14%2Fposts%2Fpfbid02eYeoJQsSm9PCqfcFDgh18Taba125N8tA6fxhdFKHzUfYXQbTVKxqnKAuMWGs7H46l&show_text=false",
           "titulo": "Salão de Festas",
           "descricao": "",
           "ordem": 1.0,
           "visivel": true,
-          "proporcao": "",
+          "proporcao": "2/1",
           "capa": ""
         }
       ],
