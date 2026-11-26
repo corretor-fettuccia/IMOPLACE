@@ -50,7 +50,7 @@ function galleryHTML(item) {
   const faixa=imgs.slice(1).map((_,j)=>{const k=j+1;return `<button type="button" class="gal-mini${k<5?' so-cel':''}" data-k="${k}" aria-label="Ampliar foto ${k+1}: ${legenda(k)}">${imgTag(item,k,'','132px')}</button>`;}).join('');
   return `<div class="gal${imgs.length===1?' single':''}" id="gal">${mosaico}</div>${faixa?`<div class="gal-faixa${imgs.length<=5?' so-cel':''}" role="group" aria-label="Mais fotos">${faixa}</div>`:''}`;
 }
-function detailsHTML(item) {
+function detailsHTML(item,todos) {
   const m2=v=>vazio(v)?null:v+' m²';
   const fields=[
     [item.dormitorios,'Dormitórios','dormitorios'],[item.suites,'Suítes','suites'],[item.banheiros,'Banheiros','banheiros'],
@@ -79,6 +79,7 @@ function detailsHTML(item) {
    ${linhas.length?`<div class="box imovel-valores"><h3>Valores</h3><dl class="vals">${linhas.map(([r,v])=>`<dt>${r}</dt><dd>${v}</dd>`).join('')}</dl></div>`:''}
    ${ImoplaceMidias.html(item)}
    ${enderecoPublico?`<div class="box imovel-mapa"><h3>Localização</h3>${mapa}<div class="where">${esc(enderecoPublico)}</div></div>`:''}
+   ${unidadesHTML(item,todos)}
    <div class="imovel-barra">${grupos?`<aside class="box carac" aria-label="Características"><h2>Características</h2>${grupos}</aside>`:''}<aside class="aside box"><div class="adv"><div class="av">I</div><div><b>${esc(item.anunciante?.nome||'Imoplace')}</b>${item.anunciante?.creci?`<span class="where">CRECI ${esc(item.anunciante.creci)}</span>`:''}</div></div>
    ${zapLink?`<div class="contact-note">${disponibilidade(item)==='sold'?'Este imóvel já foi vendido. Procurando algo parecido? Fale com a gente.':'Solicite mais informações diretamente ao anunciante.'}</div>`:''}
    ${zapLink?`<a class="btn btn-accent" id="whatsapp" target="_blank" rel="noopener noreferrer" href="${zapLink}">Chamar no WhatsApp</a>`:'<button class="btn btn-accent" disabled>Contato indisponível</button>'}
@@ -125,6 +126,13 @@ det.addEventListener('click',async e=>{
     mais.textContent=aberto?'Mostrar menos ↑':`Mostrar todos os ${mais.dataset.total} ↓`;
     return;
   }
+  const unMais=e.target.closest('.un-mais');
+  if(unMais){
+    const aberto=unMais.closest('.imovel-unidades').classList.toggle('aberto');
+    unMais.setAttribute('aria-expanded',String(aberto));
+    unMais.textContent=aberto?'Mostrar menos ↑':`Mostrar todos os ${unMais.dataset.total} ↓`;
+    return;
+  }
   if(!currentItem)return;
   const photo=e.target.closest('.ph, .gal-mini, .viewer-thumb');
   if(photo&&photo.dataset.k!==undefined){
@@ -152,7 +160,7 @@ getCatalog().then(items=>{
   if(!item){det.innerHTML=`<a class="back" href="${SITE_ROOT}index.html#imoveis">← Voltar</a><div class="box"><h3>Imóvel não disponível</h3></div>`;return;}
   currentItem=item;
   document.title=`${item.titulo} | Imoplace`;
-  det.innerHTML=detailsHTML(item);det.classList.remove('estado-vendido','estado-indisponivel');if(estadoClasse(item))det.classList.add(estadoClasse(item));ImoplaceMidias.iniciar?.(det);
+  det.innerHTML=detailsHTML(item,items);det.classList.remove('estado-vendido','estado-indisponivel');if(estadoClasse(item))det.classList.add(estadoClasse(item));ImoplaceMidias.iniciar?.(det);
   marcarSalvo(getFavs().includes(item.codigo));
 }).catch(error=>{console.warn('Catálogo temporariamente indisponível. Exibindo HTML estático do build.',error);}).finally(()=>{window.ImoplaceLead?.mount(det);ligarZapFlutuante();});
 

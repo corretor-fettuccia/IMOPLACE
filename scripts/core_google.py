@@ -61,12 +61,18 @@ def ler_tabelas():
         while n:
             n,rest=divmod(n-1,26);out=chr(65+rest)+out
         return out
-    for nome,chaves in [('IMOVEIS',('MIDIAS_JSON','LINKS_EXTERNOS_JSON')),('IMAGENS',('FORMATO',))]:
+    # Colunas acrescentadas depois da v3.0.0 ficam no fim da aba: localizadas pelo cabeçalho, não pela letra.
+    for nome,chaves in [('IMOVEIS',COLUNAS_NOVAS_IMOVEIS),('IMAGENS',('FORMATO',))]:
         header=_request(f'{API}/{sid}/values/{quote(nome+"!1:1",safe="")}').get('values') or [[]]
         cab=[str(x).strip().upper() for x in header[0]]
         for chave in chaves:
             if chave in cab:
                 col=coluna(cab.index(chave)+1);specs.append((nome,f'{col}1:{col}'))
+    # Aba GRUPOS (4.5.0) é opcional: planilha anterior à evolução simplesmente não tem grupos.
+    abas = {str(((x or {}).get('properties') or {}).get('title') or '')
+            for x in (_request(f'{API}/{sid}?fields=sheets.properties.title').get('sheets') or [])}
+    if 'GRUPOS' in abas:
+        specs.append(('GRUPOS', 'A1:F'))
     ranges = '&'.join('ranges=' + quote("'" + nome + "'!" + faixa, safe='') for nome, faixa in specs)
     ret = _request(f'{API}/{sid}/values:batchGet?{ranges}&valueRenderOption=UNFORMATTED_VALUE')
     vr = ret.get('valueRanges') or []
@@ -77,6 +83,8 @@ def ler_tabelas():
         linhas = retorno.get('values') or []
         if not linhas and faixa == 'BE1:BF':
             continue  # planilha anterior à evolução: coleção vazia
+        if not linhas and nome == 'GRUPOS':
+            continue
         if not linhas:
             raise RuntimeError(f'Aba {nome} vazia ou sem cabeçalho: execute a preparação do CORE.')
         cabecalho = [str(c).strip().upper() for c in linhas[0]]
@@ -93,7 +101,8 @@ def ler_tabelas():
                 registro.update(zip(headers, v + ['']*max(0,len(headers)-len(v))))
             if any(x != '' for x in registro.values()):
                 saida[nome].append(registro)
-    if set(saida) != set(COLUMNS):
+    saida.setdefault('GRUPOS', [])
+    if set(saida) != set(COLUMNS) | {'GRUPOS'}:
         raise RuntimeError('Acesso insuficiente às quatro abas principais do CORE.')
     if not set(EVENT_COLS).issubset(set(parts['RESULTADOS'][0][0])):
         raise RuntimeError('Aba RESULTADOS sem colunas necessárias ao feedback por imóvel.')
@@ -165,6 +174,8 @@ def _fotos(im, rows, pendente=False):
 
 
 DISPONIBILIDADES = ('in_stock', 'out_of_stock', 'sold')
+COLUNAS_NOVAS_IMOVEIS = ('MIDIAS_JSON', 'LINKS_EXTERNOS_JSON', 'TARJA', 'TARJA_TEXTO', 'PRECO_ANTERIOR', 'VENDIDO_EM',
+                         'GRUPOS_IDS', 'UNIDADE_NOME')
 TARJAS = ('', 'black_friday', 'oportunidade', 'baixou_preco', 'lancamento', 'personalizada')
 
 
@@ -196,11 +207,34 @@ def _publico(im, imagens, site):
         disponibilidade=_disp(im), vendidoEm=str(im.get('VENDIDO_EM') or '') if _disp(im)=='sold' else '',
         tarja=str(im.get('TARJA') or '') if str(im.get('TARJA') or '') in TARJAS else '', tarjaTexto=txt('TARJA_TEXTO',20),
         precoAnterior=_numero(im.get('PRECO_ANTERIOR')),
+        grupoIds=_ids_grupos(im.get('GRUPOS_IDS')), unidade=txt('UNIDADE_NOME',40).strip(),
         feeds={'google':_flag(im.get('PUBLICAR_GOOGLE')),'meta':_flag(im.get('PUBLICAR_META')),
                'disponibilidade':_disp(im)},
         imagemCapaId=fotos[0]['id'] if fotos else '', imagens=fotos,
         caminho=caminho,url=site.rstrip('/')+'/'+caminho,atualizadoEm=str(im.get('ATUALIZADO_EM') or ''))
     return item
+
+
+def _ids_grupos(v):
+    """'G1, G4' → ['G1','G4'] (sem repetição, na ordem do cadastro)."""
+    saida = []
+    for x in str(v or '').replace(';', ',').split(','):
+        x = x.strip()[:20]
+        if x and x not in saida:
+            saida.append(x)
+    return saida
+
+
+def _grupos(tabelas):
+    """Grupos (loteamento/condomínio) cadastrados no CORE: só o que a página pública mostra."""
+    saida = {}
+    for g in tabelas.get('GRUPOS') or []:
+        gid = str(g.get('ID') or '').strip()
+        nome = str(g.get('NOME') or '').strip()[:80]
+        if gid and nome:
+            saida[gid] = {'id': gid, 'nome': nome, 'tipo': str(g.get('TIPO') or '').strip()[:30],
+                          'titulo': str(g.get('TITULO_SECAO') or '').strip()[:80]}
+    return saida
 
 
 def _manifesto(im, fotos):
@@ -300,12 +334,15 @@ def selecionar_job(tabelas, job_id, forcar=False, limite=20, agora=None):
 
 def montar_feed(tabelas, url):
     publicados=[]
+    grupos=_grupos(tabelas)
     for im in tabelas['IMOVEIS']:
         if str(im.get('STATUS'))!='publicado': continue
         iid=str(im.get('ID',''))
         if not iid.isdigit() or im.get('CATEGORIA') not in ('venda','lancamento') or not im.get('TITULO'):
             raise RuntimeError(f'Cadastro publicado incompleto no Sheets: imóvel {iid}')
-        publicados.append(_publico(im,tabelas['IMAGENS'],url))
+        item=_publico(im,tabelas['IMAGENS'],url)
+        item['grupos']=[grupos[g] for g in item['grupoIds'] if g in grupos]
+        publicados.append(item)
     publicados.sort(key=lambda x:(-int(x['destaque']), x['ordem'], -int(x['id'])))
     return {'ok':True,'contrato':CONTRATO,'snapshotCompleto':True,'total':len(publicados),'imoveis':publicados}
 

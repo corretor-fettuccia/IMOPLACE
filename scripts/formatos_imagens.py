@@ -49,4 +49,4 @@ def aplicar_preferencia_catalogo(site,conf,formato):
                 data['preferido']=formato;mudou=True
     if mudou:gravar_json(path,catalogo)
     for item in catalogo.get('imoveis',[]):
-        gravar(site/'imoveis'/item['codigo']/'index.html',pagina(item,conf))
+        gravar(site/'imoveis'/item['codigo']/'index.html',pagina(item,conf,catalogo.get('imoveis',[])))

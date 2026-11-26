@@ -159,7 +159,85 @@ def _carac_grupo(titulo, arr):
     return f'<div class="carac-grupo"><h3>{titulo} ({len(itens)})</h3><ul class="feat">{lis}</ul>{mais}</div>'
 
 
-def detalhe(item):
+def _preco_num(v):
+    return isinstance(v, (int, float)) and not isinstance(v, bool)
+
+
+UN_VISIVEIS = 8   # linhas visíveis por tabela; o resto abre em "Mostrar todos"
+
+
+def grupos_do(item):
+    """Grupos do imóvel (sem limite: condomínio, condomínio fechado, cidade…), sem repetição."""
+    vistos, saida = set(), []
+    for g in item.get('grupos') or []:
+        gid = str((g or {}).get('id') or '').strip()
+        if gid and gid not in vistos and str(g.get('nome') or '').strip():
+            vistos.add(gid); saida.append(g)
+    return saida
+
+
+def unidades_grupo(item, todos, gid):
+    """Imóveis do grupo gid, do menor preço ao maior (sem preço no fim). Vazio se o imóvel é o único do grupo."""
+    lista = [e for e in (todos or []) if any(str(g.get('id')) == gid for g in grupos_do(e))]
+    if not any(e.get('codigo') == item.get('codigo') for e in lista):
+        lista.append(item)
+    if len(lista) < 2:
+        return []
+    return sorted(lista, key=lambda e: (0 if _preco_num(e.get('preco')) else 1,
+                                        e.get('preco') if _preco_num(e.get('preco')) else 0, int(str(e.get('id') or 0) or 0)))
+
+
+def _tabela_grupo(item, g, lista):
+    gid = str(g['id'])
+    titulo = g.get('titulo') or g.get('nome')
+    def tem(v): return v is not None and v != ''
+    def area_de(e): return e.get('areaUtil') if e.get('areaUtil') is not None else e.get('areaTotal')
+    # Coluna que nenhuma unidade preenche não aparece (ex.: loteamento sem dormitórios e vagas).
+    cols = [c for c, f in (('Área', area_de), ('Dorm.', lambda e: e.get('dormitorios')), ('Vagas', lambda e: e.get('vagas')))
+            if any(tem(f(e)) for e in lista)]
+    def cel(v): return h(v) if tem(v) else '—'
+    linhas = []
+    for k, e in enumerate(lista):
+        atual = e.get('codigo') == item.get('codigo')
+        d = disponibilidade(e)
+        cls = ('un-linha' + (' un-atual' if atual else '') + {'sold': ' un-vendida', 'out_of_stock': ' un-indisponivel'}.get(d, '')
+               + (' un-extra' if k >= UN_VISIVEIS and not atual else ''))
+        nome = e.get('unidade') or e.get('titulo') or e.get('tipo') or 'Imóvel'
+        area = area_de(e)
+        selo_un = {'sold': 'Vendido', 'out_of_stock': 'Indisponível'}.get(d)
+        valor = f'<span class="un-selo">{selo_un}</span>' if selo_un else h(brl(e.get('preco')))
+        acao = ('<span class="un-aqui"><i aria-hidden="true"></i>Você está aqui</span>' if atual
+                else f'<a href="{RAIZ_REL}imoveis/{h(e["codigo"])}/">Ver anúncio →</a>')
+        corrente = ' aria-current="page"' if atual else ''
+        linhas.append(f'<tr class="{cls}"{corrente}>'
+                      f'<th scope="row" data-rotulo="Imóvel">{h(nome)}</th>'
+                      f'<td class="un-valor" data-rotulo="Valor">{valor}</td>'
+                      + (f'<td data-rotulo="Área">{cel(f"{area} m²" if tem(area) else None)}</td>' if 'Área' in cols else '')
+                      + (f'<td data-rotulo="Dorm.">{cel(e.get("dormitorios"))}</td>' if 'Dorm.' in cols else '')
+                      + (f'<td data-rotulo="Vagas">{cel(e.get("vagas"))}</td>' if 'Vagas' in cols else '') +
+                      f'<td class="un-acao">{acao}</td></tr>')
+    mais = (f'<button type="button" class="un-mais" data-total="{len(lista)}" aria-expanded="false">Mostrar todos os {len(lista)} ↓</button>'
+            if len(lista) > UN_VISIVEIS else '')
+    sub = ' · '.join(x for x in (g.get('tipo') or '', f'{len(lista)} imóveis') if x)
+    return (f'<section class="box imovel-unidades" aria-labelledby="un-{h(gid)}"><h3 id="un-{h(gid)}">{h(titulo)}</h3>'
+            f'<p class="un-sub">{h(sub)}</p>'
+            '<div class="un-tabela-wrap"><table class="un-tabela"><thead><tr><th scope="col">Imóvel</th><th scope="col">Valor</th>'
+            + ''.join(f'<th scope="col">{c}</th>' for c in cols) +
+            '<th scope="col"><span class="sr-only">Anúncio</span></th></tr></thead>'
+            f'<tbody>{"".join(linhas)}</tbody></table></div>{mais}</section>')
+
+
+def unidades_html(item, todos):
+    """Uma tabela por grupo do imóvel, logo depois do mapa (igual a unidadesHTML no main.js)."""
+    tabelas = []
+    for g in grupos_do(item):
+        lista = unidades_grupo(item, todos, str(g['id']))
+        if lista:
+            tabelas.append(_tabela_grupo(item, g, lista))
+    return f'<div class="imovel-unidades-lista">{"".join(tabelas)}</div>' if tabelas else ''
+
+
+def detalhe(item, todos=None):
     def m2(v):
         return f'{v} m²' if v is not None else None
     valores = [(item.get('dormitorios'), 'Dormitórios', 'dormitorios'), (item.get('suites'), 'Suítes', 'suites'),
@@ -213,6 +291,7 @@ def detalhe(item):
 {valores_box}
 {multimidia(item)}
 {localizacao}
+{unidades_html(item, todos)}
 <div class="imovel-barra">{caracteristicas}<aside class="aside box"><div class="adv"><div class="av">I</div><div><b>{h(anunc.get('nome') or 'Imoplace')}</b>{creci}</div></div>{f'<p class="small-note">{h(nota)}</p>' if nota else ''}{contato}<div class="ref">Código do imóvel: {h(item['id'])}</div></aside><div class="box imoplace-lead" data-lead-property="{h(item['id'])}" hidden></div></div>
 </div>{flutuante}'''
 
@@ -264,7 +343,7 @@ def dados_estruturados(item, conf, url, descricao):
     return {'@context': 'https://schema.org', '@graph': [anuncio, trilha]}
 
 
-def pagina(item, conf):
+def pagina(item, conf, todos=None):
     base = conf['urlPublica']
     url = f'{base}/imoveis/{item["codigo"]}/'
     seo = item.get('seo') or {}
@@ -301,7 +380,7 @@ def pagina(item, conf):
 <nav aria-label="Principal"><a href="{RAIZ_REL}noticias/">Notícias</a><a href="{RAIZ_REL}index.html#imoveis">Comprar</a><a href="{RAIZ_REL}index.html?categoria=lancamento#imoveis">Lançamentos</a></nav>
 <div class="actions"><a class="btn btn-accent" href="{RAIZ_REL}anunciar/">Anuncie seu imóvel</a></div>
 </div></header>
-<main class="wrap {estado_classe(item)}" id="det">{detalhe(item)}</main>
+<main class="wrap {estado_classe(item)}" id="det">{detalhe(item, todos)}</main>
 <footer><div class="wrap"><span>© {h(conf.get('ano', '2026'))} Imoplace · imoplace.com.br</span><span>Informações sujeitas a confirmação com o anunciante.</span></div></footer>
 <script src="{ativo("assets/js/protecao.js")}"></script>
 <script src="{ativo("assets/js/main.js")}"></script>
