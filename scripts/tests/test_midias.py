@@ -63,7 +63,11 @@ class Evolucao(unittest.TestCase):
         self.assertEqual(x['proporcao'],'500/463')
         html=paginas.multimidia({'midias':[x],'links_externos':[]})
         self.assertIn('loading="lazy"',html)
-        self.assertIn('aspect-ratio:500/463;max-width:500px',html)
+        self.assertIn('style="aspect-ratio:500/463" data-escala="500"',html)
+        self.assertIn('style="width:500px;height:463px"',html)
+        self.assertNotIn('max-width:500px',html)
+        auto=paginas.multimidia({'midias':midias.colecao(json.dumps([{'tipo':'iframe','url':'https://x.example/','titulo':'A','proporcao':'16/9'}]))})
+        self.assertNotIn('data-escala',auto)
         self.assertNotIn('style="border:none"',html)
         self.assertEqual(midias.colecao(json.dumps([{'url':'<iframe srcdoc="<script>x</script>"></iframe>'}])),[])
 

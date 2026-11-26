@@ -37,10 +37,11 @@ const ImoplaceMidias=(()=>{
   if(proprio(url))return['link',url,''];
   return['iframe',url,p||(x.tipo==='panorama_360'?'2/1':'16/9')];
  }
- const estilo=p=>{if(!p)return '';const[w]=p.split('/').map(Number);return 'aspect-ratio:'+p+(PRESETS.includes(p)||w<80||w>1400?'':';max-width:'+w+'px');};
+ const pixels=p=>{if(!p||PRESETS.includes(p))return null;const[w,h]=p.split('/').map(Number);return w>=80&&w<=1400&&h>=50&&h<=2000?[w,h]:null;};
+ const estilo=p=>p?'aspect-ratio:'+p:'';
  function player(x){
   const[modo,src,p]=alvo(x),st=esc(estilo(p)),t=esc(x.titulo);
-  if(modo==='iframe')return `<div class="midia-quadro" style="${st}"><iframe src="${esc(src)}" title="${t}" loading="lazy" allow="${ALLOW}" allowfullscreen sandbox="${SANDBOX}" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>`;
+  if(modo==='iframe'){const px=pixels(p);return `<div class="midia-quadro" style="${st}"${px?` data-escala="${px[0]}"`:''}><iframe src="${esc(src)}" title="${t}"${px?` style="width:${px[0]}px;height:${px[1]}px"`:''} loading="lazy" allow="${ALLOW}" allowfullscreen sandbox="${SANDBOX}" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>`;}
   if(modo==='video')return `<div class="midia-quadro" style="${st}"><video src="${esc(src)}" controls playsinline preload="metadata"${safe(x.capa)?` poster="${esc(safe(x.capa))}"`:''}>Seu navegador não reproduz este vídeo.</video></div>`;
   if(modo==='panorama')return `<div class="midia-quadro midia-panorama" style="${st}" data-panorama="${esc(src)}"></div>`;
   if(modo==='imagem')return `<div class="midia-imagem"><img src="${esc(src)}" alt="${t}" loading="lazy" decoding="async"></div>`;
@@ -74,7 +75,11 @@ const ImoplaceMidias=(()=>{
  document.addEventListener('keydown',e=>{const tr=e.target;if(!tr.classList?.contains('mc-trilho')||!['ArrowLeft','ArrowRight'].includes(e.key))return;e.preventDefault();tr.closest('[data-carrossel]').querySelector(e.key==='ArrowLeft'?'.mc-prev':'.mc-next').click();});
  document.addEventListener('close',e=>{if(e.target.id==='external-links')opener?.focus();},true);
  /* Panoramas de imagem 2:1 montam sozinhos quando chegam perto da tela. */
+ /* Iframe com tamanho em px (do código colado): renderiza nesse tamanho e estica por escala até a largura do quadro. */
+ const escalar=box=>{const f=box.querySelector('iframe'),w=Number(box.dataset.escala);if(f&&w&&box.clientWidth)f.style.transform='scale('+(box.clientWidth/w)+')';};
+ const ro=typeof ResizeObserver!=='undefined'?new ResizeObserver(es=>es.forEach(e=>escalar(e.target))):null;
  function iniciar(root=document){
+  root.querySelectorAll('[data-escala]').forEach(box=>{escalar(box);ro?.observe(box);});
   const boxes=[...root.querySelectorAll('[data-panorama]:not([data-pronto])')];if(!boxes.length)return;
   const montar=box=>{box.dataset.pronto='1';panorama(box,safe(box.dataset.panorama)).catch(()=>{box.textContent='Não foi possível carregar o panorama. Use o link para abrir a imagem.';});};
   if(typeof IntersectionObserver==='undefined'){boxes.forEach(montar);return;}
@@ -101,5 +106,5 @@ const ImoplaceMidias=(()=>{
   canvas.onkeydown=e=>{if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(e.key))return;e.preventDefault();yaw+=(e.key==='ArrowRight'?.1:e.key==='ArrowLeft'?-.1:0);pitch=Math.max(-1.4,Math.min(1.4,pitch+(e.key==='ArrowUp'?.1:e.key==='ArrowDown'?-.1:0)));draw();};
   box.append(canvas);draw();
  }
- return {html,picture,embed,alvo,player,iniciar};
+ return {html,picture,embed,alvo,player,iniciar,pixels};
 })();

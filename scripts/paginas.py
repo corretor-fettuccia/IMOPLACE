@@ -1,5 +1,5 @@
 """ImoPlace — HTML das páginas dos imóveis (layout do ImoPlace v2.1, sem dados de demonstração)."""
-from midias import colecao, alvo, estilo, ALLOW, SANDBOX
+from midias import colecao, alvo, estilo, pixels, ALLOW, SANDBOX
 from formatos_imagens import ordem_formatos
 import html
 import json
@@ -290,7 +290,10 @@ def midia_player(x):
     """Renderiza direto, sem botão: iframe com loading=lazy, vídeo nativo, panorama ou imagem."""
     modo,src,prop=alvo(x);st=estilo(prop);titulo=h(x['titulo'])
     if modo=='iframe':
-        return f'<div class="midia-quadro" style="{st}"><iframe src="{h(src)}" title="{titulo}" loading="lazy" allow="{ALLOW}" allowfullscreen sandbox="{SANDBOX}" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>'
+        px=pixels(prop)
+        escala=f' data-escala="{px[0]}"' if px else ''
+        tam=f' style="width:{px[0]}px;height:{px[1]}px"' if px else ''
+        return f'<div class="midia-quadro" style="{st}"{escala}><iframe src="{h(src)}" title="{titulo}"{tam} loading="lazy" allow="{ALLOW}" allowfullscreen sandbox="{SANDBOX}" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>'
     if modo=='video':
         capa=f' poster="{h(x["capa"])}"' if x.get('capa') else ''
         return f'<div class="midia-quadro" style="{st}"><video src="{h(src)}" controls playsinline preload="metadata"{capa}>Seu navegador não reproduz este vídeo.</video></div>'

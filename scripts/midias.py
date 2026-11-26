@@ -100,8 +100,13 @@ def alvo(x, extras=()):
     return ('iframe',url,prop or ('2/1' if x.get('tipo')=='panorama_360' else '16/9'))
 
 
+def pixels(prop):
+    """Formato vindo de width/height de um <iframe> colado (não é preset): (largura, altura) em px."""
+    if not prop or prop in PRESETS: return None
+    w,hh=(int(x) for x in prop.split('/'))
+    return (w,hh) if 80<=w<=1400 and 50<=hh<=2000 else None
+
+
 def estilo(prop):
-    """aspect-ratio sempre; tamanho em pixels colado de um <iframe> vira largura máxima."""
-    if not prop: return ''
-    w,hh=prop.split('/')
-    return f'aspect-ratio:{w}/{hh}'+('' if prop in PRESETS or int(w)<80 or int(w)>1400 else f';max-width:{w}px')
+    """Só aspect-ratio: o quadro ocupa a largura toda. Tamanho em px é esticado por escala (data-escala)."""
+    return f'aspect-ratio:{prop}' if prop else ''
