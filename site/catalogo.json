@@ -1,7 +1,7 @@
 {
   "schemaVersao": 2,
   "contrato": "imoplace-v1",
-  "geradoEm": "2026-11-26T13:05:18.301185+00:00",
+  "geradoEm": "2026-11-26T15:41:57.605269+00:00",
   "total": 28,
   "imoveis": [
     {
@@ -69,6 +69,11 @@
         "meta": false,
         "disponibilidade": "in_stock"
       },
+      "disponibilidade": "in_stock",
+      "vendidoEm": "",
+      "tarja": "",
+      "tarjaTexto": "",
+      "precoAnterior": null,
       "midias": [],
       "links_externos": [],
       "imagens": [
@@ -212,6 +217,11 @@
         "meta": false,
         "disponibilidade": "in_stock"
       },
+      "disponibilidade": "in_stock",
+      "vendidoEm": "",
+      "tarja": "",
+      "tarjaTexto": "",
+      "precoAnterior": null,
       "midias": [],
       "links_externos": [],
       "imagens": [
@@ -469,6 +479,11 @@
         "meta": false,
         "disponibilidade": "in_stock"
       },
+      "disponibilidade": "in_stock",
+      "vendidoEm": "",
+      "tarja": "",
+      "tarjaTexto": "",
+      "precoAnterior": null,
       "midias": [],
       "links_externos": [],
       "imagens": [
@@ -3428,6 +3443,11 @@
         "meta": false,
         "disponibilidade": "in_stock"
       },
+      "disponibilidade": "in_stock",
+      "vendidoEm": "",
+      "tarja": "",
+      "tarjaTexto": "",
+      "precoAnterior": null,
       "midias": [],
       "links_externos": [],
       "imagens": [
@@ -3510,6 +3530,11 @@
         "meta": false,
         "disponibilidade": "in_stock"
       },
+      "disponibilidade": "in_stock",
+      "vendidoEm": "",
+      "tarja": "",
+      "tarjaTexto": "",
+      "precoAnterior": null,
       "midias": [],
       "links_externos": [],
       "imagens": [
@@ -3607,6 +3632,11 @@
         "meta": false,
         "disponibilidade": "in_stock"
       },
+      "disponibilidade": "in_stock",
+      "vendidoEm": "",
+      "tarja": "",
+      "tarjaTexto": "",
+      "precoAnterior": null,
       "midias": [],
       "links_externos": [],
       "imagens": [
@@ -3709,6 +3739,11 @@
         "meta": false,
         "disponibilidade": "in_stock"
       },
+      "disponibilidade": "in_stock",
+      "vendidoEm": "",
+      "tarja": "",
+      "tarjaTexto": "",
+      "precoAnterior": null,
       "midias": [],
       "links_externos": [],
       "imagens": [
@@ -3792,6 +3827,11 @@
         "meta": false,
         "disponibilidade": "in_stock"
       },
+      "disponibilidade": "in_stock",
+      "vendidoEm": "",
+      "tarja": "",
+      "tarjaTexto": "",
+      "precoAnterior": null,
       "midias": [],
       "links_externos": [],
       "imagens": [
@@ -3885,6 +3925,11 @@
         "meta": false,
         "disponibilidade": "in_stock"
       },
+      "disponibilidade": "in_stock",
+      "vendidoEm": "",
+      "tarja": "",
+      "tarjaTexto": "",
+      "precoAnterior": null,
       "midias": [
         {
           "tipo": "video",
@@ -3998,6 +4043,11 @@
         "meta": false,
         "disponibilidade": "in_stock"
       },
+      "disponibilidade": "in_stock",
+      "vendidoEm": "",
+      "tarja": "",
+      "tarjaTexto": "",
+      "precoAnterior": null,
       "midias": [],
       "links_externos": [],
       "imagens": [
@@ -4120,6 +4170,11 @@
         "meta": false,
         "disponibilidade": "in_stock"
       },
+      "disponibilidade": "in_stock",
+      "vendidoEm": "",
+      "tarja": "",
+      "tarjaTexto": "",
+      "precoAnterior": null,
       "midias": [],
       "links_externos": [],
       "imagens": [
@@ -4238,6 +4293,11 @@
         "meta": false,
         "disponibilidade": "in_stock"
       },
+      "disponibilidade": "in_stock",
+      "vendidoEm": "",
+      "tarja": "",
+      "tarjaTexto": "",
+      "precoAnterior": null,
       "midias": [],
       "links_externos": [],
       "imagens": [
@@ -4272,7 +4332,7 @@
       "destaque": false,
       "tag": "Pronto para morar.",
       "ordem": 0,
-      "atualizadoEm": "2026-11-26T13:04:25.254Z",
+      "atualizadoEm": "2026-11-26T13:05:14.346Z",
       "tipo": "Apartamento",
       "condicao": "Novo",
       "titulo": "Monet | 2 e 3 dormitórios com lazer no rooftop | Centro de Canoas",
@@ -4330,6 +4390,11 @@
         "meta": false,
         "disponibilidade": "in_stock"
       },
+      "disponibilidade": "in_stock",
+      "vendidoEm": "",
+      "tarja": "",
+      "tarjaTexto": "",
+      "precoAnterior": null,
       "midias": [
         {
           "tipo": "iframe",
@@ -4500,6 +4565,11 @@
         "meta": false,
         "disponibilidade": "in_stock"
       },
+      "disponibilidade": "in_stock",
+      "vendidoEm": "",
+      "tarja": "",
+      "tarjaTexto": "",
+      "precoAnterior": null,
       "midias": [],
       "links_externos": [],
       "imagens": [
@@ -4624,6 +4694,11 @@
         "meta": false,
         "disponibilidade": "in_stock"
       },
+      "disponibilidade": "in_stock",
+      "vendidoEm": "",
+      "tarja": "",
+      "tarjaTexto": "",
+      "precoAnterior": null,
       "midias": [],
       "links_externos": [],
       "imagens": [
@@ -4807,6 +4882,11 @@
         "meta": false,
         "disponibilidade": "in_stock"
       },
+      "disponibilidade": "in_stock",
+      "vendidoEm": "",
+      "tarja": "",
+      "tarjaTexto": "",
+      "precoAnterior": null,
       "midias": [],
       "links_externos": [],
       "imagens": [
@@ -4993,6 +5073,11 @@
         "meta": false,
         "disponibilidade": "in_stock"
       },
+      "disponibilidade": "in_stock",
+      "vendidoEm": "",
+      "tarja": "",
+      "tarjaTexto": "",
+      "precoAnterior": null,
       "midias": [],
       "links_externos": [],
       "imagens": [
@@ -5209,6 +5294,11 @@
         "meta": false,
         "disponibilidade": "in_stock"
       },
+      "disponibilidade": "in_stock",
+      "vendidoEm": "",
+      "tarja": "",
+      "tarjaTexto": "",
+      "precoAnterior": null,
       "midias": [],
       "links_externos": [],
       "imagens": [
@@ -5439,6 +5529,11 @@
         "meta": false,
         "disponibilidade": "in_stock"
       },
+      "disponibilidade": "in_stock",
+      "vendidoEm": "",
+      "tarja": "",
+      "tarjaTexto": "",
+      "precoAnterior": null,
       "midias": [],
       "links_externos": [],
       "imagens": [
@@ -5483,7 +5578,7 @@
       "destaque": false,
       "tag": "PROMOÇÃO",
       "ordem": 0,
-      "atualizadoEm": "2026-11-17T15:14:42.058Z",
+      "atualizadoEm": "2026-11-26T15:41:25.191Z",
       "tipo": "Apartamento",
       "condicao": "Novo",
       "titulo": "Varandas Trend Living | Apartamentos de 2 e 3 Dormitórios com Suíte e Churrasqueira | Canoas",
@@ -5567,7 +5662,23 @@
         "meta": false,
         "disponibilidade": "in_stock"
       },
-      "midias": [],
+      "disponibilidade": "in_stock",
+      "vendidoEm": "",
+      "tarja": "",
+      "tarjaTexto": "",
+      "precoAnterior": null,
+      "midias": [
+        {
+          "tipo": "iframe",
+          "url": "https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fweb.facebook.com%2Froberto.fettuccia.14%2Fposts%2Fpfbid0eujMekS7NRVYfri5TUW5D2Lqnog5yZ4mJgJqRjNh6KDEZA8tW8s5uEYh2nSi2b4cl&show_text=true",
+          "titulo": "Sala integrada",
+          "descricao": "",
+          "ordem": 1.0,
+          "visivel": true,
+          "proporcao": "",
+          "capa": ""
+        }
+      ],
       "links_externos": [],
       "imagens": [
         {
@@ -5681,6 +5792,11 @@
         "meta": false,
         "disponibilidade": "in_stock"
       },
+      "disponibilidade": "in_stock",
+      "vendidoEm": "",
+      "tarja": "",
+      "tarjaTexto": "",
+      "precoAnterior": null,
       "midias": [],
       "links_externos": [],
       "imagens": [
@@ -5921,6 +6037,11 @@
         "meta": false,
         "disponibilidade": "in_stock"
       },
+      "disponibilidade": "in_stock",
+      "vendidoEm": "",
+      "tarja": "",
+      "tarjaTexto": "",
+      "precoAnterior": null,
       "midias": [],
       "links_externos": [],
       "imagens": [
@@ -6128,6 +6249,11 @@
         "meta": false,
         "disponibilidade": "in_stock"
       },
+      "disponibilidade": "in_stock",
+      "vendidoEm": "",
+      "tarja": "",
+      "tarjaTexto": "",
+      "precoAnterior": null,
       "midias": [],
       "links_externos": [],
       "imagens": [
@@ -6290,6 +6416,11 @@
         "meta": false,
         "disponibilidade": "in_stock"
       },
+      "disponibilidade": "in_stock",
+      "vendidoEm": "",
+      "tarja": "",
+      "tarjaTexto": "",
+      "precoAnterior": null,
       "midias": [],
       "links_externos": [],
       "imagens": [
@@ -6411,6 +6542,11 @@
         "meta": false,
         "disponibilidade": "in_stock"
       },
+      "disponibilidade": "in_stock",
+      "vendidoEm": "",
+      "tarja": "",
+      "tarjaTexto": "",
+      "precoAnterior": null,
       "midias": [],
       "links_externos": [],
       "imagens": [
@@ -6601,6 +6737,11 @@
         "meta": false,
         "disponibilidade": "in_stock"
       },
+      "disponibilidade": "in_stock",
+      "vendidoEm": "",
+      "tarja": "",
+      "tarjaTexto": "",
+      "precoAnterior": null,
       "midias": [],
       "links_externos": [],
       "imagens": [
@@ -6781,6 +6922,11 @@
         "meta": false,
         "disponibilidade": "in_stock"
       },
+      "disponibilidade": "in_stock",
+      "vendidoEm": "",
+      "tarja": "",
+      "tarjaTexto": "",
+      "precoAnterior": null,
       "midias": [],
       "links_externos": [],
       "imagens": [
@@ -6891,6 +7037,11 @@
         "meta": false,
         "disponibilidade": "in_stock"
       },
+      "disponibilidade": "in_stock",
+      "vendidoEm": "",
+      "tarja": "",
+      "tarjaTexto": "",
+      "precoAnterior": null,
       "midias": [],
       "links_externos": [],
       "imagens": [
