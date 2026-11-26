@@ -67,4 +67,9 @@ assert(pj.includes("['GRUPOS_IDS','Grupos (marque quantos quiser)','grupos',{lar
 assert(pj.includes("else if (tipo === 'grupos') dados[chave]"));
 assert(pj.includes("api('salvarGrupo'")&&pj.includes("api('excluirGrupo'")&&pj.includes("api('listarGrupos')"));
 assert(ler('Painel.html').includes('id="btn-grupos"'));
-console.log('CORE 4.5.0: grupos de imóveis aprovados.');
+// Mídias e links externos no painel: lista recolhível (uma linha por item; formulário abre ao clicar).
+assert(pj.includes('<div class="campo largo midia-colecao" data-colecao="${chave}">'));
+assert(pj.includes('<details class="midia-linha"')&&pj.includes('function atualizarResumoMidia(row)'));
+['function colecaoHTML(','function lerColecao(','extrairIframePainel(e.target.value)',"querySelector('[data-campo-capa]')"].forEach(x=>assert(pj.includes(x),x));
+assert(ler('PainelCss.html').includes('.ml-lista{counter-reset:ml;'));
+console.log('CORE 4.5.0: grupos de imóveis e lista de mídias aprovados.');
