@@ -154,7 +154,7 @@ getCatalog().then(items=>{
   if(!item){det.innerHTML=`<a class="back" href="${SITE_ROOT}index.html#imoveis">← Voltar</a><div class="box"><h3>Imóvel não disponível</h3></div>`;return;}
   currentItem=item;
   document.title=`${item.titulo} | Imoplace`;
-  det.innerHTML=detailsHTML(item);
+  det.innerHTML=detailsHTML(item);ImoplaceMidias.iniciar?.(det);
   marcarSalvo(getFavs().includes(item.codigo));
 }).catch(error=>{console.warn('Catálogo temporariamente indisponível. Exibindo HTML estático do build.',error);}).finally(()=>{window.ImoplaceLead?.mount(det);ligarZapFlutuante();});
 
