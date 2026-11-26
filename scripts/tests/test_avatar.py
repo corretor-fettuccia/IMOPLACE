@@ -19,6 +19,9 @@ class TestAvatar(unittest.TestCase):
     def test_avatar_acompanha_o_botao_e_nao_tem_clique(self):
         js = (RAIZ / 'site/assets/js/avatar.js').read_text(encoding='utf-8')
         self.assertIn(".zap-flutuante", js)
+        # não some quando o botão flutuante se esconde (botão do cartão à vista); só com visualizador/digitação
+        self.assertIn("!!zap && !document.querySelector('dialog[open]') && !document.querySelector('[data-digitando]')", js)
+        self.assertNotIn('!!zap && !zap.hidden', js)
         self.assertNotIn('addEventListener(\'click\'', js)
         for frase in ('Eu não mordo!', 'negócio verde', 'eu te ajudo também'):
             self.assertIn(frase, js)
