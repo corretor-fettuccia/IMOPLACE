@@ -1,7 +1,7 @@
 {
   "schemaVersao": 2,
   "contrato": "imoplace-v1",
-  "geradoEm": "2026-11-26T11:57:09.444280+00:00",
+  "geradoEm": "2026-11-26T13:05:18.301185+00:00",
   "total": 28,
   "imoveis": [
     {
@@ -4265,14 +4265,14 @@
     },
     {
       "id": "1024",
-      "codigo": "novo-imovel-1024",
+      "codigo": "monet-bold-incorp-1024",
       "categoria": "lancamento",
       "status": "publicado",
-      "url": "https://imoplace.com.br/imoveis/novo-imovel-1024/",
+      "url": "https://imoplace.com.br/imoveis/monet-bold-incorp-1024/",
       "destaque": false,
       "tag": "Pronto para morar.",
       "ordem": 0,
-      "atualizadoEm": "2026-11-26T11:56:11.451Z",
+      "atualizadoEm": "2026-11-26T13:04:25.254Z",
       "tipo": "Apartamento",
       "condicao": "Novo",
       "titulo": "Monet | 2 e 3 dormitórios com lazer no rooftop | Centro de Canoas",
@@ -4355,82 +4355,82 @@
       "links_externos": [],
       "imagens": [
         {
-          "arquivo": "imoveis/novo-imovel-1024/imagens/bold-monet-22-scaled-ibe1b2cc324.v1.webp",
+          "arquivo": "imoveis/monet-bold-incorp-1024/imagens/bold-monet-22-scaled-ibe1b2cc324.v1.webp",
           "legenda": "Infraestrutura no rooftop",
           "alt": "Monet | 2 e 3 dormitórios com lazer no rooftop | Centro de Canoas — foto 1"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1024/imagens/vista-01-ext-fachada-diurna-final-1537x2-i6f33fc2ecc.v1.webp",
+          "arquivo": "imoveis/monet-bold-incorp-1024/imagens/vista-01-ext-fachada-diurna-final-1537x2-i6f33fc2ecc.v1.webp",
           "legenda": "Foto 2",
           "alt": "Monet | 2 e 3 dormitórios com lazer no rooftop | Centro de Canoas — foto 2"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1024/imagens/bold-monet-2-scaled-i29004bff01.v1.webp",
+          "arquivo": "imoveis/monet-bold-incorp-1024/imagens/bold-monet-2-scaled-i29004bff01.v1.webp",
           "legenda": "Foto 3",
           "alt": "Monet | 2 e 3 dormitórios com lazer no rooftop | Centro de Canoas — foto 3"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1024/imagens/bold-monet-3-scaled-i1c10c5c19d.v1.webp",
+          "arquivo": "imoveis/monet-bold-incorp-1024/imagens/bold-monet-3-scaled-i1c10c5c19d.v1.webp",
           "legenda": "Foto 4",
           "alt": "Monet | 2 e 3 dormitórios com lazer no rooftop | Centro de Canoas — foto 4"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1024/imagens/img-monet-recepcao-02-1-ic75480279b.v1.webp",
+          "arquivo": "imoveis/monet-bold-incorp-1024/imagens/img-monet-recepcao-02-1-ic75480279b.v1.webp",
           "legenda": "Foto 5",
           "alt": "Monet | 2 e 3 dormitórios com lazer no rooftop | Centro de Canoas — foto 5"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1024/imagens/bold-monet-14-scaled-i0bb73ce0f5.v1.webp",
+          "arquivo": "imoveis/monet-bold-incorp-1024/imagens/bold-monet-14-scaled-i0bb73ce0f5.v1.webp",
           "legenda": "Foto 6",
           "alt": "Monet | 2 e 3 dormitórios com lazer no rooftop | Centro de Canoas — foto 6"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1024/imagens/bold-monet-29-scaled-ie4e65af5bf.v1.webp",
+          "arquivo": "imoveis/monet-bold-incorp-1024/imagens/bold-monet-29-scaled-ie4e65af5bf.v1.webp",
           "legenda": "Foto 7",
           "alt": "Monet | 2 e 3 dormitórios com lazer no rooftop | Centro de Canoas — foto 7"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1024/imagens/bold-monet-30-scaled-ia9e021b2e7.v1.webp",
+          "arquivo": "imoveis/monet-bold-incorp-1024/imagens/bold-monet-30-scaled-ia9e021b2e7.v1.webp",
           "legenda": "Foto 8",
           "alt": "Monet | 2 e 3 dormitórios com lazer no rooftop | Centro de Canoas — foto 8"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1024/imagens/bold-monet-31-scaled-i577c8a2470.v1.webp",
+          "arquivo": "imoveis/monet-bold-incorp-1024/imagens/bold-monet-31-scaled-i577c8a2470.v1.webp",
           "legenda": "Foto 9",
           "alt": "Monet | 2 e 3 dormitórios com lazer no rooftop | Centro de Canoas — foto 9"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1024/imagens/bold-monet-9-scaled-i424a0da907.v1.webp",
+          "arquivo": "imoveis/monet-bold-incorp-1024/imagens/bold-monet-9-scaled-i424a0da907.v1.webp",
           "legenda": "Foto 10",
           "alt": "Monet | 2 e 3 dormitórios com lazer no rooftop | Centro de Canoas — foto 10"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1024/imagens/bold-monet-26-scaled-i3534996c67.v1.webp",
+          "arquivo": "imoveis/monet-bold-incorp-1024/imagens/bold-monet-26-scaled-i3534996c67.v1.webp",
           "legenda": "Foto 11",
           "alt": "Monet | 2 e 3 dormitórios com lazer no rooftop | Centro de Canoas — foto 11"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1024/imagens/bold-monet-35-scaled-ia4ea26fcb1.v1.webp",
+          "arquivo": "imoveis/monet-bold-incorp-1024/imagens/bold-monet-35-scaled-ia4ea26fcb1.v1.webp",
           "legenda": "Piscina no rooftop",
           "alt": "Monet | 2 e 3 dormitórios com lazer no rooftop | Centro de Canoas — foto 12"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1024/imagens/bold-monet-32-scaled-ifc36c47335.v1.webp",
+          "arquivo": "imoveis/monet-bold-incorp-1024/imagens/bold-monet-32-scaled-ifc36c47335.v1.webp",
           "legenda": "Play Kids",
           "alt": "Monet | 2 e 3 dormitórios com lazer no rooftop | Centro de Canoas — foto 13"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1024/imagens/bold-monet-27-scaled-i12c11d7484.v1.webp",
+          "arquivo": "imoveis/monet-bold-incorp-1024/imagens/bold-monet-27-scaled-i12c11d7484.v1.webp",
           "legenda": "playground no rooftop",
           "alt": "Monet | 2 e 3 dormitórios com lazer no rooftop | Centro de Canoas — foto 14"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1024/imagens/bold-monet-10-scaled-i60d90167df.v1.webp",
+          "arquivo": "imoveis/monet-bold-incorp-1024/imagens/bold-monet-10-scaled-i60d90167df.v1.webp",
           "legenda": "Academia",
           "alt": "Monet | 2 e 3 dormitórios com lazer no rooftop | Centro de Canoas — foto 15"
         },
         {
-          "arquivo": "imoveis/novo-imovel-1024/imagens/bold-monet-21-scaled-i9e46b6013f.v1.webp",
+          "arquivo": "imoveis/monet-bold-incorp-1024/imagens/bold-monet-21-scaled-i9e46b6013f.v1.webp",
           "legenda": "Foto 16",
           "alt": "Monet | 2 e 3 dormitórios com lazer no rooftop | Centro de Canoas — foto 16"
         }
