@@ -1,7 +1,7 @@
 {
   "schemaVersao": 2,
   "contrato": "imoplace-v1",
-  "geradoEm": "2026-11-26T15:41:57.605269+00:00",
+  "geradoEm": "2026-11-26T18:20:01.134581+00:00",
   "total": 28,
   "imoveis": [
     {
@@ -74,6 +74,8 @@
       "tarja": "",
       "tarjaTexto": "",
       "precoAnterior": null,
+      "grupos": [],
+      "unidade": "",
       "midias": [],
       "links_externos": [],
       "imagens": [
@@ -222,6 +224,8 @@
       "tarja": "",
       "tarjaTexto": "",
       "precoAnterior": null,
+      "grupos": [],
+      "unidade": "",
       "midias": [],
       "links_externos": [],
       "imagens": [
@@ -484,6 +488,8 @@
       "tarja": "",
       "tarjaTexto": "",
       "precoAnterior": null,
+      "grupos": [],
+      "unidade": "",
       "midias": [],
       "links_externos": [],
       "imagens": [
@@ -3448,6 +3454,8 @@
       "tarja": "",
       "tarjaTexto": "",
       "precoAnterior": null,
+      "grupos": [],
+      "unidade": "",
       "midias": [],
       "links_externos": [],
       "imagens": [
@@ -3535,6 +3543,8 @@
       "tarja": "",
       "tarjaTexto": "",
       "precoAnterior": null,
+      "grupos": [],
+      "unidade": "",
       "midias": [],
       "links_externos": [],
       "imagens": [
@@ -3637,6 +3647,8 @@
       "tarja": "",
       "tarjaTexto": "",
       "precoAnterior": null,
+      "grupos": [],
+      "unidade": "",
       "midias": [],
       "links_externos": [],
       "imagens": [
@@ -3744,6 +3756,8 @@
       "tarja": "",
       "tarjaTexto": "",
       "precoAnterior": null,
+      "grupos": [],
+      "unidade": "",
       "midias": [],
       "links_externos": [],
       "imagens": [
@@ -3832,6 +3846,8 @@
       "tarja": "",
       "tarjaTexto": "",
       "precoAnterior": null,
+      "grupos": [],
+      "unidade": "",
       "midias": [],
       "links_externos": [],
       "imagens": [
@@ -3930,6 +3946,8 @@
       "tarja": "",
       "tarjaTexto": "",
       "precoAnterior": null,
+      "grupos": [],
+      "unidade": "",
       "midias": [
         {
           "tipo": "video",
@@ -4048,6 +4066,8 @@
       "tarja": "",
       "tarjaTexto": "",
       "precoAnterior": null,
+      "grupos": [],
+      "unidade": "",
       "midias": [],
       "links_externos": [],
       "imagens": [
@@ -4112,7 +4132,7 @@
       "destaque": false,
       "tag": "Aceita Parcelamento direto",
       "ordem": 0,
-      "atualizadoEm": "2026-11-19T12:39:27.581Z",
+      "atualizadoEm": "2026-11-26T18:19:55.857Z",
       "tipo": "Apartamento",
       "condicao": "Novo",
       "titulo": "Grand Park Lindóia | 2 e 3 dormitórios | Zona Norte de Porto Alegre",
@@ -4175,6 +4195,15 @@
       "tarja": "",
       "tarjaTexto": "",
       "precoAnterior": null,
+      "grupos": [
+        {
+          "id": "G2",
+          "nome": "Condomínio de apartamento",
+          "tipo": "Condomínio",
+          "titulo": "Condomínio de apartamento"
+        }
+      ],
+      "unidade": "",
       "midias": [],
       "links_externos": [],
       "imagens": [
@@ -4298,6 +4327,8 @@
       "tarja": "",
       "tarjaTexto": "",
       "precoAnterior": null,
+      "grupos": [],
+      "unidade": "",
       "midias": [],
       "links_externos": [],
       "imagens": [
@@ -4332,7 +4363,7 @@
       "destaque": false,
       "tag": "Pronto para morar.",
       "ordem": 0,
-      "atualizadoEm": "2026-11-26T13:05:14.346Z",
+      "atualizadoEm": "2026-11-26T18:19:14.571Z",
       "tipo": "Apartamento",
       "condicao": "Novo",
       "titulo": "Monet | 2 e 3 dormitórios com lazer no rooftop | Centro de Canoas",
@@ -4395,6 +4426,21 @@
       "tarja": "",
       "tarjaTexto": "",
       "precoAnterior": null,
+      "grupos": [
+        {
+          "id": "G2",
+          "nome": "Condomínio de apartamento",
+          "tipo": "Condomínio",
+          "titulo": "Condomínio de apartamento"
+        },
+        {
+          "id": "G1",
+          "nome": "Monet",
+          "tipo": "Condomínio fechado",
+          "titulo": ""
+        }
+      ],
+      "unidade": "",
       "midias": [
         {
           "tipo": "iframe",
@@ -4570,6 +4616,8 @@
       "tarja": "",
       "tarjaTexto": "",
       "precoAnterior": null,
+      "grupos": [],
+      "unidade": "",
       "midias": [],
       "links_externos": [],
       "imagens": [
@@ -4699,6 +4747,8 @@
       "tarja": "",
       "tarjaTexto": "",
       "precoAnterior": null,
+      "grupos": [],
+      "unidade": "",
       "midias": [],
       "links_externos": [],
       "imagens": [
@@ -4887,6 +4937,8 @@
       "tarja": "",
       "tarjaTexto": "",
       "precoAnterior": null,
+      "grupos": [],
+      "unidade": "",
       "midias": [],
       "links_externos": [],
       "imagens": [
@@ -5078,6 +5130,8 @@
       "tarja": "",
       "tarjaTexto": "",
       "precoAnterior": null,
+      "grupos": [],
+      "unidade": "",
       "midias": [],
       "links_externos": [],
       "imagens": [
@@ -5299,6 +5353,8 @@
       "tarja": "",
       "tarjaTexto": "",
       "precoAnterior": null,
+      "grupos": [],
+      "unidade": "",
       "midias": [],
       "links_externos": [],
       "imagens": [
@@ -5534,6 +5590,8 @@
       "tarja": "",
       "tarjaTexto": "",
       "precoAnterior": null,
+      "grupos": [],
+      "unidade": "",
       "midias": [],
       "links_externos": [],
       "imagens": [
@@ -5578,7 +5636,7 @@
       "destaque": false,
       "tag": "PROMOÇÃO",
       "ordem": 0,
-      "atualizadoEm": "2026-11-26T15:41:25.191Z",
+      "atualizadoEm": "2026-11-26T15:43:21.492Z",
       "tipo": "Apartamento",
       "condicao": "Novo",
       "titulo": "Varandas Trend Living | Apartamentos de 2 e 3 Dormitórios com Suíte e Churrasqueira | Canoas",
@@ -5664,9 +5722,11 @@
       },
       "disponibilidade": "in_stock",
       "vendidoEm": "",
-      "tarja": "",
+      "tarja": "black_friday",
       "tarjaTexto": "",
       "precoAnterior": null,
+      "grupos": [],
+      "unidade": "",
       "midias": [
         {
           "tipo": "iframe",
@@ -5797,6 +5857,8 @@
       "tarja": "",
       "tarjaTexto": "",
       "precoAnterior": null,
+      "grupos": [],
+      "unidade": "",
       "midias": [],
       "links_externos": [],
       "imagens": [
@@ -6042,6 +6104,8 @@
       "tarja": "",
       "tarjaTexto": "",
       "precoAnterior": null,
+      "grupos": [],
+      "unidade": "",
       "midias": [],
       "links_externos": [],
       "imagens": [
@@ -6254,6 +6318,8 @@
       "tarja": "",
       "tarjaTexto": "",
       "precoAnterior": null,
+      "grupos": [],
+      "unidade": "",
       "midias": [],
       "links_externos": [],
       "imagens": [
@@ -6421,6 +6487,8 @@
       "tarja": "",
       "tarjaTexto": "",
       "precoAnterior": null,
+      "grupos": [],
+      "unidade": "",
       "midias": [],
       "links_externos": [],
       "imagens": [
@@ -6547,6 +6615,8 @@
       "tarja": "",
       "tarjaTexto": "",
       "precoAnterior": null,
+      "grupos": [],
+      "unidade": "",
       "midias": [],
       "links_externos": [],
       "imagens": [
@@ -6742,6 +6812,8 @@
       "tarja": "",
       "tarjaTexto": "",
       "precoAnterior": null,
+      "grupos": [],
+      "unidade": "",
       "midias": [],
       "links_externos": [],
       "imagens": [
@@ -6927,6 +6999,8 @@
       "tarja": "",
       "tarjaTexto": "",
       "precoAnterior": null,
+      "grupos": [],
+      "unidade": "",
       "midias": [],
       "links_externos": [],
       "imagens": [
@@ -7042,6 +7116,8 @@
       "tarja": "",
       "tarjaTexto": "",
       "precoAnterior": null,
+      "grupos": [],
+      "unidade": "",
       "midias": [],
       "links_externos": [],
       "imagens": [
