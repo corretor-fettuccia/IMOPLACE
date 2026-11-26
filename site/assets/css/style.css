@@ -299,7 +299,7 @@ button:disabled{opacity:.6;cursor:not-allowed}
 @media (prefers-reduced-motion:reduce){.zap-flutuante{animation:none}}
 /* 4.4.0 — tarjas diagonais, vendido em preto e branco, indisponível apagado, preço anterior riscado */
 .thumb{overflow:hidden}
-.tarja{position:absolute;z-index:3;top:30px;left:-64px;right:auto;bottom:auto;width:240px;margin:0;border-radius:0;transform:rotate(-35deg);text-align:center;font:800 .72rem/1 var(--h);letter-spacing:.1em;color:#fff;padding:7px 0;box-shadow:0 3px 10px #0005;pointer-events:none;white-space:nowrap;overflow:hidden;text-overflow:clip}
+.tarja{position:absolute;z-index:3;top:42px;left:-55px;right:auto;bottom:auto;width:260px;margin:0;border-radius:0;transform:rotate(-35deg);text-align:center;font:800 .72rem/1 var(--h);letter-spacing:.08em;color:#fff;padding:6px 0;box-shadow:0 3px 10px #0005;pointer-events:none;white-space:nowrap;overflow:hidden;text-overflow:clip}
 .thumb:has(.tarja) .tag{top:auto;bottom:8px}
 .ph .tarja{position:absolute;margin:0;border-radius:0}
 .ph.main .tarja{top:40px;left:auto;right:-74px;width:300px;transform:rotate(35deg);font-size:.95rem;padding:10px 0}
@@ -310,3 +310,4 @@ button:disabled{opacity:.6;cursor:not-allowed}
 .price-old{display:block;font:500 .78rem var(--b);color:#7a8494;text-decoration:line-through;margin-bottom:1px}
 .faixa-info .price-old{display:inline;margin-right:6px}
 .price-vendido{color:#c62828}
+@media (max-width:640px){.tarja{top:28px;left:-52px;width:190px;font-size:.56rem;letter-spacing:.04em;padding:5px 0}.ph.main .tarja{top:34px;right:-66px;width:250px;font-size:.8rem;padding:8px 0}}
