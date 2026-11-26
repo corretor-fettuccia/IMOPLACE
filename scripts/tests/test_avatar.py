@@ -14,7 +14,7 @@ class TestAvatar(unittest.TestCase):
 
     def test_modelo_tem_script_do_avatar(self):
         src = (RAIZ / 'scripts/paginas.py').read_text(encoding='utf-8')
-        self.assertIn('<script src="{RAIZ_REL}assets/js/avatar.js?v=2"></script>', src)
+        self.assertIn('<script src="{ativo("assets/js/avatar.js")}"></script>', src)
 
     def test_avatar_acompanha_o_botao_e_nao_tem_clique(self):
         js = (RAIZ / 'site/assets/js/avatar.js').read_text(encoding='utf-8')
