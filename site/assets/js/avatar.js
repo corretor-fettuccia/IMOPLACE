@@ -1,6 +1,7 @@
 /* ImoPlace — avatar do cachorrinho ao lado do WhatsApp flutuante (versão em sprites).
-   Só um avatar: não tem clique nem botão próprio. Aparece e some junto com o .zap-flutuante
-   (que o imovel.js mostra quando o botão do cartão de contato sai da tela).
+   Só um avatar: não tem clique nem botão próprio. Fica sempre no canto da página do imóvel que tem WhatsApp,
+   com o botão flutuante à vista ou não (quando o botão do cartão de contato está na tela, o flutuante some e
+   o cachorrinho continua). Só se esconde com o visualizador de fotos aberto e enquanto se digita no formulário.
    Ciclo: dorme → acorda → dança → aponta e fala (balão) → senta → deita → dorme.
    A folha de sprites (assets/img/tijolo-sprites.webp) só é baixada depois que a página termina de carregar,
    e o estilo vem neste arquivo para CSS e JS nunca ficarem fora de sincronia no cache. */
@@ -80,7 +81,7 @@
   }
   function sincronizar() {
     var zap = document.querySelector('.zap-flutuante');
-    var visivel = !!zap && !zap.hidden;
+    var visivel = !!zap && !document.querySelector('dialog[open]') && !document.querySelector('[data-digitando]');
     if (visivel === ativo) return;
     ativo = visivel;
     montar();
@@ -91,8 +92,8 @@
   }
   function iniciar() {
     sincronizar();
-    // O imovel.js redesenha a página e liga/desliga o botão: acompanha as duas coisas.
-    new MutationObserver(sincronizar).observe(document.body, { subtree: true, childList: true, attributes: true, attributeFilter: ['hidden'] });
+    // O imovel.js redesenha a página, abre o visualizador e marca a digitação: acompanha tudo.
+    new MutationObserver(sincronizar).observe(document.body, { subtree: true, childList: true, attributes: true, attributeFilter: ['hidden', 'open', 'data-digitando'] });
   }
   // Baixa a folha de sprites sem pressa, depois que a página carregou, para o cachorrinho já estar pronto quando aparecer.
   window.addEventListener('load', function () { setTimeout(function () { new Image().src = FOLHA; }, 1200); });
