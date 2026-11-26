@@ -1,7 +1,7 @@
 {
   "schemaVersao": 2,
   "contrato": "imoplace-v1",
-  "geradoEm": "2026-11-26T18:43:47.275955+00:00",
+  "geradoEm": "2026-11-26T18:45:25.581193+00:00",
   "total": 28,
   "imoveis": [
     {
@@ -4904,7 +4904,7 @@
       "destaque": false,
       "tag": "DESTAQUE",
       "ordem": 0,
-      "atualizadoEm": "2026-11-22T23:31:13.661Z",
+      "atualizadoEm": "2026-11-26T18:44:05.703Z",
       "tipo": "Casa",
       "condicao": "Novo",
       "titulo": "Reservas do Lago | Casa de 240 m² com 4 dormitórios | Nova Santa Rita",
@@ -4958,7 +4958,20 @@
       "tarja": "",
       "tarjaTexto": "",
       "precoAnterior": null,
-      "grupos": [],
+      "grupos": [
+        {
+          "id": "G3",
+          "nome": "Condomínio de casas",
+          "tipo": "Condomínio",
+          "titulo": ""
+        },
+        {
+          "id": "G7",
+          "nome": "Reservas do lago",
+          "tipo": "Condomínio fechado",
+          "titulo": ""
+        }
+      ],
       "unidade": "",
       "midias": [],
       "links_externos": [],
