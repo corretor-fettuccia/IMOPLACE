@@ -196,7 +196,7 @@ def construir(site,conf,rows,config):
         elif not new and path.is_file():path.unlink()
     for x in items:
         url=base+'/noticias/'+x['codigo']+'/'
-        schema={'@context':'https://schema.org','@type':'BlogPosting','headline':x['titulo'],'description':x['seoDescricao'],'mainEntityOfPage':url,'url':url,'datePublished':x['publicadoEm'],'dateModified':x['atualizadoEm'],'author':{'@type':'Person','name':x['autor']},'publisher':{'@type':'Organization','name':'Imoplace','url':base,'logo':{'@type':'ImageObject','url':base+'/icon-512.png','width':512,'height':512}},'inLanguage':'pt-BR','keywords':x['tags']}
+        schema={'@context':'https://schema.org','@type':'NewsArticle','headline':x['titulo'],'description':x['seoDescricao'],'mainEntityOfPage':url,'url':url,'datePublished':x['publicadoEm'],'dateModified':x['atualizadoEm'] or x['publicadoEm'],'author':{'@type':'Person','name':x['autor']},'publisher':{'@type':'Organization','name':'Imoplace','url':base,'logo':{'@type':'ImageObject','url':base+'/icon-512.png','width':512,'height':512}},'inLanguage':'pt-BR','keywords':x['tags']}
         if x['capa']:schema['image']=[x['capa']]
         rel=bloco_imoveis(x,imoveis)
         cover=f'<img class="article-cover" src="{h(x["capa"])}" alt="{h(x["capaAlt"])}" width="1200" height="750" fetchpriority="high">' if x['capa'] else ''
@@ -207,9 +207,71 @@ def construir(site,conf,rows,config):
     # Excluir controles internos da representação pública, inclusive a escolha de disparo.
     public=[{k:v for k,v in x.items() if k!='notificar'} for x in items]
     gravar_json(site/'noticias/catalogo.json',{'artigos':public})
-    rss=''.join('<item><guid>'+escape(base+'/noticias/'+x['codigo']+'/')+'</guid><title>'+escape(x['titulo'])+'</title><link>'+escape(base+'/noticias/'+x['codigo']+'/')+'</link><description>'+escape(x['resumo'])+'</description></item>' for x in items)
-    gravar(site/'noticias/feed.xml','<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>Notícias Imoplace</title><link>'+escape(base+'/noticias/')+'</link><description>Dicas e novidades para morar melhor.</description>'+rss+'</channel></rss>')
+    gravar(site/'noticias/feed.xml',feed_rss(items,conf))
+    gravar_news_sitemap(site,conf,items)
     return items
+
+# ---------- Google Notícias: sitemap de notícias e feed RSS ----------
+NEWS_JANELA_H=48      # Google: só matérias dos últimos 2 dias no sitemap de notícias
+NEWS_MAX=1000         # Google: no máximo 1.000 <news:news> por sitemap
+RSS_MAX=50            # matérias mais recentes no feed
+RSS_LIMITE=2*1024*1024  # Google News: 2 MB por feed
+
+def _dt(v):
+    try:d=datetime.fromisoformat(str(v or '').strip().replace('Z','+00:00'))
+    except ValueError:return None
+    return (d if d.tzinfo else d.replace(tzinfo=timezone.utc)).astimezone(timezone.utc)
+
+def data_w3c(v):
+    """YYYY-MM-DDThh:mm:ssZ (W3C Datetime), formato aceito pelo sitemap de notícias."""
+    d=_dt(v);return d.strftime('%Y-%m-%dT%H:%M:%SZ') if d else ''
+
+def data_rfc822(v):
+    from email.utils import format_datetime
+    d=_dt(v);return format_datetime(d) if d else ''
+
+def nome_publicacao(conf):
+    # Deve ser idêntico ao nome da publicação em news.google.com.
+    return str(conf.get('nomeGoogleNews') or conf.get('nome') or 'Imoplace')
+
+def news_sitemap(items,conf,agora=None):
+    base=conf['urlPublica'].rstrip('/');agora=agora or datetime.now(timezone.utc)
+    nome=escape(nome_publicacao(conf));recentes=[]
+    for x in items:
+        d=_dt(x['publicadoEm'])
+        if d and 0<=(agora-d).total_seconds()<=NEWS_JANELA_H*3600:recentes.append(x)
+    corpo=''.join('\n<url><loc>'+escape(base+'/noticias/'+x['codigo']+'/')+'</loc><news:news><news:publication><news:name>'+nome+'</news:name><news:language>pt</news:language></news:publication><news:publication_date>'+data_w3c(x['publicadoEm'])+'</news:publication_date><news:title>'+escape(x['titulo'])+'</news:title></news:news></url>' for x in recentes[:NEWS_MAX])
+    return '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">'+corpo+'\n</urlset>\n'
+
+def gravar_news_sitemap(site,conf,items,agora=None):
+    arq=Path(site)/'noticias/news.xml'
+    if not conf['permitirIndexacao']:arq.unlink(missing_ok=True);return
+    gravar(arq,news_sitemap(items,conf,agora))
+
+def _item_rss(x,base):
+    url=base+'/noticias/'+x['codigo']+'/'
+    capa=f'<p><img src="{h(x["capa"])}" alt="{h(x["capaAlt"])}"></p>' if x['capa'] else ''
+    media=f'<media:content url="{escape(x["capa"],{chr(34):"&quot;"})}" medium="image"><media:description>{escape(x["capaAlt"])}</media:description></media:content>' if x['capa'] else ''
+    cats=''.join('<category>'+escape(c)+'</category>' for c in [x['categoria']]+x['tags'])
+    return ('<item><title>'+escape(x['titulo'])+'</title><link>'+escape(url)+'</link><guid isPermaLink="true">'+escape(url)+'</guid>'
+            +('<pubDate>'+data_rfc822(x['publicadoEm'])+'</pubDate>' if data_rfc822(x['publicadoEm']) else '')
+            +'<dc:creator>'+escape(x['autor'])+'</dc:creator>'+cats+'<description>'+escape(x['resumo'] or x['seoDescricao'])+'</description>'
+            +'<content:encoded>'+escape(capa+corpo(x['corpo']))+'</content:encoded>'+media+'</item>')
+
+def feed_rss(items,conf):
+    """RSS 2.0 no padrão técnico do Google Notícias (Publisher Center). Sem horário de geração: só muda quando as matérias mudam."""
+    base=conf['urlPublica'].rstrip('/');lista=items[:RSS_MAX]
+    def montar(lista):
+        ultima=max((_dt(x['atualizadoEm']) or _dt(x['publicadoEm']) for x in lista if _dt(x['atualizadoEm']) or _dt(x['publicadoEm'])),default=None)
+        return ('<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:media="http://search.yahoo.com/mrss/"><channel>'
+                '<title>Notícias '+escape(nome_publicacao(conf))+'</title><link>'+escape(base+'/noticias/')+'</link><description>Dicas e novidades para morar melhor.</description><language>pt-BR</language>'
+                '<atom:link href="'+escape(base+'/noticias/feed.xml')+'" rel="self" type="application/rss+xml"/>'
+                +('<lastBuildDate>'+data_rfc822(ultima.isoformat())+'</lastBuildDate>' if ultima else '')
+                +'<image><url>'+escape(base+'/icon-512.png')+'</url><title>Notícias '+escape(nome_publicacao(conf))+'</title><link>'+escape(base+'/noticias/')+'</link></image>'
+                +''.join(_item_rss(x,base) for x in lista)+'</channel></rss>\n')
+    xml=montar(lista)
+    while len(xml.encode('utf-8'))>RSS_LIMITE and len(lista)>1:lista=lista[:-1];xml=montar(lista)
+    return xml
 
 def main():
     import os
