@@ -35,9 +35,12 @@ class GoogleNews(unittest.TestCase):
         self.assertEqual(n.find('n:publication_date',NS).text,'2026-11-27T10:00:00Z')
         self.assertEqual(n.find('n:title',NS).text,'Título & teste nova')
 
-    def test_news_sitemap_vazio_e_valido_e_some_sem_indexacao(self):
-        items=noticias.construir(self.p,CONF,self.rows[2:3],{})
-        noticias.gravar_news_sitemap(self.p,CONF,items,AGORA)
+    def test_news_sitemap_nunca_fica_sem_url_e_some_sem_indexacao(self):
+        items=noticias.construir(self.p,CONF,self.rows[1:3],{})
+        noticias.gravar_news_sitemap(self.p,CONF,items,datetime(2026,12,10,tzinfo=timezone.utc))
+        locs=[u.find('s:loc',NS).text for u in ET.parse(self.p/'noticias/news.xml').getroot().findall('s:url',NS)]
+        self.assertEqual(locs,['https://imoplace.com.br/noticias/ontem-n000000000002/'])
+        noticias.gravar_news_sitemap(self.p,CONF,[],AGORA)
         self.assertEqual(ET.parse(self.p/'noticias/news.xml').getroot().findall('s:url',NS),[])
         noticias.gravar_news_sitemap(self.p,dict(CONF,permitirIndexacao=False),items,AGORA)
         self.assertFalse((self.p/'noticias/news.xml').exists())
