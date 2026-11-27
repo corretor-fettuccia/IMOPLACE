@@ -240,6 +240,8 @@ def news_sitemap(items,conf,agora=None):
     for x in items:
         d=_dt(x['publicadoEm'])
         if d and 0<=(agora-d).total_seconds()<=NEWS_JANELA_H*3600:recentes.append(x)
+    # Sem <url> o Search Console acusa "Tag XML ausente" (pai urlset, tag url): mantém a matéria mais recente.
+    if not recentes:recentes=[x for x in items if _dt(x['publicadoEm'])][:1]
     corpo=''.join('\n<url><loc>'+escape(base+'/noticias/'+x['codigo']+'/')+'</loc><news:news><news:publication><news:name>'+nome+'</news:name><news:language>pt</news:language></news:publication><news:publication_date>'+data_w3c(x['publicadoEm'])+'</news:publication_date><news:title>'+escape(x['titulo'])+'</news:title></news:news></url>' for x in recentes[:NEWS_MAX])
     return '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">'+corpo+'\n</urlset>\n'
 
