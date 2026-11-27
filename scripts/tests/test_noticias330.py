@@ -34,7 +34,7 @@ class Noticias330(unittest.TestCase):
             items=noticias.construir(p,CONF,[n,dict(n,ID='n123456abcdee',SLUG='rascunho',STATUS='rascunho')],secret)
             self.assertEqual(len(items),1)
             text=(p/'noticias'/items[0]['codigo']/'index.html').read_text()
-            self.assertIn('BlogPosting',text);self.assertIn('rel="canonical"',text);self.assertIn('data-push-scope="n123456abcdef"',text)
+            self.assertIn('NewsArticle',text);self.assertIn('rel="canonical"',text);self.assertIn('data-push-scope="n123456abcdef"',text)
             self.assertNotIn('<script>alert(1)</script>',text);self.assertIn('&lt;script&gt;',text)
             for f in p.rglob('*'):
                 if f.is_file():self.assertNotIn(secret['PRIVATE_JWK'],f.read_text())
