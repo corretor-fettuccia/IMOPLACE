@@ -1,7 +1,7 @@
 {
   "schemaVersao": 2,
   "contrato": "imoplace-v1",
-  "geradoEm": "2026-11-26T21:57:59.542488+00:00",
+  "geradoEm": "2026-11-27T11:01:52.158641+00:00",
   "total": 28,
   "imoveis": [
     {
@@ -3725,7 +3725,7 @@
       "destaque": false,
       "tag": "BLACK FRIDAY",
       "ordem": 0,
-      "atualizadoEm": "2026-11-26T02:19:39.197Z",
+      "atualizadoEm": "2026-11-27T11:00:52.400Z",
       "tipo": "Terreno",
       "condicao": "Novo",
       "titulo": "Terreno plano de 250 m² à venda | Vale do Sol, Nova Santa Rita",
@@ -3783,7 +3783,14 @@
       "tarja": "",
       "tarjaTexto": "",
       "precoAnterior": null,
-      "grupos": [],
+      "grupos": [
+        {
+          "id": "G4",
+          "nome": "Loteamento",
+          "tipo": "Loteamento",
+          "titulo": ""
+        }
+      ],
       "unidade": "",
       "midias": [],
       "links_externos": [],
