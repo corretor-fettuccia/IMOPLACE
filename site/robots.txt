@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
 Sitemap: https://imoplace.com.br/sitemap.xml
+Sitemap: https://imoplace.com.br/noticias/news.xml
