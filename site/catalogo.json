@@ -1,7 +1,7 @@
 {
   "schemaVersao": 2,
   "contrato": "imoplace-v1",
-  "geradoEm": "2026-11-27T11:01:52.158641+00:00",
+  "geradoEm": "2026-11-27T11:03:28.108131+00:00",
   "total": 28,
   "imoveis": [
     {
@@ -3826,7 +3826,7 @@
       "destaque": false,
       "tag": "Mini Sítio",
       "ordem": 0,
-      "atualizadoEm": "2026-11-22T18:47:04.544Z",
+      "atualizadoEm": "2026-11-27T11:02:50.770Z",
       "tipo": "Terreno",
       "condicao": "Novo",
       "titulo": "Terreno de 1.909 m² à venda | 30 m de frente | Ideal para sítio próximo à cidade",
@@ -3877,10 +3877,17 @@
       },
       "disponibilidade": "in_stock",
       "vendidoEm": "",
-      "tarja": "",
-      "tarjaTexto": "",
+      "tarja": "personalizada",
+      "tarjaTexto": "Aceita Financiamento",
       "precoAnterior": null,
-      "grupos": [],
+      "grupos": [
+        {
+          "id": "G4",
+          "nome": "Loteamento",
+          "tipo": "Loteamento",
+          "titulo": ""
+        }
+      ],
       "unidade": "",
       "midias": [],
       "links_externos": [],
