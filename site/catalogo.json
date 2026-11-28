@@ -1,8 +1,8 @@
 {
   "schemaVersao": 2,
   "contrato": "imoplace-v1",
-  "geradoEm": "2026-11-27T20:57:20.275144+00:00",
-  "total": 28,
+  "geradoEm": "2026-11-28T19:14:49.824068+00:00",
+  "total": 29,
   "imoveis": [
     {
       "id": "1004",
@@ -3410,6 +3410,96 @@
               "mime": "image/jpeg"
             }
           }
+        }
+      ]
+    },
+    {
+      "id": "1035",
+      "codigo": "lote-esquina-200m2-igara-canoas-1035",
+      "categoria": "venda",
+      "status": "publicado",
+      "url": "https://imoplace.com.br/imoveis/lote-esquina-200m2-igara-canoas-1035/",
+      "destaque": false,
+      "tag": "",
+      "ordem": 0,
+      "atualizadoEm": "2026-11-28T19:13:40.600Z",
+      "tipo": "Terreno",
+      "condicao": "Usado",
+      "titulo": "Terreno de esquina de 200 m² à venda no Igara, Canoas",
+      "descricao": "Se você procura um terreno no Igara para construir uma casa com a sua planta, vale conhecer esta esquina. O lote fica no encontro da Rua das Violetas com a Rua da Erva-Mate, em Canoas, e tem 200 m², com 10 m de frente e 20 m em cada lateral. O valor de venda é de R$ 330.000 e propostas serão analisadas.\n\nComo é o entorno?\n\nA Avenida Armando Fajardo é uma referência para chegar ao lote e acessar o comércio do bairro. A região conta com mercados, padarias e farmácias para as compras do dia a dia. O IFRS Campus Canoas fica no Igara III. Para lazer, compras e gastronomia, o ParkShopping Canoas e o Parque Getúlio Vargas são duas opções na Avenida Farroupilha, com ligação por passarela entre o shopping e o parque.\n\nO que a esquina permite estudar no projeto?\n\nA posição entre duas ruas permite ao arquiteto avaliar alternativas para a entrada de pedestres, o acesso à garagem e a orientação dos ambientes. Vale comparar uma casa térrea com pátio e um sobrado que concentre os dormitórios no pavimento superior e reserve mais espaço no térreo para o convívio. A implantação, os acessos e a área edificável dependem da consulta ao zoneamento, aos recuos aplicáveis ao lote e da aprovação do projeto pela Prefeitura de Canoas.\n\nÉ possível financiar o terreno e a construção juntos?\n\nPara quem quer comprar este lote e já planejar a obra, vale avaliar a modalidade Aquisição de Terreno e Construção, que permite financiar a compra do terreno e a construção da casa na mesma operação. A possibilidade para este imóvel depende da análise de crédito e da aprovação do terreno e do projeto pela instituição financeira.\n\nQuanto custa o terreno?\n\nO preço pedido é de R$ 330.000, equivalente a R$ 1.650 por m² de terreno. Se você está comparando opções para construir, use esse valor como ponto de partida e considere também o custo da obra e a área que poderá ser aproveitada no projeto.\n\nQuer ver como essa esquina pode funcionar para a casa que você tem em mente? Chame no WhatsApp para agendar uma visita, enviar sua proposta ou avaliar a possibilidade de financiar o terreno e a construção.",
+      "seo": {
+        "titulo": "Terreno de esquina de 200 m² à venda no Igara, Canoas",
+        "descricao": "Terreno de esquina à venda no Igara, Canoas. São 200 m² (10 × 20 m), na Rua das Violetas com a Rua da Erva-Mate, por R$ 330.000. Envie sua proposta."
+      },
+      "localizacao": {
+        "bairro": "Igara",
+        "cidade": "Canoas",
+        "uf": "RS",
+        "endereco": "Rua das Violetas, esquina com Rua da Erva-Mate, Igara, Canoas - RS, CEP 92410-700",
+        "lat": null,
+        "lng": null
+      },
+      "preco": 330000.0,
+      "condominio": null,
+      "iptuAnual": null,
+      "financiamento": false,
+      "permuta": false,
+      "documentacaoEmDia": false,
+      "dormitorios": null,
+      "suites": null,
+      "banheiros": null,
+      "vagas": null,
+      "areaTotal": 200.0,
+      "areaUtil": null,
+      "comodidades": [],
+      "caracteristicasImovel": [
+        "Lote de esquina",
+        "Área total de 200 m²",
+        "10 m de frente",
+        "Laterais de 20 m",
+        "Propostas sob análise"
+      ],
+      "caracteristicasCondominio": [],
+      "anunciante": {
+        "nome": "Roberto",
+        "creci": "83599-F",
+        "whatsapp": "5551998111078"
+      },
+      "feeds": {
+        "google": false,
+        "meta": false,
+        "disponibilidade": "in_stock"
+      },
+      "disponibilidade": "in_stock",
+      "vendidoEm": "",
+      "tarja": "oportunidade",
+      "tarjaTexto": "",
+      "precoAnterior": null,
+      "grupos": [],
+      "unidade": "",
+      "midias": [
+        {
+          "tipo": "iframe",
+          "url": "https://www.google.com/maps/embed?pb=!4v1795892653665!6m8!1m7!1stHzZBT7JQejmd800EvkgUg!2m2!1d-29.89531641620827!2d-51.1557475672555!3f282.36978429296374!4f-2.9603715288655224!5f0.7820865974627469",
+          "titulo": "Ver mídia",
+          "descricao": "10x20",
+          "ordem": 1.0,
+          "visivel": true,
+          "proporcao": "",
+          "capa": ""
+        }
+      ],
+      "links_externos": [],
+      "imagens": [
+        {
+          "arquivo": "imoveis/lote-esquina-200m2-igara-canoas-1035/imagens/elis-i57f2138527.v1.webp",
+          "legenda": "Próximo ao Piquete maroto",
+          "alt": "Terreno de esquina de 200 m² à venda no Igara, Canoas — foto 1"
+        },
+        {
+          "arquivo": "imoveis/lote-esquina-200m2-igara-canoas-1035/imagens/2026-11-28-16-11-convertido-id4ad135cdd.v1.webp",
+          "legenda": "IGARA | Lote esquina",
+          "alt": "Terreno de esquina de 200 m² à venda no Igara, Canoas — foto 2"
         }
       ]
     },
